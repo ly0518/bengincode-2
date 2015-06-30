@@ -1,0 +1,35 @@
+@CHARSET "UTF-8";
+.tips p {
+  margin: 8px 0;
+}
+ .tips span {
+  color: #787d82;
+}
+.text-ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.ml20 {
+  margin-left: 20px;
+}
+.follow-label {
+  margin-left: 10px;
+}
+ 
+.course-list .tags {
+  margin: 12px 0 14px;
+  height: 20px;
+  overflow: hidden;
+}
+.course-list .tags span {
+  display: inline-block;
+  margin-right: 4px;
+  padding: 0 8px;
+  height: 20px;
+  line-height: 20px;
+  font-size: 12px;
+  color: #787d82;
+  background-color: #edf1f2;
+  vertical-align: middle;
+}
