@@ -8,13 +8,14 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>begincode</name>
 	<url>http://maven.apache.org</url>
-
+	<modules>
+		<module>core</module>
+		<module>blog</module>
+		<module>course</module>
+		<module>web</module>
+	</modules>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<!-- 文件拷贝时的编码 -->
-		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<!-- 编译时的编码 -->
-		<maven.compiler.encoding>UTF-8</maven.compiler.encoding>
 		<junit.version>4.8</junit.version>
 		<spring.version>4.1.1.RELEASE</spring.version>
 		<springmvc.version>4.1.1.RELEASE</springmvc.version>
@@ -23,28 +24,33 @@
 		<commonfile.version>1.3.1</commonfile.version>
 		<common.pool.version>1.6</common.pool.version>
 		<commons.log.version>1.2</commons.log.version>
-		<spring.jdbc.version>4.1.4.RELEASE</spring.jdbc.version>
 		<slf4j.api.version>1.7.12</slf4j.api.version>
 		<mysql.version>5.1.34</mysql.version>
 		<mybatis.version>3.2.8</mybatis.version>
 		<mybatis.spring.version>1.2.2</mybatis.spring.version>
-		<jstl.version>1.2</jstl.version>
 		<gson.version>2.3.1</gson.version>
 		<servlet.version>3.1.0</servlet.version>
+		<jstl.version>1.2</jstl.version>
 		<mvnplugin.compiler.version>3.1</mvnplugin.compiler.version>
+		<mvnplugin.source.version>2.4</mvnplugin.source.version>
+		<mvnplugin.javadoc.version>2.10.3</mvnplugin.javadoc.version>
+		<mvnplugin.surefire.version>2.18.1</mvnplugin.surefire.version>
+		<mvnplugin.site.version>3.4</mvnplugin.site.version>
 		<javac.src.version>1.7</javac.src.version>
 		<javac.target.version>1.7</javac.target.version>
-
-		<!-- <mvnplugin.pdf.version>1.3</mvnplugin.pdf.version> <mvnplugin.compiler.version>3.3</mvnplugin.compiler.version> 
-			<mvnplugin.source.version>2.4</mvnplugin.source.version> <mvnplugin.javadoc.version>2.10.3</mvnplugin.javadoc.version> 
-			<mvnplugin.surefire.version>2.18.1</mvnplugin.surefire.version> <mvnplugin.site.version>3.4</mvnplugin.site.version> -->
-
 	</properties>
-
 	<dependencyManagement>
 		<dependencies>
-
-
+			<dependency>
+				<groupId>junit</groupId>
+				<artifactId>junit</artifactId>
+				<version>${junit.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-context</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
 			<dependency>
 				<groupId>org.springframework</groupId>
 				<artifactId>spring-web</artifactId>
@@ -53,31 +59,48 @@
 			<dependency>
 				<groupId>org.springframework</groupId>
 				<artifactId>spring-webmvc</artifactId>
-				<version>${springmvc.version}</version>
+				<version>${spring.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>commons-lang</groupId>
-				<artifactId>commons-lang</artifactId>
-				<version>${commons.lang.version}</version>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-context</artifactId>
+				<version>${spring.version}</version>
 			</dependency>
-
 			<dependency>
 				<groupId>org.springframework</groupId>
 				<artifactId>spring-jdbc</artifactId>
-				<version>${spring.jdbc.version}</version>
+				<version>${spring.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>commons-dbcp</groupId>
-				<artifactId>commons-dbcp</artifactId>
-				<version>${commons.dbcp.version}</version>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-aop</artifactId>
+				<version>${spring.version}</version>
 			</dependency>
-
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-core</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-tx</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-beans</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-expression</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
 			<dependency>
 				<groupId>org.slf4j</groupId>
 				<artifactId>slf4j-api</artifactId>
 				<version>${slf4j.api.version}</version>
 			</dependency>
-
 			<dependency>
 				<groupId>mysql</groupId>
 				<artifactId>mysql-connector-java</artifactId>
@@ -111,28 +134,30 @@
 				<version>${commonfile.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>com.google.code.gson</groupId>
-				<artifactId>gson</artifactId>
-				<version>${gson.version}</version>
+				<groupId>commons-lang</groupId>
+				<artifactId>commons-lang</artifactId>
+				<version>${commons.lang.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>commons-dbcp</groupId>
+				<artifactId>commons-dbcp</artifactId>
+				<version>${commons.dbcp.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>commons-pool</groupId>
 				<artifactId>commons-pool</artifactId>
 				<version>${common.pool.version}</version>
 			</dependency>
+			<dependency>
+				<groupId>com.google.code.gson</groupId>
+				<artifactId>gson</artifactId>
+				<version>${gson.version}</version>
+			</dependency>
 		</dependencies>
 	</dependencyManagement>
-
 	<build>
-		<finalName>begincode</finalName>
 		<pluginManagement>
 			<plugins>
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-compiler-plugin</artifactId>
-					<version>${mvnplugin.compiler.version}</version>
-				</plugin>
-
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-compiler-plugin</artifactId>
@@ -143,14 +168,45 @@
 						<showWarnings>true</showWarnings>
 					</configuration>
 				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-site-plugin</artifactId>
+					<configuration>
+						<locales>en,zh_CN</locales>
+					</configuration>
+					<version>${mvnplugin.site.version}</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-surefire-plugin</artifactId>
+					<configuration>
+						<forkMode>pertest</forkMode>
+						<!-- <skipTests>true</skipTests> -->
+					</configuration>
+					<version>${mvnplugin.surefire.version}</version>
+				</plugin>
+				<!-- source 插件 -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-source-plugin</artifactId>
+					<version>${mvnplugin.source.version}</version>
+				</plugin>
+				<!-- javadoc 插件 -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-javadoc-plugin</artifactId>
+					<version>${mvnplugin.javadoc.version}</version>
+					<executions>
+						<execution>
+							<id>attach-javadocs</id>
+							<phase>install</phase>
+							<goals>
+								<goal>jar</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
 			</plugins>
 		</pluginManagement>
 	</build>
-
-	<modules>
-		<module>core</module>
-		<module>blog</module>
-		<module>course</module>
-		<module>web</module>
-	</modules>
 </project>
