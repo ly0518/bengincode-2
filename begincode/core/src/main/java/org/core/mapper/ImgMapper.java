@@ -1,6 +1,6 @@
-package org.course.inter;
+package org.core.mapper;
 
-import org.course.model.Img;
+import org.core.model.Img;
 
 public interface ImgMapper {
     int insert(Img record);

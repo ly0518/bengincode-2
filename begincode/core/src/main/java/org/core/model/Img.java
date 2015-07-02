@@ -1,4 +1,4 @@
-package org.course.model;
+package org.core.model;
 
 public class Img {
     private Integer id;

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.begincode</groupId>
 	<artifactId>begincode</artifactId>
@@ -13,7 +12,8 @@
 		<module>blog</module>
 		<module>course</module>
 		<module>web</module>
-	</modules>
+    <module>test</module>
+  </modules>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<junit.version>4.8</junit.version>
@@ -149,8 +149,26 @@
 				<artifactId>gson</artifactId>
 				<version>${gson.version}</version>
 			</dependency>
-					 
-			
+			<dependency>
+				<groupId>com.begincode</groupId>
+				<artifactId>core</artifactId>
+				<version>${begincode.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.begincode</groupId>
+				<artifactId>course</artifactId>
+				<version>${begincode.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.begincode</groupId>
+				<artifactId>blog</artifactId>
+				<version>${begincode.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.begincode</groupId>
+				<artifactId>web</artifactId>
+				<version>${begincode.version}</version>
+			</dependency>
 		</dependencies>
 	</dependencyManagement>
 	<build>

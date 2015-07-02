@@ -1,4 +1,4 @@
-package com.web.control;
+package org.web.control;
 
 import org.course.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,14 +7,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/user")
-public class User {
+public class UserController {
 	
 	@Autowired UserService userService;
 	@RequestMapping("/list")
 	public void selUser(){
-		 System.out.println("dd");
+		System.out.println(11);
 		userService.sel();
-	   
 	}
 	
 }
