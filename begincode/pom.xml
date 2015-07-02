@@ -38,6 +38,7 @@
 		<mvnplugin.site.version>3.4</mvnplugin.site.version>
 		<javac.src.version>1.7</javac.src.version>
 		<javac.target.version>1.7</javac.target.version>
+		<begincode.version>0.0.1-SNAPSHOT</begincode.version>
 	</properties>
 	<dependencyManagement>
 		<dependencies>
@@ -148,6 +149,8 @@
 				<artifactId>gson</artifactId>
 				<version>${gson.version}</version>
 			</dependency>
+					 
+			
 		</dependencies>
 	</dependencyManagement>
 	<build>
