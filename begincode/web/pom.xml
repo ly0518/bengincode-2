@@ -25,5 +25,20 @@
 			<groupId>jstl</groupId>
 			<artifactId>jstl</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>com.begincode</groupId>
+			<artifactId>blog</artifactId>
+			<version>${begincode.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.begincode</groupId>
+			<artifactId>core</artifactId>
+			<version>${begincode.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.begincode</groupId>
+			<artifactId>course</artifactId>
+			<version>${begincode.version}</version>
+		</dependency>
 	</dependencies>
 </project>
