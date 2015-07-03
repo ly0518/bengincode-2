@@ -1,6 +1,7 @@
 package org.test;
 
 import static org.junit.Assert.*;
+import junit.framework.Assert;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -28,7 +29,8 @@ public class TestTemplate {
 
 	@Test
 	public void test() {
-		fail("Not yet implemented");
+		boolean expected = true;
+		Assert.assertEquals(expected, true);
 	}
 
 }

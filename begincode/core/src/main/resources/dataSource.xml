@@ -10,7 +10,6 @@
        http://www.springframework.org/schema/tx/spring-tx-3.2.xsd">
 
 	<context:property-placeholder location="classpath:config.properties" />
-	<context:component-scan base-package="org.course.service" />
 
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
 		destroy-method="close">
@@ -33,40 +32,19 @@
 		</property>
 	</bean>
 
-	<bean id="slaveDataSource" class="org.apache.commons.dbcp.BasicDataSource"
-		destroy-method="close">
-		<property name="driverClassName" value="${jdbc.driverClassName}" />
-		<property name="url" value="${slave.url}" />
-		<property name="username" value="${slave.username}" />
-		<property name="password" value="${slave.password}" />
-		<property name="initialSize" value="0" />
-		<property name="maxIdle" value="250" />
-		<property name="minIdle" value="0" />
-		<property name="maxActive" value="200" />
-		<property name="removeAbandoned" value="true" />
-		<property name="removeAbandonedTimeout" value="180" />
-		<property name="maxWait" value="3000" />
-		<property name="validationQuery">
-			<value>SELECT 1</value>
-		</property>
-		<property name="testOnBorrow">
-			<value>true</value>
-		</property>
-	</bean>
-
 	<tx:annotation-driven />
 
 	<!-- mybatis文件配置，扫描所有mapper文件 -->
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
 		<property name="configLocation" value="classpath:mybatis.xml" />
-		<property name="mapperLocations" value="classpath*:mapper/*.xml"></property>
+		<property name="mapperLocations" value="classpath:mapper/*.xml"></property>
 	</bean>
 	<!-- configLocation为mybatis属性 mapperLocations为所有mapper -->
 
 	<!-- spring与mybatis整合配置，扫描所有dao -->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-		<property name="basePackage" value="org.course.inter" />
+		<property name="basePackage" value="org.core.mapper" />
 		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
 	</bean>
 

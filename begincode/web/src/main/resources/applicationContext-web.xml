@@ -16,5 +16,4 @@
 	<context:component-scan base-package="org.web.control" />
 	<mvc:annotation-driven />
 
-
 </beans>
