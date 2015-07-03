@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.begincode</groupId>
 	<artifactId>begincode</artifactId>
@@ -8,12 +9,12 @@
 	<name>begincode</name>
 	<url>http://maven.apache.org</url>
 	<modules>
-		<module>core</module>
-		<module>blog</module>
-		<module>course</module>
-		<module>web</module>
-    <module>test</module>
-  </modules>
+		<module>begincode-core</module>
+		<module>begincode-blog</module>
+		<module>begincode-course</module>
+		<module>begincode-web</module>
+		<module>begincode-test</module>
+	</modules>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<junit.version>4.8</junit.version>
@@ -24,7 +25,7 @@
 		<commonfile.version>1.3.1</commonfile.version>
 		<common.pool.version>1.6</common.pool.version>
 		<commons.log.version>1.2</commons.log.version>
-		<slf4j.api.version>1.7.12</slf4j.api.version>
+		<log4j.version>1.2.17</log4j.version>
 		<mysql.version>5.1.34</mysql.version>
 		<mybatis.version>3.2.8</mybatis.version>
 		<mybatis.spring.version>1.2.2</mybatis.spring.version>
@@ -93,9 +94,9 @@
 				<version>${spring.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>org.slf4j</groupId>
-				<artifactId>slf4j-api</artifactId>
-				<version>${slf4j.api.version}</version>
+				<groupId>log4j</groupId>
+				<artifactId>log4j</artifactId>
+				<version>${log4j.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>mysql</groupId>
@@ -151,22 +152,22 @@
 			</dependency>
 			<dependency>
 				<groupId>com.begincode</groupId>
-				<artifactId>core</artifactId>
+				<artifactId>begincode-core</artifactId>
 				<version>${begincode.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>com.begincode</groupId>
-				<artifactId>course</artifactId>
+				<artifactId>begincode-course</artifactId>
 				<version>${begincode.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>com.begincode</groupId>
-				<artifactId>blog</artifactId>
+				<artifactId>begincode-blog</artifactId>
 				<version>${begincode.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>com.begincode</groupId>
-				<artifactId>web</artifactId>
+				<artifactId>begincode-web</artifactId>
 				<version>${begincode.version}</version>
 			</dependency>
 		</dependencies>
