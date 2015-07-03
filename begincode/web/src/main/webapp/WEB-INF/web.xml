@@ -9,7 +9,7 @@
 		<param-value>
 			classpath*:applicationContext-core.xml,
 			classpath*:applicationContext-blog.xml,
-			classpath*:applicationContext-course
+			classpath*:applicationContext-course.xml
 		</param-value>
 	</context-param>
 	<filter>
