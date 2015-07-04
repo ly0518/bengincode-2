@@ -55,6 +55,7 @@
 			</h5>
 			  -->
 			  <!-- 已关注 开始 -->
+			   <div class="col-md-12">
 			  <div class="col-sm-6 col-md-3">
 				<a class="thumbnail-bottom" href="www.baidu.com">
 					<img class="img-responsive"
@@ -69,7 +70,7 @@
 					</div>
 				</a>
 			</div>
-			 
+			 </div>
 			 <div class="col-md-12">
 			  <h5  id="jumbotron" class="page-header"></h5>
 			 </div>
