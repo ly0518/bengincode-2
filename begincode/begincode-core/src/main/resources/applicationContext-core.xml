@@ -11,6 +11,8 @@
        
 	<context:component-scan base-package="org.core" />
 	<import resource="dataSource.xml"/>
+	  <!-- 异常统一处理 -->
+     <bean id="exceptionResolver" class="org.core.exception.ExceptionHandler"/>
 </beans>
 
 
