@@ -18,12 +18,13 @@ public class ExceptionHandler extends DefaultHandlerExceptionResolver {
 		if (ex instanceof BeginCodeException) {
 			//自定义异常处理
 			errorMessage="";
-			logger.error("自定义异常错误");
+			logger.error("业务异常");
 		}else{
 			//其他异常处理
 			errorMessage="";
 			logger.error("系统内部错误错误");
 		}
+		ex.printStackTrace();
 		try {
 			//响应客户端信息
 			response.getOutputStream().write(errorMessage.getBytes());
