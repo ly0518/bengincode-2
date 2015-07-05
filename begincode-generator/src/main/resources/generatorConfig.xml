@@ -54,8 +54,9 @@
         selectByExampleQueryId="false" selectByPrimaryKeyQueryId="true"
         enableSelectByPrimaryKey="true" enableUpdateByPrimaryKey="true"
         enableDeleteByPrimaryKey="true" >  
+       <!-- 
          <generatedKey column="id" sqlStatement="Mysql"/>   
+          -->
     </table>
-
   </context>
 </generatorConfiguration>
