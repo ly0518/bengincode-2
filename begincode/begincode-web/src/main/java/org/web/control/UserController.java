@@ -2,6 +2,7 @@ package org.web.control;
 
 
 import org.apache.log4j.Logger;
+import org.core.exception.BeginCodeException;
 import org.course.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,4 +22,8 @@ public class UserController {
 		userService.sel();
 	}
 	
+	@RequestMapping("/list1")
+	public void testException(){
+		throw new BeginCodeException("业务异常！");
+	}
 }
