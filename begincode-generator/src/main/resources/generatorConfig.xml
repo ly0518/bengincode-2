@@ -18,7 +18,7 @@
   
     <!-- 数据库连接 -->
     <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-        connectionURL="jdbc:mysql://127.0.0.1:3306/test?characterEncoding=utf8"
+        connectionURL="jdbc:mysql://127.0.0.1:3306/begincode?characterEncoding=utf8"
         userId="root"
         password="root">
     </jdbcConnection>
@@ -28,18 +28,18 @@
     </javaTypeResolver>
     
     <!-- 数据表对应的model 层  -->
-    <javaModelGenerator targetPackage="com.model" targetProject="src">
+    <javaModelGenerator targetPackage="org.core.model" targetProject="src/main/java">
       <property name="enableSubPackages" value="true" />
       <property name="trimStrings" value="true" />
     </javaModelGenerator>
     
     <!-- sql mapper 隐射配置文件 -->
-    <sqlMapGenerator targetPackage="com.mapper"  targetProject="src">
+    <sqlMapGenerator targetPackage="mapper"  targetProject="src/main/resources">
       <property name="enableSubPackages" value="true" />
     </sqlMapGenerator>
     
     <!-- 在ibatis2 中是dao层，但在mybatis3中，其实就是mapper接口 -->
-    <javaClientGenerator type="XMLMAPPER" targetPackage="com.inter"  targetProject="src">
+    <javaClientGenerator type="XMLMAPPER" targetPackage="org.core.mapper"  targetProject="src/main/java">
       <property name="enableSubPackages" value="true" />
     </javaClientGenerator>
     
@@ -51,9 +51,7 @@
         selectByExampleQueryId="false" selectByPrimaryKeyQueryId="true"
         enableSelectByPrimaryKey="true" enableUpdateByPrimaryKey="true"
         enableDeleteByPrimaryKey="true" >  
-       <!-- 
-         <generatedKey column="id" sqlStatement="Mysql"/>   
-          -->
+<!--          <generatedKey column="id" sqlStatement="Mysql"/>    -->
     </table>
   </context>
 </generatorConfiguration>

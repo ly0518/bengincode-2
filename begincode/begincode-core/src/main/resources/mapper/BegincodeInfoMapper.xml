@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.core.mapper.BegincodeInfoMapper" >
+  <resultMap id="BaseResultMap" type="org.core.model.BegincodeInfo" >
+    <id column="begincode_info_id" property="begincodeInfoId" jdbcType="INTEGER" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="org.core.model.BegincodeInfo" extends="BaseResultMap" >
+    <result column="begincode_info_content" property="begincodeInfoContent" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    begincode_info_id
+  </sql>
+  <sql id="Blob_Column_List" >
+    begincode_info_content
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from begincode_info
+    where begincode_info_id = #{begincodeInfoId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from begincode_info
+    where begincode_info_id = #{begincodeInfoId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="org.core.model.BegincodeInfo" >
+    insert into begincode_info (begincode_info_id, begincode_info_content
+      )
+    values (#{begincodeInfoId,jdbcType=INTEGER}, #{begincodeInfoContent,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="org.core.model.BegincodeInfo" >
+    insert into begincode_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="begincodeInfoId != null" >
+        begincode_info_id,
+      </if>
+      <if test="begincodeInfoContent != null" >
+        begincode_info_content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="begincodeInfoId != null" >
+        #{begincodeInfoId,jdbcType=INTEGER},
+      </if>
+      <if test="begincodeInfoContent != null" >
+        #{begincodeInfoContent,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.core.model.BegincodeInfo" >
+    update begincode_info
+    <set >
+      <if test="begincodeInfoContent != null" >
+        begincode_info_content = #{begincodeInfoContent,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where begincode_info_id = #{begincodeInfoId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="org.core.model.BegincodeInfo" >
+    update begincode_info
+    set begincode_info_content = #{begincodeInfoContent,jdbcType=LONGVARCHAR}
+    where begincode_info_id = #{begincodeInfoId,jdbcType=INTEGER}
+  </update>
+</mapper>

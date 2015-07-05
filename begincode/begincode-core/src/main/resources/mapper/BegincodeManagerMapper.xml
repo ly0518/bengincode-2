@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.core.mapper.BegincodeManagerMapper" >
+  <resultMap id="BaseResultMap" type="org.core.model.BegincodeManager" >
+    <id column="begincode_manager_id" property="begincodeManagerId" jdbcType="INTEGER" />
+    <result column="manager_pic_url" property="managerPicUrl" jdbcType="VARCHAR" />
+    <result column="delete_flag" property="deleteFlag" jdbcType="CHAR" />
+    <result column="begincode_user_id" property="begincodeUserId" jdbcType="INTEGER" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="org.core.model.BegincodeManager" extends="BaseResultMap" >
+    <result column="manger_introduce" property="mangerIntroduce" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    begincode_manager_id, manager_pic_url, delete_flag, begincode_user_id
+  </sql>
+  <sql id="Blob_Column_List" >
+    manger_introduce
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from begincode_manager
+    where begincode_manager_id = #{begincodeManagerId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from begincode_manager
+    where begincode_manager_id = #{begincodeManagerId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="org.core.model.BegincodeManager" >
+    insert into begincode_manager (begincode_manager_id, manager_pic_url, 
+      delete_flag, begincode_user_id, manger_introduce
+      )
+    values (#{begincodeManagerId,jdbcType=INTEGER}, #{managerPicUrl,jdbcType=VARCHAR}, 
+      #{deleteFlag,jdbcType=CHAR}, #{begincodeUserId,jdbcType=INTEGER}, #{mangerIntroduce,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="org.core.model.BegincodeManager" >
+    insert into begincode_manager
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="begincodeManagerId != null" >
+        begincode_manager_id,
+      </if>
+      <if test="managerPicUrl != null" >
+        manager_pic_url,
+      </if>
+      <if test="deleteFlag != null" >
+        delete_flag,
+      </if>
+      <if test="begincodeUserId != null" >
+        begincode_user_id,
+      </if>
+      <if test="mangerIntroduce != null" >
+        manger_introduce,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="begincodeManagerId != null" >
+        #{begincodeManagerId,jdbcType=INTEGER},
+      </if>
+      <if test="managerPicUrl != null" >
+        #{managerPicUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="deleteFlag != null" >
+        #{deleteFlag,jdbcType=CHAR},
+      </if>
+      <if test="begincodeUserId != null" >
+        #{begincodeUserId,jdbcType=INTEGER},
+      </if>
+      <if test="mangerIntroduce != null" >
+        #{mangerIntroduce,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.core.model.BegincodeManager" >
+    update begincode_manager
+    <set >
+      <if test="managerPicUrl != null" >
+        manager_pic_url = #{managerPicUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="deleteFlag != null" >
+        delete_flag = #{deleteFlag,jdbcType=CHAR},
+      </if>
+      <if test="begincodeUserId != null" >
+        begincode_user_id = #{begincodeUserId,jdbcType=INTEGER},
+      </if>
+      <if test="mangerIntroduce != null" >
+        manger_introduce = #{mangerIntroduce,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where begincode_manager_id = #{begincodeManagerId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="org.core.model.BegincodeManager" >
+    update begincode_manager
+    set manager_pic_url = #{managerPicUrl,jdbcType=VARCHAR},
+      delete_flag = #{deleteFlag,jdbcType=CHAR},
+      begincode_user_id = #{begincodeUserId,jdbcType=INTEGER},
+      manger_introduce = #{mangerIntroduce,jdbcType=LONGVARCHAR}
+    where begincode_manager_id = #{begincodeManagerId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.core.model.BegincodeManager" >
+    update begincode_manager
+    set manager_pic_url = #{managerPicUrl,jdbcType=VARCHAR},
+      delete_flag = #{deleteFlag,jdbcType=CHAR},
+      begincode_user_id = #{begincodeUserId,jdbcType=INTEGER}
+    where begincode_manager_id = #{begincodeManagerId,jdbcType=INTEGER}
+  </update>
+</mapper>

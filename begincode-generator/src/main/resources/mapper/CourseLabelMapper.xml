@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.core.mapper.CourseLabelMapper" >
+  <resultMap id="BaseResultMap" type="org.core.model.CourseLabel" >
+    <id column="course_label_id" property="courseLabelId" jdbcType="INTEGER" />
+    <result column="course_type_name" property="courseTypeName" jdbcType="VARCHAR" />
+    <result column="delete_flag" property="deleteFlag" jdbcType="CHAR" />
+    <result column="label_course_count" property="labelCourseCount" jdbcType="INTEGER" />
+    <result column="delete_flag_1" property="deleteFlag1" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    course_label_id, course_type_name, delete_flag, label_course_count, delete_flag_1
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from course_label
+    where course_label_id = #{courseLabelId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from course_label
+    where course_label_id = #{courseLabelId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="org.core.model.CourseLabel" >
+    insert into course_label (course_label_id, course_type_name, delete_flag, 
+      label_course_count, delete_flag_1)
+    values (#{courseLabelId,jdbcType=INTEGER}, #{courseTypeName,jdbcType=VARCHAR}, #{deleteFlag,jdbcType=CHAR}, 
+      #{labelCourseCount,jdbcType=INTEGER}, #{deleteFlag1,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="org.core.model.CourseLabel" >
+    insert into course_label
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="courseLabelId != null" >
+        course_label_id,
+      </if>
+      <if test="courseTypeName != null" >
+        course_type_name,
+      </if>
+      <if test="deleteFlag != null" >
+        delete_flag,
+      </if>
+      <if test="labelCourseCount != null" >
+        label_course_count,
+      </if>
+      <if test="deleteFlag1 != null" >
+        delete_flag_1,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="courseLabelId != null" >
+        #{courseLabelId,jdbcType=INTEGER},
+      </if>
+      <if test="courseTypeName != null" >
+        #{courseTypeName,jdbcType=VARCHAR},
+      </if>
+      <if test="deleteFlag != null" >
+        #{deleteFlag,jdbcType=CHAR},
+      </if>
+      <if test="labelCourseCount != null" >
+        #{labelCourseCount,jdbcType=INTEGER},
+      </if>
+      <if test="deleteFlag1 != null" >
+        #{deleteFlag1,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.core.model.CourseLabel" >
+    update course_label
+    <set >
+      <if test="courseTypeName != null" >
+        course_type_name = #{courseTypeName,jdbcType=VARCHAR},
+      </if>
+      <if test="deleteFlag != null" >
+        delete_flag = #{deleteFlag,jdbcType=CHAR},
+      </if>
+      <if test="labelCourseCount != null" >
+        label_course_count = #{labelCourseCount,jdbcType=INTEGER},
+      </if>
+      <if test="deleteFlag1 != null" >
+        delete_flag_1 = #{deleteFlag1,jdbcType=CHAR},
+      </if>
+    </set>
+    where course_label_id = #{courseLabelId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.core.model.CourseLabel" >
+    update course_label
+    set course_type_name = #{courseTypeName,jdbcType=VARCHAR},
+      delete_flag = #{deleteFlag,jdbcType=CHAR},
+      label_course_count = #{labelCourseCount,jdbcType=INTEGER},
+      delete_flag_1 = #{deleteFlag1,jdbcType=CHAR}
+    where course_label_id = #{courseLabelId,jdbcType=INTEGER}
+  </update>
+</mapper>

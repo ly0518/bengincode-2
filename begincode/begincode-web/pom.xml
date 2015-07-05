@@ -33,5 +33,19 @@
 			<groupId>com.begincode</groupId>
 			<artifactId>begincode-course</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<!-- 使用次以来范围的Maven依赖，对于测试和运行ClassPath有效，在运行时无效 -->
+			<scope>provided</scope>
+		</dependency>
 	</dependencies>
 </project>

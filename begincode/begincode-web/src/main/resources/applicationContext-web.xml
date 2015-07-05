@@ -15,5 +15,7 @@
 	<!-- 启用spring mvc 注解 -->
 	<context:component-scan base-package="org.web.control" />
 	<mvc:annotation-driven />
+	<!-- 异常统一处理 -->
+	<bean id="exceptionResolver" class="org.web.exception.ExceptionHandler" />
 
 </beans>

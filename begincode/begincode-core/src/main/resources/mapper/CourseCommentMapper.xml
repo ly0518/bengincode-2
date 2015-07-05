@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.core.mapper.CourseCommentMapper" >
+  <resultMap id="BaseResultMap" type="org.core.model.CourseComment" >
+    <id column="course_comment_id" property="courseCommentId" jdbcType="INTEGER" />
+    <result column="course_comment_content" property="courseCommentContent" jdbcType="VARCHAR" />
+    <result column="create_datatime" property="createDatatime" jdbcType="TIMESTAMP" />
+    <result column="begincode_user_id" property="begincodeUserId" jdbcType="INTEGER" />
+    <result column="nickname" property="nickname" jdbcType="VARCHAR" />
+    <result column="pic" property="pic" jdbcType="VARCHAR" />
+    <result column="comment_status" property="commentStatus" jdbcType="CHAR" />
+    <result column="video_course_chapter_id" property="videoCourseChapterId" jdbcType="INTEGER" />
+    <result column="check_flag" property="checkFlag" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    course_comment_id, course_comment_content, create_datatime, begincode_user_id, nickname, 
+    pic, comment_status, video_course_chapter_id, check_flag
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from course_comment
+    where course_comment_id = #{courseCommentId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from course_comment
+    where course_comment_id = #{courseCommentId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="org.core.model.CourseComment" >
+    insert into course_comment (course_comment_id, course_comment_content, 
+      create_datatime, begincode_user_id, nickname, 
+      pic, comment_status, video_course_chapter_id, 
+      check_flag)
+    values (#{courseCommentId,jdbcType=INTEGER}, #{courseCommentContent,jdbcType=VARCHAR}, 
+      #{createDatatime,jdbcType=TIMESTAMP}, #{begincodeUserId,jdbcType=INTEGER}, #{nickname,jdbcType=VARCHAR}, 
+      #{pic,jdbcType=VARCHAR}, #{commentStatus,jdbcType=CHAR}, #{videoCourseChapterId,jdbcType=INTEGER}, 
+      #{checkFlag,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="org.core.model.CourseComment" >
+    insert into course_comment
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="courseCommentId != null" >
+        course_comment_id,
+      </if>
+      <if test="courseCommentContent != null" >
+        course_comment_content,
+      </if>
+      <if test="createDatatime != null" >
+        create_datatime,
+      </if>
+      <if test="begincodeUserId != null" >
+        begincode_user_id,
+      </if>
+      <if test="nickname != null" >
+        nickname,
+      </if>
+      <if test="pic != null" >
+        pic,
+      </if>
+      <if test="commentStatus != null" >
+        comment_status,
+      </if>
+      <if test="videoCourseChapterId != null" >
+        video_course_chapter_id,
+      </if>
+      <if test="checkFlag != null" >
+        check_flag,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="courseCommentId != null" >
+        #{courseCommentId,jdbcType=INTEGER},
+      </if>
+      <if test="courseCommentContent != null" >
+        #{courseCommentContent,jdbcType=VARCHAR},
+      </if>
+      <if test="createDatatime != null" >
+        #{createDatatime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="begincodeUserId != null" >
+        #{begincodeUserId,jdbcType=INTEGER},
+      </if>
+      <if test="nickname != null" >
+        #{nickname,jdbcType=VARCHAR},
+      </if>
+      <if test="pic != null" >
+        #{pic,jdbcType=VARCHAR},
+      </if>
+      <if test="commentStatus != null" >
+        #{commentStatus,jdbcType=CHAR},
+      </if>
+      <if test="videoCourseChapterId != null" >
+        #{videoCourseChapterId,jdbcType=INTEGER},
+      </if>
+      <if test="checkFlag != null" >
+        #{checkFlag,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.core.model.CourseComment" >
+    update course_comment
+    <set >
+      <if test="courseCommentContent != null" >
+        course_comment_content = #{courseCommentContent,jdbcType=VARCHAR},
+      </if>
+      <if test="createDatatime != null" >
+        create_datatime = #{createDatatime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="begincodeUserId != null" >
+        begincode_user_id = #{begincodeUserId,jdbcType=INTEGER},
+      </if>
+      <if test="nickname != null" >
+        nickname = #{nickname,jdbcType=VARCHAR},
+      </if>
+      <if test="pic != null" >
+        pic = #{pic,jdbcType=VARCHAR},
+      </if>
+      <if test="commentStatus != null" >
+        comment_status = #{commentStatus,jdbcType=CHAR},
+      </if>
+      <if test="videoCourseChapterId != null" >
+        video_course_chapter_id = #{videoCourseChapterId,jdbcType=INTEGER},
+      </if>
+      <if test="checkFlag != null" >
+        check_flag = #{checkFlag,jdbcType=CHAR},
+      </if>
+    </set>
+    where course_comment_id = #{courseCommentId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.core.model.CourseComment" >
+    update course_comment
+    set course_comment_content = #{courseCommentContent,jdbcType=VARCHAR},
+      create_datatime = #{createDatatime,jdbcType=TIMESTAMP},
+      begincode_user_id = #{begincodeUserId,jdbcType=INTEGER},
+      nickname = #{nickname,jdbcType=VARCHAR},
+      pic = #{pic,jdbcType=VARCHAR},
+      comment_status = #{commentStatus,jdbcType=CHAR},
+      video_course_chapter_id = #{videoCourseChapterId,jdbcType=INTEGER},
+      check_flag = #{checkFlag,jdbcType=CHAR}
+    where course_comment_id = #{courseCommentId,jdbcType=INTEGER}
+  </update>
+</mapper>
