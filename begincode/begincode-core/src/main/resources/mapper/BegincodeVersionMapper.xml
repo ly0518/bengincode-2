@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.core.mapper.BegincodeVersionMapper" >
+  <resultMap id="BaseResultMap" type="org.core.model.BegincodeVersion" >
+    <id column="begincode_version_id" property="begincodeVersionId" jdbcType="INTEGER" />
+    <result column="version" property="version" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    begincode_version_id, version
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from begincode_version
+    where begincode_version_id = #{begincodeVersionId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from begincode_version
+    where begincode_version_id = #{begincodeVersionId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="org.core.model.BegincodeVersion" >
+    insert into begincode_version (begincode_version_id, version)
+    values (#{begincodeVersionId,jdbcType=INTEGER}, #{version,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="org.core.model.BegincodeVersion" >
+    insert into begincode_version
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="begincodeVersionId != null" >
+        begincode_version_id,
+      </if>
+      <if test="version != null" >
+        version,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="begincodeVersionId != null" >
+        #{begincodeVersionId,jdbcType=INTEGER},
+      </if>
+      <if test="version != null" >
+        #{version,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.core.model.BegincodeVersion" >
+    update begincode_version
+    <set >
+      <if test="version != null" >
+        version = #{version,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where begincode_version_id = #{begincodeVersionId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.core.model.BegincodeVersion" >
+    update begincode_version
+    set version = #{version,jdbcType=VARCHAR}
+    where begincode_version_id = #{begincodeVersionId,jdbcType=INTEGER}
+  </update>
+</mapper>
