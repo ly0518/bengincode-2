@@ -11,6 +11,7 @@
 		<module>begincode-core</module>
 		<module>begincode-blog</module>
 		<module>begincode-course</module>
+		<module>begincode-admin</module>
 		<module>begincode-web</module>
 		<module>begincode-test</module>
   </modules>

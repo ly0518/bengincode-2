@@ -14,20 +14,12 @@ public class ExceptionHandler extends DefaultHandlerExceptionResolver {
 	@Override
 	public ModelAndView resolveException(HttpServletRequest request,
 			HttpServletResponse response, Object handler, Exception ex) {
-		String errorMessage = "";
-		if (ex instanceof BeginCodeException) {
-			//自定义异常处理
-			errorMessage="";
-			logger.error("业务异常");
-		}else{
-			//其他异常处理
-			errorMessage="";
-			logger.error("系统内部错误错误");
-		}
-		ex.printStackTrace();
+		logger.error("执行出错，堆栈信息如下：", ex);
 		try {
-			//响应客户端信息
-			response.getOutputStream().write(errorMessage.getBytes());
+			String errorMsg = ex.getMessage();
+			//设置repsonse输出编码格式
+			response.setContentType("text/html;charset=UTF-8"); 
+			response.getOutputStream().write(errorMsg.getBytes());
 		} catch (IOException e) {
 			//忽略
 		}
