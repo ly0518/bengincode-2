@@ -10,7 +10,7 @@ public class TestCourse {
 
 	@Test
 	public void test() throws SQLException {
-		ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext("classpath*:applicationContext_core.xml","classpath*:applicationContext_course.xml");
+		ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext("classpath*:applicationContext-core.xml","classpath*:applicationContext-course.xml");
 		UserService userService = (UserService) ctx.getBean("userService");
 		userService.sel();
 		ctx.close();
