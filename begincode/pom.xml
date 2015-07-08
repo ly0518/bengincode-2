@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.begincode</groupId>
 	<artifactId>begincode</artifactId>
@@ -14,7 +15,8 @@
 		<module>begincode-admin</module>
 		<module>begincode-web</module>
 		<module>begincode-test</module>
-  </modules>
+		<module>begincode-doc</module>
+	</modules>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<junit.version>4.8</junit.version>
@@ -37,6 +39,7 @@
 		<mvnplugin.javadoc.version>2.10.3</mvnplugin.javadoc.version>
 		<mvnplugin.surefire.version>2.18.1</mvnplugin.surefire.version>
 		<mvnplugin.site.version>3.4</mvnplugin.site.version>
+		<mvnplugin.rar.version>2.4</mvnplugin.rar.version>
 		<javac.src.version>1.7</javac.src.version>
 		<javac.target.version>1.7</javac.target.version>
 		<begincode.version>0.0.1-SNAPSHOT</begincode.version>
@@ -218,6 +221,15 @@
 							</goals>
 						</execution>
 					</executions>
+				</plugin>
+				<!-- maven打包插件 -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-rar-plugin</artifactId>
+					<version>${mvnplugin.rar.version}</version>
+					<configuration>
+						<includeJar>false</includeJar>
+					</configuration>
 				</plugin>
 			</plugins>
 		</pluginManagement>
