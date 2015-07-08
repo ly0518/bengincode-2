@@ -27,6 +27,8 @@ public class BegincodeCourse {
 
     private String deleteFlag1;
 
+    private String courseTypeName;
+
     public Integer getBegincodeCourseId() {
         return begincodeCourseId;
     }
@@ -129,5 +131,13 @@ public class BegincodeCourse {
 
     public void setDeleteFlag1(String deleteFlag1) {
         this.deleteFlag1 = deleteFlag1 == null ? null : deleteFlag1.trim();
+    }
+
+    public String getCourseTypeName() {
+        return courseTypeName;
+    }
+
+    public void setCourseTypeName(String courseTypeName) {
+        this.courseTypeName = courseTypeName == null ? null : courseTypeName.trim();
     }
 }

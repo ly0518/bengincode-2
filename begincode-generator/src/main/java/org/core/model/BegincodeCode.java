@@ -33,6 +33,8 @@ public class BegincodeCode {
 
     private String checkFlag;
 
+    private String codeTypeName;
+
     private String codeContent;
 
     public Integer getBegincodeCodeCodeId() {
@@ -153,6 +155,14 @@ public class BegincodeCode {
 
     public void setCheckFlag(String checkFlag) {
         this.checkFlag = checkFlag == null ? null : checkFlag.trim();
+    }
+
+    public String getCodeTypeName() {
+        return codeTypeName;
+    }
+
+    public void setCodeTypeName(String codeTypeName) {
+        this.codeTypeName = codeTypeName == null ? null : codeTypeName.trim();
     }
 
     public String getCodeContent() {

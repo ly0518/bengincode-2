@@ -13,7 +13,5 @@ public interface ProjectStageMapper {
 
     int updateByPrimaryKeySelective(ProjectStage record);
 
-    int updateByPrimaryKeyWithBLOBs(ProjectStage record);
-
     int updateByPrimaryKey(ProjectStage record);
 }

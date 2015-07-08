@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.core.mapper.ProjectStageDetailMapper" >
+  <resultMap id="BaseResultMap" type="org.core.model.ProjectStageDetail" >
+    <id column="project_stage_content_id" property="projectStageContentId" jdbcType="INTEGER" />
+    <result column="project_stage_id" property="projectStageId" jdbcType="INTEGER" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="org.core.model.ProjectStageDetail" extends="BaseResultMap" >
+    <result column="project_stage_content" property="projectStageContent" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    project_stage_content_id, project_stage_id
+  </sql>
+  <sql id="Blob_Column_List" >
+    project_stage_content
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from project_stage_detail
+    where project_stage_content_id = #{projectStageContentId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from project_stage_detail
+    where project_stage_content_id = #{projectStageContentId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="org.core.model.ProjectStageDetail" >
+    insert into project_stage_detail (project_stage_content_id, project_stage_id, 
+      project_stage_content)
+    values (#{projectStageContentId,jdbcType=INTEGER}, #{projectStageId,jdbcType=INTEGER}, 
+      #{projectStageContent,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="org.core.model.ProjectStageDetail" >
+    insert into project_stage_detail
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="projectStageContentId != null" >
+        project_stage_content_id,
+      </if>
+      <if test="projectStageId != null" >
+        project_stage_id,
+      </if>
+      <if test="projectStageContent != null" >
+        project_stage_content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="projectStageContentId != null" >
+        #{projectStageContentId,jdbcType=INTEGER},
+      </if>
+      <if test="projectStageId != null" >
+        #{projectStageId,jdbcType=INTEGER},
+      </if>
+      <if test="projectStageContent != null" >
+        #{projectStageContent,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.core.model.ProjectStageDetail" >
+    update project_stage_detail
+    <set >
+      <if test="projectStageId != null" >
+        project_stage_id = #{projectStageId,jdbcType=INTEGER},
+      </if>
+      <if test="projectStageContent != null" >
+        project_stage_content = #{projectStageContent,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where project_stage_content_id = #{projectStageContentId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="org.core.model.ProjectStageDetail" >
+    update project_stage_detail
+    set project_stage_id = #{projectStageId,jdbcType=INTEGER},
+      project_stage_content = #{projectStageContent,jdbcType=LONGVARCHAR}
+    where project_stage_content_id = #{projectStageContentId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.core.model.ProjectStageDetail" >
+    update project_stage_detail
+    set project_stage_id = #{projectStageId,jdbcType=INTEGER}
+    where project_stage_content_id = #{projectStageContentId,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -17,6 +17,7 @@
     <result column="code_type_id" property="codeTypeId" jdbcType="INTEGER" />
     <result column="release_state" property="releaseState" jdbcType="CHAR" />
     <result column="check_flag" property="checkFlag" jdbcType="CHAR" />
+    <result column="code_type_name" property="codeTypeName" jdbcType="VARCHAR" />
   </resultMap>
   <resultMap id="ResultMapWithBLOBs" type="org.core.model.BegincodeCode" extends="BaseResultMap" >
     <result column="code_content" property="codeContent" jdbcType="LONGVARCHAR" />
@@ -24,7 +25,7 @@
   <sql id="Base_Column_List" >
     begincode_code_code_id, code_info, code_download_url, prohibition_message, begincode_keys, 
     view_count, begincode_navigation_id, bc_navigation_id, create_datetime, delete_flag, 
-    good_count, bad_count, code_type_id, release_state, check_flag
+    good_count, bad_count, code_type_id, release_state, check_flag, code_type_name
   </sql>
   <sql id="Blob_Column_List" >
     code_content
@@ -47,13 +48,15 @@
       begincode_navigation_id, bc_navigation_id, 
       create_datetime, delete_flag, good_count, 
       bad_count, code_type_id, release_state, 
-      check_flag, code_content)
+      check_flag, code_type_name, code_content
+      )
     values (#{begincodeCodeCodeId,jdbcType=INTEGER}, #{codeInfo,jdbcType=VARCHAR}, #{codeDownloadUrl,jdbcType=VARCHAR}, 
       #{prohibitionMessage,jdbcType=CHAR}, #{begincodeKeys,jdbcType=VARCHAR}, #{viewCount,jdbcType=INTEGER}, 
       #{begincodeNavigationId,jdbcType=INTEGER}, #{bcNavigationId,jdbcType=INTEGER}, 
       #{createDatetime,jdbcType=TIMESTAMP}, #{deleteFlag,jdbcType=CHAR}, #{goodCount,jdbcType=INTEGER}, 
       #{badCount,jdbcType=INTEGER}, #{codeTypeId,jdbcType=INTEGER}, #{releaseState,jdbcType=CHAR}, 
-      #{checkFlag,jdbcType=CHAR}, #{codeContent,jdbcType=LONGVARCHAR})
+      #{checkFlag,jdbcType=CHAR}, #{codeTypeName,jdbcType=VARCHAR}, #{codeContent,jdbcType=LONGVARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="org.core.model.BegincodeCode" >
     insert into begincode_code
@@ -102,6 +105,9 @@
       </if>
       <if test="checkFlag != null" >
         check_flag,
+      </if>
+      <if test="codeTypeName != null" >
+        code_type_name,
       </if>
       <if test="codeContent != null" >
         code_content,
@@ -153,6 +159,9 @@
       <if test="checkFlag != null" >
         #{checkFlag,jdbcType=CHAR},
       </if>
+      <if test="codeTypeName != null" >
+        #{codeTypeName,jdbcType=VARCHAR},
+      </if>
       <if test="codeContent != null" >
         #{codeContent,jdbcType=LONGVARCHAR},
       </if>
@@ -203,6 +212,9 @@
       <if test="checkFlag != null" >
         check_flag = #{checkFlag,jdbcType=CHAR},
       </if>
+      <if test="codeTypeName != null" >
+        code_type_name = #{codeTypeName,jdbcType=VARCHAR},
+      </if>
       <if test="codeContent != null" >
         code_content = #{codeContent,jdbcType=LONGVARCHAR},
       </if>
@@ -225,6 +237,7 @@
       code_type_id = #{codeTypeId,jdbcType=INTEGER},
       release_state = #{releaseState,jdbcType=CHAR},
       check_flag = #{checkFlag,jdbcType=CHAR},
+      code_type_name = #{codeTypeName,jdbcType=VARCHAR},
       code_content = #{codeContent,jdbcType=LONGVARCHAR}
     where begincode_code_code_id = #{begincodeCodeCodeId,jdbcType=INTEGER}
   </update>
@@ -243,7 +256,8 @@
       bad_count = #{badCount,jdbcType=INTEGER},
       code_type_id = #{codeTypeId,jdbcType=INTEGER},
       release_state = #{releaseState,jdbcType=CHAR},
-      check_flag = #{checkFlag,jdbcType=CHAR}
+      check_flag = #{checkFlag,jdbcType=CHAR},
+      code_type_name = #{codeTypeName,jdbcType=VARCHAR}
     where begincode_code_code_id = #{begincodeCodeCodeId,jdbcType=INTEGER}
   </update>
 </mapper>

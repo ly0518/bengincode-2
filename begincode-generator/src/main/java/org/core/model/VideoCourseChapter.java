@@ -27,6 +27,8 @@ public class VideoCourseChapter {
 
     private String releaseState;
 
+    private String courseName;
+
     public Integer getVideoCourseChapterId() {
         return videoCourseChapterId;
     }
@@ -129,5 +131,13 @@ public class VideoCourseChapter {
 
     public void setReleaseState(String releaseState) {
         this.releaseState = releaseState == null ? null : releaseState.trim();
+    }
+
+    public String getCourseName() {
+        return courseName;
+    }
+
+    public void setCourseName(String courseName) {
+        this.courseName = courseName == null ? null : courseName.trim();
     }
 }
