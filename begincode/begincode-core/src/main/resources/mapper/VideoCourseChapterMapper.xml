@@ -15,11 +15,12 @@
     <result column="delete_flag_1" property="deleteFlag1" jdbcType="CHAR" />
     <result column="chapter_code_down_url" property="chapterCodeDownUrl" jdbcType="VARCHAR" />
     <result column="release_state" property="releaseState" jdbcType="CHAR" />
+    <result column="course_name" property="courseName" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
     video_course_chapter_id, video_course_chapter_memo, chapter_video_url, view_count, 
     video_course_chapter_order, begincode_keys, prohibition_message, begincode_course_id, 
-    good_count, bad_count, delete_flag_1, chapter_code_down_url, release_state
+    good_count, bad_count, delete_flag_1, chapter_code_down_url, release_state, course_name
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 'true' as QUERYID,
@@ -36,12 +37,14 @@
       chapter_video_url, view_count, video_course_chapter_order, 
       begincode_keys, prohibition_message, begincode_course_id, 
       good_count, bad_count, delete_flag_1, 
-      chapter_code_down_url, release_state)
+      chapter_code_down_url, release_state, course_name
+      )
     values (#{videoCourseChapterId,jdbcType=INTEGER}, #{videoCourseChapterMemo,jdbcType=VARCHAR}, 
       #{chapterVideoUrl,jdbcType=VARCHAR}, #{viewCount,jdbcType=INTEGER}, #{videoCourseChapterOrder,jdbcType=VARCHAR}, 
       #{begincodeKeys,jdbcType=VARCHAR}, #{prohibitionMessage,jdbcType=CHAR}, #{begincodeCourseId,jdbcType=INTEGER}, 
       #{goodCount,jdbcType=INTEGER}, #{badCount,jdbcType=INTEGER}, #{deleteFlag1,jdbcType=CHAR}, 
-      #{chapterCodeDownUrl,jdbcType=VARCHAR}, #{releaseState,jdbcType=CHAR})
+      #{chapterCodeDownUrl,jdbcType=VARCHAR}, #{releaseState,jdbcType=CHAR}, #{courseName,jdbcType=VARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="org.core.model.VideoCourseChapter" >
     insert into video_course_chapter
@@ -85,6 +88,9 @@
       <if test="releaseState != null" >
         release_state,
       </if>
+      <if test="courseName != null" >
+        course_name,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="videoCourseChapterId != null" >
@@ -125,6 +131,9 @@
       </if>
       <if test="releaseState != null" >
         #{releaseState,jdbcType=CHAR},
+      </if>
+      <if test="courseName != null" >
+        #{courseName,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -167,6 +176,9 @@
       <if test="releaseState != null" >
         release_state = #{releaseState,jdbcType=CHAR},
       </if>
+      <if test="courseName != null" >
+        course_name = #{courseName,jdbcType=VARCHAR},
+      </if>
     </set>
     where video_course_chapter_id = #{videoCourseChapterId,jdbcType=INTEGER}
   </update>
@@ -183,7 +195,8 @@
       bad_count = #{badCount,jdbcType=INTEGER},
       delete_flag_1 = #{deleteFlag1,jdbcType=CHAR},
       chapter_code_down_url = #{chapterCodeDownUrl,jdbcType=VARCHAR},
-      release_state = #{releaseState,jdbcType=CHAR}
+      release_state = #{releaseState,jdbcType=CHAR},
+      course_name = #{courseName,jdbcType=VARCHAR}
     where video_course_chapter_id = #{videoCourseChapterId,jdbcType=INTEGER}
   </update>
 </mapper>

@@ -29,7 +29,7 @@ public class ProjectStage {
 
     private String pic;
 
-    private String stageContent;
+    private String projectName;
 
     public Integer getProjectStageId() {
         return projectStageId;
@@ -135,11 +135,11 @@ public class ProjectStage {
         this.pic = pic == null ? null : pic.trim();
     }
 
-    public String getStageContent() {
-        return stageContent;
+    public String getProjectName() {
+        return projectName;
     }
 
-    public void setStageContent(String stageContent) {
-        this.stageContent = stageContent == null ? null : stageContent.trim();
+    public void setProjectName(String projectName) {
+        this.projectName = projectName == null ? null : projectName.trim();
     }
 }

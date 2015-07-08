@@ -17,7 +17,7 @@ public class UserController {
 	@Autowired UserService userService;
 	@RequestMapping("/list")
 	public void selUser(){
-		int i = 23/0;
+//		int i = 23/0;
 		logger.debug("测试Controller");
 		userService.sel();
 	}

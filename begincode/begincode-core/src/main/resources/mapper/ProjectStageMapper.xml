@@ -15,22 +15,16 @@
     <result column="begincode_user_id" property="begincodeUserId" jdbcType="INTEGER" />
     <result column="nickname" property="nickname" jdbcType="VARCHAR" />
     <result column="pic" property="pic" jdbcType="VARCHAR" />
-  </resultMap>
-  <resultMap id="ResultMapWithBLOBs" type="org.core.model.ProjectStage" extends="BaseResultMap" >
-    <result column="stage_content" property="stageContent" jdbcType="LONGVARCHAR" />
+    <result column="project_name" property="projectName" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
     project_stage_id, stage_name, stage_abstract, video_url, create_datetime, begincode_project_id, 
-    view_count, release_state, good_count, bad_count, begincode_user_id, nickname, pic
+    view_count, release_state, good_count, bad_count, begincode_user_id, nickname, pic, 
+    project_name
   </sql>
-  <sql id="Blob_Column_List" >
-    stage_content
-  </sql>
-  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 'true' as QUERYID,
     <include refid="Base_Column_List" />
-    ,
-    <include refid="Blob_Column_List" />
     from project_stage
     where project_stage_id = #{projectStageId,jdbcType=INTEGER}
   </select>
@@ -43,12 +37,12 @@
       video_url, create_datetime, begincode_project_id, 
       view_count, release_state, good_count, 
       bad_count, begincode_user_id, nickname, 
-      pic, stage_content)
+      pic, project_name)
     values (#{projectStageId,jdbcType=INTEGER}, #{stageName,jdbcType=VARCHAR}, #{stageAbstract,jdbcType=VARCHAR}, 
       #{videoUrl,jdbcType=VARCHAR}, #{createDatetime,jdbcType=TIMESTAMP}, #{begincodeProjectId,jdbcType=INTEGER}, 
       #{viewCount,jdbcType=INTEGER}, #{releaseState,jdbcType=CHAR}, #{goodCount,jdbcType=INTEGER}, 
       #{badCount,jdbcType=INTEGER}, #{begincodeUserId,jdbcType=INTEGER}, #{nickname,jdbcType=VARCHAR}, 
-      #{pic,jdbcType=VARCHAR}, #{stageContent,jdbcType=LONGVARCHAR})
+      #{pic,jdbcType=VARCHAR}, #{projectName,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="org.core.model.ProjectStage" >
     insert into project_stage
@@ -92,8 +86,8 @@
       <if test="pic != null" >
         pic,
       </if>
-      <if test="stageContent != null" >
-        stage_content,
+      <if test="projectName != null" >
+        project_name,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
@@ -136,8 +130,8 @@
       <if test="pic != null" >
         #{pic,jdbcType=VARCHAR},
       </if>
-      <if test="stageContent != null" >
-        #{stageContent,jdbcType=LONGVARCHAR},
+      <if test="projectName != null" >
+        #{projectName,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -180,27 +174,10 @@
       <if test="pic != null" >
         pic = #{pic,jdbcType=VARCHAR},
       </if>
-      <if test="stageContent != null" >
-        stage_content = #{stageContent,jdbcType=LONGVARCHAR},
+      <if test="projectName != null" >
+        project_name = #{projectName,jdbcType=VARCHAR},
       </if>
     </set>
-    where project_stage_id = #{projectStageId,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKeyWithBLOBs" parameterType="org.core.model.ProjectStage" >
-    update project_stage
-    set stage_name = #{stageName,jdbcType=VARCHAR},
-      stage_abstract = #{stageAbstract,jdbcType=VARCHAR},
-      video_url = #{videoUrl,jdbcType=VARCHAR},
-      create_datetime = #{createDatetime,jdbcType=TIMESTAMP},
-      begincode_project_id = #{begincodeProjectId,jdbcType=INTEGER},
-      view_count = #{viewCount,jdbcType=INTEGER},
-      release_state = #{releaseState,jdbcType=CHAR},
-      good_count = #{goodCount,jdbcType=INTEGER},
-      bad_count = #{badCount,jdbcType=INTEGER},
-      begincode_user_id = #{begincodeUserId,jdbcType=INTEGER},
-      nickname = #{nickname,jdbcType=VARCHAR},
-      pic = #{pic,jdbcType=VARCHAR},
-      stage_content = #{stageContent,jdbcType=LONGVARCHAR}
     where project_stage_id = #{projectStageId,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="org.core.model.ProjectStage" >
@@ -216,7 +193,8 @@
       bad_count = #{badCount,jdbcType=INTEGER},
       begincode_user_id = #{begincodeUserId,jdbcType=INTEGER},
       nickname = #{nickname,jdbcType=VARCHAR},
-      pic = #{pic,jdbcType=VARCHAR}
+      pic = #{pic,jdbcType=VARCHAR},
+      project_name = #{projectName,jdbcType=VARCHAR}
     where project_stage_id = #{projectStageId,jdbcType=INTEGER}
   </update>
 </mapper>
