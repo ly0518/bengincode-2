@@ -21,7 +21,7 @@ public class CountCache {
 	public final static String PROJECT_STAGE_BAD = "projectStageBad";
 	// 代码相关
 	private static ConcurrentHashMap<Integer, AtomicInteger> codeViewMap = new ConcurrentHashMap<Integer, AtomicInteger>();
-	private static ConcurrentHashMap<Integer, AtomicInteger> codeGoodMap = new ConcurrentHashMap<Integer, AtomicInteger>();
+	public static ConcurrentHashMap<Integer, AtomicInteger> codeGoodMap = new ConcurrentHashMap<Integer, AtomicInteger>();
 	private static ConcurrentHashMap<Integer, AtomicInteger> codeBadMap = new ConcurrentHashMap<Integer, AtomicInteger>();
 	// 视频教程章节
 	private static ConcurrentHashMap<Integer, AtomicInteger> videoChapterViewMap = new ConcurrentHashMap<Integer, AtomicInteger>();
@@ -161,7 +161,7 @@ public class CountCache {
 	}
 
 	// 获取codeGood 并重置
-	static int getAndResetCodeGood(int codId) {
+	 public static int getAndResetCodeGood(int codId) {
 		int goodCount = codeGoodMap.get(codId).get();
 		codeGoodMap.put(codId, new AtomicInteger(0));
 		return goodCount;
@@ -178,13 +178,13 @@ public class CountCache {
 	}
 
 	// 获取codeBad 并重置
-	static int getAndResetCodeBad(int codId) {
+	public static int getAndResetCodeBad(int codId) {
 		int badCount = codeBadMap.get(codId).get();
 		codeBadMap.put(codId, new AtomicInteger(0));
 		return badCount;
 	}
 }
-
+/**
 class CountThread extends Thread {
 	Logger logger = Logger.getLogger(CountThread.class);
 	int codeId;
@@ -231,3 +231,4 @@ class CountThread extends Thread {
 		}        
 	}
 }
+*/
