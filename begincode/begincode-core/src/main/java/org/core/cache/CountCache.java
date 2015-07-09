@@ -227,6 +227,6 @@ class CountThread extends Thread {
 		default:
 			logger.warn(" CountCache run default add method ");
 			break;
-		}
+		}   
 	}
 }
