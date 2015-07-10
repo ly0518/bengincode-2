@@ -35,6 +35,7 @@ CREATE TABLE IF NOT EXISTS `begincode_code` (
   `code_type_id` int(11) DEFAULT NULL,
   `release_state` char(1) NOT NULL,
   `check_flag` char(1) NOT NULL,
+  `code_type_name` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`begincode_code_code_id`),
   KEY `Refbegincode_navigation14` (`begincode_navigation_id`),
   KEY `Refcode_type17` (`code_type_id`),
@@ -64,6 +65,7 @@ CREATE TABLE IF NOT EXISTS `begincode_course` (
   `completion_status` char(1) NOT NULL,
   `begincode_navigation_id` int(11) DEFAULT NULL,
   `delete_flag_1` char(1) NOT NULL,
+  `course_type_name` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`begincode_course_id`),
   KEY `Refbegincode_user9` (`begincode_user_id`),
   KEY `Refbegincode_navigation13` (`begincode_navigation_id`),
@@ -189,6 +191,22 @@ DELETE FROM `begincode_user`;
 /*!40000 ALTER TABLE `begincode_user` ENABLE KEYS */;
 
 
+-- 导出  表 begincode.begincode_version 结构
+DROP TABLE IF EXISTS `begincode_version`;
+CREATE TABLE IF NOT EXISTS `begincode_version` (
+  `begincode_version_id` int(11) NOT NULL AUTO_INCREMENT,
+  `version` varchar(10) NOT NULL,
+  PRIMARY KEY (`begincode_version_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+-- 正在导出表  begincode.begincode_version 的数据：~0 rows (大约)
+DELETE FROM `begincode_version`;
+/*!40000 ALTER TABLE `begincode_version` DISABLE KEYS */;
+INSERT INTO `begincode_version` (`begincode_version_id`, `version`) VALUES
+	(1, '1.0');
+/*!40000 ALTER TABLE `begincode_version` ENABLE KEYS */;
+
+
 -- 导出  表 begincode.code_comment 结构
 DROP TABLE IF EXISTS `code_comment`;
 CREATE TABLE IF NOT EXISTS `code_comment` (
@@ -242,8 +260,8 @@ CREATE TABLE IF NOT EXISTS `course_comment` (
   `video_course_chapter_id` int(11) DEFAULT NULL,
   `check_flag` char(1) NOT NULL,
   PRIMARY KEY (`course_comment_id`),
-  KEY `Refvideo_course_chapter11` (`video_course_chapter_id`),
   KEY `Refbegincode_user8` (`begincode_user_id`),
+  KEY `Refvideo_course_chapter11` (`video_course_chapter_id`),
   CONSTRAINT `Refbegincode_user8` FOREIGN KEY (`begincode_user_id`) REFERENCES `begincode_user` (`begincode_user_id`),
   CONSTRAINT `Refvideo_course_chapter11` FOREIGN KEY (`video_course_chapter_id`) REFERENCES `video_course_chapter` (`video_course_chapter_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -319,6 +337,7 @@ CREATE TABLE IF NOT EXISTS `project_stage` (
   `begincode_user_id` int(11) DEFAULT NULL,
   `nickname` varchar(50) DEFAULT NULL,
   `pic` varchar(200) DEFAULT NULL,
+  `project_name` varchar(100) NOT NULL,
   PRIMARY KEY (`project_stage_id`),
   KEY `Refbegincode_project19` (`begincode_project_id`),
   KEY `Refbegincode_user22` (`begincode_user_id`),
@@ -425,6 +444,7 @@ CREATE TABLE IF NOT EXISTS `video_course_chapter` (
   `delete_flag_1` char(1) DEFAULT NULL,
   `chapter_code_down_url` varchar(200) DEFAULT NULL,
   `release_state` char(1) NOT NULL,
+  `course_name` varchar(100) NOT NULL,
   PRIMARY KEY (`video_course_chapter_id`),
   KEY `Refbegincode_course5` (`begincode_course_id`),
   CONSTRAINT `Refbegincode_course5` FOREIGN KEY (`begincode_course_id`) REFERENCES `begincode_course` (`begincode_course_id`)
@@ -432,14 +452,6 @@ CREATE TABLE IF NOT EXISTS `video_course_chapter` (
 
 -- 正在导出表  begincode.video_course_chapter 的数据：~0 rows (大约)
 DELETE FROM `video_course_chapter`;
-
-CREATE TABLE begincode_version(
-    begincode_version_id    INT                     AUTO_INCREMENT,
-    version                 NATIONAL VARCHAR(10)    NOT NULL,
-    PRIMARY KEY (begincode_version_id)
-)ENGINE=INNODB DEFAULT CHARSET=utf8;
-
-
 /*!40000 ALTER TABLE `video_course_chapter` DISABLE KEYS */;
 /*!40000 ALTER TABLE `video_course_chapter` ENABLE KEYS */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;

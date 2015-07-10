@@ -5,7 +5,7 @@
 	<groupId>com.begincode</groupId>
 	<artifactId>begincode</artifactId>
 	<packaging>pom</packaging>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>${begincode.version}</version>
 	<name>begincode</name>
 	<url>http://maven.apache.org</url>
 	<modules>
@@ -19,6 +19,7 @@
 	</modules>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<begincode.version>1.0.0-SNAPSHOT</begincode.version>
 		<junit.version>4.8</junit.version>
 		<spring.version>4.1.1.RELEASE</spring.version>
 		<springmvc.version>4.1.1.RELEASE</springmvc.version>
@@ -42,7 +43,6 @@
 		<mvnplugin.rar.version>2.4</mvnplugin.rar.version>
 		<javac.src.version>1.7</javac.src.version>
 		<javac.target.version>1.7</javac.target.version>
-		<begincode.version>0.0.1-SNAPSHOT</begincode.version>
 	</properties>
 	<dependencyManagement>
 		<dependencies>
