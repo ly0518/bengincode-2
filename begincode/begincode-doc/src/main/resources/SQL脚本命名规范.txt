@@ -1,0 +1,12 @@
+sql脚本命名规范
+1、全量脚本：begincode_[yyyyMMdd].sql 替换中括号内容为修改日期
+2、增量脚本：[alter|data]-[tableName]-[order].sql
+  说明: 第二个中括号内的内容，凡是表结构的修改都使用alter，凡是数据字典的修改都要用data。
+       如果有多个表结构更改，或者多条数据字典记录的修改要标出先后执行顺序，即修改order的值，
+       从1开始。例如: 
+       		表结构：
+       			alter-begincode_code-1.sql; 
+       			alter-begincode_course-2.sql; 
+       		数据：	
+       			data_begincode_code-1.sql;
+       			data_begincode_course-2.sql;

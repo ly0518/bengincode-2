@@ -5,7 +5,7 @@
   <parent>
     <groupId>com.begincode</groupId>
     <artifactId>begincode</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>${parent.version}</version>
   </parent>
   <artifactId>begincode-test</artifactId>
   <name>begincode-test</name>
