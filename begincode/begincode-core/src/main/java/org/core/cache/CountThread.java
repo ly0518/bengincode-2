@@ -4,8 +4,8 @@ import org.apache.log4j.Logger;
 
 public class CountThread extends Thread {
 	Logger logger = Logger.getLogger(CountThread.class);
-	int codeId;
-	String typeId;
+	int codeId; 			// 对应字段标识
+	String typeId; 			// 类型，查看CountCache 常量
 
 	public CountThread(String typeId, int codeId) {
 		this.codeId = codeId;
@@ -21,7 +21,8 @@ public class CountThread extends Thread {
 			CountCache.addCodeGood(codeId);
 			break;
 		case CountCache.CODE_BAD:
-			CountCache.addCodeBad(codeId);;
+			CountCache.addCodeBad(codeId);
+			;
 			break;
 		case CountCache.VIDEO_CHAPTER_VIEW:
 			CountCache.addVideoChapterView(codeId);
@@ -42,9 +43,8 @@ public class CountThread extends Thread {
 			CountCache.addProjectStagerBad(codeId);
 			break;
 		default:
-			
 			logger.warn(" CountCache run default add method ");
 			break;
-		}        
+		}
 	}
 }
