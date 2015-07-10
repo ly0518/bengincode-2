@@ -7,7 +7,7 @@ import org.apache.log4j.Logger;
 
 /**
  * 记录页面浏览次数，点赞次数，踩次数 非线程安全，但不准确也没关系
- */
+ **/
 public class CountCache {
 
 	public final static String CODE_VIEW = "codeView";
