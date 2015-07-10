@@ -5,7 +5,7 @@
 	<groupId>com.begincode</groupId>
 	<artifactId>begincode</artifactId>
 	<packaging>pom</packaging>
-	<version>${begincode.version}</version>
+	<version>1.0.0-SNAPSHOT</version>
 	<name>begincode</name>
 	<url>http://maven.apache.org</url>
 	<modules>
@@ -19,7 +19,6 @@
 	</modules>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<begincode.version>1.0.0-SNAPSHOT</begincode.version>
 		<junit.version>4.8</junit.version>
 		<spring.version>4.1.1.RELEASE</spring.version>
 		<springmvc.version>4.1.1.RELEASE</springmvc.version>
@@ -156,22 +155,27 @@
 			<dependency>
 				<groupId>com.begincode</groupId>
 				<artifactId>begincode-core</artifactId>
-				<version>${begincode.version}</version>
+				<version>${project.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>com.begincode</groupId>
 				<artifactId>begincode-course</artifactId>
-				<version>${begincode.version}</version>
+				<version>${project.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>com.begincode</groupId>
 				<artifactId>begincode-blog</artifactId>
-				<version>${begincode.version}</version>
+				<version>${project.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>com.begincode</groupId>
 				<artifactId>begincode-web</artifactId>
-				<version>${begincode.version}</version>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.begincode</groupId>
+				<artifactId>begincode-admin</artifactId>
+				<version>${project.version}</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>

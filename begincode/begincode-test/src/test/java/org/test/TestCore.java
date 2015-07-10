@@ -25,7 +25,7 @@ public class TestCore {
 		record.setViewCount(10);
 		record.setGoodCount(10);
 		record.setBadCount(10);
-		record.setReleaseState("kfjdsf");
+		record.setReleaseState("1");
 		record.setCheckFlag("1");
 		record.setCreateDatetime(new Date());
 		
