@@ -8,5 +8,6 @@ sql脚本命名规范
        			alter-begincode_code-1.sql; 
        			alter-begincode_course-2.sql; 
        		数据：	
-       			data_begincode_code-1.sql;
-       			data_begincode_course-2.sql;
+       			data-begincode_code-1.sql;
+       			data-begincode_course-2.sql;
+注意中间的连接横线和数据库表名中的下划线是有区别的
