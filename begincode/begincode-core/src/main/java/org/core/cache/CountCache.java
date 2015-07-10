@@ -3,11 +3,9 @@ package org.core.cache;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 
-import org.apache.log4j.Logger;
-
 /**
  * 记录页面浏览次数，点赞次数，踩次数 非线程安全，但不准确也没关系
- * */
+ */
 public class CountCache {
 
 	public final static String CODE_VIEW = "codeView";
@@ -36,7 +34,7 @@ public class CountCache {
 	 * 项目阶段浏览次数 加1
 	 * 
 	 * @param 项目阶段标识
-	 * */
+	 */
 	static void addProjectStageView(int projectStageId) {
 		if (projectStageViewMap.get(projectStageId) != null) {
 			projectStageViewMap.get(projectStageId).addAndGet(1);
@@ -49,7 +47,7 @@ public class CountCache {
 	 * 项目阶段浏览次数获取并重置
 	 * 
 	 * @param 项目阶段标识
-	 * */
+	 */
 	static int getAndResetProjectStageView(int projectStageId) {
 		int viewCount = projectStageViewMap.get(projectStageId).get();
 		projectStageViewMap.put(projectStageId, new AtomicInteger(0));
@@ -60,8 +58,7 @@ public class CountCache {
 	 * 项目阶段 好评数 加1
 	 * 
 	 * @param 项目阶段标识
-	 * */
-
+	 */
 	static void addProjectStageGood(int projectStageId) {
 		if (projectStageGoodMap.get(projectStageId) != null) {
 			projectStageGoodMap.get(projectStageId).addAndGet(1);
@@ -75,8 +72,7 @@ public class CountCache {
 	 * 项目阶段好评数重置 ，并返回当前值
 	 * 
 	 * @param 项目阶段标识
-	 * */
-
+	 */
 	static int getAndResetaddProjectStageGood(int projectStageId) {
 		int goodCount = projectStageGoodMap.get(projectStageId).get();
 		projectStageGoodMap.put(projectStageId, new AtomicInteger(0));
@@ -87,8 +83,7 @@ public class CountCache {
 	 * 项目阶段差评数 加1
 	 * 
 	 * @param 项目阶段标识
-	 * */
-
+	 */
 	static void addProjectStagerBad(int projectStageId) {
 		if (projectStageBadMap.get(projectStageId) != null) {
 			projectStageBadMap.get(projectStageId).addAndGet(1);
@@ -102,8 +97,7 @@ public class CountCache {
 	 * 项目阶段差评数重置，并返回当前值
 	 * 
 	 * @param 项目阶段标识
-	 * */
-
+	 */
 	static int getAndResetProjectStagerBad(int projectStageId) {
 		int badCount = projectStageBadMap.get(projectStageId).get();
 		projectStageBadMap.put(projectStageId, new AtomicInteger(0));
@@ -114,7 +108,7 @@ public class CountCache {
 	 * 视频教程浏览次数加1 ，
 	 * 
 	 * @param 视频教程标识
-	 * */
+	 */
 	static void addVideoChapterView(int videoChapterId) {
 		if (videoChapterViewMap.get(videoChapterId) != null) {
 			videoChapterViewMap.get(videoChapterId).addAndGet(1);
@@ -127,7 +121,7 @@ public class CountCache {
 	 * 视频教程浏览次数重置，并返回当前值
 	 * 
 	 * @param 视频教程标识
-	 * */
+	 */
 	static int getAndResetVideoChapterView(int videoChapterId) {
 		int viewCount = videoChapterViewMap.get(videoChapterId).get();
 		videoChapterViewMap.put(videoChapterId, new AtomicInteger(0));
@@ -138,7 +132,7 @@ public class CountCache {
 	 * 视频教程好评数 加1
 	 * 
 	 * @param 视频教程标识
-	 * */
+	 */
 	static void addVideoChapterGood(int videoChapterId) {
 		if (videoChapterGoodMap.get(videoChapterId) != null) {
 			videoChapterGoodMap.get(videoChapterId).addAndGet(1);
@@ -152,7 +146,7 @@ public class CountCache {
 	 * 视频教程好评数数重置，并返回当前值
 	 * 
 	 * @param 视频教程标识
-	 * */
+	 */
 	static int getAndResetaddVideoChapterGood(int videoChapterId) {
 		int goodCount = videoChapterGoodMap.get(videoChapterId).get();
 		videoChapterGoodMap.put(videoChapterId, new AtomicInteger(0));
@@ -163,7 +157,7 @@ public class CountCache {
 	 * 视频教程差评数加1
 	 * 
 	 * @param 视频教程标识
-	 * */
+	 */
 	static void addVideoChapterBad(int videoChapterId) {
 		if (videoChapterBadMap.get(videoChapterId) != null) {
 			videoChapterBadMap.get(videoChapterId).addAndGet(1);
@@ -177,7 +171,7 @@ public class CountCache {
 	 * 视频教程差评数重置，并返回当前值
 	 * 
 	 * @param 视频教程标识
-	 * */
+	 */
 	static int getAndResetVideoChapterBad(int videoChapterId) {
 		int badCount = videoChapterBadMap.get(videoChapterId).get();
 		videoChapterBadMap.put(videoChapterId, new AtomicInteger(0));
@@ -188,7 +182,7 @@ public class CountCache {
 	 * 代码分享浏览次数加1
 	 * 
 	 * @param 代码分享标识
-	 * */
+	 */
 	static void addCodeView(int codeId) {
 		if (codeViewMap.get(codeId) != null) {
 			codeViewMap.get(codeId).addAndGet(1);
@@ -201,7 +195,7 @@ public class CountCache {
 	 * 代码分享浏览次数重置，返回当前值
 	 * 
 	 * @param 代码分享标识
-	 * */
+	 */
 	static int getAndResetCodeView(int codId) {
 		try {
 			int viewCount = codeViewMap.get(codId).get();
@@ -216,7 +210,7 @@ public class CountCache {
 	 * 代码分享好评次数加1
 	 * 
 	 * @param 代码分享标识
-	 * */
+	 */
 	static void addCodeGood(int codeId) {
 		if (codeGoodMap.get(codeId) != null) {
 			codeGoodMap.get(codeId).addAndGet(1);
@@ -230,7 +224,7 @@ public class CountCache {
 	 * 代码分享好评次数重置，返回当前值
 	 * 
 	 * @param 代码分享标识
-	 * */
+	 */
 	public static int getAndResetCodeGood(int codId) {
 		try {
 			synchronized (codeGoodMap) {
@@ -247,7 +241,7 @@ public class CountCache {
 	 * 代码分享差评次数加1
 	 * 
 	 * @param 代码分享标识
-	 * */
+	 */
 	static void addCodeBad(int codeId) {
 		if (codeBadMap.get(codeId) != null) {
 			codeBadMap.get(codeId).addAndGet(1);
@@ -261,7 +255,7 @@ public class CountCache {
 	 * 代码分享差评次数重置，返回当前值
 	 * 
 	 * @param 代码分享标识
-	 * */
+	 */
 	public static int getAndResetCodeBad(int codId) {
 		int badCount = codeBadMap.get(codId).get();
 		codeBadMap.put(codId, new AtomicInteger(0));
