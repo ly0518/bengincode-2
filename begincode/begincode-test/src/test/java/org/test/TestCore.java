@@ -5,13 +5,10 @@ import java.util.Date;
 
 import javax.sql.DataSource;
 
-<<<<<<< HEAD
 import org.core.cache.CountCache;
 import org.core.cache.CountThread;
-=======
 import org.core.mapper.BegincodeCodeMapper;
 import org.core.model.BegincodeCode;
->>>>>>> branch 'master' of https://git.oschina.net/yangsj/begincode-2.git
 import org.junit.Test;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -38,13 +35,10 @@ public class TestCore {
 		
 		ctx.close();
 		
-		
 		//======================点赞，差评，浏览次数 使用类似方法
 		new CountThread(CountCache.CODE_GOOD,2).start();				//加1方法
 		System.out.println("@@"+CountCache.getAndResetCodeGood(2));		//获取并重置
 		//======================点赞，差评，浏览次数 使用类似方法 结束
-		
-		
 	}
 
 }
