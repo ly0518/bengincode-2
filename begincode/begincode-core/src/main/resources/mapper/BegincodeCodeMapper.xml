@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="org.core.mapper.BegincodeCodeMapper" >
   <resultMap id="BaseResultMap" type="org.core.model.BegincodeCode" >
-    <id column="begincode_code_code_id" property="begincodeCodeCodeId" jdbcType="INTEGER" />
+    <id column="begincode_code_id" property="begincodeCodeId" jdbcType="INTEGER" />
     <result column="code_info" property="codeInfo" jdbcType="VARCHAR" />
     <result column="code_download_url" property="codeDownloadUrl" jdbcType="VARCHAR" />
     <result column="prohibition_message" property="prohibitionMessage" jdbcType="CHAR" />
@@ -22,7 +22,7 @@
     <result column="code_content" property="codeContent" jdbcType="LONGVARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    begincode_code_code_id, code_info, code_download_url, prohibition_message, begincode_keys, 
+    begincode_code_id, code_info, code_download_url, prohibition_message, begincode_keys, 
     view_count, begincode_navigation_id,  create_datetime, delete_flag, 
     good_count, bad_count, code_type_id, release_state, check_flag, code_type_name
   </sql>
@@ -66,16 +66,18 @@
   <select id="selectBySelective" resultMap="BaseResultMap" parameterType="org.core.model.BegincodeCode" >
   	select  
   		 <include refid="Base_Column_List" />
-  	<trim prefix="WHERE" prefixOverrides="AND">
-   		<include refid="Selective_Option"></include>
-	</trim>
-  </select>
-    <select id="selectBySelectiveCount" resultType="java.lang.Integer" parameterType="org.core.model.BegincodeCode" >
-  		select  count(0)
+  		 from begincode_code
   	<trim prefix="WHERE" prefixOverrides="AND">
    		<include refid="Selective_Option"></include>
 	</trim>
 	<include refid="limitNum"></include>
+  </select>
+    <select id="selectBySelectiveCount" resultType="java.lang.Integer" parameterType="org.core.model.BegincodeCode" >
+  		select  count(0)
+  		from begincode_code
+  	<trim prefix="WHERE" prefixOverrides="AND">
+   		<include refid="Selective_Option"></include>
+	</trim>
   </select>
   <!-- 分页查询end -->
   
@@ -86,23 +88,23 @@
     ,
     <include refid="Blob_Column_List" />
     from begincode_code
-    where begincode_code_code_id = #{begincodeCodeCodeId,jdbcType=INTEGER}
+    where begincode_code_id = #{begincodeCodeId,jdbcType=INTEGER}
   </select>
   
   
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from begincode_code
-    where begincode_code_code_id = #{begincodeCodeCodeId,jdbcType=INTEGER}
+    where begincode_code_id = #{begincodeCodeId,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="org.core.model.BegincodeCode" >
-    insert into begincode_code (begincode_code_code_id, code_info, code_download_url, 
+    insert into begincode_code (begincode_code_id, code_info, code_download_url, 
       prohibition_message, begincode_keys, view_count, 
       begincode_navigation_id,  
       create_datetime, delete_flag, good_count, 
       bad_count, code_type_id, release_state, 
       check_flag, code_type_name, code_content
       )
-    values (#{begincodeCodeCodeId,jdbcType=INTEGER}, #{codeInfo,jdbcType=VARCHAR}, #{codeDownloadUrl,jdbcType=VARCHAR}, 
+    values (#{begincodeCodeId,jdbcType=INTEGER}, #{codeInfo,jdbcType=VARCHAR}, #{codeDownloadUrl,jdbcType=VARCHAR}, 
       #{prohibitionMessage,jdbcType=CHAR}, #{begincodeKeys,jdbcType=VARCHAR}, #{viewCount,jdbcType=INTEGER}, 
       #{begincodeNavigationId,jdbcType=INTEGER},  
       #{createDatetime,jdbcType=TIMESTAMP}, #{deleteFlag,jdbcType=CHAR}, #{goodCount,jdbcType=INTEGER}, 
@@ -113,8 +115,8 @@
   <insert id="insertSelective" parameterType="org.core.model.BegincodeCode" >
     insert into begincode_code
     <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="begincodeCodeCodeId != null" >
-        begincode_code_code_id,
+      <if test="begincodeCodeId != null" >
+        begincode_code_id,
       </if>
       <if test="codeInfo != null" >
         code_info,
@@ -163,8 +165,8 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="begincodeCodeCodeId != null" >
-        #{begincodeCodeCodeId,jdbcType=INTEGER},
+      <if test="begincodeCodeId != null" >
+        #{begincodeCodeId,jdbcType=INTEGER},
       </if>
       <if test="codeInfo != null" >
         #{codeInfo,jdbcType=VARCHAR},
@@ -262,7 +264,7 @@
         code_content = #{codeContent,jdbcType=LONGVARCHAR},
       </if>
     </set>
-    where begincode_code_code_id = #{begincodeCodeCodeId,jdbcType=INTEGER}
+    where begincode_code_id = #{begincodeCodeId,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKeyWithBLOBs" parameterType="org.core.model.BegincodeCode" >
     update begincode_code
@@ -281,7 +283,7 @@
       check_flag = #{checkFlag,jdbcType=CHAR},
       code_type_name = #{codeTypeName,jdbcType=VARCHAR},
       code_content = #{codeContent,jdbcType=LONGVARCHAR}
-    where begincode_code_code_id = #{begincodeCodeCodeId,jdbcType=INTEGER}
+    where begincode_code_id = #{begincodeCodeId,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="org.core.model.BegincodeCode" >
     update begincode_code
@@ -299,6 +301,6 @@
       release_state = #{releaseState,jdbcType=CHAR},
       check_flag = #{checkFlag,jdbcType=CHAR},
       code_type_name = #{codeTypeName,jdbcType=VARCHAR}
-    where begincode_code_code_id = #{begincodeCodeCodeId,jdbcType=INTEGER}
+    where begincode_code_id = #{begincodeCodeId,jdbcType=INTEGER}
   </update>
 </mapper>

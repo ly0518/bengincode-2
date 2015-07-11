@@ -15,7 +15,8 @@
 		<module>begincode-web</module>
 		<module>begincode-test</module>
 		<module>begincode-doc</module>
-  </modules>
+		<module>begincode-code</module>
+	</modules>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<junit.version>4.8</junit.version>
@@ -174,6 +175,11 @@
 			<dependency>
 				<groupId>com.begincode</groupId>
 				<artifactId>begincode-admin</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.begincode</groupId>
+				<artifactId>begincode-code</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 		</dependencies>

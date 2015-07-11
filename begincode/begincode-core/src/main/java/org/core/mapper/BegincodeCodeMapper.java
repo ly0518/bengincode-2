@@ -1,15 +1,22 @@
 package org.core.mapper;
 
+import java.util.List;
+
 import org.core.model.BegincodeCode;
 
+/**
+ * @author yangsj
+ *
+ */
 public interface BegincodeCodeMapper {
-    int deleteByPrimaryKey(Integer begincodeCodeCodeId);
+	
+    int deleteByPrimaryKey(Integer begincodeCodeId);
 
     int insert(BegincodeCode record);
 
     int insertSelective(BegincodeCode record);
 
-    BegincodeCode selectByPrimaryKey(Integer begincodeCodeCodeId);
+    BegincodeCode selectByPrimaryKey(Integer begincodeCodeId);
 
     int updateByPrimaryKeySelective(BegincodeCode record);
 
@@ -18,4 +25,6 @@ public interface BegincodeCodeMapper {
     int updateByPrimaryKey(BegincodeCode record);
     
     List<BegincodeCode> selectBySelective(BegincodeCode record);
+    
+    int  selectBySelectiveCount(BegincodeCode record);
 }

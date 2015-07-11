@@ -15,9 +15,14 @@
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
     </dependency>
+    
 	<dependency>
 		<groupId>com.begincode</groupId>
 		<artifactId>begincode-course</artifactId>
-	</dependency>
+	</dependency>  
+		<dependency>
+		<groupId>com.begincode</groupId>
+		<artifactId>begincode-code</artifactId>
+		</dependency>
   </dependencies>
 </project>

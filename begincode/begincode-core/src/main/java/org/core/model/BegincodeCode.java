@@ -3,7 +3,7 @@ package org.core.model;
 import java.util.Date;
 
 public class BegincodeCode extends BaseModel{
-    private Integer begincodeCodeCodeId;
+    private Integer begincodeCodeId;
 
     private String codeInfo;
 
@@ -35,12 +35,12 @@ public class BegincodeCode extends BaseModel{
 
     private String codeContent;
 
-    public Integer getBegincodeCodeCodeId() {
-        return begincodeCodeCodeId;
+    public Integer getbegincodeCodeId() {
+        return begincodeCodeId;
     }
 
-    public void setBegincodeCodeCodeId(Integer begincodeCodeCodeId) {
-        this.begincodeCodeCodeId = begincodeCodeCodeId;
+    public void setbegincodeCodeId(Integer begincodeCodeId) {
+        this.begincodeCodeId = begincodeCodeId;
     }
 
     public String getCodeInfo() {
