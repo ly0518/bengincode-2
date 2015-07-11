@@ -1,2 +1,1 @@
-ALTER TABLE `course_label`
-	DROP COLUMN `delete_flag_1`;
+ALTER TABLE `course_label`	DROP COLUMN `delete_flag_1`;
