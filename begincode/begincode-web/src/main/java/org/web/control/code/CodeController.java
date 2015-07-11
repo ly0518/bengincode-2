@@ -25,7 +25,7 @@ public class CodeController {
 	public String selCodeList(Model model){
 		BegincodeCode record = new BegincodeCode();
 		record.setBeginRowNum(6);
-		record.setLimitNum(10);
+		record.setLimitNum(3);
 		PaginationResult<BegincodeCode> codes = codeService.selCodeForPaper(record);
 		System.out.println(codes.getList().size());
 		model.addAttribute("codes", codes);
