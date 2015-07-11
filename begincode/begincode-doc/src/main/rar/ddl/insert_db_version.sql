@@ -1,1 +1,1 @@
-insert into begincode.begincode_version (version) values('1.0.1');
+insert into begincode_version (version,create_datetime) values('1.0.1',now());

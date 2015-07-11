@@ -17,7 +17,7 @@ public class CodeComment {
 
     private String commentStatus;
 
-    private Integer begincodeCodeCodeId;
+    private Integer begincodeCodeId;
 
     private Integer orderNumber;
 
@@ -77,12 +77,12 @@ public class CodeComment {
         this.commentStatus = commentStatus == null ? null : commentStatus.trim();
     }
 
-    public Integer getBegincodeCodeCodeId() {
-        return begincodeCodeCodeId;
+    public Integer getbegincodeCodeId() {
+        return begincodeCodeId;
     }
 
-    public void setBegincodeCodeCodeId(Integer begincodeCodeCodeId) {
-        this.begincodeCodeCodeId = begincodeCodeCodeId;
+    public void setbegincodeCodeId(Integer begincodeCodeId) {
+        this.begincodeCodeId = begincodeCodeId;
     }
 
     public Integer getOrderNumber() {

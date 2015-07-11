@@ -8,10 +8,10 @@
     <result column="up_nav_id" property="upNavId" jdbcType="INTEGER" />
     <result column="nav_word" property="navWord" jdbcType="VARCHAR" />
     <result column="nav_memo" property="navMemo" jdbcType="VARCHAR" />
-    <result column="delete_flag_1" property="deleteFlag1" jdbcType="CHAR" />
+    <result column="delete_flag" property="deleteFlag" jdbcType="CHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    begincode_navigation_id, nav_name, nav_url, up_nav_id, nav_word, nav_memo, delete_flag_1
+    begincode_navigation_id, nav_name, nav_url, up_nav_id, nav_word, nav_memo, delete_flag
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 'true' as QUERYID,
@@ -26,10 +26,10 @@
   <insert id="insert" parameterType="org.core.model.BegincodeNavigation" >
     insert into begincode_navigation (begincode_navigation_id, nav_name, nav_url, 
       up_nav_id, nav_word, nav_memo, 
-      delete_flag_1)
+      delete_flag)
     values (#{begincodeNavigationId,jdbcType=INTEGER}, #{navName,jdbcType=VARCHAR}, #{navUrl,jdbcType=VARCHAR}, 
       #{upNavId,jdbcType=INTEGER}, #{navWord,jdbcType=VARCHAR}, #{navMemo,jdbcType=VARCHAR}, 
-      #{deleteFlag1,jdbcType=CHAR})
+      #{deleteFlag,jdbcType=CHAR})
   </insert>
   <insert id="insertSelective" parameterType="org.core.model.BegincodeNavigation" >
     insert into begincode_navigation
@@ -52,8 +52,8 @@
       <if test="navMemo != null" >
         nav_memo,
       </if>
-      <if test="deleteFlag1 != null" >
-        delete_flag_1,
+      <if test="deleteFlag != null" >
+        delete_flag,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
@@ -75,8 +75,8 @@
       <if test="navMemo != null" >
         #{navMemo,jdbcType=VARCHAR},
       </if>
-      <if test="deleteFlag1 != null" >
-        #{deleteFlag1,jdbcType=CHAR},
+      <if test="deleteFlag != null" >
+        #{deleteFlag,jdbcType=CHAR},
       </if>
     </trim>
   </insert>
@@ -98,8 +98,8 @@
       <if test="navMemo != null" >
         nav_memo = #{navMemo,jdbcType=VARCHAR},
       </if>
-      <if test="deleteFlag1 != null" >
-        delete_flag_1 = #{deleteFlag1,jdbcType=CHAR},
+      <if test="deleteFlag != null" >
+        delete_flag = #{deleteFlag,jdbcType=CHAR},
       </if>
     </set>
     where begincode_navigation_id = #{begincodeNavigationId,jdbcType=INTEGER}
@@ -111,7 +111,7 @@
       up_nav_id = #{upNavId,jdbcType=INTEGER},
       nav_word = #{navWord,jdbcType=VARCHAR},
       nav_memo = #{navMemo,jdbcType=VARCHAR},
-      delete_flag_1 = #{deleteFlag1,jdbcType=CHAR}
+      delete_flag = #{deleteFlag,jdbcType=CHAR}
     where begincode_navigation_id = #{begincodeNavigationId,jdbcType=INTEGER}
   </update>
 </mapper>

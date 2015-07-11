@@ -9,7 +9,6 @@ public class CourseLabel {
 
     private Integer labelCourseCount;
 
-    private String deleteFlag1;
 
     public Integer getCourseLabelId() {
         return courseLabelId;
@@ -43,11 +42,4 @@ public class CourseLabel {
         this.labelCourseCount = labelCourseCount;
     }
 
-    public String getDeleteFlag1() {
-        return deleteFlag1;
-    }
-
-    public void setDeleteFlag1(String deleteFlag1) {
-        this.deleteFlag1 = deleteFlag1 == null ? null : deleteFlag1.trim();
-    }
 }

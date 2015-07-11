@@ -19,7 +19,7 @@ USE `begincode`;
 -- 导出  表 begincode.begincode_code 结构
 DROP TABLE IF EXISTS `begincode_code`;
 CREATE TABLE IF NOT EXISTS `begincode_code` (
-  `begincode_code_code_id` int(11) NOT NULL AUTO_INCREMENT,
+  `begincode_code_id` int(11) NOT NULL AUTO_INCREMENT,
   `code_info` varchar(400) NOT NULL,
   `code_content` text NOT NULL,
   `code_download_url` varchar(500) DEFAULT NULL,
@@ -27,7 +27,6 @@ CREATE TABLE IF NOT EXISTS `begincode_code` (
   `begincode_keys` varchar(100) DEFAULT NULL,
   `view_count` int(11) NOT NULL,
   `begincode_navigation_id` int(11) DEFAULT NULL,
-  `bc_navigation_id` int(11) DEFAULT NULL,
   `create_datetime` datetime DEFAULT NULL,
   `delete_flag` char(1) DEFAULT NULL,
   `good_count` int(11) NOT NULL,
@@ -36,17 +35,15 @@ CREATE TABLE IF NOT EXISTS `begincode_code` (
   `release_state` char(1) NOT NULL,
   `check_flag` char(1) NOT NULL,
   `code_type_name` varchar(20) DEFAULT NULL,
-  PRIMARY KEY (`begincode_code_code_id`),
+  PRIMARY KEY (`begincode_code_id`),
   KEY `Refbegincode_navigation14` (`begincode_navigation_id`),
   KEY `Refcode_type17` (`code_type_id`),
   CONSTRAINT `Refbegincode_navigation14` FOREIGN KEY (`begincode_navigation_id`) REFERENCES `begincode_navigation` (`begincode_navigation_id`),
   CONSTRAINT `Refcode_type17` FOREIGN KEY (`code_type_id`) REFERENCES `code_type` (`code_type_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8;
 
--- 正在导出表  begincode.begincode_code 的数据：~0 rows (大约)
+-- 正在导出表  begincode.begincode_code 的数据：~23 rows (大约)
 DELETE FROM `begincode_code`;
-/*!40000 ALTER TABLE `begincode_code` DISABLE KEYS */;
-/*!40000 ALTER TABLE `begincode_code` ENABLE KEYS */;
 
 
 -- 导出  表 begincode.begincode_course 结构
@@ -64,7 +61,7 @@ CREATE TABLE IF NOT EXISTS `begincode_course` (
   `producer_introduction` varchar(500) DEFAULT NULL,
   `completion_status` char(1) NOT NULL,
   `begincode_navigation_id` int(11) DEFAULT NULL,
-  `delete_flag_1` char(1) NOT NULL,
+  `delete_flag` char(1) NOT NULL,
   `course_type_name` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`begincode_course_id`),
   KEY `Refbegincode_user9` (`begincode_user_id`),
@@ -125,7 +122,7 @@ CREATE TABLE IF NOT EXISTS `begincode_navigation` (
   `up_nav_id` int(11) DEFAULT NULL,
   `nav_word` varchar(100) DEFAULT NULL,
   `nav_memo` varchar(100) DEFAULT NULL,
-  `delete_flag_1` char(1) DEFAULT NULL,
+  `delete_flag` char(1) DEFAULT NULL,
   PRIMARY KEY (`begincode_navigation_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -183,11 +180,14 @@ CREATE TABLE IF NOT EXISTS `begincode_user` (
   PRIMARY KEY (`begincode_user_id`),
   KEY `Refuser_source1` (`user_source_id`),
   CONSTRAINT `Refuser_source1` FOREIGN KEY (`user_source_id`) REFERENCES `user_source` (`user_source_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
--- 正在导出表  begincode.begincode_user 的数据：~0 rows (大约)
+-- 正在导出表  begincode.begincode_user 的数据：~2 rows (大约)
 DELETE FROM `begincode_user`;
 /*!40000 ALTER TABLE `begincode_user` DISABLE KEYS */;
+INSERT INTO `begincode_user` (`begincode_user_id`, `login_name`, `pwd`, `nickname`, `cdate`, `sex`, `tel_phone`, `email`, `receive_email`, `pic`, `check_flag`, `gag`, `frozen`, `course`, `open_id`, `access_token`, `user_source_id`) VALUES
+	(1, 'yang', 'dsdf', '杨晓阳', '2015-07-11 17:27:19', '1', '12', 'yangshuangjun@126.com', '1', 'dd', '1', '1', '1', '12', '', '111', NULL),
+	(2, 'yang', 'dsdf', '杨晓阳', '2015-07-11 17:51:30', '1', '12', 'yangshuangjun@126.com', '1', 'dd', '1', '1', '1', '12', '', '111', NULL);
 /*!40000 ALTER TABLE `begincode_user` ENABLE KEYS */;
 
 
@@ -197,14 +197,12 @@ CREATE TABLE IF NOT EXISTS `begincode_version` (
   `begincode_version_id` int(11) NOT NULL AUTO_INCREMENT,
   `version` varchar(10) NOT NULL,
   PRIMARY KEY (`begincode_version_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
--- 正在导出表  begincode.begincode_version 的数据：~0 rows (大约)
-DELETE FROM `begincode_version`;
-/*!40000 ALTER TABLE `begincode_version` DISABLE KEYS */;
-INSERT INTO `begincode_version` (`begincode_version_id`, `version`) VALUES
-	(1, '1.0');
-/*!40000 ALTER TABLE `begincode_version` ENABLE KEYS */;
+ALTER TABLE `begincode_version`
+	ADD COLUMN `create_datetime` DATETIME NULL AFTER `version`;
+
+
 
 
 -- 导出  表 begincode.code_comment 结构
@@ -217,12 +215,12 @@ CREATE TABLE IF NOT EXISTS `code_comment` (
   `nickname` varchar(50) DEFAULT NULL,
   `pic` varchar(200) DEFAULT NULL,
   `comment_status` char(1) NOT NULL,
-  `begincode_code_code_id` int(11) DEFAULT NULL,
+  `begincode_code_id` int(11) DEFAULT NULL,
   `order_number` int(11) DEFAULT NULL,
   PRIMARY KEY (`code_comment_id`),
-  KEY `Refbegincode_code15` (`begincode_code_code_id`),
+  KEY `Refbegincode_code15` (`begincode_code_id`),
   KEY `Refbegincode_user16` (`begincode_user_id`),
-  CONSTRAINT `Refbegincode_code15` FOREIGN KEY (`begincode_code_code_id`) REFERENCES `begincode_code` (`begincode_code_code_id`),
+  CONSTRAINT `Refbegincode_code15` FOREIGN KEY (`begincode_code_id`) REFERENCES `begincode_code` (`begincode_code_id`),
   CONSTRAINT `Refbegincode_user16` FOREIGN KEY (`begincode_user_id`) REFERENCES `begincode_user` (`begincode_user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -296,7 +294,6 @@ CREATE TABLE IF NOT EXISTS `course_label` (
   `course_type_name` varchar(20) DEFAULT NULL,
   `delete_flag` char(1) DEFAULT NULL,
   `label_course_count` int(11) DEFAULT NULL,
-  `delete_flag_1` char(1) DEFAULT NULL,
   PRIMARY KEY (`course_label_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -418,7 +415,7 @@ DROP TABLE IF EXISTS `user_source`;
 CREATE TABLE IF NOT EXISTS `user_source` (
   `user_source_id` int(11) NOT NULL AUTO_INCREMENT,
   `user_source_name` varchar(10) DEFAULT NULL,
-  `delete_flag_1` char(1) DEFAULT NULL,
+  `delete_flag` char(1) DEFAULT NULL,
   PRIMARY KEY (`user_source_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -441,7 +438,7 @@ CREATE TABLE IF NOT EXISTS `video_course_chapter` (
   `begincode_course_id` int(11) DEFAULT NULL,
   `good_count` int(11) DEFAULT NULL,
   `bad_count` int(11) DEFAULT NULL,
-  `delete_flag_1` char(1) DEFAULT NULL,
+  `delete_flag` char(1) DEFAULT NULL,
   `chapter_code_down_url` varchar(200) DEFAULT NULL,
   `release_state` char(1) NOT NULL,
   `course_name` varchar(100) NOT NULL,
