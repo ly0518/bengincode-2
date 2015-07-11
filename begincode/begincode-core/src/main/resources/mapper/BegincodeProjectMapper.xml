@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="org.core.mapper.BegincodeProjectMapper" >
-  <resultMap id="BaseResultMap" type="org.core.model.BegincodeProject" >
+<mapper namespace="org.begincode.core.mapper.BegincodeProjectMapper" >
+  <resultMap id="BaseResultMap" type="org.begincode.core.model.BegincodeProject" >
     <id column="begincode_project_id" property="begincodeProjectId" jdbcType="INTEGER" />
     <result column="project_name" property="projectName" jdbcType="VARCHAR" />
     <result column="project_intro" property="projectIntro" jdbcType="VARCHAR" />
@@ -26,7 +26,7 @@
     delete from begincode_project
     where begincode_project_id = #{begincodeProjectId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="org.core.model.BegincodeProject" >
+  <insert id="insert" parameterType="org.begincode.core.model.BegincodeProject" >
     insert into begincode_project (begincode_project_id, project_name, 
       project_intro, create_datetime, delete_flag, 
       begincode_navigation_id, begincode_user_id, 
@@ -36,7 +36,7 @@
       #{begincodeNavigationId,jdbcType=INTEGER}, #{begincodeUserId,jdbcType=INTEGER}, 
       #{nickname,jdbcType=VARCHAR}, #{pic,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="org.core.model.BegincodeProject" >
+  <insert id="insertSelective" parameterType="org.begincode.core.model.BegincodeProject" >
     insert into begincode_project
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="begincodeProjectId != null" >
@@ -97,7 +97,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="org.core.model.BegincodeProject" >
+  <update id="updateByPrimaryKeySelective" parameterType="org.begincode.core.model.BegincodeProject" >
     update begincode_project
     <set >
       <if test="projectName != null" >
@@ -127,7 +127,7 @@
     </set>
     where begincode_project_id = #{begincodeProjectId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="org.core.model.BegincodeProject" >
+  <update id="updateByPrimaryKey" parameterType="org.begincode.core.model.BegincodeProject" >
     update begincode_project
     set project_name = #{projectName,jdbcType=VARCHAR},
       project_intro = #{projectIntro,jdbcType=VARCHAR},

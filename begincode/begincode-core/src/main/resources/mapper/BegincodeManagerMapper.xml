@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="org.core.mapper.BegincodeManagerMapper" >
-  <resultMap id="BaseResultMap" type="org.core.model.BegincodeManager" >
+<mapper namespace="org.begincode.core.mapper.BegincodeManagerMapper" >
+  <resultMap id="BaseResultMap" type="org.begincode.core.model.BegincodeManager" >
     <id column="begincode_manager_id" property="begincodeManagerId" jdbcType="INTEGER" />
     <result column="manager_pic_url" property="managerPicUrl" jdbcType="VARCHAR" />
     <result column="delete_flag" property="deleteFlag" jdbcType="CHAR" />
     <result column="begincode_user_id" property="begincodeUserId" jdbcType="INTEGER" />
   </resultMap>
-  <resultMap id="ResultMapWithBLOBs" type="org.core.model.BegincodeManager" extends="BaseResultMap" >
+  <resultMap id="ResultMapWithBLOBs" type="org.begincode.core.model.BegincodeManager" extends="BaseResultMap" >
     <result column="manger_introduce" property="mangerIntroduce" jdbcType="LONGVARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
@@ -28,7 +28,7 @@
     delete from begincode_manager
     where begincode_manager_id = #{begincodeManagerId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="org.core.model.BegincodeManager" >
+  <insert id="insert" parameterType="org.begincode.core.model.BegincodeManager" >
     insert into begincode_manager (begincode_manager_id, manager_pic_url, 
       delete_flag, begincode_user_id, manger_introduce
       )
@@ -36,7 +36,7 @@
       #{deleteFlag,jdbcType=CHAR}, #{begincodeUserId,jdbcType=INTEGER}, #{mangerIntroduce,jdbcType=LONGVARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="org.core.model.BegincodeManager" >
+  <insert id="insertSelective" parameterType="org.begincode.core.model.BegincodeManager" >
     insert into begincode_manager
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="begincodeManagerId != null" >
@@ -73,7 +73,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="org.core.model.BegincodeManager" >
+  <update id="updateByPrimaryKeySelective" parameterType="org.begincode.core.model.BegincodeManager" >
     update begincode_manager
     <set >
       <if test="managerPicUrl != null" >
@@ -91,7 +91,7 @@
     </set>
     where begincode_manager_id = #{begincodeManagerId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKeyWithBLOBs" parameterType="org.core.model.BegincodeManager" >
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="org.begincode.core.model.BegincodeManager" >
     update begincode_manager
     set manager_pic_url = #{managerPicUrl,jdbcType=VARCHAR},
       delete_flag = #{deleteFlag,jdbcType=CHAR},
@@ -99,7 +99,7 @@
       manger_introduce = #{mangerIntroduce,jdbcType=LONGVARCHAR}
     where begincode_manager_id = #{begincodeManagerId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="org.core.model.BegincodeManager" >
+  <update id="updateByPrimaryKey" parameterType="org.begincode.core.model.BegincodeManager" >
     update begincode_manager
     set manager_pic_url = #{managerPicUrl,jdbcType=VARCHAR},
       delete_flag = #{deleteFlag,jdbcType=CHAR},

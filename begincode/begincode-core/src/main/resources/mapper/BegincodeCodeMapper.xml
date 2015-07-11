@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="org.core.mapper.BegincodeCodeMapper" >
-  <resultMap id="BaseResultMap" type="org.core.model.BegincodeCode" >
+<mapper namespace="org.begincode.core.mapper.BegincodeCodeMapper" >
+  <resultMap id="BaseResultMap" type="org.begincode.core.model.BegincodeCode" >
     <id column="begincode_code_id" property="begincodeCodeId" jdbcType="INTEGER" />
     <result column="code_info" property="codeInfo" jdbcType="VARCHAR" />
     <result column="code_download_url" property="codeDownloadUrl" jdbcType="VARCHAR" />
@@ -18,7 +18,7 @@
     <result column="check_flag" property="checkFlag" jdbcType="CHAR" />
     <result column="code_type_name" property="codeTypeName" jdbcType="VARCHAR" />
   </resultMap>
-  <resultMap id="ResultMapWithBLOBs" type="org.core.model.BegincodeCode" extends="BaseResultMap" >
+  <resultMap id="ResultMapWithBLOBs" type="org.begincode.core.model.BegincodeCode" extends="BaseResultMap" >
     <result column="code_content" property="codeContent" jdbcType="LONGVARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
@@ -63,7 +63,7 @@
   <sql id="limitNum">
   	  limit #{beginRowNum} ,#{limitNum}
   </sql>
-  <select id="selectBySelective" resultMap="BaseResultMap" parameterType="org.core.model.BegincodeCode" >
+  <select id="selectBySelective" resultMap="BaseResultMap" parameterType="org.begincode.core.model.BegincodeCode" >
   	select  
   		 <include refid="Base_Column_List" />
   		 from begincode_code
@@ -72,7 +72,7 @@
 	</trim>
 	<include refid="limitNum"></include>
   </select>
-    <select id="selectBySelectiveCount" resultType="java.lang.Integer" parameterType="org.core.model.BegincodeCode" >
+    <select id="selectBySelectiveCount" resultType="java.lang.Integer" parameterType="org.begincode.core.model.BegincodeCode" >
   		select  count(0)
   		from begincode_code
   	<trim prefix="WHERE" prefixOverrides="AND">
@@ -96,7 +96,7 @@
     delete from begincode_code
     where begincode_code_id = #{begincodeCodeId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="org.core.model.BegincodeCode" >
+  <insert id="insert" parameterType="org.begincode.core.model.BegincodeCode" >
     insert into begincode_code (begincode_code_id, code_info, code_download_url, 
       prohibition_message, begincode_keys, view_count, 
       begincode_navigation_id,  
@@ -112,7 +112,7 @@
       #{checkFlag,jdbcType=CHAR}, #{codeTypeName,jdbcType=VARCHAR}, #{codeContent,jdbcType=LONGVARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="org.core.model.BegincodeCode" >
+  <insert id="insertSelective" parameterType="org.begincode.core.model.BegincodeCode" >
     insert into begincode_code
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="begincodeCodeId != null" >
@@ -215,7 +215,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="org.core.model.BegincodeCode" >
+  <update id="updateByPrimaryKeySelective" parameterType="org.begincode.core.model.BegincodeCode" >
     update begincode_code
     <set >
       <if test="codeInfo != null" >
@@ -266,7 +266,7 @@
     </set>
     where begincode_code_id = #{begincodeCodeId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKeyWithBLOBs" parameterType="org.core.model.BegincodeCode" >
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="org.begincode.core.model.BegincodeCode" >
     update begincode_code
     set code_info = #{codeInfo,jdbcType=VARCHAR},
       code_download_url = #{codeDownloadUrl,jdbcType=VARCHAR},
@@ -285,7 +285,7 @@
       code_content = #{codeContent,jdbcType=LONGVARCHAR}
     where begincode_code_id = #{begincodeCodeId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="org.core.model.BegincodeCode" >
+  <update id="updateByPrimaryKey" parameterType="org.begincode.core.model.BegincodeCode" >
     update begincode_code
     set code_info = #{codeInfo,jdbcType=VARCHAR},
       code_download_url = #{codeDownloadUrl,jdbcType=VARCHAR},

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="org.core.mapper.ProjectStageMapper" >
-  <resultMap id="BaseResultMap" type="org.core.model.ProjectStage" >
+<mapper namespace="org.begincode.core.mapper.ProjectStageMapper" >
+  <resultMap id="BaseResultMap" type="org.begincode.core.model.ProjectStage" >
     <id column="project_stage_id" property="projectStageId" jdbcType="INTEGER" />
     <result column="stage_name" property="stageName" jdbcType="VARCHAR" />
     <result column="stage_abstract" property="stageAbstract" jdbcType="VARCHAR" />
@@ -32,7 +32,7 @@
     delete from project_stage
     where project_stage_id = #{projectStageId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="org.core.model.ProjectStage" >
+  <insert id="insert" parameterType="org.begincode.core.model.ProjectStage" >
     insert into project_stage (project_stage_id, stage_name, stage_abstract, 
       video_url, create_datetime, begincode_project_id, 
       view_count, release_state, good_count, 
@@ -44,7 +44,7 @@
       #{badCount,jdbcType=INTEGER}, #{begincodeUserId,jdbcType=INTEGER}, #{nickname,jdbcType=VARCHAR}, 
       #{pic,jdbcType=VARCHAR}, #{projectName,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="org.core.model.ProjectStage" >
+  <insert id="insertSelective" parameterType="org.begincode.core.model.ProjectStage" >
     insert into project_stage
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="projectStageId != null" >
@@ -135,7 +135,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="org.core.model.ProjectStage" >
+  <update id="updateByPrimaryKeySelective" parameterType="org.begincode.core.model.ProjectStage" >
     update project_stage
     <set >
       <if test="stageName != null" >
@@ -180,7 +180,7 @@
     </set>
     where project_stage_id = #{projectStageId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="org.core.model.ProjectStage" >
+  <update id="updateByPrimaryKey" parameterType="org.begincode.core.model.ProjectStage" >
     update project_stage
     set stage_name = #{stageName,jdbcType=VARCHAR},
       stage_abstract = #{stageAbstract,jdbcType=VARCHAR},

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="org.core.mapper.ProjectStageCommentMapper" >
-  <resultMap id="BaseResultMap" type="org.core.model.ProjectStageComment" >
+<mapper namespace="org.begincode.core.mapper.ProjectStageCommentMapper" >
+  <resultMap id="BaseResultMap" type="org.begincode.core.model.ProjectStageComment" >
     <id column="project_stage_comment_id" property="projectStageCommentId" jdbcType="INTEGER" />
     <result column="create_datetime" property="createDatetime" jdbcType="TIMESTAMP" />
     <result column="comment_memo" property="commentMemo" jdbcType="VARCHAR" />
@@ -26,7 +26,7 @@
     delete from project_stage_comment
     where project_stage_comment_id = #{projectStageCommentId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="org.core.model.ProjectStageComment" >
+  <insert id="insert" parameterType="org.begincode.core.model.ProjectStageComment" >
     insert into project_stage_comment (project_stage_comment_id, create_datetime, 
       comment_memo, nickname, pic, 
       comment_status, order_number, begincode_user_id, 
@@ -36,7 +36,7 @@
       #{commentStatus,jdbcType=CHAR}, #{orderNumber,jdbcType=INTEGER}, #{begincodeUserId,jdbcType=INTEGER}, 
       #{projectStageId,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="org.core.model.ProjectStageComment" >
+  <insert id="insertSelective" parameterType="org.begincode.core.model.ProjectStageComment" >
     insert into project_stage_comment
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="projectStageCommentId != null" >
@@ -97,7 +97,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="org.core.model.ProjectStageComment" >
+  <update id="updateByPrimaryKeySelective" parameterType="org.begincode.core.model.ProjectStageComment" >
     update project_stage_comment
     <set >
       <if test="createDatetime != null" >
@@ -127,7 +127,7 @@
     </set>
     where project_stage_comment_id = #{projectStageCommentId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="org.core.model.ProjectStageComment" >
+  <update id="updateByPrimaryKey" parameterType="org.begincode.core.model.ProjectStageComment" >
     update project_stage_comment
     set create_datetime = #{createDatetime,jdbcType=TIMESTAMP},
       comment_memo = #{commentMemo,jdbcType=VARCHAR},

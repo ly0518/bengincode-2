@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="org.core.mapper.CodeTypeMapper" >
-  <resultMap id="BaseResultMap" type="org.core.model.CodeType" >
+<mapper namespace="org.begincode.core.mapper.CodeTypeMapper" >
+  <resultMap id="BaseResultMap" type="org.begincode.core.model.CodeType" >
     <id column="code_type_id" property="codeTypeId" jdbcType="INTEGER" />
     <result column="code_type_name" property="codeTypeName" jdbcType="VARCHAR" />
     <result column="delete_flag" property="deleteFlag" jdbcType="CHAR" />
@@ -19,13 +19,13 @@
     delete from code_type
     where code_type_id = #{codeTypeId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="org.core.model.CodeType" >
+  <insert id="insert" parameterType="org.begincode.core.model.CodeType" >
     insert into code_type (code_type_id, code_type_name, delete_flag
       )
     values (#{codeTypeId,jdbcType=INTEGER}, #{codeTypeName,jdbcType=VARCHAR}, #{deleteFlag,jdbcType=CHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="org.core.model.CodeType" >
+  <insert id="insertSelective" parameterType="org.begincode.core.model.CodeType" >
     insert into code_type
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="codeTypeId != null" >
@@ -50,7 +50,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="org.core.model.CodeType" >
+  <update id="updateByPrimaryKeySelective" parameterType="org.begincode.core.model.CodeType" >
     update code_type
     <set >
       <if test="codeTypeName != null" >
@@ -62,7 +62,7 @@
     </set>
     where code_type_id = #{codeTypeId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="org.core.model.CodeType" >
+  <update id="updateByPrimaryKey" parameterType="org.begincode.core.model.CodeType" >
     update code_type
     set code_type_name = #{codeTypeName,jdbcType=VARCHAR},
       delete_flag = #{deleteFlag,jdbcType=CHAR}

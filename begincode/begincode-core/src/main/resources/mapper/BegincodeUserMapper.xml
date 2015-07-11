@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="org.core.mapper.BegincodeUserMapper" >
-  <resultMap id="BaseResultMap" type="org.core.model.BegincodeUser" >
+<mapper namespace="org.begincode.core.mapper.BegincodeUserMapper" >
+  <resultMap id="BaseResultMap" type="org.begincode.core.model.BegincodeUser" >
     <id column="begincode_user_id" property="begincodeUserId" jdbcType="INTEGER" />
     <result column="login_name" property="loginName" jdbcType="VARCHAR" />
     <result column="pwd" property="pwd" jdbcType="VARCHAR" />
@@ -34,7 +34,7 @@
     delete from begincode_user
     where begincode_user_id = #{begincodeUserId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="org.core.model.BegincodeUser" >
+  <insert id="insert" parameterType="org.begincode.core.model.BegincodeUser" >
     insert into begincode_user (begincode_user_id, login_name, pwd, 
       nickname, cdate, sex, 
       tel_phone, email, receive_email, 
@@ -48,7 +48,7 @@
       #{course,jdbcType=VARCHAR}, #{openId,jdbcType=VARCHAR}, #{accessToken,jdbcType=VARCHAR}, 
       #{userSourceId,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="org.core.model.BegincodeUser" >
+  <insert id="insertSelective" parameterType="org.begincode.core.model.BegincodeUser" >
     insert into begincode_user
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="begincodeUserId != null" >
@@ -157,7 +157,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="org.core.model.BegincodeUser" >
+  <update id="updateByPrimaryKeySelective" parameterType="org.begincode.core.model.BegincodeUser" >
     update begincode_user
     <set >
       <if test="loginName != null" >
@@ -211,7 +211,7 @@
     </set>
     where begincode_user_id = #{begincodeUserId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="org.core.model.BegincodeUser" >
+  <update id="updateByPrimaryKey" parameterType="org.begincode.core.model.BegincodeUser" >
     update begincode_user
     set login_name = #{loginName,jdbcType=VARCHAR},
       pwd = #{pwd,jdbcType=VARCHAR},
