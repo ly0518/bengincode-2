@@ -2,7 +2,7 @@ package org.test;
 
 import java.sql.SQLException;
 
-import org.begincode.code.CodeService;
+import org.code.CodeService;
 import org.core.model.BegincodeCode;
 import org.junit.Test;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -15,11 +15,10 @@ public class TestCode{
 		CodeService codeService = (CodeService) ctx.getBean("codeService");
 		System.out.println(codeService);
 		BegincodeCode record = new BegincodeCode ();
-		record.setCodeInfo("1");
-		record.setBeginRowNum(0);
+		record.setCodeInfo("3");
+		record.setBeginRowNum(13);
 		record.setLimitNum(10);
 		codeService.selCodeForPaper(record);
-		codeService.selCodeCount(record);
 		ctx.close();
 	}
 	

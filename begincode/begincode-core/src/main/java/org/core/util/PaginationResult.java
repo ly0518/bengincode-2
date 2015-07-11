@@ -12,6 +12,9 @@ public class PaginationResult<T> implements Serializable {
 	private int pageIndex;// 当前第几页
 	private List<T> list; // 对象记录结果集
 
+	public PaginationResult(List<T> list){
+		this.list = list;
+	}
 	public int getPageSize() {
 		return pageSize;
 	}

@@ -1,10 +1,11 @@
-package org.begincode.code;
+package org.code;
 
 import java.util.List;
 
 import org.apache.log4j.Logger;
 import org.core.mapper.BegincodeCodeMapper;
 import org.core.model.BegincodeCode;
+import org.core.util.PaginationResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,17 +22,13 @@ public class CodeService
 	/**
 	 * @param record
 	 */
-	public void selCodeForPaper(BegincodeCode record){
+	public PaginationResult<BegincodeCode> selCodeForPaper(BegincodeCode record){
 		
 		List list = begincodeCodeMapper.selectBySelective(record);
-		System.out.println(list.size());
-	}
-	
-	/**
-	 * @param record
-	 */
-	public void selCodeCount(BegincodeCode record){
 		int count =  begincodeCodeMapper.selectBySelectiveCount(record);
-		System.out.println("总数："+count);
+		PaginationResult pageCodes = new PaginationResult(list);
+		pageCodes.setTotlePage(count);
+		return pageCodes;
 	}
+	 
 }

@@ -35,8 +35,8 @@
 		<div class="row">
 					<div class="col-md-8" >
 					<ul class="list-group panel panel-primary" style="margin-bottom:10px;">
-						<c:forEach items="${codes}" var="code">
-						
+						<c:forEach items="${codes.list}" var="code">
+							${code.codeInfo }
 						
 							  <li class="list-group-item">
 									<h3 style="color:#5bc0de"><a href="${ctx}/code/viewCode/${code.bc_code_id}.html"> ${code.code_info }</a></h3>

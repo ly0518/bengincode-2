@@ -8,6 +8,7 @@
         <param-value>
 			classpath*:applicationContext-core.xml,
 			classpath*:applicationContext-blog.xml,
+			classpath*:applicationContext-code.xml,
 			classpath*:applicationContext-course.xml
 		</param-value>
     </context-param>
