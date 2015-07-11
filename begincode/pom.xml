@@ -4,18 +4,18 @@
 	<groupId>com.begincode</groupId>
 	<artifactId>begincode</artifactId>
 	<packaging>pom</packaging>
-	<version>1.0.0-SNAPSHOT</version>
+	<version>1.0.1-SNAPSHOT</version>
 	<name>begincode</name>
 	<url>http://maven.apache.org</url>
 	<modules>
-		<module>begincode-core</module>
-		<module>begincode-blog</module>
-		<module>begincode-course</module>
 		<module>begincode-admin</module>
+		<module>begincode-blog</module>
+		<module>begincode-core</module>
+		<module>begincode-course</module>
+		<module>begincode-code</module>
 		<module>begincode-web</module>
 		<module>begincode-test</module>
 		<module>begincode-doc</module>
-		<module>begincode-code</module>
 	</modules>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

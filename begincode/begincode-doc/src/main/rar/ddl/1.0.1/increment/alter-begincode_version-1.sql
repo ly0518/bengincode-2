@@ -1,0 +1,1 @@
+ALTER TABLE `begincode_version` ADD COLUMN `create_datetime` DATETIME NULL AFTER `version`;
