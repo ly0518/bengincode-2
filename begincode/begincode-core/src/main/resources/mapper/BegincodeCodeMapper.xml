@@ -30,6 +30,69 @@
   <sql id="Blob_Column_List" >
     code_content
   </sql>
+  
+  <!-- 分页查询begin -->
+  <sql id="Selective_Option">
+  	  <if test="begincodeCodeCodeId != null" >
+        begincode_code_code_id,
+      </if>
+      <if test="codeInfo != null" >
+        code_info,
+      </if>
+      <if test="codeDownloadUrl != null" >
+        code_download_url,
+      </if>
+      <if test="prohibitionMessage != null" >
+        prohibition_message,
+      </if>
+      <if test="begincodeKeys != null" >
+        begincode_keys,
+      </if>
+      <if test="viewCount != null" >
+        view_count,
+      </if>
+      <if test="begincodeNavigationId != null" >
+        begincode_navigation_id,
+      </if>
+      <if test="bcNavigationId != null" >
+        bc_navigation_id,
+      </if>
+      <if test="createDatetime != null" >
+        create_datetime,
+      </if>
+      <if test="deleteFlag != null" >
+        delete_flag,
+      </if>
+      <if test="goodCount != null" >
+        good_count,
+      </if>
+      <if test="badCount != null" >
+        bad_count,
+      </if>
+      <if test="codeTypeId != null" >
+        code_type_id,
+      </if>
+      <if test="releaseState != null" >
+        release_state,
+      </if>
+      <if test="checkFlag != null" >
+        check_flag,
+      </if>
+      <if test="codeTypeName != null" >
+        code_type_name,
+      </if>
+  </sql>
+  <select id="selectBySelective" resultMap="BaseResultMap" parameterType="org.core.model.BegincodeCode" >
+  	select  
+  		 <include refid="Base_Column_List" />
+  	<trim prefix="WHERE" prefixOverrides="AND">
+   		<include refid="Selective_Option"></include>
+	</trim>
+  </select>
+  
+  <!-- 分页查询end -->
+  
+  
   <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
     select 'true' as QUERYID,
     <include refid="Base_Column_List" />
@@ -38,6 +101,8 @@
     from begincode_code
     where begincode_code_code_id = #{begincodeCodeCodeId,jdbcType=INTEGER}
   </select>
+  
+  
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from begincode_code
     where begincode_code_code_id = #{begincodeCodeCodeId,jdbcType=INTEGER}

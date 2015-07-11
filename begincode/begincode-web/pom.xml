@@ -6,7 +6,7 @@
 	<parent>
 		<groupId>com.begincode</groupId>
 		<artifactId>begincode</artifactId>
-		<version>${parent.version}</version>
+		<version>1.0.0-SNAPSHOT</version>
 	</parent>
 	<artifactId>begincode-web</artifactId>
 	<name>begincode-web</name>
@@ -40,12 +40,6 @@
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-webmvc</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>javax.servlet-api</artifactId>
-			<!-- 使用次以来范围的Maven依赖，对于测试和运行ClassPath有效，在运行时无效 -->
-			<scope>provided</scope>
 		</dependency>
 	</dependencies>
 </project>

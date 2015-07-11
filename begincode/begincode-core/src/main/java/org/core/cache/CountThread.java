@@ -1,9 +1,7 @@
 package org.core.cache;
 
-import java.util.logging.Logger;
+import org.apache.log4j.Logger;
 
-// 对应字段标识
-// 类型，查看CountCache 常量
 public class CountThread extends Thread {
 	Logger logger = Logger.getLogger(CountThread.class);
 	int codeId; 			// 对应字段标识
@@ -50,4 +48,3 @@ public class CountThread extends Thread {
 		}
 	}
 }
-

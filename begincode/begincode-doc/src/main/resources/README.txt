@@ -11,7 +11,7 @@
    必须要有全量脚本和增量脚本，增量脚本放到increment下，全量脚本放到版本文件夹下。
    保证全量脚本和增量脚本的执行效果一致。
 3、修改insert_db_version.sql中的版本号
-4、修改工程版本号，父pom的begincode.version属性
+4、修改工程版本号，父pom的version属性以及所有子工程的version
 5、提交代码
 
 数据库升级步骤
