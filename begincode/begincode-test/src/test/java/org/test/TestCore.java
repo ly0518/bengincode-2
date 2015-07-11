@@ -16,10 +16,11 @@ public class TestCore {
 
 	@Test
 	public void test() throws SQLException {
-		ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext("classpath*:applicationContext-core.xml");
+		ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext(
+				"classpath*:applicationContext-core.xml");
 		DataSource ds = (DataSource) ctx.getBean("dataSource");
 		System.out.println(ds.getConnection().getMetaData().getDatabaseMinorVersion());
-		BegincodeCodeMapper mapper = ctx.getBean("begincodeCodeMapper",BegincodeCodeMapper.class);
+		BegincodeCodeMapper mapper = ctx.getBean("begincodeCodeMapper", BegincodeCodeMapper.class);
 		BegincodeCode record = new BegincodeCode();
 		record.setCodeInfo("string");
 		record.setCodeContent("String");
@@ -30,15 +31,16 @@ public class TestCore {
 		record.setReleaseState("1");
 		record.setCheckFlag("1");
 		record.setCreateDatetime(new Date());
-		
 		mapper.insert(record);
-		
 		ctx.close();
-		
-		//======================点赞，差评，浏览次数 使用类似方法
-		new CountThread(CountCache.CODE_GOOD,2).start();				//加1方法
-		System.out.println("@@"+CountCache.getAndResetCodeGood(2));		//获取并重置
-		//======================点赞，差评，浏览次数 使用类似方法 结束
+	}
+
+	@Test
+	public void testCount() {
+		// ======================点赞，差评，浏览次数 使用类似方法
+		new CountThread(CountCache.CODE_GOOD, 2).start(); // 加1方法
+		System.out.println("@@" + CountCache.getAndResetCodeGood(2)); // 获取并重置
+		// ======================点赞，差评，浏览次数 使用类似方法 结束
 	}
 
 }
