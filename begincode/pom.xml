@@ -15,7 +15,7 @@
 		<module>begincode-web</module>
 		<module>begincode-test</module>
 		<module>begincode-doc</module>
-   		 <module>begincode-code</module>
+   		<module>begincode-code</module>
   </modules>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

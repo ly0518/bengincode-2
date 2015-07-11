@@ -16,4 +16,6 @@ public interface BegincodeCodeMapper {
     int updateByPrimaryKeyWithBLOBs(BegincodeCode record);
 
     int updateByPrimaryKey(BegincodeCode record);
+    
+    List<BegincodeCode> selectBySelective(BegincodeCode record);
 }

@@ -2,7 +2,7 @@ package org.core.model;
 
 import java.util.Date;
 
-public class BegincodeCode {
+public class BegincodeCode extends BaseModel{
     private Integer begincodeCodeCodeId;
 
     private String codeInfo;
@@ -16,8 +16,6 @@ public class BegincodeCode {
     private Integer viewCount;
 
     private Integer begincodeNavigationId;
-
-    private Integer bcNavigationId;
 
     private Date createDatetime;
 
@@ -91,14 +89,6 @@ public class BegincodeCode {
 
     public void setBegincodeNavigationId(Integer begincodeNavigationId) {
         this.begincodeNavigationId = begincodeNavigationId;
-    }
-
-    public Integer getBcNavigationId() {
-        return bcNavigationId;
-    }
-
-    public void setBcNavigationId(Integer bcNavigationId) {
-        this.bcNavigationId = bcNavigationId;
     }
 
     public Date getCreateDatetime() {

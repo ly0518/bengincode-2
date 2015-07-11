@@ -9,7 +9,6 @@
     <result column="begincode_keys" property="begincodeKeys" jdbcType="VARCHAR" />
     <result column="view_count" property="viewCount" jdbcType="INTEGER" />
     <result column="begincode_navigation_id" property="begincodeNavigationId" jdbcType="INTEGER" />
-    <result column="bc_navigation_id" property="bcNavigationId" jdbcType="INTEGER" />
     <result column="create_datetime" property="createDatetime" jdbcType="TIMESTAMP" />
     <result column="delete_flag" property="deleteFlag" jdbcType="CHAR" />
     <result column="good_count" property="goodCount" jdbcType="INTEGER" />
@@ -24,7 +23,7 @@
   </resultMap>
   <sql id="Base_Column_List" >
     begincode_code_code_id, code_info, code_download_url, prohibition_message, begincode_keys, 
-    view_count, begincode_navigation_id, bc_navigation_id, create_datetime, delete_flag, 
+    view_count, begincode_navigation_id,  create_datetime, delete_flag, 
     good_count, bad_count, code_type_id, release_state, check_flag, code_type_name
   </sql>
   <sql id="Blob_Column_List" >
@@ -33,54 +32,36 @@
   
   <!-- 分页查询begin -->
   <sql id="Selective_Option">
-  	  <if test="begincodeCodeCodeId != null" >
-        begincode_code_code_id,
-      </if>
       <if test="codeInfo != null" >
-        code_info,
-      </if>
-      <if test="codeDownloadUrl != null" >
-        code_download_url,
+        code_info like #{codeInfo}
       </if>
       <if test="prohibitionMessage != null" >
-        prohibition_message,
+        and prohibition_message = #{prohibitionMessage}
       </if>
       <if test="begincodeKeys != null" >
-        begincode_keys,
-      </if>
-      <if test="viewCount != null" >
-        view_count,
+        and begincode_keys like  #{begincodeKeys}
       </if>
       <if test="begincodeNavigationId != null" >
-        begincode_navigation_id,
-      </if>
-      <if test="bcNavigationId != null" >
-        bc_navigation_id,
-      </if>
-      <if test="createDatetime != null" >
-        create_datetime,
+        and  begincode_navigation_id = #{begincodeNavigationId}
       </if>
       <if test="deleteFlag != null" >
-        delete_flag,
-      </if>
-      <if test="goodCount != null" >
-        good_count,
-      </if>
-      <if test="badCount != null" >
-        bad_count,
+        and  delete_flag = #{deleteFlag}
       </if>
       <if test="codeTypeId != null" >
-        code_type_id,
+       and code_type_id = #{codeTypeId}
       </if>
       <if test="releaseState != null" >
-        release_state,
+       and  release_state = #{releaseState}
       </if>
       <if test="checkFlag != null" >
-        check_flag,
+       and check_flag = #{checkFlag}
       </if>
       <if test="codeTypeName != null" >
-        code_type_name,
+       and code_type_name  like #{codeTypeName}
       </if>
+  </sql>
+  <sql id="limitNum">
+  	  limit #{beginRowNum} ,#{limitNum}
   </sql>
   <select id="selectBySelective" resultMap="BaseResultMap" parameterType="org.core.model.BegincodeCode" >
   	select  
@@ -89,7 +70,13 @@
    		<include refid="Selective_Option"></include>
 	</trim>
   </select>
-  
+    <select id="selectBySelectiveCount" resultType="java.lang.Integer" parameterType="org.core.model.BegincodeCode" >
+  		select  count(0)
+  	<trim prefix="WHERE" prefixOverrides="AND">
+   		<include refid="Selective_Option"></include>
+	</trim>
+	<include refid="limitNum"></include>
+  </select>
   <!-- 分页查询end -->
   
   
@@ -110,14 +97,14 @@
   <insert id="insert" parameterType="org.core.model.BegincodeCode" >
     insert into begincode_code (begincode_code_code_id, code_info, code_download_url, 
       prohibition_message, begincode_keys, view_count, 
-      begincode_navigation_id, bc_navigation_id, 
+      begincode_navigation_id,  
       create_datetime, delete_flag, good_count, 
       bad_count, code_type_id, release_state, 
       check_flag, code_type_name, code_content
       )
     values (#{begincodeCodeCodeId,jdbcType=INTEGER}, #{codeInfo,jdbcType=VARCHAR}, #{codeDownloadUrl,jdbcType=VARCHAR}, 
       #{prohibitionMessage,jdbcType=CHAR}, #{begincodeKeys,jdbcType=VARCHAR}, #{viewCount,jdbcType=INTEGER}, 
-      #{begincodeNavigationId,jdbcType=INTEGER}, #{bcNavigationId,jdbcType=INTEGER}, 
+      #{begincodeNavigationId,jdbcType=INTEGER},  
       #{createDatetime,jdbcType=TIMESTAMP}, #{deleteFlag,jdbcType=CHAR}, #{goodCount,jdbcType=INTEGER}, 
       #{badCount,jdbcType=INTEGER}, #{codeTypeId,jdbcType=INTEGER}, #{releaseState,jdbcType=CHAR}, 
       #{checkFlag,jdbcType=CHAR}, #{codeTypeName,jdbcType=VARCHAR}, #{codeContent,jdbcType=LONGVARCHAR}
@@ -146,9 +133,6 @@
       </if>
       <if test="begincodeNavigationId != null" >
         begincode_navigation_id,
-      </if>
-      <if test="bcNavigationId != null" >
-        bc_navigation_id,
       </if>
       <if test="createDatetime != null" >
         create_datetime,
@@ -200,9 +184,6 @@
       <if test="begincodeNavigationId != null" >
         #{begincodeNavigationId,jdbcType=INTEGER},
       </if>
-      <if test="bcNavigationId != null" >
-        #{bcNavigationId,jdbcType=INTEGER},
-      </if>
       <if test="createDatetime != null" >
         #{createDatetime,jdbcType=TIMESTAMP},
       </if>
@@ -253,9 +234,6 @@
       <if test="begincodeNavigationId != null" >
         begincode_navigation_id = #{begincodeNavigationId,jdbcType=INTEGER},
       </if>
-      <if test="bcNavigationId != null" >
-        bc_navigation_id = #{bcNavigationId,jdbcType=INTEGER},
-      </if>
       <if test="createDatetime != null" >
         create_datetime = #{createDatetime,jdbcType=TIMESTAMP},
       </if>
@@ -294,7 +272,6 @@
       begincode_keys = #{begincodeKeys,jdbcType=VARCHAR},
       view_count = #{viewCount,jdbcType=INTEGER},
       begincode_navigation_id = #{begincodeNavigationId,jdbcType=INTEGER},
-      bc_navigation_id = #{bcNavigationId,jdbcType=INTEGER},
       create_datetime = #{createDatetime,jdbcType=TIMESTAMP},
       delete_flag = #{deleteFlag,jdbcType=CHAR},
       good_count = #{goodCount,jdbcType=INTEGER},
@@ -314,7 +291,6 @@
       begincode_keys = #{begincodeKeys,jdbcType=VARCHAR},
       view_count = #{viewCount,jdbcType=INTEGER},
       begincode_navigation_id = #{begincodeNavigationId,jdbcType=INTEGER},
-      bc_navigation_id = #{bcNavigationId,jdbcType=INTEGER},
       create_datetime = #{createDatetime,jdbcType=TIMESTAMP},
       delete_flag = #{deleteFlag,jdbcType=CHAR},
       good_count = #{goodCount,jdbcType=INTEGER},
