@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="org.core.mapper.UserSourceMapper" >
-  <resultMap id="BaseResultMap" type="org.core.model.UserSource" >
+<mapper namespace="org.begincode.core.mapper.UserSourceMapper" >
+  <resultMap id="BaseResultMap" type="org.begincode.core.model.UserSource" >
     <id column="user_source_id" property="userSourceId" jdbcType="INTEGER" />
     <result column="user_source_name" property="userSourceName" jdbcType="VARCHAR" />
     <result column="delete_flag" property="deleteFlag" jdbcType="CHAR" />
@@ -19,13 +19,13 @@
     delete from user_source
     where user_source_id = #{userSourceId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="org.core.model.UserSource" >
+  <insert id="insert" parameterType="org.begincode.core.model.UserSource" >
     insert into user_source (user_source_id, user_source_name, delete_flag
       )
     values (#{userSourceId,jdbcType=INTEGER}, #{userSourceName,jdbcType=VARCHAR}, #{deleteFlag,jdbcType=CHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="org.core.model.UserSource" >
+  <insert id="insertSelective" parameterType="org.begincode.core.model.UserSource" >
     insert into user_source
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="userSourceId != null" >
@@ -50,7 +50,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="org.core.model.UserSource" >
+  <update id="updateByPrimaryKeySelective" parameterType="org.begincode.core.model.UserSource" >
     update user_source
     <set >
       <if test="userSourceName != null" >
@@ -62,7 +62,7 @@
     </set>
     where user_source_id = #{userSourceId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="org.core.model.UserSource" >
+  <update id="updateByPrimaryKey" parameterType="org.begincode.core.model.UserSource" >
     update user_source
     set user_source_name = #{userSourceName,jdbcType=VARCHAR},
       delete_flag = #{deleteFlag,jdbcType=CHAR}

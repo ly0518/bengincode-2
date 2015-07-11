@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="org.core.mapper.BegincodeNavigationMapper" >
-  <resultMap id="BaseResultMap" type="org.core.model.BegincodeNavigation" >
+<mapper namespace="org.begincode.core.mapper.BegincodeNavigationMapper" >
+  <resultMap id="BaseResultMap" type="org.begincode.core.model.BegincodeNavigation" >
     <id column="begincode_navigation_id" property="begincodeNavigationId" jdbcType="INTEGER" />
     <result column="nav_name" property="navName" jdbcType="VARCHAR" />
     <result column="nav_url" property="navUrl" jdbcType="VARCHAR" />
@@ -23,7 +23,7 @@
     delete from begincode_navigation
     where begincode_navigation_id = #{begincodeNavigationId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="org.core.model.BegincodeNavigation" >
+  <insert id="insert" parameterType="org.begincode.core.model.BegincodeNavigation" >
     insert into begincode_navigation (begincode_navigation_id, nav_name, nav_url, 
       up_nav_id, nav_word, nav_memo, 
       delete_flag)
@@ -31,7 +31,7 @@
       #{upNavId,jdbcType=INTEGER}, #{navWord,jdbcType=VARCHAR}, #{navMemo,jdbcType=VARCHAR}, 
       #{deleteFlag,jdbcType=CHAR})
   </insert>
-  <insert id="insertSelective" parameterType="org.core.model.BegincodeNavigation" >
+  <insert id="insertSelective" parameterType="org.begincode.core.model.BegincodeNavigation" >
     insert into begincode_navigation
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="begincodeNavigationId != null" >
@@ -80,7 +80,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="org.core.model.BegincodeNavigation" >
+  <update id="updateByPrimaryKeySelective" parameterType="org.begincode.core.model.BegincodeNavigation" >
     update begincode_navigation
     <set >
       <if test="navName != null" >
@@ -104,7 +104,7 @@
     </set>
     where begincode_navigation_id = #{begincodeNavigationId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="org.core.model.BegincodeNavigation" >
+  <update id="updateByPrimaryKey" parameterType="org.begincode.core.model.BegincodeNavigation" >
     update begincode_navigation
     set nav_name = #{navName,jdbcType=VARCHAR},
       nav_url = #{navUrl,jdbcType=VARCHAR},

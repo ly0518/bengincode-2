@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="org.core.mapper.CourseCommentMapper" >
-  <resultMap id="BaseResultMap" type="org.core.model.CourseComment" >
+<mapper namespace="org.begincode.core.mapper.CourseCommentMapper" >
+  <resultMap id="BaseResultMap" type="org.begincode.core.model.CourseComment" >
     <id column="course_comment_id" property="courseCommentId" jdbcType="INTEGER" />
     <result column="course_comment_content" property="courseCommentContent" jdbcType="VARCHAR" />
     <result column="create_datatime" property="createDatatime" jdbcType="TIMESTAMP" />
@@ -26,7 +26,7 @@
     delete from course_comment
     where course_comment_id = #{courseCommentId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="org.core.model.CourseComment" >
+  <insert id="insert" parameterType="org.begincode.core.model.CourseComment" >
     insert into course_comment (course_comment_id, course_comment_content, 
       create_datatime, begincode_user_id, nickname, 
       pic, comment_status, video_course_chapter_id, 
@@ -36,7 +36,7 @@
       #{pic,jdbcType=VARCHAR}, #{commentStatus,jdbcType=CHAR}, #{videoCourseChapterId,jdbcType=INTEGER}, 
       #{checkFlag,jdbcType=CHAR})
   </insert>
-  <insert id="insertSelective" parameterType="org.core.model.CourseComment" >
+  <insert id="insertSelective" parameterType="org.begincode.core.model.CourseComment" >
     insert into course_comment
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="courseCommentId != null" >
@@ -97,7 +97,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="org.core.model.CourseComment" >
+  <update id="updateByPrimaryKeySelective" parameterType="org.begincode.core.model.CourseComment" >
     update course_comment
     <set >
       <if test="courseCommentContent != null" >
@@ -127,7 +127,7 @@
     </set>
     where course_comment_id = #{courseCommentId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="org.core.model.CourseComment" >
+  <update id="updateByPrimaryKey" parameterType="org.begincode.core.model.CourseComment" >
     update course_comment
     set course_comment_content = #{courseCommentContent,jdbcType=VARCHAR},
       create_datatime = #{createDatatime,jdbcType=TIMESTAMP},

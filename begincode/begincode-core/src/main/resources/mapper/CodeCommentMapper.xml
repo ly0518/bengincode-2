@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="org.core.mapper.CodeCommentMapper" >
-  <resultMap id="BaseResultMap" type="org.core.model.CodeComment" >
+<mapper namespace="org.begincode.core.mapper.CodeCommentMapper" >
+  <resultMap id="BaseResultMap" type="org.begincode.core.model.CodeComment" >
     <id column="code_comment_id" property="codeCommentId" jdbcType="INTEGER" />
     <result column="code_comment_content" property="codeCommentContent" jdbcType="VARCHAR" />
     <result column="create_datatime" property="createDatatime" jdbcType="TIMESTAMP" />
@@ -26,7 +26,7 @@
     delete from code_comment
     where code_comment_id = #{codeCommentId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="org.core.model.CodeComment" >
+  <insert id="insert" parameterType="org.begincode.core.model.CodeComment" >
     insert into code_comment (code_comment_id, code_comment_content, 
       create_datatime, begincode_user_id, nickname, 
       pic, comment_status, begincode_code_id, 
@@ -36,7 +36,7 @@
       #{pic,jdbcType=VARCHAR}, #{commentStatus,jdbcType=CHAR}, #{begincodeCodeId,jdbcType=INTEGER}, 
       #{orderNumber,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="org.core.model.CodeComment" >
+  <insert id="insertSelective" parameterType="org.begincode.core.model.CodeComment" >
     insert into code_comment
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="codeCommentId != null" >
@@ -97,7 +97,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="org.core.model.CodeComment" >
+  <update id="updateByPrimaryKeySelective" parameterType="org.begincode.core.model.CodeComment" >
     update code_comment
     <set >
       <if test="codeCommentContent != null" >
@@ -127,7 +127,7 @@
     </set>
     where code_comment_id = #{codeCommentId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="org.core.model.CodeComment" >
+  <update id="updateByPrimaryKey" parameterType="org.begincode.core.model.CodeComment" >
     update code_comment
     set code_comment_content = #{codeCommentContent,jdbcType=VARCHAR},
       create_datatime = #{createDatatime,jdbcType=TIMESTAMP},

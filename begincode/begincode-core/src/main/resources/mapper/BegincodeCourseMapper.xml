@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="org.core.mapper.BegincodeCourseMapper" >
-  <resultMap id="BaseResultMap" type="org.core.model.BegincodeCourse" >
+<mapper namespace="org.begincode.core.mapper.BegincodeCourseMapper" >
+  <resultMap id="BaseResultMap" type="org.begincode.core.model.BegincodeCourse" >
     <id column="begincode_course_id" property="begincodeCourseId" jdbcType="INTEGER" />
     <result column="course_name" property="courseName" jdbcType="VARCHAR" />
     <result column="course_pic_url" property="coursePicUrl" jdbcType="VARCHAR" />
@@ -32,7 +32,7 @@
     delete from begincode_course
     where begincode_course_id = #{begincodeCourseId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="org.core.model.BegincodeCourse" >
+  <insert id="insert" parameterType="org.begincode.core.model.BegincodeCourse" >
     insert into begincode_course (begincode_course_id, course_name, course_pic_url, 
       introduction, recommend, course_label_id, 
       attention_count, course_type_id, begincode_user_id, 
@@ -44,7 +44,7 @@
       #{producerIntroduction,jdbcType=VARCHAR}, #{completionStatus,jdbcType=CHAR}, #{begincodeNavigationId,jdbcType=INTEGER}, 
       #{deleteFlag,jdbcType=CHAR}, #{courseTypeName,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="org.core.model.BegincodeCourse" >
+  <insert id="insertSelective" parameterType="org.begincode.core.model.BegincodeCourse" >
     insert into begincode_course
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="begincodeCourseId != null" >
@@ -135,7 +135,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="org.core.model.BegincodeCourse" >
+  <update id="updateByPrimaryKeySelective" parameterType="org.begincode.core.model.BegincodeCourse" >
     update begincode_course
     <set >
       <if test="courseName != null" >
@@ -180,7 +180,7 @@
     </set>
     where begincode_course_id = #{begincodeCourseId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="org.core.model.BegincodeCourse" >
+  <update id="updateByPrimaryKey" parameterType="org.begincode.core.model.BegincodeCourse" >
     update begincode_course
     set course_name = #{courseName,jdbcType=VARCHAR},
       course_pic_url = #{coursePicUrl,jdbcType=VARCHAR},

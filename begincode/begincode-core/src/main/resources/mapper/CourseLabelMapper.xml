@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="org.core.mapper.CourseLabelMapper" >
-  <resultMap id="BaseResultMap" type="org.core.model.CourseLabel" >
+<mapper namespace="org.begincode.core.mapper.CourseLabelMapper" >
+  <resultMap id="BaseResultMap" type="org.begincode.core.model.CourseLabel" >
     <id column="course_label_id" property="courseLabelId" jdbcType="INTEGER" />
     <result column="course_type_name" property="courseTypeName" jdbcType="VARCHAR" />
     <result column="delete_flag" property="deleteFlag" jdbcType="CHAR" />
@@ -20,13 +20,13 @@
     delete from course_label
     where course_label_id = #{courseLabelId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="org.core.model.CourseLabel" >
+  <insert id="insert" parameterType="org.begincode.core.model.CourseLabel" >
     insert into course_label (course_label_id, course_type_name, delete_flag, 
       label_course_count)
     values (#{courseLabelId,jdbcType=INTEGER}, #{courseTypeName,jdbcType=VARCHAR}, #{deleteFlag,jdbcType=CHAR}, 
       #{labelCourseCount,jdbcType=INTEGER}
   </insert>
-  <insert id="insertSelective" parameterType="org.core.model.CourseLabel" >
+  <insert id="insertSelective" parameterType="org.begincode.core.model.CourseLabel" >
     insert into course_label
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="courseLabelId != null" >
@@ -59,7 +59,7 @@
      
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="org.core.model.CourseLabel" >
+  <update id="updateByPrimaryKeySelective" parameterType="org.begincode.core.model.CourseLabel" >
     update course_label
     <set >
       <if test="courseTypeName != null" >
@@ -75,7 +75,7 @@
     </set>
     where course_label_id = #{courseLabelId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="org.core.model.CourseLabel" >
+  <update id="updateByPrimaryKey" parameterType="org.begincode.core.model.CourseLabel" >
     update course_label
     set course_type_name = #{courseTypeName,jdbcType=VARCHAR},
       delete_flag = #{deleteFlag,jdbcType=CHAR},

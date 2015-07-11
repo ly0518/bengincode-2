@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="org.core.mapper.VideoCourseChapterMapper" >
-  <resultMap id="BaseResultMap" type="org.core.model.VideoCourseChapter" >
+<mapper namespace="org.begincode.core.mapper.VideoCourseChapterMapper" >
+  <resultMap id="BaseResultMap" type="org.begincode.core.model.VideoCourseChapter" >
     <id column="video_course_chapter_id" property="videoCourseChapterId" jdbcType="INTEGER" />
     <result column="video_course_chapter_memo" property="videoCourseChapterMemo" jdbcType="VARCHAR" />
     <result column="chapter_video_url" property="chapterVideoUrl" jdbcType="VARCHAR" />
@@ -32,7 +32,7 @@
     delete from video_course_chapter
     where video_course_chapter_id = #{videoCourseChapterId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="org.core.model.VideoCourseChapter" >
+  <insert id="insert" parameterType="org.begincode.core.model.VideoCourseChapter" >
     insert into video_course_chapter (video_course_chapter_id, video_course_chapter_memo, 
       chapter_video_url, view_count, video_course_chapter_order, 
       begincode_keys, prohibition_message, begincode_course_id, 
@@ -46,7 +46,7 @@
       #{chapterCodeDownUrl,jdbcType=VARCHAR}, #{releaseState,jdbcType=CHAR}, #{courseName,jdbcType=VARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="org.core.model.VideoCourseChapter" >
+  <insert id="insertSelective" parameterType="org.begincode.core.model.VideoCourseChapter" >
     insert into video_course_chapter
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="videoCourseChapterId != null" >
@@ -137,7 +137,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="org.core.model.VideoCourseChapter" >
+  <update id="updateByPrimaryKeySelective" parameterType="org.begincode.core.model.VideoCourseChapter" >
     update video_course_chapter
     <set >
       <if test="videoCourseChapterMemo != null" >
@@ -182,7 +182,7 @@
     </set>
     where video_course_chapter_id = #{videoCourseChapterId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="org.core.model.VideoCourseChapter" >
+  <update id="updateByPrimaryKey" parameterType="org.begincode.core.model.VideoCourseChapter" >
     update video_course_chapter
     set video_course_chapter_memo = #{videoCourseChapterMemo,jdbcType=VARCHAR},
       chapter_video_url = #{chapterVideoUrl,jdbcType=VARCHAR},

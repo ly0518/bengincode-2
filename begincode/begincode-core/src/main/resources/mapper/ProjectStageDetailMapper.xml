@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="org.core.mapper.ProjectStageDetailMapper" >
-  <resultMap id="BaseResultMap" type="org.core.model.ProjectStageDetail" >
+<mapper namespace="org.begincode.core.mapper.ProjectStageDetailMapper" >
+  <resultMap id="BaseResultMap" type="org.begincode.core.model.ProjectStageDetail" >
     <id column="project_stage_content_id" property="projectStageContentId" jdbcType="INTEGER" />
     <result column="project_stage_id" property="projectStageId" jdbcType="INTEGER" />
   </resultMap>
-  <resultMap id="ResultMapWithBLOBs" type="org.core.model.ProjectStageDetail" extends="BaseResultMap" >
+  <resultMap id="ResultMapWithBLOBs" type="org.begincode.core.model.ProjectStageDetail" extends="BaseResultMap" >
     <result column="project_stage_content" property="projectStageContent" jdbcType="LONGVARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
@@ -26,13 +26,13 @@
     delete from project_stage_detail
     where project_stage_content_id = #{projectStageContentId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="org.core.model.ProjectStageDetail" >
+  <insert id="insert" parameterType="org.begincode.core.model.ProjectStageDetail" >
     insert into project_stage_detail (project_stage_content_id, project_stage_id, 
       project_stage_content)
     values (#{projectStageContentId,jdbcType=INTEGER}, #{projectStageId,jdbcType=INTEGER}, 
       #{projectStageContent,jdbcType=LONGVARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="org.core.model.ProjectStageDetail" >
+  <insert id="insertSelective" parameterType="org.begincode.core.model.ProjectStageDetail" >
     insert into project_stage_detail
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="projectStageContentId != null" >
@@ -57,7 +57,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="org.core.model.ProjectStageDetail" >
+  <update id="updateByPrimaryKeySelective" parameterType="org.begincode.core.model.ProjectStageDetail" >
     update project_stage_detail
     <set >
       <if test="projectStageId != null" >
@@ -69,13 +69,13 @@
     </set>
     where project_stage_content_id = #{projectStageContentId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKeyWithBLOBs" parameterType="org.core.model.ProjectStageDetail" >
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="org.begincode.core.model.ProjectStageDetail" >
     update project_stage_detail
     set project_stage_id = #{projectStageId,jdbcType=INTEGER},
       project_stage_content = #{projectStageContent,jdbcType=LONGVARCHAR}
     where project_stage_content_id = #{projectStageContentId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="org.core.model.ProjectStageDetail" >
+  <update id="updateByPrimaryKey" parameterType="org.begincode.core.model.ProjectStageDetail" >
     update project_stage_detail
     set project_stage_id = #{projectStageId,jdbcType=INTEGER}
     where project_stage_content_id = #{projectStageContentId,jdbcType=INTEGER}
