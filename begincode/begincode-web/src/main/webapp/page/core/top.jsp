@@ -27,9 +27,7 @@
 					<li class="dropdown">
 					<a href="#" class="dropdown-toggle"	data-toggle="dropdown">基础教程<span class="caret"></span></a>
 						<ul class="dropdown-menu" role="menu">
-							<li><a href="${ctx}/course/viewChapterByCourse/1.html">JAVA-Web开发</a></li>
-							<li><a href="${ctx}/course/viewChapterByCourse/3.html">SQL基础</a></li>
-							<li><a href="${ctx}/course/viewChapterByCourse/2.html">MySQL数据库</a></li>
+							<li><a href="${ctx}/page/course/course_list.jsp">视频教程</a></li>
 						</ul></li>
 					<li class="dropdown">
 					<a href="#" class="dropdown-toggle"	data-toggle="dropdown">代码分享<span class="caret"></span></a>
