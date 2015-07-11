@@ -16,8 +16,7 @@ public class TestCore {
 
 	@Test
 	public void test() throws SQLException {
-		ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext(
-				"classpath*:applicationContext-core.xml");
+		ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext("classpath*:applicationContext-core.xml");
 		DataSource ds = (DataSource) ctx.getBean("dataSource");
 		System.out.println(ds.getConnection().getMetaData().getDatabaseMinorVersion());
 		BegincodeCodeMapper mapper = ctx.getBean("begincodeCodeMapper", BegincodeCodeMapper.class);

@@ -11,7 +11,7 @@ public class TestCode{
 
 	@Test
 	public void test() throws SQLException {
-		ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext("classpath*:applicationContext*.xml");
+		ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext("classpath*:applicationContext-code.xml");
 		CodeService codeService = (CodeService) ctx.getBean("codeService");
 		System.out.println(codeService);
 		BegincodeCode record = new BegincodeCode ();
