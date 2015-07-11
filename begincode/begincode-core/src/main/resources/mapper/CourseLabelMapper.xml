@@ -6,10 +6,9 @@
     <result column="course_type_name" property="courseTypeName" jdbcType="VARCHAR" />
     <result column="delete_flag" property="deleteFlag" jdbcType="CHAR" />
     <result column="label_course_count" property="labelCourseCount" jdbcType="INTEGER" />
-    <result column="delete_flag_1" property="deleteFlag1" jdbcType="CHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    course_label_id, course_type_name, delete_flag, label_course_count, delete_flag_1
+    course_label_id, course_type_name, delete_flag, label_course_count
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 'true' as QUERYID,
@@ -23,9 +22,9 @@
   </delete>
   <insert id="insert" parameterType="org.core.model.CourseLabel" >
     insert into course_label (course_label_id, course_type_name, delete_flag, 
-      label_course_count, delete_flag_1)
+      label_course_count)
     values (#{courseLabelId,jdbcType=INTEGER}, #{courseTypeName,jdbcType=VARCHAR}, #{deleteFlag,jdbcType=CHAR}, 
-      #{labelCourseCount,jdbcType=INTEGER}, #{deleteFlag1,jdbcType=CHAR})
+      #{labelCourseCount,jdbcType=INTEGER}
   </insert>
   <insert id="insertSelective" parameterType="org.core.model.CourseLabel" >
     insert into course_label
@@ -42,9 +41,7 @@
       <if test="labelCourseCount != null" >
         label_course_count,
       </if>
-      <if test="deleteFlag1 != null" >
-        delete_flag_1,
-      </if>
+     
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="courseLabelId != null" >
@@ -59,9 +56,7 @@
       <if test="labelCourseCount != null" >
         #{labelCourseCount,jdbcType=INTEGER},
       </if>
-      <if test="deleteFlag1 != null" >
-        #{deleteFlag1,jdbcType=CHAR},
-      </if>
+     
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="org.core.model.CourseLabel" >
@@ -76,9 +71,7 @@
       <if test="labelCourseCount != null" >
         label_course_count = #{labelCourseCount,jdbcType=INTEGER},
       </if>
-      <if test="deleteFlag1 != null" >
-        delete_flag_1 = #{deleteFlag1,jdbcType=CHAR},
-      </if>
+    
     </set>
     where course_label_id = #{courseLabelId,jdbcType=INTEGER}
   </update>
@@ -87,7 +80,6 @@
     set course_type_name = #{courseTypeName,jdbcType=VARCHAR},
       delete_flag = #{deleteFlag,jdbcType=CHAR},
       label_course_count = #{labelCourseCount,jdbcType=INTEGER},
-      delete_flag_1 = #{deleteFlag1,jdbcType=CHAR}
     where course_label_id = #{courseLabelId,jdbcType=INTEGER}
   </update>
 </mapper>

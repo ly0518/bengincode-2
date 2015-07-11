@@ -1,4 +1,4 @@
-package org.code;
+package org.begincode.code;
 
 import java.util.List;
 

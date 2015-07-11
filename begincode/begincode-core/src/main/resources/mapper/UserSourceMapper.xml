@@ -4,10 +4,10 @@
   <resultMap id="BaseResultMap" type="org.core.model.UserSource" >
     <id column="user_source_id" property="userSourceId" jdbcType="INTEGER" />
     <result column="user_source_name" property="userSourceName" jdbcType="VARCHAR" />
-    <result column="delete_flag_1" property="deleteFlag1" jdbcType="CHAR" />
+    <result column="delete_flag" property="deleteFlag" jdbcType="CHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    user_source_id, user_source_name, delete_flag_1
+    user_source_id, user_source_name, delete_flag
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 'true' as QUERYID,
@@ -20,9 +20,9 @@
     where user_source_id = #{userSourceId,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="org.core.model.UserSource" >
-    insert into user_source (user_source_id, user_source_name, delete_flag_1
+    insert into user_source (user_source_id, user_source_name, delete_flag
       )
-    values (#{userSourceId,jdbcType=INTEGER}, #{userSourceName,jdbcType=VARCHAR}, #{deleteFlag1,jdbcType=CHAR}
+    values (#{userSourceId,jdbcType=INTEGER}, #{userSourceName,jdbcType=VARCHAR}, #{deleteFlag,jdbcType=CHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="org.core.model.UserSource" >
@@ -34,8 +34,8 @@
       <if test="userSourceName != null" >
         user_source_name,
       </if>
-      <if test="deleteFlag1 != null" >
-        delete_flag_1,
+      <if test="deleteFlag != null" >
+        delete_flag,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
@@ -45,8 +45,8 @@
       <if test="userSourceName != null" >
         #{userSourceName,jdbcType=VARCHAR},
       </if>
-      <if test="deleteFlag1 != null" >
-        #{deleteFlag1,jdbcType=CHAR},
+      <if test="deleteFlag != null" >
+        #{deleteFlag,jdbcType=CHAR},
       </if>
     </trim>
   </insert>
@@ -56,8 +56,8 @@
       <if test="userSourceName != null" >
         user_source_name = #{userSourceName,jdbcType=VARCHAR},
       </if>
-      <if test="deleteFlag1 != null" >
-        delete_flag_1 = #{deleteFlag1,jdbcType=CHAR},
+      <if test="deleteFlag != null" >
+        delete_flag = #{deleteFlag,jdbcType=CHAR},
       </if>
     </set>
     where user_source_id = #{userSourceId,jdbcType=INTEGER}
@@ -65,7 +65,7 @@
   <update id="updateByPrimaryKey" parameterType="org.core.model.UserSource" >
     update user_source
     set user_source_name = #{userSourceName,jdbcType=VARCHAR},
-      delete_flag_1 = #{deleteFlag1,jdbcType=CHAR}
+      delete_flag = #{deleteFlag,jdbcType=CHAR}
     where user_source_id = #{userSourceId,jdbcType=INTEGER}
   </update>
 </mapper>

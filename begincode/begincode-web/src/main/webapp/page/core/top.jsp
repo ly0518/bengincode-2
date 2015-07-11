@@ -34,7 +34,7 @@
 					<li class="dropdown">
 					<a href="#" class="dropdown-toggle"	data-toggle="dropdown">代码分享<span class="caret"></span></a>
 						<ul class="dropdown-menu" role="menu">
-							<li><a href="${ctx}/code/codeList/4.html">JavaWeb代码</a></li>
+							<li><a href="${ctx}/code/getAllCodes.html">JavaWeb代码</a></li>
 							<!-- <li><a href="#">Php方向</a></li>
 							<li><a href="#">.Net</a></li>
 							 -->

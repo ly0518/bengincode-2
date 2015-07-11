@@ -12,7 +12,7 @@
     <result column="begincode_course_id" property="begincodeCourseId" jdbcType="INTEGER" />
     <result column="good_count" property="goodCount" jdbcType="INTEGER" />
     <result column="bad_count" property="badCount" jdbcType="INTEGER" />
-    <result column="delete_flag_1" property="deleteFlag1" jdbcType="CHAR" />
+    <result column="delete_flag" property="deleteFlag" jdbcType="CHAR" />
     <result column="chapter_code_down_url" property="chapterCodeDownUrl" jdbcType="VARCHAR" />
     <result column="release_state" property="releaseState" jdbcType="CHAR" />
     <result column="course_name" property="courseName" jdbcType="VARCHAR" />
@@ -20,7 +20,7 @@
   <sql id="Base_Column_List" >
     video_course_chapter_id, video_course_chapter_memo, chapter_video_url, view_count, 
     video_course_chapter_order, begincode_keys, prohibition_message, begincode_course_id, 
-    good_count, bad_count, delete_flag_1, chapter_code_down_url, release_state, course_name
+    good_count, bad_count, delete_flag, chapter_code_down_url, release_state, course_name
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 'true' as QUERYID,
@@ -36,13 +36,13 @@
     insert into video_course_chapter (video_course_chapter_id, video_course_chapter_memo, 
       chapter_video_url, view_count, video_course_chapter_order, 
       begincode_keys, prohibition_message, begincode_course_id, 
-      good_count, bad_count, delete_flag_1, 
+      good_count, bad_count, delete_flag, 
       chapter_code_down_url, release_state, course_name
       )
     values (#{videoCourseChapterId,jdbcType=INTEGER}, #{videoCourseChapterMemo,jdbcType=VARCHAR}, 
       #{chapterVideoUrl,jdbcType=VARCHAR}, #{viewCount,jdbcType=INTEGER}, #{videoCourseChapterOrder,jdbcType=VARCHAR}, 
       #{begincodeKeys,jdbcType=VARCHAR}, #{prohibitionMessage,jdbcType=CHAR}, #{begincodeCourseId,jdbcType=INTEGER}, 
-      #{goodCount,jdbcType=INTEGER}, #{badCount,jdbcType=INTEGER}, #{deleteFlag1,jdbcType=CHAR}, 
+      #{goodCount,jdbcType=INTEGER}, #{badCount,jdbcType=INTEGER}, #{deleteFlag,jdbcType=CHAR}, 
       #{chapterCodeDownUrl,jdbcType=VARCHAR}, #{releaseState,jdbcType=CHAR}, #{courseName,jdbcType=VARCHAR}
       )
   </insert>
@@ -79,8 +79,8 @@
       <if test="badCount != null" >
         bad_count,
       </if>
-      <if test="deleteFlag1 != null" >
-        delete_flag_1,
+      <if test="deleteFlag != null" >
+        delete_flag,
       </if>
       <if test="chapterCodeDownUrl != null" >
         chapter_code_down_url,
@@ -123,8 +123,8 @@
       <if test="badCount != null" >
         #{badCount,jdbcType=INTEGER},
       </if>
-      <if test="deleteFlag1 != null" >
-        #{deleteFlag1,jdbcType=CHAR},
+      <if test="deleteFlag != null" >
+        #{deleteFlag,jdbcType=CHAR},
       </if>
       <if test="chapterCodeDownUrl != null" >
         #{chapterCodeDownUrl,jdbcType=VARCHAR},
@@ -167,8 +167,8 @@
       <if test="badCount != null" >
         bad_count = #{badCount,jdbcType=INTEGER},
       </if>
-      <if test="deleteFlag1 != null" >
-        delete_flag_1 = #{deleteFlag1,jdbcType=CHAR},
+      <if test="deleteFlag != null" >
+        delete_flag = #{deleteFlag,jdbcType=CHAR},
       </if>
       <if test="chapterCodeDownUrl != null" >
         chapter_code_down_url = #{chapterCodeDownUrl,jdbcType=VARCHAR},
@@ -193,7 +193,7 @@
       begincode_course_id = #{begincodeCourseId,jdbcType=INTEGER},
       good_count = #{goodCount,jdbcType=INTEGER},
       bad_count = #{badCount,jdbcType=INTEGER},
-      delete_flag_1 = #{deleteFlag1,jdbcType=CHAR},
+      delete_flag = #{deleteFlag,jdbcType=CHAR},
       chapter_code_down_url = #{chapterCodeDownUrl,jdbcType=VARCHAR},
       release_state = #{releaseState,jdbcType=CHAR},
       course_name = #{courseName,jdbcType=VARCHAR}

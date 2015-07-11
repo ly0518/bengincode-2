@@ -36,12 +36,12 @@
 					<div class="col-md-8" >
 					<ul class="list-group panel panel-primary" style="margin-bottom:10px;">
 						<c:forEach items="${codes.list}" var="code">
-							${code.codeInfo }
+							
 						
 							  <li class="list-group-item">
-									<h3 style="color:#5bc0de"><a href="${ctx}/code/viewCode/${code.bc_code_id}.html"> ${code.code_info }</a></h3>
-									<p><a style="TEXT-DECORATION:none;color:#000" href="${ctx}/code/viewCode/${code.bc_code_id}.html">
-   									 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${code.code_abstract} 
+									<h3 style="color:#5bc0de"><a href="${ctx}/code/viewCode/${code.begincodeCodeId }.html"> ${code.codeInfo }</a></h3>
+									<p><a style="TEXT-DECORATION:none;color:#000" href="${ctx}/code/viewCode/${code.begincodeCodeId}.html">
+   									 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${code.codeInfo} 
    									 </a></p>
 									<div class="row">
 										<div  class="col-md-6">
@@ -49,7 +49,7 @@
 									
 									</div>
 										<div  class="col-md-6">
-										 <p style="text-align: right;"> <b>作者</b>：${code.writer} &nbsp;|&nbsp;<b>阅读</b>(${code.view_count})&nbsp;
+										 <p style="text-align: right;"> <b>作者</b>：${code.codeInfo} &nbsp;|&nbsp;<b>阅读</b>(${code.viewCount})&nbsp;
 									
 									</div>
 									</div>
@@ -58,47 +58,14 @@
 							  
 							 
 						</c:forEach>
-						  <li class="list-group-item">
-									<h3 style="color:#5bc0de"><a href="${ctx}/code/viewCode/${code.bc_code_id}.html"> 代码名称</a></h3>
-									<p><a style="TEXT-DECORATION:none;color:#000" href="${ctx}/code/viewCode/${code.bc_code_id}.html">
-   									 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${code.code_abstract}代码简介
-   									 </a></p>
-									<div class="row">
-										<div  class="col-md-6">
-										 <p style="text-align: left;"></p>
-									
-									</div>
-										<div  class="col-md-6">
-										 <p style="text-align: right;"> <b>作者</b>：${code.writer} &nbsp;|&nbsp;<b>阅读</b>(${code.view_count})&nbsp;
-									
-									</div>
-									</div>
-									
-							  </li>
-							   <li class="list-group-item">
-									<h3 style="color:#5bc0de"><a href="${ctx}/code/viewCode/${code.bc_code_id}.html"> 代码名称</a></h3>
-									<p><a style="TEXT-DECORATION:none;color:#000" href="${ctx}/code/viewCode/${code.bc_code_id}.html">
-   									 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${code.code_abstract}代码简介
-   									 </a></p>
-									<div class="row">
-										<div  class="col-md-6">
-										 <p style="text-align: left;"></p>
-									
-									</div>
-										<div  class="col-md-6">
-										 <p style="text-align: right;"> <b>作者</b>：${code.writer} &nbsp;|&nbsp;<b>阅读</b>(${code.view_count})&nbsp;
-									
-									</div>
-									</div>
-									
-							  </li>
+						 
 							 </ul>
 							  
 							
 						    
 					</div>
 					<div class="col-md-4">
-							 
+						<!--  
 						 <div class="list-group">
 							<a href="#" class="list-group-item active"> 最新资源 </a> 
 							<c:forEach items="${books}" var="book" >
@@ -112,6 +79,7 @@
 								<a href="${ctx}/project/viewProStage/${projectStage.project_stage_id}.html"	class="list-group-item">${projectStage.stage_name}</a> 
 							</c:forEach>
 						</div>
+						 -->	
 					</div>
 			 </div>
 

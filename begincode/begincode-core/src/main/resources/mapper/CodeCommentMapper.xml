@@ -9,12 +9,12 @@
     <result column="nickname" property="nickname" jdbcType="VARCHAR" />
     <result column="pic" property="pic" jdbcType="VARCHAR" />
     <result column="comment_status" property="commentStatus" jdbcType="CHAR" />
-    <result column="begincode_code_code_id" property="begincodeCodeCodeId" jdbcType="INTEGER" />
+    <result column="begincode_code_id" property="begincodeCodeId" jdbcType="INTEGER" />
     <result column="order_number" property="orderNumber" jdbcType="INTEGER" />
   </resultMap>
   <sql id="Base_Column_List" >
     code_comment_id, code_comment_content, create_datatime, begincode_user_id, nickname, 
-    pic, comment_status, begincode_code_code_id, order_number
+    pic, comment_status, begincode_code_id, order_number
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 'true' as QUERYID,
@@ -29,11 +29,11 @@
   <insert id="insert" parameterType="org.core.model.CodeComment" >
     insert into code_comment (code_comment_id, code_comment_content, 
       create_datatime, begincode_user_id, nickname, 
-      pic, comment_status, begincode_code_code_id, 
+      pic, comment_status, begincode_code_id, 
       order_number)
     values (#{codeCommentId,jdbcType=INTEGER}, #{codeCommentContent,jdbcType=VARCHAR}, 
       #{createDatatime,jdbcType=TIMESTAMP}, #{begincodeUserId,jdbcType=INTEGER}, #{nickname,jdbcType=VARCHAR}, 
-      #{pic,jdbcType=VARCHAR}, #{commentStatus,jdbcType=CHAR}, #{begincodeCodeCodeId,jdbcType=INTEGER}, 
+      #{pic,jdbcType=VARCHAR}, #{commentStatus,jdbcType=CHAR}, #{begincodeCodeId,jdbcType=INTEGER}, 
       #{orderNumber,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="org.core.model.CodeComment" >
@@ -60,8 +60,8 @@
       <if test="commentStatus != null" >
         comment_status,
       </if>
-      <if test="begincodeCodeCodeId != null" >
-        begincode_code_code_id,
+      <if test="begincodeCodeId != null" >
+        begincode_code_id,
       </if>
       <if test="orderNumber != null" >
         order_number,
@@ -89,8 +89,8 @@
       <if test="commentStatus != null" >
         #{commentStatus,jdbcType=CHAR},
       </if>
-      <if test="begincodeCodeCodeId != null" >
-        #{begincodeCodeCodeId,jdbcType=INTEGER},
+      <if test="begincodeCodeId != null" >
+        #{begincodeCodeId,jdbcType=INTEGER},
       </if>
       <if test="orderNumber != null" >
         #{orderNumber,jdbcType=INTEGER},
@@ -118,8 +118,8 @@
       <if test="commentStatus != null" >
         comment_status = #{commentStatus,jdbcType=CHAR},
       </if>
-      <if test="begincodeCodeCodeId != null" >
-        begincode_code_code_id = #{begincodeCodeCodeId,jdbcType=INTEGER},
+      <if test="begincodeCodeId != null" >
+        begincode_code_id = #{begincodeCodeId,jdbcType=INTEGER},
       </if>
       <if test="orderNumber != null" >
         order_number = #{orderNumber,jdbcType=INTEGER},
@@ -135,7 +135,7 @@
       nickname = #{nickname,jdbcType=VARCHAR},
       pic = #{pic,jdbcType=VARCHAR},
       comment_status = #{commentStatus,jdbcType=CHAR},
-      begincode_code_code_id = #{begincodeCodeCodeId,jdbcType=INTEGER},
+      begincode_code_id = #{begincodeCodeId,jdbcType=INTEGER},
       order_number = #{orderNumber,jdbcType=INTEGER}
     where code_comment_id = #{codeCommentId,jdbcType=INTEGER}
   </update>

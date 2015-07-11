@@ -1,10 +1,14 @@
 package org.course.service;
 
 import java.util.Date;
+import java.util.List;
 
 import org.apache.log4j.Logger;
+import org.core.mapper.BegincodeCodeMapper;
 import org.core.mapper.BegincodeUserMapper;
+import org.core.model.BegincodeCode;
 import org.core.model.BegincodeUser;
+import org.core.util.PaginationResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -34,5 +38,18 @@ public class UserService {
 //		record.setUserSourceId("1");
 		int count = begincodeUserMapper.insertSelective(record);
 		logger.debug("插入成功数");
+	}
+	@Autowired
+	BegincodeCodeMapper begincodeCodeMapper;
+	/**
+	 * @param record
+	 */
+	public PaginationResult<BegincodeCode> selCodeForPaper(BegincodeCode record){
+		
+		List list = begincodeCodeMapper.selectBySelective(record);
+		int count =  begincodeCodeMapper.selectBySelectiveCount(record);
+		PaginationResult pageCodes = new PaginationResult(list);
+		pageCodes.setTotlePage(count);
+		return pageCodes;
 	}
 }

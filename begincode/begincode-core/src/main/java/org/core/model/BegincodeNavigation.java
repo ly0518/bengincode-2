@@ -13,7 +13,7 @@ public class BegincodeNavigation {
 
     private String navMemo;
 
-    private String deleteFlag1;
+    private String deleteFlag;
 
     public Integer getBegincodeNavigationId() {
         return begincodeNavigationId;
@@ -63,11 +63,11 @@ public class BegincodeNavigation {
         this.navMemo = navMemo == null ? null : navMemo.trim();
     }
 
-    public String getDeleteFlag1() {
-        return deleteFlag1;
+    public String getDeleteFlag() {
+        return deleteFlag;
     }
 
-    public void setDeleteFlag1(String deleteFlag1) {
-        this.deleteFlag1 = deleteFlag1 == null ? null : deleteFlag1.trim();
+    public void setDeleteFlag(String deleteFlag) {
+        this.deleteFlag = deleteFlag == null ? null : deleteFlag.trim();
     }
 }
