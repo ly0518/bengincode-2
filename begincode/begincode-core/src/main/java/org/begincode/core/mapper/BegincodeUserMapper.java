@@ -14,4 +14,6 @@ public interface BegincodeUserMapper {
     int updateByPrimaryKeySelective(BegincodeUser record);
 
     int updateByPrimaryKey(BegincodeUser record);
+    
+    
 }

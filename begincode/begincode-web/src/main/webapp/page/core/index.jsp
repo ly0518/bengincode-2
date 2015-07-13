@@ -21,12 +21,108 @@
 	<jsp:include  page="/page/core/top.jsp"/> 
 
  <!-- Main jumbotron for a primary marketing message or call to action -->
+ <!-- 
     <div class="jumbotron">
       <div class="container">
         <h1>专注开发过程、逐步深入、常用demo、简单案例</h1>
         <p>希望我们的努力能够助你成就开发之路，你的支持是我们的最大动力</p>
       </div>
     </div>
+     -->
+   <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+    <li data-target="#carousel-example-generic" data-slide-to="3"></li>
+  </ol>
+
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner" role="listbox">
+   <div class="item active">
+  <div class="jumbotron">
+      <div class="container">
+        <h1>原创视频教程</h1>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;网站开发团队，站内会员，邀请的一线开发人员，精心制作的视频教程，</p>
+      </div>
+    </div>
+</div>
+    <div class="item ">
+   <div class="jumbotron">
+      <div class="container">
+        <h1>系列博文</h1>
+        <p >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;针对某一系列知识点，第三方组件，编写的系统文章</p>
+      </div>
+    </div>
+</div>
+    
+   <div class="item">
+  <div class="jumbotron">
+      <div class="container">
+        <h1>代码分享</h1>
+        <p >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;主流框架，插件，工具，使用demo分享</p>
+      </div>
+    </div>
+    
+</div>
+   <div class="item">
+  <div class="jumbotron">
+      <div class="container">
+        <h1>开放源代码</h1>
+        <p >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;分享BeginCode网站源代码及技术实现细节</p>
+      </div>
+    </div>
+    
+</div>
+<!--      <div class="item active"> -->
+<!--   <div class="jumbotron"> -->
+<!--       <div class="container"> -->
+<!--         <h1>可能我们没有多么优秀</h1> -->
+<!--         <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;但我们喜欢技术，喜欢分享，喜欢与你成为朋友----BeginCode</p> -->
+<!--       </div> -->
+<!--     </div> -->
+<!-- </div> -->
+<!--     <div class="item "> -->
+<!--    <div class="jumbotron"> -->
+<!--       <div class="container"> -->
+<!--         <h1>可能这里没有神一样的架构师</h1> -->
+<!--         <p >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;但这里只有一群奋斗在一线，热爱分享“技术，博文，代码”的----攻城狮</p> -->
+<!--       </div> -->
+<!--     </div> -->
+<!-- </div> -->
+    
+<!--    <div class="item"> -->
+<!--   <div class="jumbotron"> -->
+<!--       <div class="container"> -->
+<!--         <h1>可能我们懂得不多</h1> -->
+<!--         <p >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;但我们愿意竭尽所能，只是希望你对我们的了解更加彻底----开放源码</p> -->
+<!--       </div> -->
+<!--     </div> -->
+    
+<!-- </div> -->
+<!--    <div class="item"> -->
+<!--   <div class="jumbotron"> -->
+<!--       <div class="container"> -->
+<!--         <h1>我们要做的只是</h1> -->
+<!--         <p >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;一个有内容，有干货，有分享精神的技术网站</p> -->
+<!--       </div> -->
+<!--     </div> -->
+    
+<!-- </div> -->
+
+  </div>
+  
+  <!-- Controls
+  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left" aria-hidden="false"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right" aria-hidden="false"></span>
+    <span class="sr-only">Next</span>
+  </a> -->
+</div>
 
     <div class="container">
     	<div class="row">

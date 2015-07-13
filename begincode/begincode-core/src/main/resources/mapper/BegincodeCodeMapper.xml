@@ -70,7 +70,7 @@
   	<trim prefix="WHERE" prefixOverrides="AND">
    		<include refid="Selective_Option"></include>
 	</trim>
-	<include refid="limitNum"></include>
+	  <include refid="limitNum"></include>
   </select>
     <select id="selectBySelectiveCount" resultType="java.lang.Integer" parameterType="org.begincode.core.model.BegincodeCode" >
   		select  count(0)

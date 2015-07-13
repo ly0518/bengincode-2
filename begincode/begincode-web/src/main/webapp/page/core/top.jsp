@@ -3,7 +3,7 @@
 <%@ include file="/commons/taglibs.jsp"%>
  
  
-	<nav class="navbar navbar-default " role="navigation"
+	<nav class="navbar navbar-default" role="navigation"
 		style="margin-bottom: 0px;">
 		<div class="container-fluid">
 			<!-- Brand and toggle get grouped for better mobile display -->
