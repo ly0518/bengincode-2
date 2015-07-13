@@ -1,6 +1,6 @@
 package org.begincode.core.model;
 
-public class CourseLabel {
+public class CourseLabel extends BaseModel{
     private Integer courseLabelId;
 
     private String courseTypeName;

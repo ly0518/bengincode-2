@@ -2,7 +2,7 @@ package org.begincode.core.model;
 
 import java.util.Date;
 
-public class BegincodeUser {
+public class BegincodeUser extends BaseModel{
     private Integer begincodeUserId;
 
     private String loginName;

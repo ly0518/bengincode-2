@@ -1,6 +1,6 @@
 package org.begincode.core.model;
 
-public class BegincodeNavigation {
+public class BegincodeNavigation extends BaseModel{
     private Integer begincodeNavigationId;
 
     private String navName;

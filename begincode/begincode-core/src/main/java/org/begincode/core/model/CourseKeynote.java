@@ -1,6 +1,6 @@
 package org.begincode.core.model;
 
-public class CourseKeynote {
+public class CourseKeynote extends BaseModel{
     private Integer courseKeynoteId;
 
     private Integer videoCourseChapterId;

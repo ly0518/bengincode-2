@@ -1,6 +1,6 @@
 package org.begincode.core.model;
 
-public class ProjectStageDetail {
+public class ProjectStageDetail extends BaseModel{
     private Integer projectStageContentId;
 
     private Integer projectStageId;

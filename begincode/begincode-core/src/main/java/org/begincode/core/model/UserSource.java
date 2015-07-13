@@ -1,6 +1,6 @@
 package org.begincode.core.model;
 
-public class UserSource {
+public class UserSource extends BaseModel{
     private Integer userSourceId;
 
     private String userSourceName;

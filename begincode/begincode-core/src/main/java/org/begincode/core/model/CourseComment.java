@@ -2,7 +2,7 @@ package org.begincode.core.model;
 
 import java.util.Date;
 
-public class CourseComment {
+public class CourseComment extends BaseModel{
     private Integer courseCommentId;
 
     private String courseCommentContent;

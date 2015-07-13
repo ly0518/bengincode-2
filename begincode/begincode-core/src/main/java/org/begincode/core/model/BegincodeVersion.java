@@ -1,6 +1,6 @@
 package org.begincode.core.model;
 
-public class BegincodeVersion {
+public class BegincodeVersion extends BaseModel{
     private Integer begincodeVersionId;
 
     private String version;

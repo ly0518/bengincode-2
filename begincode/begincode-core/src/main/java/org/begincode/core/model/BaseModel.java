@@ -1,6 +1,6 @@
 package org.begincode.core.model;
 
-import java.util.Date;
+import org.apache.commons.lang.builder.ToStringBuilder;
 
 public class BaseModel {
     private Integer beginRowNum;
@@ -18,4 +18,8 @@ public class BaseModel {
 		this.limitNum = limitNum;
 	}
     
+	@Override
+	public String toString() {
+		return ToStringBuilder.reflectionToString(this);
+	}
 }

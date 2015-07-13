@@ -1,6 +1,6 @@
 package org.begincode.core.model;
 
-public class VideoCourseChapter {
+public class VideoCourseChapter extends BaseModel{
     private Integer videoCourseChapterId;
 
     private String videoCourseChapterMemo;

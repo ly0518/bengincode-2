@@ -2,7 +2,7 @@ package org.begincode.core.model;
 
 import java.util.Date;
 
-public class BegincodeProject {
+public class BegincodeProject extends BaseModel{
     private Integer begincodeProjectId;
 
     private String projectName;

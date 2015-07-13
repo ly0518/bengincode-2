@@ -1,6 +1,6 @@
 package org.begincode.core.model;
 
-public class CodeType {
+public class CodeType extends BaseModel{
     private Integer codeTypeId;
 
     private String codeTypeName;

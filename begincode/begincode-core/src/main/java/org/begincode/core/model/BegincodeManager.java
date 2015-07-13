@@ -1,6 +1,6 @@
 package org.begincode.core.model;
 
-public class BegincodeManager {
+public class BegincodeManager extends BaseModel{
     private Integer begincodeManagerId;
 
     private String managerPicUrl;

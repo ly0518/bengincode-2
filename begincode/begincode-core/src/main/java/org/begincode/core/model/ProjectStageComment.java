@@ -2,7 +2,7 @@ package org.begincode.core.model;
 
 import java.util.Date;
 
-public class ProjectStageComment {
+public class ProjectStageComment extends BaseModel{
     private Integer projectStageCommentId;
 
     private Date createDatetime;

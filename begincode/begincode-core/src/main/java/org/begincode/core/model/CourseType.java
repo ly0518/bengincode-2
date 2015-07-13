@@ -1,6 +1,6 @@
 package org.begincode.core.model;
 
-public class CourseType {
+public class CourseType extends BaseModel{
     private Integer courseTypeId;
 
     private String courseTypeName;
