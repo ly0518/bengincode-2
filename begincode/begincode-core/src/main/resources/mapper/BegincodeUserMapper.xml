@@ -14,15 +14,17 @@
     <result column="pic" property="pic" jdbcType="VARCHAR" />
     <result column="check_flag" property="checkFlag" jdbcType="CHAR" />
     <result column="gag" property="gag" jdbcType="CHAR" />
-    <result column="frozen" property="frozen" jdbcType="CHAR" />
     <result column="course" property="course" jdbcType="VARCHAR" />
     <result column="open_id" property="openId" jdbcType="VARCHAR" />
     <result column="access_token" property="accessToken" jdbcType="VARCHAR" />
     <result column="user_source_id" property="userSourceId" jdbcType="INTEGER" />
+    <result column="delete_flag" property="deleteFlag" jdbcType="CHAR" />
+    <result column="invite_code" property="inviteCode" jdbcType="VARCHAR" />
+    
   </resultMap>
   <sql id="Base_Column_List" >
     begincode_user_id, login_name, pwd, nickname, cdate, sex, tel_phone, email, receive_email, 
-    pic, check_flag, gag, frozen, course, open_id, access_token, user_source_id
+    pic, check_flag, gag,  course, open_id, access_token, user_source_id,delete_flag ,invite_code
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 'true' as QUERYID,
@@ -38,15 +40,15 @@
     insert into begincode_user (begincode_user_id, login_name, pwd, 
       nickname, cdate, sex, 
       tel_phone, email, receive_email, 
-      pic, check_flag, gag, frozen, 
+      pic, check_flag, gag,  
       course, open_id, access_token, 
-      user_source_id)
+      user_source_id,delete_flag ,invite_code)
     values (#{begincodeUserId,jdbcType=INTEGER}, #{loginName,jdbcType=VARCHAR}, #{pwd,jdbcType=VARCHAR}, 
       #{nickname,jdbcType=VARCHAR}, #{cdate,jdbcType=TIMESTAMP}, #{sex,jdbcType=CHAR}, 
       #{telPhone,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{receiveEmail,jdbcType=CHAR}, 
-      #{pic,jdbcType=VARCHAR}, #{checkFlag,jdbcType=CHAR}, #{gag,jdbcType=CHAR}, #{frozen,jdbcType=CHAR}, 
+      #{pic,jdbcType=VARCHAR}, #{checkFlag,jdbcType=CHAR}, #{gag,jdbcType=CHAR},  
       #{course,jdbcType=VARCHAR}, #{openId,jdbcType=VARCHAR}, #{accessToken,jdbcType=VARCHAR}, 
-      #{userSourceId,jdbcType=INTEGER})
+      #{userSourceId,jdbcType=INTEGER}, #{deleteFlag,jdbcType=CHAR}, #{inviteCode,jdbcType=CHAR}  )
   </insert>
   <insert id="insertSelective" parameterType="org.begincode.core.model.BegincodeUser" >
     insert into begincode_user
@@ -87,9 +89,7 @@
       <if test="gag != null" >
         gag,
       </if>
-      <if test="frozen != null" >
-        frozen,
-      </if>
+   
       <if test="course != null" >
         course,
       </if>
@@ -101,6 +101,12 @@
       </if>
       <if test="userSourceId != null" >
         user_source_id,
+      </if>
+      <if test="deleteFlag != null" >
+        delete_flag ,
+      </if>
+      <if test="inviteCode != null" >
+        invite_code,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
@@ -140,9 +146,7 @@
       <if test="gag != null" >
         #{gag,jdbcType=CHAR},
       </if>
-      <if test="frozen != null" >
-        #{frozen,jdbcType=CHAR},
-      </if>
+   
       <if test="course != null" >
         #{course,jdbcType=VARCHAR},
       </if>
@@ -154,6 +158,12 @@
       </if>
       <if test="userSourceId != null" >
         #{userSourceId,jdbcType=INTEGER},
+      </if>
+      <if test="deleteFlag != null" >
+        #{deleteFlag,jdbcType=CHAR},
+      </if>
+      <if test="inviteCode != null" >
+        #{inviteCode,jdbcType=CHAR},
       </if>
     </trim>
   </insert>
@@ -193,9 +203,7 @@
       <if test="gag != null" >
         gag = #{gag,jdbcType=CHAR},
       </if>
-      <if test="frozen != null" >
-        frozen = #{frozen,jdbcType=CHAR},
-      </if>
+   
       <if test="course != null" >
         course = #{course,jdbcType=VARCHAR},
       </if>
@@ -207,6 +215,12 @@
       </if>
       <if test="userSourceId != null" >
         user_source_id = #{userSourceId,jdbcType=INTEGER},
+      </if>
+      <if test="deleteFlag != null" >
+        delete_flag = #{deleteFlag,jdbcType=CHAR},
+      </if>
+      <if test="inviteCode != null" >
+        invite_code = #{inviteCode,jdbcType=CHAR},
       </if>
     </set>
     where begincode_user_id = #{begincodeUserId,jdbcType=INTEGER}
@@ -224,11 +238,12 @@
       pic = #{pic,jdbcType=VARCHAR},
       check_flag = #{checkFlag,jdbcType=CHAR},
       gag = #{gag,jdbcType=CHAR},
-      frozen = #{frozen,jdbcType=CHAR},
       course = #{course,jdbcType=VARCHAR},
       open_id = #{openId,jdbcType=VARCHAR},
       access_token = #{accessToken,jdbcType=VARCHAR},
-      user_source_id = #{userSourceId,jdbcType=INTEGER}
+      user_source_id = #{userSourceId,jdbcType=INTEGER},
+      delete_flag  = #{deleteFlag,jdbcType=CHAR},
+      ,invite_code = #{inviteCode,jdbcType=CHAR}
     where begincode_user_id = #{begincodeUserId,jdbcType=INTEGER}
   </update>
 </mapper>
