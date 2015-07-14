@@ -5,7 +5,7 @@ import org.apache.log4j.Logger;
 import org.begincode.core.model.BegincodeCode;
 import org.begincode.core.util.PaginationResult;
 import org.begincode.course.service.UserService;
-import org.begincode.web.exception.BeginCodeException;
+import org.begincode.exception.BeginCodeException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

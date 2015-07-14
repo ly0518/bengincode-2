@@ -13,7 +13,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class TestAdminUser {
 
-	private Logger logger = Logger.getLogger(TestCourse.class);
+	private Logger logger = Logger.getLogger(TestAdminUser.class);
 	private static ClassPathXmlApplicationContext ctx;
 	private static UserService userService;
 	

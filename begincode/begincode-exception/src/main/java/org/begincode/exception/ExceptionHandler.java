@@ -1,4 +1,4 @@
-package org.begincode.web.exception;
+package org.begincode.exception;
 
 import java.io.IOException;
 

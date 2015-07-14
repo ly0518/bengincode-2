@@ -1,4 +1,4 @@
-package org.begincode.web.exception;
+package org.begincode.exception;
 
 public class BeginCodeException extends RuntimeException {
 
