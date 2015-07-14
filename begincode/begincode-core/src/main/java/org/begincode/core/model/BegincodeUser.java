@@ -27,8 +27,10 @@ public class BegincodeUser extends BaseModel{
 
     private String gag;
 
-    private String frozen;
+    private String deleteFlag;
 
+    private String inviteCode;
+    
     private String course;
 
     private String openId;
@@ -133,15 +135,23 @@ public class BegincodeUser extends BaseModel{
         this.gag = gag == null ? null : gag.trim();
     }
 
-    public String getFrozen() {
-        return frozen;
+    public String getDeleteFlag() {
+        return deleteFlag;
     }
 
-    public void setFrozen(String frozen) {
-        this.frozen = frozen == null ? null : frozen.trim();
+    public void setDeleteFlag(String deleteFlag) {
+        this.deleteFlag = deleteFlag == null ? null : deleteFlag.trim();
     }
 
-    public String getCourse() {
+    public String getInviteCode() {
+		return inviteCode;
+	}
+
+	public void setInviteCode(String inviteCode) {
+		this.inviteCode = inviteCode == null ? null : inviteCode.trim();
+	}
+
+	public String getCourse() {
         return course;
     }
 

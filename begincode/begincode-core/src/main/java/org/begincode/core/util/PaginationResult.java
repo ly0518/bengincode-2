@@ -15,6 +15,7 @@ public class PaginationResult<T> implements Serializable {
 	public PaginationResult(List<T> list){
 		this.list = list;
 	}
+	
 	public int getPageSize() {
 		return pageSize;
 	}
