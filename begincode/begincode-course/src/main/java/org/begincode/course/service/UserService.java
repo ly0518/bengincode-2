@@ -26,7 +26,7 @@ public class UserService {
 		record.setLoginName("yang");
 		record.setCheckFlag("1");
 		record.setCourse("12");
-		record.setFrozen("1");
+		record.setDeleteFlag("0");
 		record.setGag("1");
 		record.setNickname("杨晓阳");
 		record.setOpenId("");

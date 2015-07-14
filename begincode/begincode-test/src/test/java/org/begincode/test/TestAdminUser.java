@@ -32,7 +32,7 @@ public class TestAdminUser {
 		user.setPwd("houjinxin");
 		user.setCdate(new Date());
 		user.setGag("1");
-		user.setFrozen("1");
+		user.setDeleteFlag("1");
 		userService.createUser(user);
 		
 	}
