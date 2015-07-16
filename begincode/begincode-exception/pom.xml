@@ -8,30 +8,29 @@
 		<artifactId>begincode</artifactId>
 		<version>1.0.1-SNAPSHOT</version>
 	</parent>
-	<artifactId>begincode-web</artifactId>
-	<name>begincode-web</name>
-	<packaging>war</packaging>
+	<artifactId>begincode-exception</artifactId>
+	<name>begincode-exception</name>
 	<url>http://maven.apache.org</url>
 	<dependencies>
 		<dependency>
-			<groupId>com.begincode</groupId>
-			<artifactId>begincode-blog</artifactId>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>com.begincode</groupId>
-			<artifactId>begincode-course</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>com.begincode</groupId>
-			<artifactId>begincode-code</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>com.begincode</groupId>
-			<artifactId>begincode-exception</artifactId>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>javax.servlet-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>jstl</groupId>
+			<artifactId>jstl</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
 		</dependency>
 	</dependencies>
 </project>

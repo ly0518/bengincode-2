@@ -8,38 +8,22 @@
 		<artifactId>begincode</artifactId>
 		<version>1.0.1-SNAPSHOT</version>
 	</parent>
-	<artifactId>begincode-test</artifactId>
-	<name>begincode-test</name>
+	<artifactId>begincode-admin-web</artifactId>
+	<packaging>war</packaging>
+	<name>begincode-admin-web</name>
 	<url>http://maven.apache.org</url>
-
 	<dependencies>
 		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-		</dependency>
-		<dependency>
 			<groupId>com.begincode</groupId>
-			<artifactId>begincode-core</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>com.begincode</groupId>
-			<artifactId>begincode-course</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>com.begincode</groupId>
-			<artifactId>begincode-code</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>com.begincode</groupId>
-			<artifactId>begincode-blog</artifactId>
+			<artifactId>begincode-admin</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>com.begincode</groupId>
 			<artifactId>begincode-exception</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>com.begincode</groupId>
-			<artifactId>begincode-admin</artifactId>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
 		</dependency>
 	</dependencies>
 </project>
