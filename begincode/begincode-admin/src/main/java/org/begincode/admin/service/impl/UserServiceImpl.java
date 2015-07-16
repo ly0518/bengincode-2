@@ -25,13 +25,13 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public int deleteUser(BegincodeUser user) {
-		user.setFrozen("0");
+		user.setDeleteFlag("0");
 		return userMapper.updateByPrimaryKeySelective(user);
 	}
 
 	@Override
 	public int forzenUser(BegincodeUser user) {
-		user.setFrozen("0");
+		user.setDeleteFlag("0");
 		return userMapper.updateByPrimaryKeySelective(user);
 	}
 

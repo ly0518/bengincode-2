@@ -3,6 +3,9 @@ package org.begincode.core.mapper;
 import java.util.List;
 
 import org.begincode.core.model.BegincodeCode;
+import org.begincode.core.paginator.domain.PageList;
+
+
 
 /**
  * @author yangsj
@@ -24,7 +27,7 @@ public interface BegincodeCodeMapper {
 
     int updateByPrimaryKey(BegincodeCode record);
     
-    List<BegincodeCode> selectBySelective(BegincodeCode record);
+    PageList<BegincodeCode> selectBySelective(BegincodeCode record);
     
     int  selectBySelectiveCount(BegincodeCode record);
 }

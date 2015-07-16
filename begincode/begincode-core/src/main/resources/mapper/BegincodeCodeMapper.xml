@@ -60,9 +60,6 @@
        and code_type_name  like #{codeTypeName}
       </if>
   </sql>
-  <sql id="limitNum">
-  	  limit #{beginRowNum} ,#{limitNum}
-  </sql>
   <select id="selectBySelective" resultMap="BaseResultMap" parameterType="org.begincode.core.model.BegincodeCode" >
   	select  
   		 <include refid="Base_Column_List" />
@@ -70,7 +67,6 @@
   	<trim prefix="WHERE" prefixOverrides="AND">
    		<include refid="Selective_Option"></include>
 	</trim>
-	  <include refid="limitNum"></include>
   </select>
     <select id="selectBySelectiveCount" resultType="java.lang.Integer" parameterType="org.begincode.core.model.BegincodeCode" >
   		select  count(0)

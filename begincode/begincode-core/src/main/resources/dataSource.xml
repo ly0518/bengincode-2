@@ -39,6 +39,14 @@
 		<property name="dataSource" ref="dataSource" />
 		<property name="configLocation" value="classpath:mybatis.xml" />
 		<property name="mapperLocations" value="classpath:mapper/*.xml"></property>
+		 <property name="plugins">
+              <list>
+                 <bean class="org.begincode.core.paginator.BeginCodeInterceptor">
+<!--                     <property name="dialectClass" -->
+<!--                          value="com.github.miemiedev.mybatis.paginator.dialect.MySQLDialect"></property> -->
+                 </bean>
+             </list>
+         </property>
 	</bean>
 	<!-- configLocation为mybatis属性 mapperLocations为所有mapper -->
 

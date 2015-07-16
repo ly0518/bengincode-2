@@ -13,7 +13,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class TestAdminUser {
 
-	private Logger logger = Logger.getLogger(TestCourse.class);
+	private Logger logger = Logger.getLogger(TestAdminUser.class);
 	private static ClassPathXmlApplicationContext ctx;
 	private static UserService userService;
 	
@@ -32,7 +32,7 @@ public class TestAdminUser {
 		user.setPwd("houjinxin");
 		user.setCdate(new Date());
 		user.setGag("1");
-		user.setFrozen("1");
+		user.setDeleteFlag("1");
 		userService.createUser(user);
 		
 	}

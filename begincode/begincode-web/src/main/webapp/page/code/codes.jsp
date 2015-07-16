@@ -35,8 +35,11 @@
 		<div class="row">
 					<div class="col-md-8" >
 <!-- 					<ul class="list-group panel panel-primary" style="margin-bottom:10px;"> -->
-						<c:forEach items="${codes.list}" var="code">
-					
+<%-- 			${codes.paginator.limit}||${codes.paginator.page}||${codes.paginator.totalCount} --%>
+<%-- ${codes.limit}   --%>
+${pageinfo.limit }||${pageinfo.page }||${pageinfo.totalCount }
+						<c:forEach items="${codes}" var="code">
+						
   <div class="media mediaborder">
   <div class="media-left media-middle">
     <a href="#">
