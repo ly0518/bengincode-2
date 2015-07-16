@@ -1,0 +1,25 @@
+1. REST API只返回数据，API层不考虑如何显示数据。一定要跳出JSP那种显示层跟业务层严重耦合的思维方式。我们目前已经有多个客户端，下一步还会有第三方（非车车）的客户端调用我们的API，所以我们不可能也没必要为每个客户端设计一套数据结构。至于我们目前返回的数据结构是否合理，是否有冗余，我们会评估改进，但同一个API对所有客户端的返回都应该一样。
+
+2. URL设计。URL跟函数名是两个概念。REST API强调用HTTP的四个方法（GET POST PUT DELETE）表达增删改查的动作，URL里只包含名词，比如：
+GET        /orders   查询所有订单
+GET        /orders/{order_no}  根据订单号查询某张订单
+POST       /orders   新增一张订单，订单内容在HTTP body里，用JSON
+PUT        /orders/{order_no}   更新一张订单
+DELETE     /orders/{order_no}   删除／取消一张订单
+以上这五个API，增删改查＋查询集合基本能覆盖我们绝大多数的需求，所以只要抽象出order这个资源就够了。
+
+列举几个不符合这种原则的API：
+GET  orders/getOrderList    //这种是命名函数的方式，另外两个get，一定有一个冗余
+POST orders/saveOrMerge     //同样动词不要出现在URL里，另外save or merge这种具体的实现逻辑也没必要暴露出来，只需要在API文档（swagger）上说明同时支持保存、合并就够了
+GET  user/login             //get 方法不改变服务端的状态，这种明显改变了状态的用POST
+
+总结一下这些原则：
+a) 只包含名词，不允许有动词。全部小写，不要用camalCase这种。尽量一个单词表达，单词长的话可以简写，比如compusory_insurance在URL可以简写成cp。
+b) 合理利用HTTP 方法： GET＝查  POST＝增  PUT＝改  DELETE＝删
+c) 合理使用http request参数，让一个api能更灵活适用多种需求。 
+   比如查询订单的api，某些情况需要结果带着保单，有些情况不需要，没必要写两遍代码，添加一个expand参数，类似这样：
+   /order/{order_no}?expand=true   //带着保单
+   /order/{order_no}?expand=false  //只需要订单
+d) 合理使用"/"。"/"在URL中可以表达从属和关联两种关系：
+   /order/{order_no}  //从属关系
+   /quotes/{quoteId}/order   //根据报价下单，关联关系
