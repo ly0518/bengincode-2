@@ -42,8 +42,6 @@
 		 <property name="plugins">
               <list>
                  <bean class="org.begincode.core.paginator.BeginCodeInterceptor">
-<!--                     <property name="dialectClass" -->
-<!--                          value="com.github.miemiedev.mybatis.paginator.dialect.MySQLDialect"></property> -->
                  </bean>
              </list>
          </property>
