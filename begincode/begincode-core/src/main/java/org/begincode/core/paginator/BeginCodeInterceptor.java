@@ -64,15 +64,28 @@ public class BeginCodeInterceptor implements Interceptor {
 			String originalSql = boundSql.getSql().trim();
 			// 分页逻辑 开始
 			StringBuffer sb = new StringBuffer();
-			sb.append(originalSql).append(" limit ")
-					.append(pageInfo.getPage() * pageInfo.getLimit())
-					.append(",").append(pageInfo.getLimit());
+			
+			//校验是否有排序，有排序先插入排序
+			if(pageInfo.getOrderStr() != null && !pageInfo.getOrderStr().equals("")){
+				sb.append(originalSql).append(" ").append(pageInfo.getOrderStr()).append(" ");
+			}
+			//校验是否有分页，如果有增加分页
+			if(pageInfo.getLimit() != 0){
+				sb.append(" limit ")
+				.append(pageInfo.getPage() * pageInfo.getLimit())
+				.append(",").append(pageInfo.getLimit());
+			}
 			BoundSql newBoundSql = copyFromBoundSql(mappedStatement, boundSql,
 					sb.toString());
 			MappedStatement newMs = copyFromMappedStatement(mappedStatement,
 					new BoundSqlSqlSource(newBoundSql));
 			invocation.getArgs()[0] = newMs;
 			Object object = invocation.proceed();
+			if(pageInfo.getLimit() == 0){
+					//如果不分页直接返回
+					localPage.set(null);
+					return new PageList((List)object,pageInfo);
+			}
 			//判断是否是多from 类型语句，如果不是 则用 select count(0) 代替
 			int totalCount = 0;
 			StringBuilder countSql = new StringBuilder();
@@ -95,7 +108,6 @@ public class BeginCodeInterceptor implements Interceptor {
               pageInfo.setTotalCount(totalCount);
 			// 分页逻辑 结束
 			localPage.set(null);
-			
 			return new PageList((List)object,pageInfo);
 		} else {
 			return invocation.proceed();
