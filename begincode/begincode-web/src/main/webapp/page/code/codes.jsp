@@ -39,7 +39,7 @@
 <%-- ${codes.limit}   --%>
 ${pageinfo.limit }||${pageinfo.page }||${pageinfo.totalCount }
 						<c:forEach items="${codes}" var="code">
-						
+						${code.begincodeCodeId }
   <div class="media mediaborder">
   <div class="media-left media-middle">
     <a href="#">

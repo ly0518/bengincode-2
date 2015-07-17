@@ -25,7 +25,8 @@ public class CodeController {
 	@Autowired UserService userService;
 	@RequestMapping("/getAllCodes")
 	public String selCodeList(Model model){
-		Paginator page = new Paginator(0,6);
+		Paginator page = new Paginator();
+		page.setOrderStr(" order by begincode_code_id desc ");
 		BeginCodeInterceptor.localPage.set(page);
 		
 		BegincodeCode record = new BegincodeCode();

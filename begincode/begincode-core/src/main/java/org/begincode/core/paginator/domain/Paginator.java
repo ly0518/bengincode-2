@@ -24,7 +24,14 @@ public class Paginator implements Serializable {
      * 总记录数
      */
     private int totalCount;
-
+    
+    /**
+     * 排序代码
+     * */
+    private String orderStr;
+    public Paginator(){
+    	super();
+    }
     public Paginator(int page, int limit) {
         super();
         this.limit = limit;
@@ -71,6 +78,16 @@ public class Paginator implements Serializable {
 
 	public void setTotalCount(int totalCount) {
 		this.totalCount = totalCount;
+	}
+
+
+	public String getOrderStr() {
+		return orderStr;
+	}
+
+
+	public void setOrderStr(String orderStr) {
+		this.orderStr = orderStr;
 	}
     
 }

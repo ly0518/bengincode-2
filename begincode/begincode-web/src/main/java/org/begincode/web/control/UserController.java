@@ -33,6 +33,6 @@ public class UserController {
 	
 	@RequestMapping("/list1")
 	public void testException(){
-		throw new BeginCodeException("业务异常！");
+//		throw new BeginCodeException("业务异常！");
 	}
 }
