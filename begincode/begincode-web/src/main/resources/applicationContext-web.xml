@@ -15,5 +15,26 @@
 	<!-- 启用spring mvc 注解 -->
 	<context:component-scan base-package="org.begincode.web.control" />
 	<mvc:annotation-driven />
-
+	<!-- 资源文件 定义，不拦截 -->
+	<mvc:resources mapping="/**" location="/" />
+	<!-- 配置JSP视图 -->
+	<bean id="internalResourceViewResolver"
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="viewClass"
+			value="org.springframework.web.servlet.view.JstlView" />
+		<property name="prefix" value="/" />
+		<property name="suffix" value=".jsp" />
+		<property name="contentType" value="text/html;charset=UTF-8" />
+		<property name="order" value="1" />
+	</bean>
+	<bean
+		class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+		<property name="messageConverters">
+			<list>
+				<bean
+					class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+				</bean>
+			</list>
+		</property>
+	</bean>
 </beans>

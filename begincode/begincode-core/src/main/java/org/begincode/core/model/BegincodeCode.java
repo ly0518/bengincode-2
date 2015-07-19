@@ -162,4 +162,5 @@ public class BegincodeCode extends BaseModel{
     public void setCodeContent(String codeContent) {
         this.codeContent = codeContent == null ? null : codeContent.trim();
     }
+    
 }

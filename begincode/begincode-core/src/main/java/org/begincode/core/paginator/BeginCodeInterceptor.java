@@ -64,10 +64,10 @@ public class BeginCodeInterceptor implements Interceptor {
 			String originalSql = boundSql.getSql().trim();
 			// 分页逻辑 开始
 			StringBuffer sb = new StringBuffer();
-			
+			sb.append(originalSql);
 			//校验是否有排序，有排序先插入排序
 			if(pageInfo.getOrderStr() != null && !pageInfo.getOrderStr().equals("")){
-				sb.append(originalSql).append(" ").append(pageInfo.getOrderStr()).append(" ");
+				sb.append(" ").append(pageInfo.getOrderStr()).append(" ");
 			}
 			//校验是否有分页，如果有增加分页
 			if(pageInfo.getLimit() != 0){
