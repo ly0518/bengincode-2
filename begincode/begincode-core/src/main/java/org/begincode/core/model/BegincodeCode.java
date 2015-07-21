@@ -6,6 +6,8 @@ public class BegincodeCode extends BaseModel{
     private Integer begincodeCodeId;
 
     private String codeInfo;
+    
+    private String codeAbstract;
 
     private String codeDownloadUrl;
 
@@ -34,6 +36,12 @@ public class BegincodeCode extends BaseModel{
     private String codeTypeName;
 
     private String codeContent;
+    
+    private Integer begincodeUserId; 
+    
+    private String nickname;
+    
+    private String pic;
 
     public Integer getbegincodeCodeId() {
         return begincodeCodeId;
@@ -162,5 +170,37 @@ public class BegincodeCode extends BaseModel{
     public void setCodeContent(String codeContent) {
         this.codeContent = codeContent == null ? null : codeContent.trim();
     }
+
+	public String getCodeAbstract() {
+		return codeAbstract;
+	}
+
+	public void setCodeAbstract(String codeAbstract) {
+		this.codeAbstract = codeAbstract;
+	}
+
+	public Integer getBegincodeUserId() {
+		return begincodeUserId;
+	}
+
+	public void setBegincodeUserId(Integer begincodeUserId) {
+		this.begincodeUserId = begincodeUserId;
+	}
+
+	public String getNickname() {
+		return nickname;
+	}
+
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
+	}
+
+	public String getPic() {
+		return pic;
+	}
+
+	public void setPic(String pic) {
+		this.pic = pic;
+	}
     
 }

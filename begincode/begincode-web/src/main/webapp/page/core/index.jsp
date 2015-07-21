@@ -43,7 +43,7 @@
    <div class="item active">
   <div class="jumbotron">
       <div class="container">
-        <h1>原创视频教程</h1>
+        <h1>原创视频</h1>
         <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;网站开发团队，站内会员，邀请的一线开发人员，精心制作的视频教程，</p>
       </div>
     </div>
@@ -52,7 +52,7 @@
    <div class="jumbotron">
       <div class="container">
         <h1>系列博文</h1>
-        <p >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;针对某一系列知识点，第三方组件，编写的系统文章</p>
+        <p >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;针对某一系列知识点，第三方组件，分享的应用文章</p>
       </div>
     </div>
 </div>
@@ -70,7 +70,7 @@
   <div class="jumbotron">
       <div class="container">
         <h1>开放源代码</h1>
-        <p >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;分享BeginCode网站源代码及技术实现细节</p>
+        <p >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;分享BeginCode网站源代码及技术实现细节----<a href="http://git.oschina.net/yangsj/begincode-2" target="_blank"><font color="#ffffff">http://git.oschina.net/yangsj/begincode-2</font></a></p>
       </div>
     </div>
     

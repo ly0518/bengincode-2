@@ -4,6 +4,7 @@
   <resultMap id="BaseResultMap" type="org.begincode.core.model.BegincodeCode" >
     <id column="begincode_code_id" property="begincodeCodeId" jdbcType="INTEGER" />
     <result column="code_info" property="codeInfo" jdbcType="VARCHAR" />
+    <result column="code_abstract" property="codeAbstract" jdbcType="VARCHAR" />
     <result column="code_download_url" property="codeDownloadUrl" jdbcType="VARCHAR" />
     <result column="prohibition_message" property="prohibitionMessage" jdbcType="CHAR" />
     <result column="begincode_keys" property="begincodeKeys" jdbcType="VARCHAR" />
@@ -17,14 +18,18 @@
     <result column="release_state" property="releaseState" jdbcType="CHAR" />
     <result column="check_flag" property="checkFlag" jdbcType="CHAR" />
     <result column="code_type_name" property="codeTypeName" jdbcType="VARCHAR" />
+    <result column="begincode_user_id" property="begincodeUserId" jdbcType="INTEGER" />
+    <result column="nickname" property="nickname" jdbcType="VARCHAR" />
+    <result column="pic" property="pic" jdbcType="VARCHAR" />
+    
   </resultMap>
   <resultMap id="ResultMapWithBLOBs" type="org.begincode.core.model.BegincodeCode" extends="BaseResultMap" >
     <result column="code_content" property="codeContent" jdbcType="LONGVARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    begincode_code_id, code_info, code_download_url, prohibition_message, begincode_keys, 
+    begincode_code_id, code_info,code_abstract, code_download_url, prohibition_message, begincode_keys, 
     view_count, begincode_navigation_id,  create_datetime, delete_flag, 
-    good_count, bad_count, code_type_id, release_state, check_flag, code_type_name
+    good_count, bad_count, code_type_id, release_state, check_flag, code_type_name,begincode_user_id,nickname,pic
   </sql>
   <sql id="Blob_Column_List" >
     code_content
@@ -34,6 +39,9 @@
   <sql id="Selective_Option">
       <if test="codeInfo != null" >
         code_info like #{codeInfo}
+      </if>
+      <if test="codeAbstract != null">
+      	code_abstract like #{codeAbstract}
       </if>
       <if test="prohibitionMessage != null" >
         and prohibition_message = #{prohibitionMessage}
@@ -58,6 +66,15 @@
       </if>
       <if test="codeTypeName != null" >
        and code_type_name  like #{codeTypeName}
+      </if>
+      <if test="begincodeUserId != null" >
+       and begincode_user_id  = #{begincodeUserId}
+      </if>
+      <if test="nickname != null" >
+       and nickname  like #{nickname}
+      </if>
+      <if test="pic != null" >
+       and pic  like #{pic}
       </if>
   </sql>
   <select id="selectBySelective" resultMap="BaseResultMap" parameterType="org.begincode.core.model.BegincodeCode" >
@@ -93,19 +110,20 @@
     where begincode_code_id = #{begincodeCodeId,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="org.begincode.core.model.BegincodeCode" >
-    insert into begincode_code (begincode_code_id, code_info, code_download_url, 
+    insert into begincode_code (begincode_code_id, code_info,code_abstract,code_download_url, 
       prohibition_message, begincode_keys, view_count, 
       begincode_navigation_id,  
       create_datetime, delete_flag, good_count, 
       bad_count, code_type_id, release_state, 
-      check_flag, code_type_name, code_content
+      check_flag, code_type_name, code_content,begincode_user_id,nickname,pic
       )
-    values (#{begincodeCodeId,jdbcType=INTEGER}, #{codeInfo,jdbcType=VARCHAR}, #{codeDownloadUrl,jdbcType=VARCHAR}, 
+    values (#{begincodeCodeId,jdbcType=INTEGER}, #{codeInfo,jdbcType=VARCHAR},  #{codeAbstract,jdbcType=VARCHAR} #{codeDownloadUrl,jdbcType=VARCHAR}, 
       #{prohibitionMessage,jdbcType=CHAR}, #{begincodeKeys,jdbcType=VARCHAR}, #{viewCount,jdbcType=INTEGER}, 
       #{begincodeNavigationId,jdbcType=INTEGER},  
       #{createDatetime,jdbcType=TIMESTAMP}, #{deleteFlag,jdbcType=CHAR}, #{goodCount,jdbcType=INTEGER}, 
       #{badCount,jdbcType=INTEGER}, #{codeTypeId,jdbcType=INTEGER}, #{releaseState,jdbcType=CHAR}, 
       #{checkFlag,jdbcType=CHAR}, #{codeTypeName,jdbcType=VARCHAR}, #{codeContent,jdbcType=LONGVARCHAR}
+      , #{begincodeUserId,jdbcType=INTEGER}, #{nickname,jdbcType=VARCHAR}, #{pic,jdbcType=VARCHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="org.begincode.core.model.BegincodeCode" >
@@ -116,6 +134,9 @@
       </if>
       <if test="codeInfo != null" >
         code_info,
+      </if>
+      <if test="codeAbstract != null">
+      	code_abstract,
       </if>
       <if test="codeDownloadUrl != null" >
         code_download_url,
@@ -159,6 +180,15 @@
       <if test="codeContent != null" >
         code_content,
       </if>
+      <if test="begincodeUserId != null" >
+        begincode_user_id,
+      </if>
+      <if test="nickname != null" >
+        nickname,
+      </if>
+      <if test="pic != null" >
+        pic,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="begincodeCodeId != null" >
@@ -166,6 +196,9 @@
       </if>
       <if test="codeInfo != null" >
         #{codeInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="codeAbstract != null">
+      	 #{codeAbstract,jdbcType=VARCHAR} 
       </if>
       <if test="codeDownloadUrl != null" >
         #{codeDownloadUrl,jdbcType=VARCHAR},
@@ -209,6 +242,15 @@
       <if test="codeContent != null" >
         #{codeContent,jdbcType=LONGVARCHAR},
       </if>
+      <if test="begincodeUserId != null" >
+        #{begincodeUserId,jdbcType=INTEGER},
+      </if>
+      <if test="nickname != null" >
+        #{nickname,jdbcType=VARCHAR},
+      </if>
+      <if test="pic != null" >
+        #{pic,jdbcType=VARCHAR},
+      </if>
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="org.begincode.core.model.BegincodeCode" >
@@ -216,6 +258,9 @@
     <set >
       <if test="codeInfo != null" >
         code_info = #{codeInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="codeAbstract != null" >
+     	 code_abstract = #{codeAbstract,jdbcType=VARCHAR},
       </if>
       <if test="codeDownloadUrl != null" >
         code_download_url = #{codeDownloadUrl,jdbcType=VARCHAR},
@@ -259,12 +304,22 @@
       <if test="codeContent != null" >
         code_content = #{codeContent,jdbcType=LONGVARCHAR},
       </if>
+      <if test="begincodeUserId != null" >
+        begincode_user_id = #{begincodeUserId,jdbcType=INTEGER},
+      </if>
+      <if test="nickname != null" >
+        nickname = #{nickname,jdbcType=VARCHAR},
+      </if>
+      <if test="pic != null" >
+        pic = #{pic,jdbcType=VARCHAR},
+      </if>
     </set>
     where begincode_code_id = #{begincodeCodeId,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKeyWithBLOBs" parameterType="org.begincode.core.model.BegincodeCode" >
     update begincode_code
     set code_info = #{codeInfo,jdbcType=VARCHAR},
+     	code_abstract = #{codeAbstract,jdbcType=VARCHAR},
       code_download_url = #{codeDownloadUrl,jdbcType=VARCHAR},
       prohibition_message = #{prohibitionMessage,jdbcType=CHAR},
       begincode_keys = #{begincodeKeys,jdbcType=VARCHAR},
@@ -278,12 +333,16 @@
       release_state = #{releaseState,jdbcType=CHAR},
       check_flag = #{checkFlag,jdbcType=CHAR},
       code_type_name = #{codeTypeName,jdbcType=VARCHAR},
+      begincode_user_id = #{begincodeUserId,jdbcType=INTEGER},
+      nickname = #{nickname,jdbcType=VARCHAR},
+      pic = #{pic,jdbcType=VARCHAR},
       code_content = #{codeContent,jdbcType=LONGVARCHAR}
     where begincode_code_id = #{begincodeCodeId,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="org.begincode.core.model.BegincodeCode" >
     update begincode_code
     set code_info = #{codeInfo,jdbcType=VARCHAR},
+     code_abstract = #{codeAbstract,jdbcType=VARCHAR},
       code_download_url = #{codeDownloadUrl,jdbcType=VARCHAR},
       prohibition_message = #{prohibitionMessage,jdbcType=CHAR},
       begincode_keys = #{begincodeKeys,jdbcType=VARCHAR},
@@ -296,7 +355,10 @@
       code_type_id = #{codeTypeId,jdbcType=INTEGER},
       release_state = #{releaseState,jdbcType=CHAR},
       check_flag = #{checkFlag,jdbcType=CHAR},
-      code_type_name = #{codeTypeName,jdbcType=VARCHAR}
+      code_type_name = #{codeTypeName,jdbcType=VARCHAR},
+     begincode_user_id = #{begincodeUserId,jdbcType=VARCHAR},
+     nickname = #{nickname,jdbcType=VARCHAR},
+     pic = #{pic,jdbcType=VARCHAR}
     where begincode_code_id = #{begincodeCodeId,jdbcType=INTEGER}
   </update>
 </mapper>

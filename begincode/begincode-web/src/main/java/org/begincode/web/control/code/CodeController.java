@@ -28,7 +28,7 @@ public class CodeController {
 	@Autowired CodeService codeService;
 //	@Autowired BlogService blogService;
 	@Autowired UserService userService;
-	@RequestMapping("/getAllCodes")
+	@RequestMapping("/codes")
 	public String selCodeList(Model model){
 		Paginator page = new Paginator(0,6);
 //		page.setOrderStr(" order by begincode_code_id desc ");

@@ -41,26 +41,20 @@
 				<div id="codelist">
 				<c:forEach items="${codes}" var="code">
 					<div class="media mediaborder">
-<!-- 						<div class="media-left media-middle"> -->
-<!-- 							<a href="#"> <img -->
-<!-- 								class="media-object img-responsive maxwidth" -->
-<%-- 								src="${ctx}/images/girl.jpg" alt="..."> --%>
-<!-- 							</a> -->
-<!-- 						</div> -->
+						<div class="media-left media-middle">
+							<a href="#"> <img
+								class="media-object img-responsive maxwidth"
+								src="${ctx}/images/${code.pic}" alt="${code.nickname}">
+							</a>
+						</div>
 						<div class="media-body">
-							<h4 class="list-group-item-heading">ckEditor修改文件存储目录</h4>
+							<h4 class="list-group-item-heading">${code.codeInfo}</h4>
 							<p class="list-group-item-text">
-								&nbsp;&nbsp;&nbsp;&nbsp;这个类只改变
-								<code>&lt;a&gt;</code>
-								的外观，不改变功能。可以自己写 JavaScript 禁用这里的链接。 这个类只改变
-								<code>&lt;a&gt;</code>
-								的外观，不改变功能。可以自己写 JavaScript 禁用这里的链接。 这个类只改变
-								<code>&lt;a&gt;</code>
-								的外观，不改变功能。可以自己写 JavaScript 禁用这里的链接。
+								&nbsp;&nbsp;&nbsp;&nbsp;${code.codeAbstract}
 							</p>
 							<p>
 								<span class="l blogKeyLabel">java,ckeditor</span><span
-									class="r blogAuthLabel">作者：冷水源，创建时间：2015-07-11，浏览次数:120</span>
+									class="r blogAuthLabel">作者：${code.nickname }，创建时间：<fmt:formatDate   pattern="yyyy-MM-dd" value="${code.createDatetime }" /> 浏览次数:${code.viewCount}</span>
 							</p>
 						</div>
 					</div>
