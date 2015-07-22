@@ -6799,3 +6799,21 @@ i.hasOpenOn {
 .blogKeyLabel{
 	padding:4px 10px;margin-top:5px;margin-left:10px;font-size:14px;font-weight:500;color:#b70000
 }
+ .nickname {
+  display: block;
+  text-align: center;
+  line-height: 16px;
+  color: #787d82;
+  font-size: 12px;
+  line-height: 1.8em;
+  vertical-align: middle;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.center {
+  width: auto;
+  display: table;
+  margin-left: auto;
+  margin-right: auto;
+}

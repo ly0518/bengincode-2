@@ -1,18 +1,10 @@
-$(document).ready(function(e) {
 
-	$("#pagediv").pagination({
-		items : totalCount,
-		itemsOnPage : 10,
-		cssStyle : 'light-theme',
-		onPageClick : changePage
-	});
-});
 function changePage() {
 	var currentPage = $("#pagediv").pagination('getCurrentPage') - 1;
 	jQuery
 			.ajax({
 				type : "GET",
-				url : ctx + "/code/codesAbstract",
+				url : ctx + "/code/codes",
 				data : "page=" + currentPage,
 				dataType : "json",
 				success : function(codes) {
@@ -32,20 +24,22 @@ function changePage() {
 												+ codes[i].nickname
 												+ "\" />"
 												+ "</a>"
+												+"<a href=\"#\" target=\"_blank\" title=\""+codes[i].nickname+"\" class=\"nickname\">"+codes[i].nickname+"</a>"
 												+ "</div>"
 												+ "<div class=\"media-body\">"
 												+ "<h4 class=\"list-group-item-heading\">"
+												+"<a href=\""+ctx+"/code/"+codes[i].begincodeCodeId+" \" >"
 												+ codes[i].codeInfo
-												+ "</h4>"
+												+ "</a></h4>"
 												+ "<p class=\"list-group-item-text\">"
+												+"<a href=\""+ctx+"/code/"+codes[i].begincodeCodeId+" \" >"
 												+ codes[i].codeAbstract
-												+ "</p>"
+												+ "</a></p>"
 												+ "<p>"
-												+ "<span class=\"l blogKeyLabel\">"
-												+ "java,ckeditor"
-												+ "</span><span class=\"r blogAuthLabel\">"
+												+ getLabel(codes[i].begincodeKeys)
+												+ " <span class=\"r blogAuthLabel\">"
 												+ "作者："
-												+ codes[i].nickname
+												+ codes[i].nickname 
 												+ "，创建时间:"
 												+ getFormatDate(codes[i].createDatetime)
 												+ ",浏览次数:"
@@ -83,4 +77,35 @@ function getFormatDate(data) {
 		CurrentDate += "0" + Day;
 	}
 	return CurrentDate;
+}
+
+function topTen() {
+	jQuery.ajax({
+		type : "GET",
+		url : ctx + "/code/topTen",
+		data : "",
+		dataType : "json",
+		success : function(codes) {
+			$("#codeTopTen").empty();
+			$.each(codes,function(i) {
+					var codeStr = "<a href=\""+ctx+"/code/"+codes[i].begincodeCodeId+" \" class=\"list-group-item\">"+codes[i].codeInfo+"<span class=\"view-count\">"+codes[i].viewCount+"</span></a>";
+					$("#codeTopTen").append(codeStr);
+			});
+		}
+	});
+}
+
+function getLabel(keywords){
+	var str = "<div class=\"keyword-list l\">";
+	var keyarr = keywords.split(",");
+	if(keyarr.length == 0){
+		return ;
+	}
+	for(var i=0;i<keyarr.length;i++){
+		if(keyarr[i] != ""){
+			str += " <a href=\"#\" target=\"_blank\" class=\"list-tag\">"+keyarr[i]+"</a>";
+		}
+	}
+	str += "</div>";
+	return str;
 }

@@ -85,12 +85,11 @@
    		<include refid="Selective_Option"></include>
 	</trim>
   </select>
-    <select id="selectBySelectiveCount" resultType="java.lang.Integer" parameterType="org.begincode.core.model.BegincodeCode" >
-  		select  count(0)
-  		from begincode_code
-  	<trim prefix="WHERE" prefixOverrides="AND">
-   		<include refid="Selective_Option"></include>
-	</trim>
+  
+  <select id="selectAll" resultMap="BaseResultMap" >
+  	select  
+  		 <include refid="Base_Column_List" />
+  		 from begincode_code
   </select>
   <!-- 分页查询end -->
   

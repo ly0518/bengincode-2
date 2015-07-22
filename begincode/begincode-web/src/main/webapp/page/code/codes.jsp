@@ -11,7 +11,8 @@
 <title>代码分享,初学者论坛,BeginCode,beginCode</title>
 <!-- Bootstrap -->
 <link href="${ctx}/css/bootstrap.css" rel="stylesheet">
-<link href="${ctx}/css/simplePagination.css" rel="stylesheet" type="text/css" />
+<link href="${ctx}/css/simplePagination.css" rel="stylesheet"
+	type="text/css" />
 <script type="text/javascript" src="${ctx}/js/jquery.min.js"></script>
 <script type="text/javascript" src="${ctx}/js/jquery.simplePagination.js"></script>
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -21,75 +22,70 @@
       <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
-<script type="text/javascript">
-	var totalCount = ${	pageinfo.totalCount	};
-</script>
+
 <body>
 	<jsp:include page="/page/core/top.jsp" />
 
 	<div class="jumbotron">
 		<div class="container">
-			<h1>${navInfo.nav_word }分类</h1>
-			<p>${navInfo.nav_memo }类别简介</p>
+			<h1>代码分享</h1>
+			<p>&nbsp;&nbsp;&nbsp;&nbsp;主流框架，插件，工具，组件，使用demo分享</p>
 		</div>
 	</div>
 
 
 	<div class="container .col-xs-">
 		<div class="row">
-			<div class="col-md-8">
+			<div class="col-md-9">
 				<div id="codelist">
-				<c:forEach items="${codes}" var="code">
-					<div class="media mediaborder">
-						<div class="media-left media-middle">
-							<a href="#"> <img
-								class="media-object img-responsive maxwidth"
-								src="${ctx}/images/${code.pic}" alt="${code.nickname}">
-							</a>
+					<c:forEach items="${codes}" var="code">
+						<div class="media mediaborder">
+							<div class="media-left media-middle">
+								<a href="#">
+								<img class="media-object img-responsive maxwidth" src="${ctx}/images/${code.pic}" alt="${code.nickname}">
+								</a> 
+								<a href="#" target="_blank" title="${code.nickname}" class="nickname">${code.nickname}</a>
+							</div>
+							<div class="media-body">
+								<h4 class="list-group-item-heading">
+									<a href="${ctx}/code/${code.begincodeCodeId}">${code.codeInfo}</a>
+								</h4>
+								<p class="list-group-item-text">
+									<a href="">${code.codeAbstract}</a>
+								</p>
+								<p>
+								<div class="keyword-list l">
+									<c:forTokens items="${code.begincodeKeys}" delims=","
+										var="keyword">
+										<a href="#" target="_blank" class="list-tag">${keyword}</a>
+									</c:forTokens>
+								</div>
+								<span class="r blogAuthLabel">创建时间：
+								<fmt:formatDate	pattern="yyyy-MM-dd" value="${code.createDatetime }" />
+									浏览次数:${code.viewCount}
+								</span>
+								</p>
+							</div>
 						</div>
-						<div class="media-body">
-							<h4 class="list-group-item-heading">${code.codeInfo}</h4>
-							<p class="list-group-item-text">
-								&nbsp;&nbsp;&nbsp;&nbsp;${code.codeAbstract}
-							</p>
-							<p>
-								<span class="l blogKeyLabel">java,ckeditor</span><span
-									class="r blogAuthLabel">作者：${code.nickname }，创建时间：<fmt:formatDate   pattern="yyyy-MM-dd" value="${code.createDatetime }" /> 浏览次数:${code.viewCount}</span>
-							</p>
-						</div>
-					</div>
-				</c:forEach>
+					</c:forEach>
 				</div>
-				<div class="row">
-					<div id="pagediv"></div>
+				<div class="row center"  >
+				  <div id="pagediv"  ></div>
 				</div>
 			</div>
-			<div class="col-md-4">
-				<!--   -->
-				<div class="list-group">
-					<a href="#" class="list-group-item active"> 最新资源 </a> 
-					<a href="${ctx}/down/viewDown/${book.bc_down_id}.html"	class="list-group-item">最新资源</a>
-					<a href="${ctx}/down/viewDown/${book.bc_down_id}.html"  class="list-group-item">最新资源</a>
-					<a href="${ctx}/down/viewDown/${book.bc_down_id}.html"  class="list-group-item">最新资源</a>
-					<c:forEach items="${books}" var="book">
-						<a href="${ctx}/down/viewDown/${book.bc_down_id}.html"
-							class="list-group-item">最新资源</a>
-					</c:forEach>
+			<div class="col-md-3">
+				<!--  标签库暂未实现
+				<div class="panel panel-primary ">
+					<div class="panel-heading">BeginCode标签库</div>
+					<div class="panel-body">
+						<a href="/wenda/tag/tagId/3" class="hot-label" target="_self">JAVA</a>
+						<a href="/wenda/tag/tagId/5" class="hot-label" target="_self">Html/CSS</a>
+					</div>
 				</div>
+				 -->
 				<div class="list-group">
-					<a href="#" class="list-group-item active"> 项目推荐 </a> 
-					<a href="${ctx}/down/viewDown/${book.bc_down_id}.html" class="list-group-item">最新资源</a> <a
-						href="${ctx}/down/viewDown/${book.bc_down_id}.html"
-						class="list-group-item">最新资源</a> <a
-						href="${ctx}/down/viewDown/${book.bc_down_id}.html"
-						class="list-group-item">最新资源</a> <a
-						href="${ctx}/down/viewDown/${book.bc_down_id}.html"
-						class="list-group-item">最新资源</a>
-					<c:forEach items="${projectStages}" var="projectStage">
-						<a
-							href="${ctx}/project/viewProStage/${projectStage.project_stage_id}.html"
-							class="list-group-item">最新项目章节</a>
-					</c:forEach>
+					<a href="#" class="list-group-item active"> 阅读排行 </a>
+					<div id="codeTopTen"></div>
 				</div>
 
 			</div>
@@ -99,8 +95,18 @@
 	<hr>
 	<!-- foot -->
 	<jsp:include page="/page/core/foot.jsp" />
-
 	<script src="${ctx}/css/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="${ctx}/js/code/code.js"></script>
+	<script type="text/javascript">
+	$(document).ready(function(e) {
+		$("#pagediv").pagination({
+			items : ${pageinfo.totalCount},
+			itemsOnPage : 10,
+			cssStyle : 'light-theme',
+			onPageClick : changePage
+		});
+		topTen();
+	});
+</script>
 </body>
 </html>

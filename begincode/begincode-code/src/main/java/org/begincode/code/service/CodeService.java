@@ -23,8 +23,15 @@ public class CodeService
 	/**
 	 * @param record
 	 */
-	public PageList selCodeForPaper(BegincodeCode record){
+	public PageList findCodesByRecord(BegincodeCode record){
 		return  begincodeCodeMapper.selectBySelective(record);
 	}
-	 
+	
+	public BegincodeCode findCodeById(int codeId){
+		return begincodeCodeMapper.selectByPrimaryKey(codeId);
+	}
+	
+	public PageList findCodes(){
+		return  begincodeCodeMapper.selectAll();
+	}
 }

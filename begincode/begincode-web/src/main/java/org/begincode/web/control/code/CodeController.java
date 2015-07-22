@@ -15,6 +15,7 @@ import org.begincode.course.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -28,36 +29,41 @@ public class CodeController {
 	@Autowired CodeService codeService;
 //	@Autowired BlogService blogService;
 	@Autowired UserService userService;
-	@RequestMapping("/codes")
+	@RequestMapping("/codelist")
 	public String selCodeList(Model model){
-		Paginator page = new Paginator(0,6);
-//		page.setOrderStr(" order by begincode_code_id desc ");
+		Paginator page = new Paginator(0,BeginCodeConstant.PAGE_SIZE);
 		BeginCodeInterceptor.localPage.set(page);
-		BegincodeCode record = new BegincodeCode();
-		PageList list =  codeService.selCodeForPaper(record);
+		PageList list =  codeService.findCodes();
 		model.addAttribute("codes", list);
 		model.addAttribute("pageinfo", list.getPaginator());
 		return "/page/code/codes";  
 	}
-	@RequestMapping("/getCodes")
-	public String selCodes(Model model){
-		BegincodeCode record = new BegincodeCode();
-		PageList list =  codeService.selCodeForPaper(record);
-		model.addAttribute("codes", list);
-		return "/page/code/codes";  
+	@RequestMapping(value = "/{codeId}", method = RequestMethod.GET)
+	public String selCodes(Model model,@PathVariable("codeId") int codeId){
+		BegincodeCode record =codeService.findCodeById(codeId);
+		model.addAttribute("code", record);
+		return "/page/code/code_view";  
 	}
 	
-	@RequestMapping(value = "/codesAbstract", method = RequestMethod.GET)
+	@RequestMapping(value = "/codes", method = RequestMethod.GET)
 	@ResponseBody
 	public List getCodes(Paginator pageinfo){
 		if(pageinfo != null){
 			pageinfo.setLimit(BeginCodeConstant.PAGE_SIZE);
 			BeginCodeInterceptor.localPage.set(pageinfo);
-			BegincodeCode record = new BegincodeCode();
-			PageList list =  codeService.selCodeForPaper(record);
+			PageList list =  codeService.findCodes();
 			return list;
 		}else{
 			return null;
 		}
+	}
+	@RequestMapping(value = "/topTen", method = RequestMethod.GET)
+	@ResponseBody
+	public List findTopTen(){
+			Paginator pageinfo = new Paginator(0,BeginCodeConstant.PAGE_SIZE);
+			pageinfo.setOrderStr(" order by view_count desc ");
+			BeginCodeInterceptor.localPage.set(pageinfo);
+			PageList list =  codeService.findCodes();
+			return list;
 	}
 }
