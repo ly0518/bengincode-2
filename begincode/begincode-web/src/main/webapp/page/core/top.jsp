@@ -27,7 +27,7 @@
 				<a href="#" class="dropdown-toggle"	>视频教程	</a>
 				</li>
 				<li class="">
-					<a href="${ctx}/code/codelist" class="dropdown-toggle"	>代码分享</a>
+					<a href="${ctx}/code" class="dropdown-toggle"	>代码分享</a>
 			   </li>
 
 				<li class="dropdown"><a href="#" class="dropdown-toggle">BeginCode开源 </a>

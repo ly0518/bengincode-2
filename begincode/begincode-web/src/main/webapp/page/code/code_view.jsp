@@ -104,6 +104,10 @@
 
 					</div>
 					<div class="col-md-3">
+					   <div class="list-group">
+							<a href="#" class="list-group-item active"> 相关代码</a> 
+							<div id="relationCodeTopFive"></div>
+						</div>
 						<div class="list-group">
 							<a href="#" class="list-group-item active"> 阅读排行 </a> 
 							<div id="codeTopTen"></div>
@@ -127,8 +131,10 @@
 	<script src="${ctx}/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="${ctx}/js/code/code.js"></script>
 	<script type="text/javascript">
+	var typeId = ${code.codeTypeId};
 	$(document).ready(function(e) {
 		topTen();
+		relationTopFive(typeId);
 	});
 </script>
 </body>

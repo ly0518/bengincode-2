@@ -29,7 +29,7 @@ public class CodeController {
 	@Autowired CodeService codeService;
 //	@Autowired BlogService blogService;
 	@Autowired UserService userService;
-	@RequestMapping("/codelist")
+	@RequestMapping("")
 	public String selCodeList(Model model){
 		Paginator page = new Paginator(0,BeginCodeConstant.PAGE_SIZE);
 		BeginCodeInterceptor.localPage.set(page);
@@ -64,6 +64,17 @@ public class CodeController {
 			pageinfo.setOrderStr(" order by view_count desc ");
 			BeginCodeInterceptor.localPage.set(pageinfo);
 			PageList list =  codeService.findCodes();
+			return list;
+	}
+	@RequestMapping(value = "/codeType/{typeId}", method = RequestMethod.GET)
+	@ResponseBody
+	public List findRelationTopFive(@PathVariable("typeId") int typeId){
+			Paginator pageinfo = new Paginator(0,5);
+			pageinfo.setOrderStr(" order by view_count desc ");
+			BeginCodeInterceptor.localPage.set(pageinfo);
+			BegincodeCode codeRecord = new BegincodeCode();
+			codeRecord.setCodeTypeId(typeId);
+			PageList list =codeService.findCodesByRecord(codeRecord);
 			return list;
 	}
 }

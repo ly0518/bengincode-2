@@ -94,7 +94,21 @@ function topTen() {
 		}
 	});
 }
-
+function relationTopFive(typeId) {
+	jQuery.ajax({
+		type : "GET",
+		url : ctx + "/code/codeType/"+typeId,
+		data : "",
+		dataType : "json",
+		success : function(codes) {
+			$("#relationCodeTopFive").empty();
+			$.each(codes,function(i) {
+					var codeStr = "<a href=\""+ctx+"/code/"+codes[i].begincodeCodeId+" \" class=\"list-group-item\">"+codes[i].codeInfo+"<span class=\"view-count\">"+codes[i].viewCount+"</span></a>";
+					$("#relationCodeTopFive").append(codeStr);
+			});
+		}
+	});
+}
 function getLabel(keywords){
 	var str = "<div class=\"keyword-list l\">";
 	var keyarr = keywords.split(",");

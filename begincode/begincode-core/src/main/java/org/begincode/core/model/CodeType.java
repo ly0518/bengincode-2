@@ -7,6 +7,8 @@ public class CodeType extends BaseModel{
 
     private String deleteFlag;
 
+    private Integer  begincodeUserId;
+    
     public Integer getCodeTypeId() {
         return codeTypeId;
     }
@@ -30,4 +32,13 @@ public class CodeType extends BaseModel{
     public void setDeleteFlag(String deleteFlag) {
         this.deleteFlag = deleteFlag == null ? null : deleteFlag.trim();
     }
+
+	public Integer getBegincodeUserId() {
+		return begincodeUserId;
+	}
+
+	public void setBegincodeUserId(Integer begincodeUserId) {
+		this.begincodeUserId = begincodeUserId;
+	}
+    
 }
