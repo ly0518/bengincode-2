@@ -4522,7 +4522,7 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
 }
 .pager {
   padding-left: 0;
-  margin: 20px 0;
+  margin:10px 10px 20px 10px;
   text-align: center;
   list-style: none;
 }

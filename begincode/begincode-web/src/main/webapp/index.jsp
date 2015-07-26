@@ -34,6 +34,32 @@ $(document).ready(function(e) {
 	
  
  <div class="container">
+ <div class="row">
+  <div class="col-xs-12 col-sm-6 col-md-8"><div class="list-group">
+							<a href="#" class="list-group-item active">最新章节 </a>
+							<a href="${ctx}/chapter/viewChapter/${jwebchapter.course_chapter_id}.html" target="_blank"	class="list-group-item">第一章，jdk安装规范<span class="view-count">12</span></a>
+							<a href="${ctx}/chapter/viewChapter/${jwebchapter.course_chapter_id}.html" target="_blank"	class="list-group-item">第一章，jdk安装规范<span class="view-count">1202</span></a>
+							<a href="${ctx}/chapter/viewChapter/${jwebchapter.course_chapter_id}.html" target="_blank"	class="list-group-item">第一章，jdk安装规范<span class="view-count">12</span></a>
+							<a href="${ctx}/chapter/viewChapter/${jwebchapter.course_chapter_id}.html" target="_blank"	class="list-group-item">第一章，jdk安装规范<span class="view-count">12</span></a>
+							<a href="${ctx}/chapter/viewChapter/${jwebchapter.course_chapter_id}.html" target="_blank"	class="list-group-item">第一章，jdk安装规范<span class="view-count">1202</span></a>
+							<a href="${ctx}/chapter/viewChapter/${jwebchapter.course_chapter_id}.html" target="_blank"	class="list-group-item">第一章，jdk安装规范<span class="view-count">12</span></a>
+							 <c:forEach items="${jwebchapters }" var="jwebchapter">
+									<a href="${ctx}/chapter/viewChapter/${jwebchapter.course_chapter_id}.html" target="_blank"	class="list-group-item">${jwebchapter.chapter_title }</a>
+								</c:forEach>
+					</div></div>
+  <div class="col-xs-6 col-md-4"><div class="list-group">
+							<a href="#" class="list-group-item active">最新章节 </a>
+							<a href="${ctx}/chapter/viewChapter/${jwebchapter.course_chapter_id}.html" target="_blank"	class="list-group-item">第一章，jdk安装规范<span class="view-count">12</span></a>
+							<a href="${ctx}/chapter/viewChapter/${jwebchapter.course_chapter_id}.html" target="_blank"	class="list-group-item">第一章，jdk安装规范<span class="view-count">1202</span></a>
+							<a href="${ctx}/chapter/viewChapter/${jwebchapter.course_chapter_id}.html" target="_blank"	class="list-group-item">第一章，jdk安装规范<span class="view-count">12</span></a>
+							<a href="${ctx}/chapter/viewChapter/${jwebchapter.course_chapter_id}.html" target="_blank"	class="list-group-item">第一章，jdk安装规范<span class="view-count">12</span></a>
+							<a href="${ctx}/chapter/viewChapter/${jwebchapter.course_chapter_id}.html" target="_blank"	class="list-group-item">第一章，jdk安装规范<span class="view-count">1202</span></a>
+							<a href="${ctx}/chapter/viewChapter/${jwebchapter.course_chapter_id}.html" target="_blank"	class="list-group-item">第一章，jdk安装规范<span class="view-count">12</span></a>
+							 <c:forEach items="${jwebchapters }" var="jwebchapter">
+									<a href="${ctx}/chapter/viewChapter/${jwebchapter.course_chapter_id}.html" target="_blank"	class="list-group-item">${jwebchapter.chapter_title }</a>
+								</c:forEach>
+					</div></div>
+</div>
   <ul class="paginList">
          <div id="pagediv"></div>
         </ul>

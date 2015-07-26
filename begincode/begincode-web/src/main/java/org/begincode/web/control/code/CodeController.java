@@ -1,16 +1,22 @@
 package org.begincode.web.control.code;
 
 
+import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
 import org.begincode.code.service.CodeService;
+import org.begincode.code.service.CodeTypeService;
 import org.begincode.core.model.BegincodeCode;
 import org.begincode.core.paginator.BeginCodeInterceptor;
 import org.begincode.core.paginator.domain.PageList;
 import org.begincode.core.paginator.domain.Paginator;
 import org.begincode.core.util.BeginCodeConstant;
-import org.begincode.core.util.PaginationResult;
 import org.begincode.course.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -27,8 +33,9 @@ public class CodeController {
 	private Logger logger = Logger.getLogger(CodeController.class);
 	
 	@Autowired CodeService codeService;
-//	@Autowired BlogService blogService;
+	@Autowired CodeTypeService codeTypeService;
 	@Autowired UserService userService;
+	
 	@RequestMapping("")
 	public String selCodeList(Model model){
 		Paginator page = new Paginator(0,BeginCodeConstant.PAGE_SIZE);
@@ -43,6 +50,11 @@ public class CodeController {
 		BegincodeCode record =codeService.findCodeById(codeId);
 		model.addAttribute("code", record);
 		return "/page/code/code_view";  
+	}
+	@RequestMapping(value = "/userId", method = RequestMethod.GET)
+	public String addCodeInit(Model model){
+		model.addAttribute("codeTypes", codeTypeService.selectCodeTypeByUserId(1));
+		return "/page/code/code_edit";  
 	}
 	
 	@RequestMapping(value = "/codes", method = RequestMethod.GET)
@@ -59,7 +71,7 @@ public class CodeController {
 	}
 	@RequestMapping(value = "/topTen", method = RequestMethod.GET)
 	@ResponseBody
-	public List findTopTen(){
+	public List findTopTen() throws IOException{
 			Paginator pageinfo = new Paginator(0,BeginCodeConstant.PAGE_SIZE);
 			pageinfo.setOrderStr(" order by view_count desc ");
 			BeginCodeInterceptor.localPage.set(pageinfo);
@@ -76,5 +88,15 @@ public class CodeController {
 			codeRecord.setCodeTypeId(typeId);
 			PageList list =codeService.findCodesByRecord(codeRecord);
 			return list;
+	}
+	@RequestMapping(value = "", method = RequestMethod.POST)
+	@ResponseBody
+	public Map addCode(BegincodeCode codeRecord){
+		System.out.println(codeRecord.toString());
+			Map message = new HashMap();
+			codeRecord.setCodeTypeId(1);
+			codeRecord.setBegincodeUserId(1);
+			codeService.createCode(codeRecord);
+			return message;
 	}
 }

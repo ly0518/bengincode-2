@@ -111,7 +111,11 @@
 .qa-comment-d {
   position: relative;
   margin-left: 90px;
-  padding: 10px 0 10px 20px;
+ 
+  padding: 10px 10px 10px 20px;
+}
+.rich-text{
+	 margin-right:10px;
 }
 .qa-comment-d.hasSet {
   margin-right: 120px;

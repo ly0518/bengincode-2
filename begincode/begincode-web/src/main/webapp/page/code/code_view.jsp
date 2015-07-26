@@ -11,6 +11,7 @@
 <title>${code.codeInfo },初学者论坛，beginCode,BeginCode</title>
 <!-- Bootstrap -->
 <link href="${ctx}/css/bootstrap.css" rel="stylesheet">
+<link media="screen" href="${ctx}/css/pinglun.css" rel="stylesheet">
 <script src="${ctx}/js/jquery.min.js"></script>
 
  
@@ -39,69 +40,42 @@
 							       ${code.codeInfo } </h3>
 							       <hr style="border:none;border-top:2px solid blue; height:0;" />
     <p>${code.codeContent }
-    <pre>
-       <input type=   />
-    </pre>
+     
 </p>
 							       <p style="text-align: right;"><b>作者</b>(${code.nickname }) &nbsp; | &nbsp;<b>阅读</b>(${code.viewCount })&nbsp; </p>
-<!-- <form > -->
-<!--    <input type="text" class="form-control" placeholder="一句话评论">	 -->
-<!--    <div id="pub-btm" class="pub-btm clearfix"> -->
-<!--            <button type="button" class="btn pub-btn btn-primary r">发表评论</button> -->
-<!--       </div> -->
-<!-- </form> -->
-<!-- 	<div id="course_note"> -->
-<!--         <ul class="commentcon"> -->
-<!--               <li> -->
-<!--         <div class="notelist_headpic"> -->
-<!--         <a href="/space/u/uid/1967307" target="_blank"><img src='http://img.mukewang.com/user/5557f91e0001115601000100-40-40.jpg' width='40' height='40' /></a> -->
-<!--         </div> -->
-<!--         <div class="notelist_content"> -->
-<!--           <div class="u_name"> -->
-<!--             <a href="/space/u/uid/1967307" target="_blank">一棵树被占用了</a> -->
-<!--           </div> -->
-<!--           <p>条理清晰，感谢分享</p> -->
-<!--           <div class="notelist-bottom clearfix"> -->
-<!--             <span title="创建时间" class="l timeago">时间：1天前</span> -->
-<!--                         <a href="/video/5563" class="from-course">源自：1-2 事务与分布式事务原理与实践(二)</a> -->
-<!--                         <div class="notelist-actions"> -->
-<!--               <a title="赞" href="javascript:;" class="js-pl-praise list-praise "  data-id="51545"> -->
-<!--                 <span class="icon icon_good "></span> -->
-<!--                 <em>0</em></a> -->
-<!--             </div> -->
-<!--           </div> -->
-         
-<!--       </li> -->
-<!--         <li> -->
-<!--         <div class="notelist_headpic"> -->
-<!--         <a href="/space/u/uid/1967307" target="_blank"><img src='http://img.mukewang.com/user/5557f91e0001115601000100-40-40.jpg' width='40' height='40' /></a> -->
-<!--         </div> -->
-<!--         <div class="notelist_content"> -->
-<!--           <div class="u_name"> -->
-<!--             <a href="/space/u/uid/1967307" target="_blank">一棵树被占用了</a> -->
-<!--           </div> -->
-<!--           <p>条理清晰，感谢分享</p> -->
-<!--           <div class="notelist-bottom clearfix"> -->
-<!--             <span title="创建时间" class="l timeago">时间：1天前</span> -->
-<!--                         <div class="notelist-actions"> -->
-<!--                 <em><a href="" >回复</a>（2）</em></a> -->
-<!--             </div> -->
-<!--           </div> -->
-         
-<!--       </li> -->
-<!--             </ul> -->
-<!-- <nav> -->
-<!--   <ul class="pager"> -->
-<!--     <li class="previous"><a href="#"><span aria-hidden="true">&larr;</span>上一页</a></li> -->
-<!--     <li class="next"><a href="#">下一页 <span aria-hidden="true">&rarr;</span></a></li> -->
-<!--   </ul> -->
-<!-- </nav> -->
-<!-- 		      </div> -->
+<form name="codeCommonForm" id="codeCommonForm">
+<div class="form-group">
+   <input type="hidden" name="begincodeCodeId" id="begincodeCodeId" value="${code.begincodeCodeId }" />
+   <input type="text" class="form-control" id="codeCommentContent" name="codeCommentContent" placeholder="一句话评论">	
+   </div>
+   <div class="form-group">
+           <button type="button" id="pubCodeCommon" class="btn pub-btn btn-primary  r">发表评论</button>
+      </div>
+</form>
+
+
 </div>
 
-	 </div>
+	
 
+<!-- 评论开始 -->
+<div class="row">
+	<div class="col-md-12">
+		<div id="comments"></div>
+           
+<nav>
+  <ul class="pager">
+    <li class="previous"><a href="#" id="prePage"><span aria-hidden="true">&larr;</span>上一页</a></li>
+    <li class="next"><a href="#" id="nextPage">下一页 <span aria-hidden="true">&rarr;</span></a></li>
+  </ul>
+</nav>
+</div>
+</div>
+	   
 
+<!-- 评论结束 -->
+
+ </div>
 					</div>
 					<div class="col-md-3">
 					   <div class="list-group">
@@ -130,12 +104,16 @@
 	<jsp:include page="/page/core/foot.jsp" />
 	<script src="${ctx}/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="${ctx}/js/code/code.js"></script>
+	<script type="text/javascript" src="${ctx}/js/code/codeComment.js"></script>
 	<script type="text/javascript">
+	var codIdId = ${code.begincodeCodeId };
 	var typeId = ${code.codeTypeId};
 	$(document).ready(function(e) {
 		topTen();
 		relationTopFive(typeId);
+		codeViewInit(codIdId);
 	});
+
 </script>
 </body>
 </html>

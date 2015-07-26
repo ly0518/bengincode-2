@@ -3,9 +3,7 @@ package org.begincode.web.control;
 
 import org.apache.log4j.Logger;
 import org.begincode.core.model.BegincodeCode;
-import org.begincode.core.util.PaginationResult;
 import org.begincode.course.service.UserService;
-import org.begincode.exception.BeginCodeException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,10 +23,10 @@ public class UserController {
 		userService.sel();
 		BegincodeCode record = new BegincodeCode();
 		record.setCodeInfo("3");
-		record.setBeginRowNum(6);
-		record.setLimitNum(5);
-	   PaginationResult<BegincodeCode>  list = userService.selCodeForPaper(record);
-	   System.out.println(list.getList().size()+"#"+list.getTotleSize());
+//		record.setBeginRowNum(6);
+//		record.setLimitNum(5);
+//	   PaginationResult<BegincodeCode>  list = userService.selCodeForPaper(record);
+//	   System.out.println(list.getList().size()+"#"+list.getTotleSize());
 	}
 	
 	@RequestMapping("/list1")

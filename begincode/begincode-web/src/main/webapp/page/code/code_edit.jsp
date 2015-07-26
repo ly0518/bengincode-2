@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file="/commons/taglibs.jsp"%>
+<%@ page isELIgnored="false" %> 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<c:set var="ctx" value="${pageContext.request.contextPath}"/>
 <!DOCTYPE html>
 <html lang="zh-cn">
   <head>
@@ -11,8 +14,6 @@
 <title>博文编辑,初学者论坛,BeginCode,beginCode</title>
 <!-- Bootstrap -->
 	<link href="${ctx}/css/bootstrap.css" rel="stylesheet">
-	<script charset="utf-8" src="${ctx}/kindeditor/kindeditor.js"></script>
-	<script charset="utf-8" src="${ctx}/kindeditor/lang/zh_CN.js"></script>
 	 <script src="${ctx}/js/jquery.min.js"></script>
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -20,32 +21,6 @@
       <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-    <script type="text/javascript">
-//初始化编辑器  K.create("#demoEditor" )  中demoEditor 为文本编辑器的id
-
-	var editor;
-	KindEditor.options.filterMode = true;
-	KindEditor.ready(function(K){
-		editor = K.create("#blogContent",{
-			cssPath:'${ctx}/kindeditor/plugins/code/ke.css',
-			uploadJson : '${ctx}/kindeditor/jsp/upload_json.jsp',
-			fileManagerJson : '${ctx}/kindeditor/jsp/file_manager_json.jsp',filterMode : true,
-			items : [
-						'fontname', 'fontsize', '|', 'forecolor', 'code','hilitecolor', 'bold', 'italic', 'underline',
-						'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
-						'insertunorderedlist', '|', 'emoticons' ,'|', 'link','|', 'image','|', 'table'],
-						afterChange:function(){
-							//文字变更，去掉错误提示
-							$("#bcContent").find(".formtips").remove();
-						}
-		});
-
-	});
-	
-
-
-</script>
-
 </head>
 <body >
 	<jsp:include page="/page/core/top.jsp" />
@@ -55,7 +30,6 @@
   <li><a href="#">空间管理</a></li>
   <li class="active">发布博文</li>
 </ol>
-     
 	
 	<div class="container .col-xs-" style="margin-top:20px" >
 		<div class="row" >
@@ -95,31 +69,31 @@
 					<div class="col-md-9" >
 							  <div class="panel panel-primary" style="margin-top:0;" >
 							  	<div class="panel-body">
-							  	<form role="form" id="blogForm" action="${ctx}/blog/saveBlog" method="post">
-							  	<input type="hidden" name="blogId" value="${blog.bc_blog_id }"/>
+							  	<form role="form" id="codeForm" action="" method="post">
    <div class="form-group">
-    <label for="exampleInputPassword1"><span class="labelinfoblue" ></span>归属板块</label>
-	   <select class="form-control" name="classify" value="${blog.bc_classify_id }">
-	   	<c:forEach items="${classifyList }" var="classify" varStatus="status" >
-	   		<option value="${classify.bc_classify_id }" >${classify.classify_note}</option>
+    <label for="exampleInputPassword1"><span class="labelinfoblue" ></span>代码分类</label>
+	   <select class="form-control" name="classify" value="">
+	   	<c:forEach items="${codeTypes }" var="codeType"  >
+	   		<option value="${codeType.codeTypeId }" >${codeType.codeTypeName}</option>
 	   	</c:forEach>
 		</select>  
 	</div>
   <div class="form-group">
     <label for="exampleInputEmail1"><span class="labelinfowarn" ></span>代码标题</label>
-    <input type="email" class="form-control required" id="blogTitle" name="blogTitle" value="${blog.blog_title }" placeholder="博客标题">
+    <input type="text" class="form-control required" id="codeInfo" name="codeInfo" value="" placeholder="博客标题">
   </div>
   <div class="form-group">
     <label for="exampleInputPassword1" ><span class="labelinfosuccess" ></span>代码摘要</label>
-    <input type="text" class="form-control" id="abstract" name="abstract" value="${blog.blog_abstract }" placeholder="我们提议，为您的博客添加摘要，这也是给阅读者一个引导">
+    <input type="text" class="form-control" id="codeAbstract" name="codeAbstract" value="" placeholder="我们提议，为您的博客添加摘要，这也是给阅读者一个引导">
   </div>
   <div class="form-group">
   	<label id="bcContent"><span class="labelinfodanger" ></span>代码正文</label>
-  	 <textarea id="blogContent" name="content" class="required" style="width:100%;height:500px">   ${blog.blog_content }</textarea>
+  	 <div   id="summernote"></div>
+  	 <input type="hidden" name="codeContent" id="codeContent" value="" />
   </div>
     <div class="form-group">
     <label for="exampleInputPassword1"><span class="labelinfoblue" ></span>关键字</label>
-    <input type="text" class="form-control" id="bckeyword" name="bckeyword" value="${blog.blog_keyword }" placeholder="为你的博客定义关键字，逗号隔开，不要超过6个哦">
+    <input type="text" class="form-control" id="begincodeKeys" name="begincodeKeys" value="" placeholder="为你的博客定义关键字，逗号隔开，不要超过6个哦">
   </div>
 
    <div style="margin-top:10px;text-align:center;">
@@ -139,5 +113,77 @@
 
 	<!-- Include all compiled plugins (below), or include individual files as needed -->
 	<script src="${ctx}/js/bootstrap.min.js"></script>
+<!-- 	 <script src="http://cdn.gbtags.com/jquery/1.11.1/jquery.min.js"></script> -->
+<!-- <script src="http://cdn.gbtags.com/twitter-bootstrap/3.2.0/js/bootstrap.js"></script> -->
+<script src="http://cdn.gbtags.com/summernote/0.5.2/summernote.min.js"></script>
+
+
+<%-- <script type="text/javascript" src="${pageContext.request.contextPath}/js/summernote-zh-CN.js"></script> --%>
+ <style type="text/css">
+/*  @import url('http://cdn.gbtags.com/twitter-bootstrap/3.2.0/css/bootstrap.css'); */
+@import url('http://cdn.gbtags.com/font-awesome/4.1.0/css/font-awesome.min.css');
+@import url('http://cdn.gbtags.com/summernote/0.5.2/summernote.css');
+ </style>
+ <script src="${ctx}/js/summernote/lang/summernote-zh-CN.js"></script>
+ <script type="text/javascript">
+	$(document).ready(function() {
+		  $('#summernote').summernote({
+// 			  onImageUpload: function (files, editor, $editable) {
+// 				  sendFile(files, editor, $editable);
+// 				  }
+// 		lang:'zh-CN',
+ 		  height: 300,
+		  toolbar: [
+				['style', ['style','bold', 'italic', 'underline', 'clear']],
+				['font', ['strikethrough']],
+				['fontsize', ['fontsize']],
+				['color', ['color']],
+				['layout', ['ul', 'ol', 'paragraph']],
+				['height', ['height']],
+				['insert', ['link', 'picture']]
+				]
+		  });
+		  $('#send').click(function(){
+			 var sHTML = $('#summernote').code();
+			 $('#codeContent').val(sHTML);
+			 alert($('#codeForm').serializeArray());
+// 			 $('#summernote').code("杨双军"+sHTML);
+			 $.ajax({
+			        data: $('#codeForm').serializeArray(),
+			        type: "POST",
+			        url: "${ctx}/code",
+			        dataType : "json",
+// 			        cache: false,
+// 			        contentType: false,
+// 			        processData: false,
+			        success: function (data) {
+			            alert(data);
+			        }
+			    });
+		  });
+	});
+	function saveCode(){
+		
+	}
+	function sendFile(file, editor, welEditable) {
+	    data = new FormData();
+	    data.append("file", file);
+	    url = "http://localhost/spichlerz/uploads";
+	    $.ajax({
+	        data: data,
+	        type: "POST",
+	        url: url,
+	        cache: false,
+	        contentType: false,
+	        processData: false,
+	        success: function (url) {
+	            editor.insertImage(welEditable, url);
+	        }
+	    });
+	}
+	</script>
+	<script>
+	var ctx = "${ctx}";  
+</script>  
 </body>
 </html>
