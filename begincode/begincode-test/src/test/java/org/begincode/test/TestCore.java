@@ -5,8 +5,6 @@ import java.util.Date;
 
 import javax.sql.DataSource;
 
-import org.begincode.core.cache.CountCache;
-import org.begincode.core.cache.CountThread;
 import org.begincode.core.mapper.BegincodeCodeMapper;
 import org.begincode.core.model.BegincodeCode;
 import org.junit.Test;
@@ -37,8 +35,8 @@ public class TestCore {
 	@Test
 	public void testCount() {
 		// ======================点赞，差评，浏览次数 使用类似方法
-		new CountThread(CountCache.CODE_GOOD, 2).start(); // 加1方法
-		System.out.println("@@" + CountCache.getAndResetCodeGood(2)); // 获取并重置
+//		new CountThread(CountCache.CODE_GOOD, 2).start(); // 加1方法
+//		System.out.println("@@" + CountCache.getAndResetCodeGood(2)); // 获取并重置
 		// ======================点赞，差评，浏览次数 使用类似方法 结束
 	}
 

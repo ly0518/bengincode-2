@@ -16,9 +16,7 @@ public class TestCode{
 		System.out.println(codeService);
 		BegincodeCode record = new BegincodeCode ();
 		record.setCodeInfo("3");
-		record.setBeginRowNum(13);
-		record.setLimitNum(10);
-		codeService.selCodeForPaper(record);
+//		codeService.selCodeForPaper(record);
 		ctx.close();
 	}
 	
