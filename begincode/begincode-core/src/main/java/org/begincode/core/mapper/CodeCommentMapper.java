@@ -1,5 +1,7 @@
 package org.begincode.core.mapper;
 
+import java.util.List;
+
 import org.begincode.core.model.CodeComment;
 
 public interface CodeCommentMapper {
@@ -14,4 +16,6 @@ public interface CodeCommentMapper {
     int updateByPrimaryKeySelective(CodeComment record);
 
     int updateByPrimaryKey(CodeComment record);
+    
+    List<CodeComment> selectByCodeId(Integer codeId);
 }

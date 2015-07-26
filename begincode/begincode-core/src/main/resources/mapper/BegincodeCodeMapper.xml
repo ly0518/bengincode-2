@@ -197,7 +197,7 @@
         #{codeInfo,jdbcType=VARCHAR},
       </if>
       <if test="codeAbstract != null">
-      	 #{codeAbstract,jdbcType=VARCHAR} 
+      	 #{codeAbstract,jdbcType=VARCHAR} ,
       </if>
       <if test="codeDownloadUrl != null" >
         #{codeDownloadUrl,jdbcType=VARCHAR},

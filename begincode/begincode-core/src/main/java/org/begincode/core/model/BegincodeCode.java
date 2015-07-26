@@ -202,5 +202,4 @@ public class BegincodeCode extends BaseModel{
 	public void setPic(String pic) {
 		this.pic = pic;
 	}
-    
 }

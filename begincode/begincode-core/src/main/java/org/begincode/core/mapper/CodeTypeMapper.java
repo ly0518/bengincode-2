@@ -1,5 +1,7 @@
 package org.begincode.core.mapper;
 
+import java.util.List;
+
 import org.begincode.core.model.CodeType;
 
 public interface CodeTypeMapper {
@@ -14,4 +16,6 @@ public interface CodeTypeMapper {
     int updateByPrimaryKeySelective(CodeType record);
 
     int updateByPrimaryKey(CodeType record);
+    
+    List<CodeType> selectAllByUserId(Integer userId);
 }

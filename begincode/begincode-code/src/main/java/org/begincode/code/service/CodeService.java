@@ -34,4 +34,9 @@ public class CodeService
 	public PageList findCodes(){
 		return  begincodeCodeMapper.selectAll();
 	}
+	
+	public BegincodeCode createCode(BegincodeCode record){
+		begincodeCodeMapper.insertSelective(record);
+		return record;
+	}
 }

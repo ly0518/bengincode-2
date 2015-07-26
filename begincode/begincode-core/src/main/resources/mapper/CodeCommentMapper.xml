@@ -22,6 +22,13 @@
     from code_comment
     where code_comment_id = #{codeCommentId,jdbcType=INTEGER}
   </select>
+    <select id="selectByCodeId" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from code_comment
+    where begincode_code_id = #{begincodeCodeId,jdbcType=INTEGER}
+  </select>
+  
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from code_comment
     where code_comment_id = #{codeCommentId,jdbcType=INTEGER}

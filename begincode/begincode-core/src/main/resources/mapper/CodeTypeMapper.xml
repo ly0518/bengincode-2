@@ -11,6 +11,17 @@
   <sql id="Base_Column_List" >
     code_type_id, code_type_name, delete_flag,begincode_user_id
   </sql>
+  
+  
+  
+  <select id="selectAllByUserId" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from code_type
+    where begincode_user_id = #{begincodeUserId,jdbcType=INTEGER}
+  </select>
+  
+  
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 'true' as QUERYID,
     <include refid="Base_Column_List" />
