@@ -28,7 +28,7 @@ public class CodeCommentService
 		return  codeCommentMapper.insertSelective(codeComment);
 	}
 	
-	public List findCodeComment(Integer codeId){
+	public PageList findCodeComment(Integer codeId){
 		return codeCommentMapper.selectByCodeId(codeId);
 	}
 	

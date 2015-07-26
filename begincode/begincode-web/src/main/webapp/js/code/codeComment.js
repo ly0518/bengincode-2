@@ -15,60 +15,6 @@ function codeViewInit(codeId){
 	});
 }
 
-function changePages() {
-	var currentPage = $("#pagediv").pagination('getCurrentPage') - 1;
-	jQuery
-			.ajax({
-				type : "GET",
-				url : ctx + "/code/codes",
-				data : "page=" + currentPage,
-				dataType : "json",
-				success : function(codes) {
-					$("#codelist").empty();
-					$
-							.each(
-									codes,
-									function(i) {
-										var codeStr = "<div class=\"media mediaborder\">"
-												+ "<div class=\"media-left media-middle\">"
-												+ "<a href=\"#\"> "
-												+ "<img class=\"media-object img-responsive maxwidth\" src=\""
-												+ ctx
-												+ "/images/"
-												+ codes[i].pic
-												+ "\" alt=\""
-												+ codes[i].nickname
-												+ "\" />"
-												+ "</a>"
-												+"<a href=\"#\" target=\"_blank\" title=\""+codes[i].nickname+"\" class=\"nickname\">"+codes[i].nickname+"</a>"
-												+ "</div>"
-												+ "<div class=\"media-body\">"
-												+ "<h4 class=\"list-group-item-heading\">"
-												+"<a href=\""+ctx+"/code/"+codes[i].begincodeCodeId+" \" >"
-												+ codes[i].codeInfo
-												+ "</a></h4>"
-												+ "<p class=\"list-group-item-text\">"
-												+"<a href=\""+ctx+"/code/"+codes[i].begincodeCodeId+" \" >"
-												+ codes[i].codeAbstract
-												+ "</a></p>"
-												+ "<p>"
-												+ getLabel(codes[i].begincodeKeys)
-												+ " <span class=\"r blogAuthLabel\">"
-												+ "作者："
-												+ codes[i].nickname 
-												+ "，创建时间:"
-												+ getFormatDate(codes[i].createDatetime)
-												+ ",浏览次数:"
-												+ codes[i].viewCount
-												+ "</span></p></div></div>";
-										$("#codelist").append(codeStr);
-									});
-
-				}
-			});
-}
- 
-
 function getCodeViewLabel(codeComment){
 	var str = " <div class=\"qa-comments\">" 
 			+"<div class=\"qa-comment js-qa-comment\" data-cid=\"73785\"> "
@@ -116,4 +62,67 @@ $('#pubCodeCommon').click(function(){
 //			});
 		}
 	});
+});
+
+function changePageForComment(codeId,pageNo){
+	jQuery.ajax({
+		type : "GET",
+		url : ctx + "/codeComment/"+codeId+"/"+pageNo,
+		data : "",
+		dataType : "json",
+		success : function(codeComments) {
+			$("#comments").empty();
+			$.each(codeComments,function(i) {
+					var codeStr = getCodeViewLabel(codeComments[i]);
+					$("#comments").append(codeStr);
+			});
+			
+		}
+	});
+}
+
+$('#prePage').click(function(){
+	var currentPage = $("#currentPage").val();
+	var begincodeCodeId = $("#begincodeCodeId").val();
+	jQuery.ajax({
+		type : "GET",
+		url : ctx + "/codeComment/"+begincodeCodeId+"/"+currentPage,
+		data : "",
+		dataType : "json",
+		success : function(codeComments) {
+			$("#comments").empty();
+			$.each(codeComments,function(i) {
+					var codeStr = getCodeViewLabel(codeComments[i]);
+					$("#comments").append(codeStr);
+			});
+		}
+	});
+	if(parseInt(currentPage) > 0){
+		$("#currentPage").val(parseInt(currentPage)-parseInt(1));
+	}
+});
+$('#nextPage').click(function(){
+	var currentPage = $("#currentPage").val();
+	var pageNo = parseInt(currentPage)+parseInt(1);
+	
+	var begincodeCodeId = $("#begincodeCodeId").val();
+	jQuery.ajax({
+		type : "GET",
+		url : ctx + "/codeComment/"+begincodeCodeId+"/"+pageNo,
+		data : "",
+		dataType : "json",
+		success : function(codeComments) {
+			if(parseInt(codeComments.length) >= 0){
+				$("#comments").empty();
+				$.each(codeComments,function(i) {
+						var codeStr = getCodeViewLabel(codeComments[i]);
+						$("#comments").append(codeStr);
+				});
+				if(parseInt(codeComments.length) >= 5){
+					$("#currentPage").val(parseInt(currentPage)+parseInt(1));
+				}
+			}
+		}
+	});
+	
 });

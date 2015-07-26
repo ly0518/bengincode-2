@@ -65,8 +65,9 @@
            
 <nav>
   <ul class="pager">
-    <li class="previous"><a href="#" id="prePage"><span aria-hidden="true">&larr;</span>上一页</a></li>
-    <li class="next"><a href="#" id="nextPage">下一页 <span aria-hidden="true">&rarr;</span></a></li>
+  	<input type="hidden" name="currentPage" id="currentPage" value="0" />
+    <li class="previous"><a href="#0" name="#0" id="prePage"><span aria-hidden="true">&larr;</span>上一页</a></li>
+    <li class="next"><a href="#1" name="#1" id="nextPage">下一页 <span aria-hidden="true">&rarr;</span></a></li>
   </ul>
 </nav>
 </div>

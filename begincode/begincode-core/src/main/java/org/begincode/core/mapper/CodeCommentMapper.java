@@ -3,6 +3,7 @@ package org.begincode.core.mapper;
 import java.util.List;
 
 import org.begincode.core.model.CodeComment;
+import org.begincode.core.paginator.domain.PageList;
 
 public interface CodeCommentMapper {
     int deleteByPrimaryKey(Integer codeCommentId);
@@ -17,5 +18,5 @@ public interface CodeCommentMapper {
 
     int updateByPrimaryKey(CodeComment record);
     
-    List<CodeComment> selectByCodeId(Integer codeId);
+    PageList<CodeComment> selectByCodeId(Integer codeId);
 }

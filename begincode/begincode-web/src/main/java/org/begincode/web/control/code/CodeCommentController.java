@@ -58,6 +58,17 @@ public class CodeCommentController {
 			List list =  codeCommentService.findCodeComment(codeId);
 			return list;
 	}
- 
+	
+	@RequestMapping(value = "/{codeId}/{pageNo}", method = RequestMethod.GET)
+	@ResponseBody
+	public PageList<CodeComment> findTopTen(@PathVariable("codeId") int codeId,@PathVariable("pageNo") int pageNo) {
+			Paginator pageinfo = new Paginator();
+			pageinfo.setLimit(BeginCodeConstant.PAGE_SIZE_COMMENT);
+			pageinfo.setPage(pageNo);
+			pageinfo.setOrderStr(" order by create_datatime desc ");
+			BeginCodeInterceptor.localPage.set(pageinfo);
+			PageList list =  codeCommentService.findCodeComment(codeId);
+			return list;
+	}
  
 }
