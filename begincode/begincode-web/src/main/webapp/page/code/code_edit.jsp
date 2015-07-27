@@ -69,7 +69,7 @@
 					<div class="col-md-9" >
 							  <div class="panel panel-primary" style="margin-top:0;" >
 							  	<div class="panel-body">
-							  	<form role="form" id="codeForm" action="" method="post">
+							  	<form role="form" id="codeForm" name="codeForm" action="" method="post">
    <div class="form-group">
     <label for="exampleInputPassword1"><span class="labelinfoblue" ></span>代码分类</label>
 	   <select class="form-control" name="classify" value="">
@@ -79,21 +79,21 @@
 		</select>  
 	</div>
   <div class="form-group">
-    <label for="exampleInputEmail1"><span class="labelinfowarn" ></span>代码标题</label>
+    <label for="codeInfo"><span class="labelinfowarn" ></span>代码标题</label>
     <input type="text" class="form-control required" id="codeInfo" name="codeInfo" value="" placeholder="博客标题">
   </div>
   <div class="form-group">
     <label for="exampleInputPassword1" ><span class="labelinfosuccess" ></span>代码摘要</label>
-    <input type="text" class="form-control" id="codeAbstract" name="codeAbstract" value="" placeholder="我们提议，为您的博客添加摘要，这也是给阅读者一个引导">
+    <input type="text" class="form-control required" id="codeAbstract" name="codeAbstract" value="" placeholder="我们提议，为您的博客添加摘要，这也是给阅读者一个引导">
   </div>
   <div class="form-group">
-  	<label id="bcContent"><span class="labelinfodanger" ></span>代码正文</label>
-  	 <div   id="summernote"></div>
-  	 <input type="hidden" name="codeContent" id="codeContent" value="" />
+  	<label id="bcContent" for="codeContent" ><span class="labelinfodanger" ></span>代码正文</label>
+  	 <input type="hidden" name="codeContent" class="required" id="codeContent" value="" />
+  	 <div id="summernote"></div>
   </div>
     <div class="form-group">
     <label for="exampleInputPassword1"><span class="labelinfoblue" ></span>关键字</label>
-    <input type="text" class="form-control" id="begincodeKeys" name="begincodeKeys" value="" placeholder="为你的博客定义关键字，逗号隔开，不要超过6个哦">
+    <input type="text" class="form-control required" id="begincodeKeys" name="begincodeKeys" value="" placeholder="为你的博客定义关键字，逗号隔开，不要超过6个哦">
   </div>
 
    <div style="margin-top:10px;text-align:center;">
@@ -118,15 +118,26 @@
 <script src="http://cdn.gbtags.com/summernote/0.5.2/summernote.min.js"></script>
 
 
-<%-- <script type="text/javascript" src="${pageContext.request.contextPath}/js/summernote-zh-CN.js"></script> --%>
+<script type="text/javascript" src="${ctx}/js/summernote/lang/summernote-zh-CN.js"></script>
  <style type="text/css">
-/*  @import url('http://cdn.gbtags.com/twitter-bootstrap/3.2.0/css/bootstrap.css'); */
 @import url('http://cdn.gbtags.com/font-awesome/4.1.0/css/font-awesome.min.css');
 @import url('http://cdn.gbtags.com/summernote/0.5.2/summernote.css');
  </style>
  <script src="${ctx}/js/summernote/lang/summernote-zh-CN.js"></script>
+ <script src="${ctx}/js/validate/jquery.validate.js"></script>
+	<script src="${ctx}/js/validate/jquery.metadata.js"></script>
+	<script src="${ctx}/js/validate/messages_zh.js"></script>
+ 
  <script type="text/javascript">
 	$(document).ready(function() {
+		$("#codeForm").validate({
+			errorPlacement:function(error,element) {  	
+				error.appendTo(element.parent().children());
+			}, 
+			errorElement: "em"  
+		});
+		
+		
 		  $('#summernote').summernote({
 // 			  onImageUpload: function (files, editor, $editable) {
 // 				  sendFile(files, editor, $editable);
@@ -144,22 +155,24 @@
 				]
 		  });
 		  $('#send').click(function(){
-			 var sHTML = $('#summernote').code();
-			 $('#codeContent').val(sHTML);
-			 alert($('#codeForm').serializeArray());
-// 			 $('#summernote').code("杨双军"+sHTML);
-			 $.ajax({
-			        data: $('#codeForm').serializeArray(),
-			        type: "POST",
-			        url: "${ctx}/code",
-			        dataType : "json",
-// 			        cache: false,
-// 			        contentType: false,
-// 			        processData: false,
-			        success: function (data) {
-			            alert(data);
-			        }
-			    });
+			  if($("#codeForm").valid()){
+				  var sHTML = $('#summernote').code();
+					 $('#codeContent').val(sHTML);
+//		 			 $('#summernote').code("杨双军"+sHTML);
+					 $.ajax({
+					        data: $('#codeForm').serializeArray(),
+					        type: "POST",
+					        url: "${ctx}/code",
+					        dataType : "json",
+//		 			        cache: false,
+//		 			        contentType: false,
+//		 			        processData: false,
+					        success: function (data) {
+					            alert(data.msg);
+					        }
+					    });
+			  }
+			
 		  });
 	});
 	function saveCode(){

@@ -92,11 +92,15 @@ public class CodeController {
 	@RequestMapping(value = "", method = RequestMethod.POST)
 	@ResponseBody
 	public Map addCode(BegincodeCode codeRecord){
-		System.out.println(codeRecord.toString());
 			Map message = new HashMap();
 			codeRecord.setCodeTypeId(1);
 			codeRecord.setBegincodeUserId(1);
 			codeService.createCode(codeRecord);
+			if(codeRecord.getbegincodeCodeId() != null){
+				message.put("msg", "保存成功");
+			}else{
+				message.put("msg", "保存失败");
+			}
 			return message;
 	}
 }

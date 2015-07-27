@@ -108,7 +108,7 @@
     delete from begincode_code
     where begincode_code_id = #{begincodeCodeId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="org.begincode.core.model.BegincodeCode" >
+  <insert id="insert"  useGeneratedKeys="true" keyProperty="begincodeCodeId" parameterType="org.begincode.core.model.BegincodeCode" >
     insert into begincode_code (begincode_code_id, code_info,code_abstract,code_download_url, 
       prohibition_message, begincode_keys, view_count, 
       begincode_navigation_id,  
@@ -125,7 +125,7 @@
       , #{begincodeUserId,jdbcType=INTEGER}, #{nickname,jdbcType=VARCHAR}, #{pic,jdbcType=VARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="org.begincode.core.model.BegincodeCode" >
+  <insert id="insertSelective" useGeneratedKeys="true" keyProperty="begincodeCodeId" parameterType="org.begincode.core.model.BegincodeCode" >
     insert into begincode_code
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="begincodeCodeId != null" >
