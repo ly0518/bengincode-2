@@ -2,17 +2,24 @@ package org.begincode.core.model;
 
 import java.io.Serializable;
 
+/**
+ * @ClassName: UserCourseRelation
+ * @Description: 会员教程关注Bean
+ * @author liutao
+ * @date 2015年7月29日 下午3:39:51
+ *
+ */
 public class UserCourseRelation extends BaseModel implements Serializable {
 
 	private static final long serialVersionUID = -6821271284553147351L;
 
-	/***/
+	/** 主键Id */
 	private Integer userCourseRelationId;
-	/***/
+	/** 用户id */
 	private Integer begincodeUserId;
-	/***/
+	/** 教程id */
 	private Integer begincodeCourseId;
-	/***/
+	/** 状态标识 */
 	private String deleteFlag;
 
 	public UserCourseRelation() {
