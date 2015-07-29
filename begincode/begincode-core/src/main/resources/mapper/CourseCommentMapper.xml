@@ -12,21 +12,25 @@
     <result column="video_course_chapter_id" property="videoCourseChapterId" jdbcType="INTEGER" />
     <result column="check_flag" property="checkFlag" jdbcType="CHAR" />
   </resultMap>
+  
   <sql id="Base_Column_List" >
     course_comment_id, course_comment_content, create_datatime, begincode_user_id, nickname, 
     pic, comment_status, video_course_chapter_id, check_flag
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  
+  <select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 'true' as QUERYID,
     <include refid="Base_Column_List" />
     from course_comment
     where course_comment_id = #{courseCommentId,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+  
+  <delete id="deleteById" parameterType="java.lang.Integer" >
     delete from course_comment
     where course_comment_id = #{courseCommentId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="org.begincode.core.model.CourseComment" >
+  
+  <insert id="insert" useGeneratedKeys="true" keyProperty="courseCommentId" parameterType="org.begincode.core.model.CourseComment" >
     insert into course_comment (course_comment_id, course_comment_content, 
       create_datatime, begincode_user_id, nickname, 
       pic, comment_status, video_course_chapter_id, 
@@ -36,7 +40,8 @@
       #{pic,jdbcType=VARCHAR}, #{commentStatus,jdbcType=CHAR}, #{videoCourseChapterId,jdbcType=INTEGER}, 
       #{checkFlag,jdbcType=CHAR})
   </insert>
-  <insert id="insertSelective" parameterType="org.begincode.core.model.CourseComment" >
+  
+  <insert id="insertSelective" useGeneratedKeys="true" keyProperty="courseCommentId" parameterType="org.begincode.core.model.CourseComment" >
     insert into course_comment
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="courseCommentId != null" >
@@ -97,7 +102,8 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="org.begincode.core.model.CourseComment" >
+  
+  <update id="updateByIdWithSelective" parameterType="org.begincode.core.model.CourseComment" >
     update course_comment
     <set >
       <if test="courseCommentContent != null" >
@@ -127,7 +133,8 @@
     </set>
     where course_comment_id = #{courseCommentId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="org.begincode.core.model.CourseComment" >
+  
+  <update id="updateById" parameterType="org.begincode.core.model.CourseComment" >
     update course_comment
     set course_comment_content = #{courseCommentContent,jdbcType=VARCHAR},
       create_datatime = #{createDatatime,jdbcType=TIMESTAMP},
@@ -139,4 +146,5 @@
       check_flag = #{checkFlag,jdbcType=CHAR}
     where course_comment_id = #{courseCommentId,jdbcType=INTEGER}
   </update>
+  
 </mapper>

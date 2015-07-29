@@ -1,143 +1,224 @@
 package org.begincode.core.model;
 
-public class BegincodeCourse extends BaseModel{
-    private Integer begincodeCourseId;
+import java.io.Serializable;
 
-    private String courseName;
+/**
+ * @ClassName: BegincodeCourse
+ * @Description: 教程bean
+ * @author liutao
+ * @date 2015年7月29日 下午3:46:33
+ *
+ */
+public class BegincodeCourse extends BaseModel implements Serializable {
 
-    private String coursePicUrl;
+	private static final long serialVersionUID = -7522123050642927853L;
 
-    private String introduction;
+	/** 主键Id */
+	private Integer begincodeCourseId;
+	/** 教程名称 */
+	private String courseName;
+	/** 教程图标 */
+	private String coursePicUrl;
+	/** 教程简介 */
+	private String introduction;
+	/** 推荐（1推荐，0没有） */
+	private String recommend;
+	/** 标签id */
+	private Integer courseLabelId;
+	/** 关注数 */
+	private Integer attentionCount;
+	/** 课程类型id */
+	private Integer courseTypeId;
+	/** 用户id */
+	private Integer begincodeUserId;
+	/** 出品人简介 */
+	private String producerIntroduction;
+	/** 完结状态（1完结，0未完结） */
+	private String completionStatus;
+	/** 网站导航Id */
+	private Integer begincodeNavigationId;
+	/** 删除标识 */
+	private String deleteFlag;
+	/** 课程类型名称 */
+	private String courseTypeName;
 
-    private String recommend;
+	public BegincodeCourse() {
+		super();
+	}
 
-    private Integer courseLabelId;
+	/**
+	 * @param begincodeCourseId
+	 * @param courseName
+	 * @param coursePicUrl
+	 * @param introduction
+	 * @param recommend
+	 * @param courseLabelId
+	 * @param attentionCount
+	 * @param courseTypeId
+	 * @param begincodeUserId
+	 * @param producerIntroduction
+	 * @param completionStatus
+	 * @param begincodeNavigationId
+	 * @param deleteFlag
+	 * @param courseTypeName
+	 */
+	public BegincodeCourse(Integer begincodeCourseId, String courseName,
+			String coursePicUrl, String introduction, String recommend,
+			Integer courseLabelId, Integer attentionCount,
+			Integer courseTypeId, Integer begincodeUserId,
+			String producerIntroduction, String completionStatus,
+			Integer begincodeNavigationId, String deleteFlag,
+			String courseTypeName) {
+		super();
+		this.begincodeCourseId = begincodeCourseId;
+		this.courseName = courseName;
+		this.coursePicUrl = coursePicUrl;
+		this.introduction = introduction;
+		this.recommend = recommend;
+		this.courseLabelId = courseLabelId;
+		this.attentionCount = attentionCount;
+		this.courseTypeId = courseTypeId;
+		this.begincodeUserId = begincodeUserId;
+		this.producerIntroduction = producerIntroduction;
+		this.completionStatus = completionStatus;
+		this.begincodeNavigationId = begincodeNavigationId;
+		this.deleteFlag = deleteFlag;
+		this.courseTypeName = courseTypeName;
+	}
 
-    private Integer attentionCount;
+	public Integer getBegincodeCourseId() {
+		return begincodeCourseId;
+	}
 
-    private Integer courseTypeId;
+	public void setBegincodeCourseId(Integer begincodeCourseId) {
+		this.begincodeCourseId = begincodeCourseId;
+	}
 
-    private Integer begincodeUserId;
+	public String getCourseName() {
+		return courseName;
+	}
 
-    private String producerIntroduction;
+	public void setCourseName(String courseName) {
+		this.courseName = courseName == null ? null : courseName.trim();
+	}
 
-    private String completionStatus;
+	public String getCoursePicUrl() {
+		return coursePicUrl;
+	}
 
-    private Integer begincodeNavigationId;
+	public void setCoursePicUrl(String coursePicUrl) {
+		this.coursePicUrl = coursePicUrl == null ? null : coursePicUrl.trim();
+	}
 
-    private String deleteFlag;
+	public String getIntroduction() {
+		return introduction;
+	}
 
-    private String courseTypeName;
+	public void setIntroduction(String introduction) {
+		this.introduction = introduction == null ? null : introduction.trim();
+	}
 
-    public Integer getBegincodeCourseId() {
-        return begincodeCourseId;
-    }
+	public String getRecommend() {
+		return recommend;
+	}
 
-    public void setBegincodeCourseId(Integer begincodeCourseId) {
-        this.begincodeCourseId = begincodeCourseId;
-    }
+	public void setRecommend(String recommend) {
+		this.recommend = recommend == null ? null : recommend.trim();
+	}
 
-    public String getCourseName() {
-        return courseName;
-    }
+	public Integer getCourseLabelId() {
+		return courseLabelId;
+	}
 
-    public void setCourseName(String courseName) {
-        this.courseName = courseName == null ? null : courseName.trim();
-    }
+	public void setCourseLabelId(Integer courseLabelId) {
+		this.courseLabelId = courseLabelId;
+	}
 
-    public String getCoursePicUrl() {
-        return coursePicUrl;
-    }
+	public Integer getAttentionCount() {
+		return attentionCount;
+	}
 
-    public void setCoursePicUrl(String coursePicUrl) {
-        this.coursePicUrl = coursePicUrl == null ? null : coursePicUrl.trim();
-    }
+	public void setAttentionCount(Integer attentionCount) {
+		this.attentionCount = attentionCount;
+	}
 
-    public String getIntroduction() {
-        return introduction;
-    }
+	public Integer getCourseTypeId() {
+		return courseTypeId;
+	}
 
-    public void setIntroduction(String introduction) {
-        this.introduction = introduction == null ? null : introduction.trim();
-    }
+	public void setCourseTypeId(Integer courseTypeId) {
+		this.courseTypeId = courseTypeId;
+	}
 
-    public String getRecommend() {
-        return recommend;
-    }
+	public Integer getBegincodeUserId() {
+		return begincodeUserId;
+	}
 
-    public void setRecommend(String recommend) {
-        this.recommend = recommend == null ? null : recommend.trim();
-    }
+	public void setBegincodeUserId(Integer begincodeUserId) {
+		this.begincodeUserId = begincodeUserId;
+	}
 
-    public Integer getCourseLabelId() {
-        return courseLabelId;
-    }
+	public String getProducerIntroduction() {
+		return producerIntroduction;
+	}
 
-    public void setCourseLabelId(Integer courseLabelId) {
-        this.courseLabelId = courseLabelId;
-    }
+	public void setProducerIntroduction(String producerIntroduction) {
+		this.producerIntroduction = producerIntroduction == null ? null
+				: producerIntroduction.trim();
+	}
 
-    public Integer getAttentionCount() {
-        return attentionCount;
-    }
+	public String getCompletionStatus() {
+		return completionStatus;
+	}
 
-    public void setAttentionCount(Integer attentionCount) {
-        this.attentionCount = attentionCount;
-    }
+	public void setCompletionStatus(String completionStatus) {
+		this.completionStatus = completionStatus == null ? null
+				: completionStatus.trim();
+	}
 
-    public Integer getCourseTypeId() {
-        return courseTypeId;
-    }
+	public Integer getBegincodeNavigationId() {
+		return begincodeNavigationId;
+	}
 
-    public void setCourseTypeId(Integer courseTypeId) {
-        this.courseTypeId = courseTypeId;
-    }
+	public void setBegincodeNavigationId(Integer begincodeNavigationId) {
+		this.begincodeNavigationId = begincodeNavigationId;
+	}
 
-    public Integer getBegincodeUserId() {
-        return begincodeUserId;
-    }
+	public String getDeleteFlag() {
+		return deleteFlag;
+	}
 
-    public void setBegincodeUserId(Integer begincodeUserId) {
-        this.begincodeUserId = begincodeUserId;
-    }
+	public void setDeleteFlag(String deleteFlag) {
+		this.deleteFlag = deleteFlag == null ? null : deleteFlag.trim();
+	}
 
-    public String getProducerIntroduction() {
-        return producerIntroduction;
-    }
+	public String getCourseTypeName() {
+		return courseTypeName;
+	}
 
-    public void setProducerIntroduction(String producerIntroduction) {
-        this.producerIntroduction = producerIntroduction == null ? null : producerIntroduction.trim();
-    }
+	public void setCourseTypeName(String courseTypeName) {
+		this.courseTypeName = courseTypeName == null ? null : courseTypeName
+				.trim();
+	}
 
-    public String getCompletionStatus() {
-        return completionStatus;
-    }
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "BegincodeCourse [begincodeCourseId=" + begincodeCourseId
+				+ ", courseName=" + courseName + ", coursePicUrl="
+				+ coursePicUrl + ", introduction=" + introduction
+				+ ", recommend=" + recommend + ", courseLabelId="
+				+ courseLabelId + ", attentionCount=" + attentionCount
+				+ ", courseTypeId=" + courseTypeId + ", begincodeUserId="
+				+ begincodeUserId + ", producerIntroduction="
+				+ producerIntroduction + ", completionStatus="
+				+ completionStatus + ", begincodeNavigationId="
+				+ begincodeNavigationId + ", deleteFlag=" + deleteFlag
+				+ ", courseTypeName=" + courseTypeName + "]";
+	}
 
-    public void setCompletionStatus(String completionStatus) {
-        this.completionStatus = completionStatus == null ? null : completionStatus.trim();
-    }
-
-    public Integer getBegincodeNavigationId() {
-        return begincodeNavigationId;
-    }
-
-    public void setBegincodeNavigationId(Integer begincodeNavigationId) {
-        this.begincodeNavigationId = begincodeNavigationId;
-    }
-
-    public String getDeleteFlag() {
-        return deleteFlag;
-    }
-
-    public void setDeleteFlag(String deleteFlag) {
-        this.deleteFlag = deleteFlag == null ? null : deleteFlag.trim();
-    }
-
-    public String getCourseTypeName() {
-        return courseTypeName;
-    }
-
-    public void setCourseTypeName(String courseTypeName) {
-        this.courseTypeName = courseTypeName == null ? null : courseTypeName.trim();
-    }
 }

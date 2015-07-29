@@ -7,26 +7,31 @@
     <result column="delete_flag" property="deleteFlag" jdbcType="CHAR" />
     <result column="label_course_count" property="labelCourseCount" jdbcType="INTEGER" />
   </resultMap>
+  
   <sql id="Base_Column_List" >
     course_label_id, course_type_name, delete_flag, label_course_count
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  
+  <select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 'true' as QUERYID,
     <include refid="Base_Column_List" />
     from course_label
     where course_label_id = #{courseLabelId,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+  
+  <delete id="deleteById" parameterType="java.lang.Integer" >
     delete from course_label
     where course_label_id = #{courseLabelId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="org.begincode.core.model.CourseLabel" >
+  
+  <insert id="insert" useGeneratedKeys="true" keyProperty="courseLabelId" parameterType="org.begincode.core.model.CourseLabel" >
     insert into course_label (course_label_id, course_type_name, delete_flag, 
       label_course_count)
     values (#{courseLabelId,jdbcType=INTEGER}, #{courseTypeName,jdbcType=VARCHAR}, #{deleteFlag,jdbcType=CHAR}, 
       #{labelCourseCount,jdbcType=INTEGER}
   </insert>
-  <insert id="insertSelective" parameterType="org.begincode.core.model.CourseLabel" >
+  
+  <insert id="insertSelective" useGeneratedKeys="true" keyProperty="courseLabelId" parameterType="org.begincode.core.model.CourseLabel" >
     insert into course_label
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="courseLabelId != null" >
@@ -41,7 +46,6 @@
       <if test="labelCourseCount != null" >
         label_course_count,
       </if>
-     
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="courseLabelId != null" >
@@ -56,10 +60,10 @@
       <if test="labelCourseCount != null" >
         #{labelCourseCount,jdbcType=INTEGER},
       </if>
-     
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="org.begincode.core.model.CourseLabel" >
+  
+  <update id="updateByIdWithSelective" parameterType="org.begincode.core.model.CourseLabel" >
     update course_label
     <set >
       <if test="courseTypeName != null" >
@@ -71,15 +75,16 @@
       <if test="labelCourseCount != null" >
         label_course_count = #{labelCourseCount,jdbcType=INTEGER},
       </if>
-    
     </set>
     where course_label_id = #{courseLabelId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="org.begincode.core.model.CourseLabel" >
+  
+  <update id="updateById" parameterType="org.begincode.core.model.CourseLabel" >
     update course_label
     set course_type_name = #{courseTypeName,jdbcType=VARCHAR},
       delete_flag = #{deleteFlag,jdbcType=CHAR},
       label_course_count = #{labelCourseCount,jdbcType=INTEGER},
     where course_label_id = #{courseLabelId,jdbcType=INTEGER}
   </update>
+  
 </mapper>

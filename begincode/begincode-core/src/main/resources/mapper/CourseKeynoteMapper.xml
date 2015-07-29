@@ -1,20 +1,25 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="org.begincode.core.mapper.CourseKeynoteMapper" >
+
   <resultMap id="BaseResultMap" type="org.begincode.core.model.CourseKeynote" >
     <id column="course_keynote_id" property="courseKeynoteId" jdbcType="INTEGER" />
     <result column="video_course_chapter_id" property="videoCourseChapterId" jdbcType="INTEGER" />
   </resultMap>
+  
   <resultMap id="ResultMapWithBLOBs" type="org.begincode.core.model.CourseKeynote" extends="BaseResultMap" >
     <result column="course_keynote_content" property="courseKeynoteContent" jdbcType="LONGVARCHAR" />
   </resultMap>
+  
   <sql id="Base_Column_List" >
     course_keynote_id, video_course_chapter_id
   </sql>
+  
   <sql id="Blob_Column_List" >
     course_keynote_content
   </sql>
-  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+  
+  <select id="selectById" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
     select 'true' as QUERYID,
     <include refid="Base_Column_List" />
     ,
@@ -22,17 +27,20 @@
     from course_keynote
     where course_keynote_id = #{courseKeynoteId,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+  
+  <delete id="deleteById" parameterType="java.lang.Integer" >
     delete from course_keynote
     where course_keynote_id = #{courseKeynoteId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="org.begincode.core.model.CourseKeynote" >
+  
+  <insert id="insert" useGeneratedKeys="true" keyProperty="courseKeynoteId" parameterType="org.begincode.core.model.CourseKeynote" >
     insert into course_keynote (course_keynote_id, video_course_chapter_id, 
       course_keynote_content)
     values (#{courseKeynoteId,jdbcType=INTEGER}, #{videoCourseChapterId,jdbcType=INTEGER}, 
       #{courseKeynoteContent,jdbcType=LONGVARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="org.begincode.core.model.CourseKeynote" >
+  
+  <insert id="insertSelective" useGeneratedKeys="true" keyProperty="courseKeynoteId" parameterType="org.begincode.core.model.CourseKeynote" >
     insert into course_keynote
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="courseKeynoteId != null" >
@@ -57,7 +65,8 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="org.begincode.core.model.CourseKeynote" >
+  
+  <update id="updateByIdWithSelective" parameterType="org.begincode.core.model.CourseKeynote" >
     update course_keynote
     <set >
       <if test="videoCourseChapterId != null" >
@@ -69,15 +78,18 @@
     </set>
     where course_keynote_id = #{courseKeynoteId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKeyWithBLOBs" parameterType="org.begincode.core.model.CourseKeynote" >
+  
+  <update id="updateById" parameterType="org.begincode.core.model.CourseKeynote" >
     update course_keynote
     set video_course_chapter_id = #{videoCourseChapterId,jdbcType=INTEGER},
       course_keynote_content = #{courseKeynoteContent,jdbcType=LONGVARCHAR}
     where course_keynote_id = #{courseKeynoteId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="org.begincode.core.model.CourseKeynote" >
+  
+  <update id="updateByIdWithVideoId" parameterType="org.begincode.core.model.CourseKeynote" >
     update course_keynote
     set video_course_chapter_id = #{videoCourseChapterId,jdbcType=INTEGER}
     where course_keynote_id = #{courseKeynoteId,jdbcType=INTEGER}
   </update>
+  
 </mapper>

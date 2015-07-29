@@ -2,16 +2,59 @@ package org.begincode.core.mapper;
 
 import org.begincode.core.model.UserCourseRelation;
 
+/**
+ * @ClassName: UserCourseRelationMapper
+ * @Description: TODO
+ * @author liutao
+ * @date 2015�?7�?27�? 下午3:52:53
+ *
+ */
 public interface UserCourseRelationMapper {
-    int deleteByPrimaryKey(Integer userCourseRelationId);
+	/**
+	 * @Description: 根据userCourseRelationId删除
+	 * @param userCourseRelationId
+	 * @return int
+	 * @throws
+	 */
+	int deleteById(Integer userCourseRelationId);
 
-    int insert(UserCourseRelation record);
+	/**
+	 * @Description: 新增UserCourseRelation
+	 * @param record
+	 * @return int
+	 * @throws
+	 */
+	int insert(UserCourseRelation record);
 
-    int insertSelective(UserCourseRelation record);
+	/**
+	 * @Description: 新增参数中不为空的属�?
+	 * @param record
+	 * @return int
+	 * @throws
+	 */
+	int insertSelective(UserCourseRelation record);
 
-    UserCourseRelation selectByPrimaryKey(Integer userCourseRelationId);
+	/**
+	 * @Description: 根据userCourseRelationId查询
+	 * @param userCourseRelationId
+	 * @return UserCourseRelation
+	 * @throws
+	 */
+	UserCourseRelation selectById(Integer userCourseRelationId);
 
-    int updateByPrimaryKeySelective(UserCourseRelation record);
+	/**
+	 * @Description: 更新参数中不为空的属�?
+	 * @param record
+	 * @return int
+	 * @throws
+	 */
+	int updateByIdWithSelective(UserCourseRelation record);
 
-    int updateByPrimaryKey(UserCourseRelation record);
+	/**
+	 * @Description: 更新VideoCourseChapter
+	 * @param record
+	 * @return int
+	 * @throws
+	 */
+	int updateById(UserCourseRelation record);
 }
