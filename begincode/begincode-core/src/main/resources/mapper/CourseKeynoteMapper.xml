@@ -33,14 +33,14 @@
     where course_keynote_id = #{courseKeynoteId,jdbcType=INTEGER}
   </delete>
   
-  <insert id="insert" parameterType="org.begincode.core.model.CourseKeynote" >
+  <insert id="insert" useGeneratedKeys="true" keyProperty="courseKeynoteId" parameterType="org.begincode.core.model.CourseKeynote" >
     insert into course_keynote (course_keynote_id, video_course_chapter_id, 
       course_keynote_content)
     values (#{courseKeynoteId,jdbcType=INTEGER}, #{videoCourseChapterId,jdbcType=INTEGER}, 
       #{courseKeynoteContent,jdbcType=LONGVARCHAR})
   </insert>
   
-  <insert id="insertSelective" parameterType="org.begincode.core.model.CourseKeynote" >
+  <insert id="insertSelective" useGeneratedKeys="true" keyProperty="courseKeynoteId" parameterType="org.begincode.core.model.CourseKeynote" >
     insert into course_keynote
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="courseKeynoteId != null" >

@@ -23,14 +23,14 @@
     where course_type_id = #{courseTypeId,jdbcType=INTEGER}
   </delete>
   
-  <insert id="insert" parameterType="org.begincode.core.model.CourseType" >
+  <insert id="insert" useGeneratedKeys="true" keyProperty="courseTypeId"  parameterType="org.begincode.core.model.CourseType" >
     insert into course_type (course_type_id, course_type_name, delete_flag
       )
     values (#{courseTypeId,jdbcType=INTEGER}, #{courseTypeName,jdbcType=VARCHAR}, #{deleteFlag,jdbcType=CHAR}
       )
   </insert>
   
-  <insert id="insertSelective" parameterType="org.begincode.core.model.CourseType" >
+  <insert id="insertSelective" useGeneratedKeys="true" keyProperty="courseTypeId" parameterType="org.begincode.core.model.CourseType" >
     insert into course_type
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="courseTypeId != null" >

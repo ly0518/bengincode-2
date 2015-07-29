@@ -2,36 +2,44 @@ package org.begincode.core.model;
 
 import java.io.Serializable;
 
+/**
+ * @ClassName: VideoCourseChapter
+ * @Description: 视频教程章节
+ * @author liutao
+ * @date 2015年7月29日 下午3:27:24
+ *
+ */
 public class VideoCourseChapter extends BaseModel implements Serializable {
 
 	private static final long serialVersionUID = -5925930501386425691L;
 
+	/** 主键id */
 	private Integer videoCourseChapterId;
-
+	/** 章节简介 */
 	private String videoCourseChapterMemo;
-
+	/** 章节视频url */
 	private String chapterVideoUrl;
-
+	/** 查看数 */
 	private Integer viewCount;
-
+	/** 章节号（如第一讲，第二讲） */
 	private String videoCourseChapterOrder;
-
+	/** 站内标签 */
 	private String begincodeKeys;
-
+	/** 1可以流言 0禁止 */
 	private String prohibitionMessage;
-
+	/** 外键id */
 	private Integer begincodeCourseId;
-
+	/** 好评数 */
 	private Integer goodCount;
-
+	/** 差评数 */
 	private Integer badCount;
-
+	/** 删除标识 */
 	private String deleteFlag;
-
+	/** 代码下载地址 */
 	private String chapterCodeDownUrl;
-
+	/** 发布状态（1已发布，0未发布） */
 	private String releaseState;
-
+	/** 教程名称 */
 	private String courseName;
 
 	public VideoCourseChapter() {

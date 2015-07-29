@@ -30,7 +30,7 @@
     where course_comment_id = #{courseCommentId,jdbcType=INTEGER}
   </delete>
   
-  <insert id="insert" parameterType="org.begincode.core.model.CourseComment" >
+  <insert id="insert" useGeneratedKeys="true" keyProperty="courseCommentId" parameterType="org.begincode.core.model.CourseComment" >
     insert into course_comment (course_comment_id, course_comment_content, 
       create_datatime, begincode_user_id, nickname, 
       pic, comment_status, video_course_chapter_id, 
@@ -41,7 +41,7 @@
       #{checkFlag,jdbcType=CHAR})
   </insert>
   
-  <insert id="insertSelective" parameterType="org.begincode.core.model.CourseComment" >
+  <insert id="insertSelective" useGeneratedKeys="true" keyProperty="courseCommentId" parameterType="org.begincode.core.model.CourseComment" >
     insert into course_comment
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="courseCommentId != null" >

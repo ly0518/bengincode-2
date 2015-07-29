@@ -24,14 +24,14 @@
     where course_label_id = #{courseLabelId,jdbcType=INTEGER}
   </delete>
   
-  <insert id="insert" parameterType="org.begincode.core.model.CourseLabel" >
+  <insert id="insert" useGeneratedKeys="true" keyProperty="courseLabelId" parameterType="org.begincode.core.model.CourseLabel" >
     insert into course_label (course_label_id, course_type_name, delete_flag, 
       label_course_count)
     values (#{courseLabelId,jdbcType=INTEGER}, #{courseTypeName,jdbcType=VARCHAR}, #{deleteFlag,jdbcType=CHAR}, 
       #{labelCourseCount,jdbcType=INTEGER}
   </insert>
   
-  <insert id="insertSelective" parameterType="org.begincode.core.model.CourseLabel" >
+  <insert id="insertSelective" useGeneratedKeys="true" keyProperty="courseLabelId" parameterType="org.begincode.core.model.CourseLabel" >
     insert into course_label
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="courseLabelId != null" >

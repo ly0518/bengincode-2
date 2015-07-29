@@ -3,26 +3,34 @@ package org.begincode.core.model;
 import java.io.Serializable;
 import java.util.Date;
 
+/**
+ * @ClassName: CourseComment
+ * @Description: 教程评论
+ * @author liutao
+ * @date 2015年7月29日 下午3:22:44
+ *
+ */
 public class CourseComment extends BaseModel implements Serializable {
 
 	private static final long serialVersionUID = 1916871294783108057L;
 
+	/** 主键 */
 	private Integer courseCommentId;
-
+	/** 评论内容 */
 	private String courseCommentContent;
-
+	/** 创建时间 */
 	private Date createDatatime;
-
+	/** 用户id */
 	private Integer begincodeUserId;
-
+	/** 昵称 */
 	private String nickname;
-
+	/** 头像 */
 	private String pic;
-
+	/** 状态 */
 	private String commentStatus;
-
+	/** 视频课程章节主键id */
 	private Integer videoCourseChapterId;
-
+	/** 审核标识 */
 	private String checkFlag;
 
 	public CourseComment() {

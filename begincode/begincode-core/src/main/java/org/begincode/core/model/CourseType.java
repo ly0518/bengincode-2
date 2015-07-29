@@ -2,14 +2,22 @@ package org.begincode.core.model;
 
 import java.io.Serializable;
 
+/**
+ * @ClassName: CourseType
+ * @Description: 教程分类
+ * @author liutao
+ * @date 2015年7月29日 下午3:26:16
+ *
+ */
 public class CourseType extends BaseModel implements Serializable {
 
 	private static final long serialVersionUID = -1282670940942802031L;
 
+	/** 主键 */
 	private Integer courseTypeId;
-
+	/** 分类类型名称（视频教程，文字教程） */
 	private String courseTypeName;
-
+	/** 标识 */
 	private String deleteFlag;
 
 	public CourseType() {

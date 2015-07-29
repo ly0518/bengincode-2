@@ -6,12 +6,13 @@ public class UserCourseRelation extends BaseModel implements Serializable {
 
 	private static final long serialVersionUID = -6821271284553147351L;
 
+	/***/
 	private Integer userCourseRelationId;
-
+	/***/
 	private Integer begincodeUserId;
-
+	/***/
 	private Integer begincodeCourseId;
-
+	/***/
 	private String deleteFlag;
 
 	public UserCourseRelation() {
