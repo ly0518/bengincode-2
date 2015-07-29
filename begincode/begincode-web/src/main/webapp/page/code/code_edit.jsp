@@ -107,7 +107,8 @@
 					</div>
 					
 			 </div>
-			
+			<input type="file" name="file1" id="file1" />
+			<input type="button" name="" value="上传" onclick="ajaxFileUpload()" />
 <!-- foot -->
 	<jsp:include page="/page/core/foot.jsp" />
 
@@ -127,6 +128,7 @@
  <script src="${ctx}/js/validate/jquery.validate.js"></script>
 	<script src="${ctx}/js/validate/jquery.metadata.js"></script>
 	<script src="${ctx}/js/validate/messages_zh.js"></script>
+ 	<script src="${ctx}/js/ajaxfileupload.js"></script>
  
  <script type="text/javascript">
 	$(document).ready(function() {
@@ -139,9 +141,9 @@
 		
 		
 		  $('#summernote').summernote({
-// 			  onImageUpload: function (files, editor, $editable) {
-// 				  sendFile(files, editor, $editable);
-// 				  }
+			  onImageUpload: function (files, editor, $editable) {
+				  	sendFile(files[0], editor, $editable);
+				  },
 // 		lang:'zh-CN',
  		  height: 300,
 		  toolbar: [
@@ -158,7 +160,6 @@
 			  if($("#codeForm").valid()){
 				  var sHTML = $('#summernote').code();
 					 $('#codeContent').val(sHTML);
-//		 			 $('#summernote').code("杨双军"+sHTML);
 					 $.ajax({
 					        data: $('#codeForm').serializeArray(),
 					        type: "POST",
@@ -175,13 +176,24 @@
 			
 		  });
 	});
-	function saveCode(){
-		
-	}
+	
 	function sendFile(file, editor, welEditable) {
-	    data = new FormData();
-	    data.append("file", file);
-	    url = "http://localhost/spichlerz/uploads";
+		var filename = false;
+		try{
+			filename = file['name'];
+		} catch(e){
+			filename = false;
+		}
+		if(!filename){
+			$(".note-alarm").remove();
+		}
+		//以上防止在图片在编辑器内拖拽引发第二次上传导致的提示错误
+		var ext = filename.substr(filename.lastIndexOf("."));
+		ext = ext.toUpperCase();
+		//name是文件名，自己随意定义，aid是我自己增加的属性用于区分文件用户
+		data = new FormData();
+		data.append("file", file);
+	    url = ctx+"/image";
 	    $.ajax({
 	        data: data,
 	        type: "POST",
@@ -190,10 +202,16 @@
 	        contentType: false,
 	        processData: false,
 	        success: function (url) {
-	            editor.insertImage(welEditable, url);
+	        	if(url != ""){
+	        		editor.insertImage(welEditable,url);
+	        	}else{
+	        		alert("图片上传失败");
+	        	}
+	            
 	        }
 	    });
 	}
+	
 	</script>
 	<script>
 	var ctx = "${ctx}";  

@@ -5464,6 +5464,18 @@ a.list-group-item-danger.active:focus {
 .panel-primary > .panel-footer + .panel-collapse > .panel-body {
   border-bottom-color: #428bca;
 }
+.panel-primary  .icon {
+  width:25px;
+  height:25px;
+  vertical-align:middle;
+  display:inline-block;
+  font-size:18px;
+  text-align:center;
+  padding-top:2px;
+  color:#FFF;
+  font-weight: bold;
+  font-family:微软雅黑,Verdana,sans-serif,宋体;
+}
 .panel-success {
   border-color: #d6e9c6;
 }
@@ -6820,3 +6832,5 @@ i.hasOpenOn {
 .error{
 	color:red;
 }
+/* 标题原创等样式 */
+.icon{width:20px;height:20px;vertical-align:middle;display:inline-block;font-size:14px;text-align:center;color:#FFF;font-weight: bold;font-family:微软雅黑,Verdana,sans-serif,宋体;}

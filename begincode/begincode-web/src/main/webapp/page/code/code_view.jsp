@@ -36,13 +36,16 @@
 							  <div class="panel panel-primary" style="margin-top:0;" >
 							  	<div class="panel-body">
 							       <h3 >
-<%-- 							       <img src="${ctx}/images/yuan.gif"/>&nbsp;<img src="${ctx}/images/jian.gif"/>&nbsp; --%>
-							       ${code.codeInfo } </h3>
+							       
+							       <span class="icon " style="background:#fd9c47;">荐</span>
+							     <span class="icon " style="background:#fd6245;">顶</span> <span class="icon" style="background:#44ac57; "  title="原创博客">原</span> ${code.codeInfo }
+							      
 							       <hr style="border:none;border-top:2px solid blue; height:0;" />
     <p>${code.codeContent }
      
 </p>
-							       <p style="text-align: right;"><b>作者</b>(${code.nickname }) &nbsp; | &nbsp;<b>阅读</b>(${code.viewCount })&nbsp; </p>
+<span class="r blogAuthLabel"><b>作者</b>(${code.nickname }) &nbsp; | &nbsp;<b>阅读</b>(${code.viewCount })&nbsp;  
+								</span>
 <form name="codeCommonForm" id="codeCommonForm">
 <div class="form-group">
    <input type="hidden" name="begincodeCodeId" id="begincodeCodeId" value="${code.begincodeCodeId }" />
@@ -61,8 +64,7 @@
 <!-- 评论开始 -->
 <div class="row">
 	<div class="col-md-12">
-		<div id="comments"></div>
-           
+	<div id="comments"></div>
 <nav>
   <ul class="pager">
   	<input type="hidden" name="currentPage" id="currentPage" value="0" />

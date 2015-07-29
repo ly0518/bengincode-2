@@ -47,19 +47,21 @@ function getCodeViewLabel(codeComment){
 	return str;
 }
 $('#pubCodeCommon').click(function(){
+	alert($('#codeCommonForm').serializeArray());
 	jQuery.ajax({
 		type : "POST",
 		url : ctx + "/codeComment",
 		data : $('#codeCommonForm').serializeArray(),
 		dataType : "json",
 		success : function(codeComment) {
+			alert("ddd"+codeComment.codeCommentContent);
 			var codeStr = getCodeViewLabel(codeComment);
 			$("#comments").prepend(codeStr);
-//			$("#codeTopTen").empty();
-//			$.each(codes,function(i) {
-//					var codeStr = "<a href=\""+ctx+"/code/"+codes[i].begincodeCodeId+" \" class=\"list-group-item\">"+codes[i].codeInfo+"<span class=\"view-count\">"+codes[i].viewCount+"</span></a>";
-//					$("#codeTopTen").append(codeStr);
-//			});
+////			$("#codeTopTen").empty();
+////			$.each(codes,function(i) {
+////					var codeStr = "<a href=\""+ctx+"/code/"+codes[i].begincodeCodeId+" \" class=\"list-group-item\">"+codes[i].codeInfo+"<span class=\"view-count\">"+codes[i].viewCount+"</span></a>";
+////					$("#codeTopTen").append(codeStr);
+////			});
 		}
 	});
 });
@@ -83,6 +85,10 @@ function changePageForComment(codeId,pageNo){
 
 $('#prePage').click(function(){
 	var currentPage = $("#currentPage").val();
+	if(parseInt(currentPage) > 0){
+		currentPage = parseInt(currentPage)-parseInt(1)
+		$("#currentPage").val(currentPage);
+	}
 	var begincodeCodeId = $("#begincodeCodeId").val();
 	jQuery.ajax({
 		type : "GET",
@@ -97,14 +103,11 @@ $('#prePage').click(function(){
 			});
 		}
 	});
-	if(parseInt(currentPage) > 0){
-		$("#currentPage").val(parseInt(currentPage)-parseInt(1));
-	}
+	
 });
 $('#nextPage').click(function(){
 	var currentPage = $("#currentPage").val();
 	var pageNo = parseInt(currentPage)+parseInt(1);
-	
 	var begincodeCodeId = $("#begincodeCodeId").val();
 	jQuery.ajax({
 		type : "GET",
@@ -112,7 +115,7 @@ $('#nextPage').click(function(){
 		data : "",
 		dataType : "json",
 		success : function(codeComments) {
-			if(parseInt(codeComments.length) >= 0){
+			if(parseInt(codeComments.length) > 0){
 				$("#comments").empty();
 				$.each(codeComments,function(i) {
 						var codeStr = getCodeViewLabel(codeComments[i]);

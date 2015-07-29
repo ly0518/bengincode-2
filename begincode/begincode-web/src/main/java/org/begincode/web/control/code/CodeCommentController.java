@@ -40,7 +40,8 @@ public class CodeCommentController {
  
 	@RequestMapping(value = "", method = RequestMethod.POST)
 	@ResponseBody
-	public CodeComment selCodes(Model model,CodeComment codeComment){
+	public CodeComment addCodes(CodeComment codeComment){
+		System.out.println(codeComment.toString());
 		codeComment.setCommentStatus("1");
 		codeComment.setCreateDatatime(new Date());
 		codeComment.setOrderNumber(1);
