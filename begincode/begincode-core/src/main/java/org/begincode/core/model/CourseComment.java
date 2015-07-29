@@ -2,94 +2,96 @@ package org.begincode.core.model;
 
 import java.util.Date;
 
-public class CourseComment extends BaseModel{
-    private Integer courseCommentId;
+public class CourseComment extends BaseModel {
+	private Integer courseCommentId;
 
-    private String courseCommentContent;
+	private String courseCommentContent;
 
-    private Date createDatatime;
+	private Date createDatatime;
 
-    private Integer begincodeUserId;
+	private Integer begincodeUserId;
 
-    private String nickname;
+	private String nickname;
 
-    private String pic;
+	private String pic;
 
-    private String commentStatus;
+	private String commentStatus;
 
-    private Integer videoCourseChapterId;
+	private Integer videoCourseChapterId;
 
-    private String checkFlag;
+	private String checkFlag;
 
-    public Integer getCourseCommentId() {
-        return courseCommentId;
-    }
+	public Integer getCourseCommentId() {
+		return courseCommentId;
+	}
 
-    public void setCourseCommentId(Integer courseCommentId) {
-        this.courseCommentId = courseCommentId;
-    }
+	public void setCourseCommentId(Integer courseCommentId) {
+		this.courseCommentId = courseCommentId;
+	}
 
-    public String getCourseCommentContent() {
-        return courseCommentContent;
-    }
+	public String getCourseCommentContent() {
+		return courseCommentContent;
+	}
 
-    public void setCourseCommentContent(String courseCommentContent) {
-        this.courseCommentContent = courseCommentContent == null ? null : courseCommentContent.trim();
-    }
+	public void setCourseCommentContent(String courseCommentContent) {
+		this.courseCommentContent = courseCommentContent == null ? null
+				: courseCommentContent.trim();
+	}
 
-    public Date getCreateDatatime() {
-        return createDatatime;
-    }
+	public Date getCreateDatatime() {
+		return createDatatime;
+	}
 
-    public void setCreateDatatime(Date createDatatime) {
-        this.createDatatime = createDatatime;
-    }
+	public void setCreateDatatime(Date createDatatime) {
+		this.createDatatime = createDatatime;
+	}
 
-    public Integer getBegincodeUserId() {
-        return begincodeUserId;
-    }
+	public Integer getBegincodeUserId() {
+		return begincodeUserId;
+	}
 
-    public void setBegincodeUserId(Integer begincodeUserId) {
-        this.begincodeUserId = begincodeUserId;
-    }
+	public void setBegincodeUserId(Integer begincodeUserId) {
+		this.begincodeUserId = begincodeUserId;
+	}
 
-    public String getNickname() {
-        return nickname;
-    }
+	public String getNickname() {
+		return nickname;
+	}
 
-    public void setNickname(String nickname) {
-        this.nickname = nickname == null ? null : nickname.trim();
-    }
+	public void setNickname(String nickname) {
+		this.nickname = nickname == null ? null : nickname.trim();
+	}
 
-    public String getPic() {
-        return pic;
-    }
+	public String getPic() {
+		return pic;
+	}
 
-    public void setPic(String pic) {
-        this.pic = pic == null ? null : pic.trim();
-    }
+	public void setPic(String pic) {
+		this.pic = pic == null ? null : pic.trim();
+	}
 
-    public String getCommentStatus() {
-        return commentStatus;
-    }
+	public String getCommentStatus() {
+		return commentStatus;
+	}
 
-    public void setCommentStatus(String commentStatus) {
-        this.commentStatus = commentStatus == null ? null : commentStatus.trim();
-    }
+	public void setCommentStatus(String commentStatus) {
+		this.commentStatus = commentStatus == null ? null : commentStatus
+				.trim();
+	}
 
-    public Integer getVideoCourseChapterId() {
-        return videoCourseChapterId;
-    }
+	public Integer getVideoCourseChapterId() {
+		return videoCourseChapterId;
+	}
 
-    public void setVideoCourseChapterId(Integer videoCourseChapterId) {
-        this.videoCourseChapterId = videoCourseChapterId;
-    }
+	public void setVideoCourseChapterId(Integer videoCourseChapterId) {
+		this.videoCourseChapterId = videoCourseChapterId;
+	}
 
-    public String getCheckFlag() {
-        return checkFlag;
-    }
+	public String getCheckFlag() {
+		return checkFlag;
+	}
 
-    public void setCheckFlag(String checkFlag) {
-        this.checkFlag = checkFlag == null ? null : checkFlag.trim();
-    }
+	public void setCheckFlag(String checkFlag) {
+		this.checkFlag = checkFlag == null ? null : checkFlag.trim();
+	}
 }
