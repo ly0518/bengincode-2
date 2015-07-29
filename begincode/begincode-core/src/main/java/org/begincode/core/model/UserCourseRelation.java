@@ -1,43 +1,82 @@
 package org.begincode.core.model;
 
-public class UserCourseRelation extends BaseModel{
-    private Integer userCourseRelationId;
+import java.io.Serializable;
 
-    private Integer begincodeUserId;
+public class UserCourseRelation extends BaseModel implements Serializable {
 
-    private Integer begincodeCourseId;
+	private static final long serialVersionUID = -6821271284553147351L;
 
-    private String deleteFlag;
+	private Integer userCourseRelationId;
 
-    public Integer getUserCourseRelationId() {
-        return userCourseRelationId;
-    }
+	private Integer begincodeUserId;
 
-    public void setUserCourseRelationId(Integer userCourseRelationId) {
-        this.userCourseRelationId = userCourseRelationId;
-    }
+	private Integer begincodeCourseId;
 
-    public Integer getBegincodeUserId() {
-        return begincodeUserId;
-    }
+	private String deleteFlag;
 
-    public void setBegincodeUserId(Integer begincodeUserId) {
-        this.begincodeUserId = begincodeUserId;
-    }
+	public UserCourseRelation() {
+		super();
+	}
 
-    public Integer getBegincodeCourseId() {
-        return begincodeCourseId;
-    }
+	/**
+	 * @param userCourseRelationId
+	 * @param begincodeUserId
+	 * @param begincodeCourseId
+	 * @param deleteFlag
+	 */
+	public UserCourseRelation(Integer userCourseRelationId,
+			Integer begincodeUserId, Integer begincodeCourseId,
+			String deleteFlag) {
+		super();
+		this.userCourseRelationId = userCourseRelationId;
+		this.begincodeUserId = begincodeUserId;
+		this.begincodeCourseId = begincodeCourseId;
+		this.deleteFlag = deleteFlag;
+	}
 
-    public void setBegincodeCourseId(Integer begincodeCourseId) {
-        this.begincodeCourseId = begincodeCourseId;
-    }
+	public Integer getUserCourseRelationId() {
+		return userCourseRelationId;
+	}
 
-    public String getDeleteFlag() {
-        return deleteFlag;
-    }
+	public void setUserCourseRelationId(Integer userCourseRelationId) {
+		this.userCourseRelationId = userCourseRelationId;
+	}
 
-    public void setDeleteFlag(String deleteFlag) {
-        this.deleteFlag = deleteFlag == null ? null : deleteFlag.trim();
-    }
+	public Integer getBegincodeUserId() {
+		return begincodeUserId;
+	}
+
+	public void setBegincodeUserId(Integer begincodeUserId) {
+		this.begincodeUserId = begincodeUserId;
+	}
+
+	public Integer getBegincodeCourseId() {
+		return begincodeCourseId;
+	}
+
+	public void setBegincodeCourseId(Integer begincodeCourseId) {
+		this.begincodeCourseId = begincodeCourseId;
+	}
+
+	public String getDeleteFlag() {
+		return deleteFlag;
+	}
+
+	public void setDeleteFlag(String deleteFlag) {
+		this.deleteFlag = deleteFlag == null ? null : deleteFlag.trim();
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "UserCourseRelation [userCourseRelationId="
+				+ userCourseRelationId + ", begincodeUserId=" + begincodeUserId
+				+ ", begincodeCourseId=" + begincodeCourseId + ", deleteFlag="
+				+ deleteFlag + "]";
+	}
+
 }

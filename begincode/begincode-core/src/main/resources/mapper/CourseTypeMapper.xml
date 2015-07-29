@@ -6,25 +6,30 @@
     <result column="course_type_name" property="courseTypeName" jdbcType="VARCHAR" />
     <result column="delete_flag" property="deleteFlag" jdbcType="CHAR" />
   </resultMap>
+  
   <sql id="Base_Column_List" >
     course_type_id, course_type_name, delete_flag
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  
+  <select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 'true' as QUERYID,
     <include refid="Base_Column_List" />
     from course_type
     where course_type_id = #{courseTypeId,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+  
+  <delete id="deleteById" parameterType="java.lang.Integer" >
     delete from course_type
     where course_type_id = #{courseTypeId,jdbcType=INTEGER}
   </delete>
+  
   <insert id="insert" parameterType="org.begincode.core.model.CourseType" >
     insert into course_type (course_type_id, course_type_name, delete_flag
       )
     values (#{courseTypeId,jdbcType=INTEGER}, #{courseTypeName,jdbcType=VARCHAR}, #{deleteFlag,jdbcType=CHAR}
       )
   </insert>
+  
   <insert id="insertSelective" parameterType="org.begincode.core.model.CourseType" >
     insert into course_type
     <trim prefix="(" suffix=")" suffixOverrides="," >
@@ -50,7 +55,8 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="org.begincode.core.model.CourseType" >
+  
+  <update id="updateByIdWithSelective" parameterType="org.begincode.core.model.CourseType" >
     update course_type
     <set >
       <if test="courseTypeName != null" >
@@ -62,10 +68,12 @@
     </set>
     where course_type_id = #{courseTypeId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="org.begincode.core.model.CourseType" >
+  
+  <update id="updateById" parameterType="org.begincode.core.model.CourseType" >
     update course_type
     set course_type_name = #{courseTypeName,jdbcType=VARCHAR},
       delete_flag = #{deleteFlag,jdbcType=CHAR}
     where course_type_id = #{courseTypeId,jdbcType=INTEGER}
   </update>
+  
 </mapper>

@@ -7,25 +7,30 @@
     <result column="begincode_course_id" property="begincodeCourseId" jdbcType="INTEGER" />
     <result column="delete_flag" property="deleteFlag" jdbcType="CHAR" />
   </resultMap>
+  
   <sql id="Base_Column_List" >
     user_course_relation_id, begincode_user_id, begincode_course_id, delete_flag
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  
+  <select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 'true' as QUERYID,
     <include refid="Base_Column_List" />
     from user_course_relation
     where user_course_relation_id = #{userCourseRelationId,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+  
+  <delete id="deleteById" parameterType="java.lang.Integer" >
     delete from user_course_relation
     where user_course_relation_id = #{userCourseRelationId,jdbcType=INTEGER}
   </delete>
+  
   <insert id="insert" parameterType="org.begincode.core.model.UserCourseRelation" >
     insert into user_course_relation (user_course_relation_id, begincode_user_id, 
       begincode_course_id, delete_flag)
     values (#{userCourseRelationId,jdbcType=INTEGER}, #{begincodeUserId,jdbcType=INTEGER}, 
       #{begincodeCourseId,jdbcType=INTEGER}, #{deleteFlag,jdbcType=CHAR})
   </insert>
+  
   <insert id="insertSelective" parameterType="org.begincode.core.model.UserCourseRelation" >
     insert into user_course_relation
     <trim prefix="(" suffix=")" suffixOverrides="," >
@@ -57,7 +62,8 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="org.begincode.core.model.UserCourseRelation" >
+  
+  <update id="updateByIdWithSelective" parameterType="org.begincode.core.model.UserCourseRelation" >
     update user_course_relation
     <set >
       <if test="begincodeUserId != null" >
@@ -72,11 +78,13 @@
     </set>
     where user_course_relation_id = #{userCourseRelationId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="org.begincode.core.model.UserCourseRelation" >
+  
+  <update id="updateById" parameterType="org.begincode.core.model.UserCourseRelation" >
     update user_course_relation
     set begincode_user_id = #{begincodeUserId,jdbcType=INTEGER},
       begincode_course_id = #{begincodeCourseId,jdbcType=INTEGER},
       delete_flag = #{deleteFlag,jdbcType=CHAR}
     where user_course_relation_id = #{userCourseRelationId,jdbcType=INTEGER}
   </update>
+  
 </mapper>

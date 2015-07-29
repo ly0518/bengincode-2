@@ -1,143 +1,220 @@
 package org.begincode.core.model;
 
-public class VideoCourseChapter extends BaseModel{
-    private Integer videoCourseChapterId;
+import java.io.Serializable;
 
-    private String videoCourseChapterMemo;
+public class VideoCourseChapter extends BaseModel implements Serializable {
 
-    private String chapterVideoUrl;
+	private static final long serialVersionUID = -5925930501386425691L;
 
-    private Integer viewCount;
+	private Integer videoCourseChapterId;
 
-    private String videoCourseChapterOrder;
+	private String videoCourseChapterMemo;
 
-    private String begincodeKeys;
+	private String chapterVideoUrl;
 
-    private String prohibitionMessage;
+	private Integer viewCount;
 
-    private Integer begincodeCourseId;
+	private String videoCourseChapterOrder;
 
-    private Integer goodCount;
+	private String begincodeKeys;
 
-    private Integer badCount;
+	private String prohibitionMessage;
 
-    private String deleteFlag;
+	private Integer begincodeCourseId;
 
-    private String chapterCodeDownUrl;
+	private Integer goodCount;
 
-    private String releaseState;
+	private Integer badCount;
 
-    private String courseName;
+	private String deleteFlag;
 
-    public Integer getVideoCourseChapterId() {
-        return videoCourseChapterId;
-    }
+	private String chapterCodeDownUrl;
 
-    public void setVideoCourseChapterId(Integer videoCourseChapterId) {
-        this.videoCourseChapterId = videoCourseChapterId;
-    }
+	private String releaseState;
 
-    public String getVideoCourseChapterMemo() {
-        return videoCourseChapterMemo;
-    }
+	private String courseName;
 
-    public void setVideoCourseChapterMemo(String videoCourseChapterMemo) {
-        this.videoCourseChapterMemo = videoCourseChapterMemo == null ? null : videoCourseChapterMemo.trim();
-    }
+	public VideoCourseChapter() {
+		super();
+	}
 
-    public String getChapterVideoUrl() {
-        return chapterVideoUrl;
-    }
+	/**
+	 * @param videoCourseChapterId
+	 * @param videoCourseChapterMemo
+	 * @param chapterVideoUrl
+	 * @param viewCount
+	 * @param videoCourseChapterOrder
+	 * @param begincodeKeys
+	 * @param prohibitionMessage
+	 * @param begincodeCourseId
+	 * @param goodCount
+	 * @param badCount
+	 * @param deleteFlag
+	 * @param chapterCodeDownUrl
+	 * @param releaseState
+	 * @param courseName
+	 */
+	public VideoCourseChapter(Integer videoCourseChapterId,
+			String videoCourseChapterMemo, String chapterVideoUrl,
+			Integer viewCount, String videoCourseChapterOrder,
+			String begincodeKeys, String prohibitionMessage,
+			Integer begincodeCourseId, Integer goodCount, Integer badCount,
+			String deleteFlag, String chapterCodeDownUrl, String releaseState,
+			String courseName) {
+		super();
+		this.videoCourseChapterId = videoCourseChapterId;
+		this.videoCourseChapterMemo = videoCourseChapterMemo;
+		this.chapterVideoUrl = chapterVideoUrl;
+		this.viewCount = viewCount;
+		this.videoCourseChapterOrder = videoCourseChapterOrder;
+		this.begincodeKeys = begincodeKeys;
+		this.prohibitionMessage = prohibitionMessage;
+		this.begincodeCourseId = begincodeCourseId;
+		this.goodCount = goodCount;
+		this.badCount = badCount;
+		this.deleteFlag = deleteFlag;
+		this.chapterCodeDownUrl = chapterCodeDownUrl;
+		this.releaseState = releaseState;
+		this.courseName = courseName;
+	}
 
-    public void setChapterVideoUrl(String chapterVideoUrl) {
-        this.chapterVideoUrl = chapterVideoUrl == null ? null : chapterVideoUrl.trim();
-    }
+	public Integer getVideoCourseChapterId() {
+		return videoCourseChapterId;
+	}
 
-    public Integer getViewCount() {
-        return viewCount;
-    }
+	public void setVideoCourseChapterId(Integer videoCourseChapterId) {
+		this.videoCourseChapterId = videoCourseChapterId;
+	}
 
-    public void setViewCount(Integer viewCount) {
-        this.viewCount = viewCount;
-    }
+	public String getVideoCourseChapterMemo() {
+		return videoCourseChapterMemo;
+	}
 
-    public String getVideoCourseChapterOrder() {
-        return videoCourseChapterOrder;
-    }
+	public void setVideoCourseChapterMemo(String videoCourseChapterMemo) {
+		this.videoCourseChapterMemo = videoCourseChapterMemo == null ? null
+				: videoCourseChapterMemo.trim();
+	}
 
-    public void setVideoCourseChapterOrder(String videoCourseChapterOrder) {
-        this.videoCourseChapterOrder = videoCourseChapterOrder == null ? null : videoCourseChapterOrder.trim();
-    }
+	public String getChapterVideoUrl() {
+		return chapterVideoUrl;
+	}
 
-    public String getBegincodeKeys() {
-        return begincodeKeys;
-    }
+	public void setChapterVideoUrl(String chapterVideoUrl) {
+		this.chapterVideoUrl = chapterVideoUrl == null ? null : chapterVideoUrl
+				.trim();
+	}
 
-    public void setBegincodeKeys(String begincodeKeys) {
-        this.begincodeKeys = begincodeKeys == null ? null : begincodeKeys.trim();
-    }
+	public Integer getViewCount() {
+		return viewCount;
+	}
 
-    public String getProhibitionMessage() {
-        return prohibitionMessage;
-    }
+	public void setViewCount(Integer viewCount) {
+		this.viewCount = viewCount;
+	}
 
-    public void setProhibitionMessage(String prohibitionMessage) {
-        this.prohibitionMessage = prohibitionMessage == null ? null : prohibitionMessage.trim();
-    }
+	public String getVideoCourseChapterOrder() {
+		return videoCourseChapterOrder;
+	}
 
-    public Integer getBegincodeCourseId() {
-        return begincodeCourseId;
-    }
+	public void setVideoCourseChapterOrder(String videoCourseChapterOrder) {
+		this.videoCourseChapterOrder = videoCourseChapterOrder == null ? null
+				: videoCourseChapterOrder.trim();
+	}
 
-    public void setBegincodeCourseId(Integer begincodeCourseId) {
-        this.begincodeCourseId = begincodeCourseId;
-    }
+	public String getBegincodeKeys() {
+		return begincodeKeys;
+	}
 
-    public Integer getGoodCount() {
-        return goodCount;
-    }
+	public void setBegincodeKeys(String begincodeKeys) {
+		this.begincodeKeys = begincodeKeys == null ? null : begincodeKeys
+				.trim();
+	}
 
-    public void setGoodCount(Integer goodCount) {
-        this.goodCount = goodCount;
-    }
+	public String getProhibitionMessage() {
+		return prohibitionMessage;
+	}
 
-    public Integer getBadCount() {
-        return badCount;
-    }
+	public void setProhibitionMessage(String prohibitionMessage) {
+		this.prohibitionMessage = prohibitionMessage == null ? null
+				: prohibitionMessage.trim();
+	}
 
-    public void setBadCount(Integer badCount) {
-        this.badCount = badCount;
-    }
+	public Integer getBegincodeCourseId() {
+		return begincodeCourseId;
+	}
 
-    public String getDeleteFlag() {
-        return deleteFlag;
-    }
+	public void setBegincodeCourseId(Integer begincodeCourseId) {
+		this.begincodeCourseId = begincodeCourseId;
+	}
 
-    public void setDeleteFlag(String deleteFlag) {
-        this.deleteFlag = deleteFlag == null ? null : deleteFlag.trim();
-    }
+	public Integer getGoodCount() {
+		return goodCount;
+	}
 
-    public String getChapterCodeDownUrl() {
-        return chapterCodeDownUrl;
-    }
+	public void setGoodCount(Integer goodCount) {
+		this.goodCount = goodCount;
+	}
 
-    public void setChapterCodeDownUrl(String chapterCodeDownUrl) {
-        this.chapterCodeDownUrl = chapterCodeDownUrl == null ? null : chapterCodeDownUrl.trim();
-    }
+	public Integer getBadCount() {
+		return badCount;
+	}
 
-    public String getReleaseState() {
-        return releaseState;
-    }
+	public void setBadCount(Integer badCount) {
+		this.badCount = badCount;
+	}
 
-    public void setReleaseState(String releaseState) {
-        this.releaseState = releaseState == null ? null : releaseState.trim();
-    }
+	public String getDeleteFlag() {
+		return deleteFlag;
+	}
 
-    public String getCourseName() {
-        return courseName;
-    }
+	public void setDeleteFlag(String deleteFlag) {
+		this.deleteFlag = deleteFlag == null ? null : deleteFlag.trim();
+	}
 
-    public void setCourseName(String courseName) {
-        this.courseName = courseName == null ? null : courseName.trim();
-    }
+	public String getChapterCodeDownUrl() {
+		return chapterCodeDownUrl;
+	}
+
+	public void setChapterCodeDownUrl(String chapterCodeDownUrl) {
+		this.chapterCodeDownUrl = chapterCodeDownUrl == null ? null
+				: chapterCodeDownUrl.trim();
+	}
+
+	public String getReleaseState() {
+		return releaseState;
+	}
+
+	public void setReleaseState(String releaseState) {
+		this.releaseState = releaseState == null ? null : releaseState.trim();
+	}
+
+	public String getCourseName() {
+		return courseName;
+	}
+
+	public void setCourseName(String courseName) {
+		this.courseName = courseName == null ? null : courseName.trim();
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "VideoCourseChapter [videoCourseChapterId="
+				+ videoCourseChapterId + ", videoCourseChapterMemo="
+				+ videoCourseChapterMemo + ", chapterVideoUrl="
+				+ chapterVideoUrl + ", viewCount=" + viewCount
+				+ ", videoCourseChapterOrder=" + videoCourseChapterOrder
+				+ ", begincodeKeys=" + begincodeKeys + ", prohibitionMessage="
+				+ prohibitionMessage + ", begincodeCourseId="
+				+ begincodeCourseId + ", goodCount=" + goodCount
+				+ ", badCount=" + badCount + ", deleteFlag=" + deleteFlag
+				+ ", chapterCodeDownUrl=" + chapterCodeDownUrl
+				+ ", releaseState=" + releaseState + ", courseName="
+				+ courseName + "]";
+	}
+
 }

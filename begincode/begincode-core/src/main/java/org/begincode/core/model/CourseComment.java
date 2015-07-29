@@ -1,8 +1,12 @@
 package org.begincode.core.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class CourseComment extends BaseModel {
+public class CourseComment extends BaseModel implements Serializable {
+
+	private static final long serialVersionUID = 1916871294783108057L;
+
 	private Integer courseCommentId;
 
 	private String courseCommentContent;
@@ -20,6 +24,37 @@ public class CourseComment extends BaseModel {
 	private Integer videoCourseChapterId;
 
 	private String checkFlag;
+
+	public CourseComment() {
+		super();
+	}
+
+	/**
+	 * @param courseCommentId
+	 * @param courseCommentContent
+	 * @param createDatatime
+	 * @param begincodeUserId
+	 * @param nickname
+	 * @param pic
+	 * @param commentStatus
+	 * @param videoCourseChapterId
+	 * @param checkFlag
+	 */
+	public CourseComment(Integer courseCommentId, String courseCommentContent,
+			Date createDatatime, Integer begincodeUserId, String nickname,
+			String pic, String commentStatus, Integer videoCourseChapterId,
+			String checkFlag) {
+		super();
+		this.courseCommentId = courseCommentId;
+		this.courseCommentContent = courseCommentContent;
+		this.createDatatime = createDatatime;
+		this.begincodeUserId = begincodeUserId;
+		this.nickname = nickname;
+		this.pic = pic;
+		this.commentStatus = commentStatus;
+		this.videoCourseChapterId = videoCourseChapterId;
+		this.checkFlag = checkFlag;
+	}
 
 	public Integer getCourseCommentId() {
 		return courseCommentId;
@@ -94,4 +129,21 @@ public class CourseComment extends BaseModel {
 	public void setCheckFlag(String checkFlag) {
 		this.checkFlag = checkFlag == null ? null : checkFlag.trim();
 	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "CourseComment [courseCommentId=" + courseCommentId
+				+ ", courseCommentContent=" + courseCommentContent
+				+ ", createDatatime=" + createDatatime + ", begincodeUserId="
+				+ begincodeUserId + ", nickname=" + nickname + ", pic=" + pic
+				+ ", commentStatus=" + commentStatus
+				+ ", videoCourseChapterId=" + videoCourseChapterId
+				+ ", checkFlag=" + checkFlag + "]";
+	}
+
 }

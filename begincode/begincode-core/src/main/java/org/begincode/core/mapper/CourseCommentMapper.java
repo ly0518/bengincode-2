@@ -2,16 +2,59 @@ package org.begincode.core.mapper;
 
 import org.begincode.core.model.CourseComment;
 
+/**
+ * @ClassName: CourseCommentMapper
+ * @Description: TODO
+ * @author liutao
+ * @date 2015�?7�?27�? 下午2:42:56
+ *
+ */
 public interface CourseCommentMapper {
-    int deleteByPrimaryKey(Integer courseCommentId);
+	/**
+	 * @Description: 根据courseCommentId查询
+	 * @param courseCommentId
+	 * @return int
+	 * @throws
+	 */
+	int deleteById(Integer courseCommentId);
 
-    int insert(CourseComment record);
+	/**
+	 * @Description: 这里用一句话描述这个方法的作�?
+	 * @param record
+	 * @return int
+	 * @throws
+	 */
+	int insert(CourseComment record);
 
-    int insertSelective(CourseComment record);
+	/**
+	 * @Description: 这里用一句话描述这个方法的作�?
+	 * @param record
+	 * @return int
+	 * @throws
+	 */
+	int insertSelective(CourseComment record);
 
-    CourseComment selectByPrimaryKey(Integer courseCommentId);
+	/**
+	 * @Description: 根据courseCommentId查询
+	 * @param courseCommentId
+	 * @return CourseComment
+	 * @throws
+	 */
+	CourseComment selectById(Integer courseCommentId);
 
-    int updateByPrimaryKeySelective(CourseComment record);
+	/**
+	 * @Description: 这里用一句话描述这个方法的作�?
+	 * @param record
+	 * @return int
+	 * @throws
+	 */
+	int updateByIdWithSelective(CourseComment record);
 
-    int updateByPrimaryKey(CourseComment record);
+	/**
+	 * @Description: 这里用一句话描述这个方法的作�?
+	 * @param record
+	 * @return int
+	 * @throws
+	 */
+	int updateById(CourseComment record);
 }
