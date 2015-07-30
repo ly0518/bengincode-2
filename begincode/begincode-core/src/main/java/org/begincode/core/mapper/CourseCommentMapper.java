@@ -6,7 +6,7 @@ import org.begincode.core.model.CourseComment;
  * @ClassName: CourseCommentMapper
  * @Description: TODO
  * @author liutao
- * @date 2015�?7�?27�? 下午2:42:56
+ * @date 2015年7月27日 下午2:42:56
  *
  */
 public interface CourseCommentMapper {
@@ -19,7 +19,7 @@ public interface CourseCommentMapper {
 	int deleteById(Integer courseCommentId);
 
 	/**
-	 * @Description: 这里用一句话描述这个方法的作�?
+	 * @Description: 这里用一句话描述这个方法的作�?
 	 * @param record
 	 * @return int
 	 * @throws
@@ -27,7 +27,7 @@ public interface CourseCommentMapper {
 	int insert(CourseComment record);
 
 	/**
-	 * @Description: 这里用一句话描述这个方法的作�?
+	 * @Description: 这里用一句话描述这个方法的作�?
 	 * @param record
 	 * @return int
 	 * @throws
@@ -43,7 +43,7 @@ public interface CourseCommentMapper {
 	CourseComment selectById(Integer courseCommentId);
 
 	/**
-	 * @Description: 这里用一句话描述这个方法的作�?
+	 * @Description: 这里用一句话描述这个方法的作�?
 	 * @param record
 	 * @return int
 	 * @throws
@@ -51,7 +51,7 @@ public interface CourseCommentMapper {
 	int updateByIdWithSelective(CourseComment record);
 
 	/**
-	 * @Description: 这里用一句话描述这个方法的作�?
+	 * @Description: 这里用一句话描述这个方法的作�?
 	 * @param record
 	 * @return int
 	 * @throws

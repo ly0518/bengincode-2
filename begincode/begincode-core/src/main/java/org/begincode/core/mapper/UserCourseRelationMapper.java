@@ -6,7 +6,7 @@ import org.begincode.core.model.UserCourseRelation;
  * @ClassName: UserCourseRelationMapper
  * @Description: TODO
  * @author liutao
- * @date 2015�?7�?27�? 下午3:52:53
+ * @date 2015年7月27日 下午3:52:53
  *
  */
 public interface UserCourseRelationMapper {
@@ -27,7 +27,7 @@ public interface UserCourseRelationMapper {
 	int insert(UserCourseRelation record);
 
 	/**
-	 * @Description: 新增参数中不为空的属�?
+	 * @Description: 新增参数中不为空的属�?
 	 * @param record
 	 * @return int
 	 * @throws
@@ -43,7 +43,7 @@ public interface UserCourseRelationMapper {
 	UserCourseRelation selectById(Integer userCourseRelationId);
 
 	/**
-	 * @Description: 更新参数中不为空的属�?
+	 * @Description: 更新参数中不为空的属�?
 	 * @param record
 	 * @return int
 	 * @throws

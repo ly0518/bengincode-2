@@ -6,7 +6,7 @@ import org.begincode.core.model.CourseKeynote;
  * @ClassName: CourseKeynoteMapper
  * @Description: TODO
  * @author liutao
- * @date 2015�?7�?27�? 下午2:57:41
+ * @date 2015年7月27日 下午2:57:41
  *
  */
 public interface CourseKeynoteMapper {
@@ -27,7 +27,7 @@ public interface CourseKeynoteMapper {
 	int insert(CourseKeynote record);
 
 	/**
-	 * @Description: 新增参数中不为空的属�?
+	 * @Description: 新增参数中不为空的属�?
 	 * @param record
 	 * @return int
 	 * @throws
@@ -43,7 +43,7 @@ public interface CourseKeynoteMapper {
 	CourseKeynote selectById(Integer courseKeynoteId);
 
 	/**
-	 * @Description: 更新参数中不为空的属�?
+	 * @Description: 更新参数中不为空的属�?
 	 * @param record
 	 * @return int
 	 * @throws

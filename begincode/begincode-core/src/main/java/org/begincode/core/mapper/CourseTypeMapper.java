@@ -6,7 +6,7 @@ import org.begincode.core.model.CourseType;
  * @ClassName: CourseTypeMapper
  * @Description: TODO
  * @author liutao
- * @date 2015�?7�?27�? 下午3:29:28
+ * @date 2015年7月27日 下午3:29:28
  *
  */
 public interface CourseTypeMapper {
@@ -27,7 +27,7 @@ public interface CourseTypeMapper {
 	int insert(CourseType record);
 
 	/**
-	 * @Description: 新增参数中不为空的属�?
+	 * @Description: 新增参数中不为空的属�?
 	 * @param record
 	 * @return int
 	 * @throws
@@ -43,7 +43,7 @@ public interface CourseTypeMapper {
 	CourseType selectById(Integer courseTypeId);
 
 	/**
-	 * @Description: 更新参数中不为空的属�?
+	 * @Description: 更新参数中不为空的属�?
 	 * @param record
 	 * @return int
 	 * @throws

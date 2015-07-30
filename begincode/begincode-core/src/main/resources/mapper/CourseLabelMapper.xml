@@ -28,7 +28,7 @@
     insert into course_label (course_label_id, course_type_name, delete_flag, 
       label_course_count)
     values (#{courseLabelId,jdbcType=INTEGER}, #{courseTypeName,jdbcType=VARCHAR}, #{deleteFlag,jdbcType=CHAR}, 
-      #{labelCourseCount,jdbcType=INTEGER}
+      #{labelCourseCount,jdbcType=INTEGER})
   </insert>
   
   <insert id="insertSelective" useGeneratedKeys="true" keyProperty="courseLabelId" parameterType="org.begincode.core.model.CourseLabel" >
@@ -86,5 +86,12 @@
       label_course_count = #{labelCourseCount,jdbcType=INTEGER},
     where course_label_id = #{courseLabelId,jdbcType=INTEGER}
   </update>
+  
+  <select id="selectAll" parameterType="org.begincode.core.model.CourseLabel">
+  	select 
+  	  *
+  	from from course_label
+  	order by label_course_count desc	
+  </select>
   
 </mapper>

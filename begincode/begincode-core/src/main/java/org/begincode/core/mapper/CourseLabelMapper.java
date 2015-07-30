@@ -1,12 +1,14 @@
 package org.begincode.core.mapper;
 
+import java.util.List;
+
 import org.begincode.core.model.CourseLabel;
 
 /**
  * @ClassName: CourseLabelMapper
- * @Description: TODO
+ * @Description: 教程标签分类Dao
  * @author liutao
- * @date 2015�?7�?27�? 下午3:37:05
+ * @date 2015年7月27日 下午3:37:05
  *
  */
 public interface CourseLabelMapper {
@@ -21,15 +23,15 @@ public interface CourseLabelMapper {
 	/**
 	 * @Description: 新增CourseLabel
 	 * @param record
-	 * @return
+	 * @return int
 	 * @throws
 	 */
 	int insert(CourseLabel record);
 
 	/**
-	 * @Description: 新增参数中不为空的属�?
+	 * @Description: 新增参数中不为空的属�?
 	 * @param record
-	 * @return
+	 * @return int
 	 * @throws
 	 */
 	int insertSelective(CourseLabel record);
@@ -43,9 +45,9 @@ public interface CourseLabelMapper {
 	CourseLabel selectById(Integer courseLabelId);
 
 	/**
-	 * @Description: 更新参数中不为空的属�?
+	 * @Description: 更新参数中不为空的属�?
 	 * @param record
-	 * @return
+	 * @return int
 	 * @throws
 	 */
 	int updateByIdWithSelective(CourseLabel record);
@@ -53,8 +55,15 @@ public interface CourseLabelMapper {
 	/**
 	 * @Description: 更新CourseType
 	 * @param record
-	 * @return
+	 * @return int
 	 * @throws
 	 */
 	int updateById(CourseLabel record);
+
+	/**
+	 * @Description: 这里用一句话描述这个方法的作用
+	 * @return List<{@link CourseLabel}>
+	 * @throws
+	 */
+	List<CourseLabel> selectAll();
 }
