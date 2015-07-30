@@ -2,6 +2,7 @@ package org.begincode.core.mapper;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
 import org.begincode.core.model.CourseLabel;
 
 /**
@@ -62,8 +63,9 @@ public interface CourseLabelMapper {
 
 	/**
 	 * @Description: 这里用一句话描述这个方法的作用
+	 * @param deleteFlag
 	 * @return List<{@link CourseLabel}>
 	 * @throws
 	 */
-	List<CourseLabel> selectAll();
+	List<CourseLabel> selectAll(@Param("deleteFlag") String deleteFlag);
 }

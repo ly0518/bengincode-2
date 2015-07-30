@@ -91,6 +91,7 @@
   	select 
   	  *
   	from from course_label
+  	where delete_flag = #{deleteFlag}
   	order by label_course_count desc	
   </select>
   

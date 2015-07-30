@@ -14,6 +14,7 @@ import javax.annotation.Resource;
 
 import org.begincode.core.mapper.CourseLabelMapper;
 import org.begincode.core.model.CourseLabel;
+import org.begincode.course.contant.Constants;
 import org.begincode.course.service.CourseLabelService;
 import org.springframework.stereotype.Service;
 
@@ -50,7 +51,7 @@ public class CourseLabelServiceImpl implements CourseLabelService {
 	 */
 	@Override
 	public List<CourseLabel> findAll() {
-		return courseLabelMapper.selectAll();
+		return courseLabelMapper.selectAll(Constants.DELETE_FLAG_NOMAL);
 	}
 
 }

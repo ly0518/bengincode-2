@@ -48,4 +48,9 @@ public class CourseRuntimeException extends BeginCodeException {
 		this.code = code;
 	}
 
+	/**
+	 * 数据库操作异常
+	 */
+	public final static String COS0001 = "COS0001";
+
 }

@@ -8,8 +8,12 @@
  */
 package org.begincode.web.control.course;
 
+import javax.annotation.Resource;
+
 import org.apache.log4j.Logger;
+import org.begincode.course.facade.CourseFacade;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
@@ -23,13 +27,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping(value = "/video")
 public class VideoCourseController {
 
-	private static Logger logger = Logger
-			.getLogger(VideoCourseController.class);
+	private static Logger logger = Logger.getLogger(VideoCourseController.class);
+
+	@Resource
+	private CourseFacade courseFacade;
 
 	@RequestMapping("")
-	public String toVideo() {
-		logger.info("sfsdfsdfsdfds");
+	public String toVideo(Model model) {
+		model.addAttribute("labels", courseFacade.findLabels());
 		return "/page/course/course_list";
 	}
-
 }
