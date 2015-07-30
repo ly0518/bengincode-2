@@ -15,6 +15,7 @@ import javax.annotation.Resource;
 import org.begincode.core.mapper.CourseLabelMapper;
 import org.begincode.core.model.CourseLabel;
 import org.begincode.course.contant.Constants;
+import org.begincode.course.exception.CourseRuntimeException;
 import org.begincode.course.service.CourseLabelService;
 import org.springframework.stereotype.Service;
 
@@ -39,7 +40,9 @@ public class CourseLabelServiceImpl implements CourseLabelService {
 	 * core.model.CourseLabel)
 	 */
 	@Override
-	public int create(CourseLabel courseLabel) {
+	public int create(CourseLabel courseLabel) throws CourseRuntimeException {
+		if (null == courseLabel)
+			throw new CourseRuntimeException(CourseRuntimeException.COS0002, "参数不能为空");
 		courseLabelMapper.insert(courseLabel);
 		return courseLabel.getCourseLabelId();
 	}

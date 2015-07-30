@@ -24,7 +24,7 @@
 			<ul class="nav navbar-nav">
 				<li class=""><a href="http://www.begincode.net">首页</a></li>
 				<li class="">
-				<a href="#" class="dropdown-toggle"	>视频教程	</a>
+				<a href="${ctx}/video" class="dropdown-toggle"	>视频教程	</a>
 				</li>
 				<li class="">
 					<a href="${ctx}/code" class="dropdown-toggle"	>代码分享</a>

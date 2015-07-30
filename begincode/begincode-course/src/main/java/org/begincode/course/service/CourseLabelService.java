@@ -3,6 +3,7 @@ package org.begincode.course.service;
 import java.util.List;
 
 import org.begincode.core.model.CourseLabel;
+import org.begincode.course.exception.CourseRuntimeException;
 
 /**
  * @ClassName: CourseLabelService
@@ -18,7 +19,7 @@ public interface CourseLabelService {
 	 * @return 主键id
 	 * @throws
 	 */
-	public int create(CourseLabel courseLabel);
+	public int create(CourseLabel courseLabel) throws CourseRuntimeException;
 
 	/**
 	 * @Description: 查询所有的课程标签 按照课程数目倒序排序

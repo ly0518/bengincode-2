@@ -10,6 +10,7 @@ package org.begincode.course.facade;
 
 import java.util.List;
 
+import org.begincode.core.model.BegincodeCourse;
 import org.begincode.core.model.CourseLabel;
 import org.begincode.course.exception.CourseRuntimeException;
 
@@ -27,4 +28,21 @@ public interface CourseFacade {
 	 * @throws
 	 */
 	public List<CourseLabel> findLabels() throws CourseRuntimeException;
+
+	/**
+	 * @Description: 创建标签
+	 * @return
+	 * @throws CourseRuntimeException
+	 * @throws
+	 */
+	public int createLabel(CourseLabel courseLabel) throws CourseRuntimeException;
+
+	/**
+	 * @Description: 发布教程
+	 * @param course
+	 * @return
+	 * @throws CourseRuntimeException
+	 * @throws
+	 */
+	public int createCourse(BegincodeCourse course) throws CourseRuntimeException;
 }

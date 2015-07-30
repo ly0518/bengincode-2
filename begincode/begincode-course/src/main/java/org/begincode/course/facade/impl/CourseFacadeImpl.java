@@ -13,6 +13,7 @@ import java.util.List;
 import javax.annotation.Resource;
 
 import org.apache.log4j.Logger;
+import org.begincode.core.model.BegincodeCourse;
 import org.begincode.core.model.CourseLabel;
 import org.begincode.course.exception.CourseRuntimeException;
 import org.begincode.course.facade.CourseFacade;
@@ -47,5 +48,33 @@ public class CourseFacadeImpl implements CourseFacade {
 			logger.error(e.getMessage());
 			throw new CourseRuntimeException(CourseRuntimeException.COS0001, e.getMessage());
 		}
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.begincode.course.facade.CourseFacade#createLabel()
+	 */
+	@Override
+	public int createLabel(CourseLabel courseLabel) throws CourseRuntimeException {
+		try {
+			return courseLabelService.create(courseLabel);
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+			throw new CourseRuntimeException(CourseRuntimeException.COS0001, e.getMessage());
+		}
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * org.begincode.course.facade.CourseFacade#createCourse(org.begincode.core
+	 * .model.BegincodeCourse)
+	 */
+	@Override
+	public int createCourse(BegincodeCourse course) throws CourseRuntimeException {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 }

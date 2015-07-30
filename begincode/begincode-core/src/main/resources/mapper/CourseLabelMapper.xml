@@ -87,10 +87,10 @@
     where course_label_id = #{courseLabelId,jdbcType=INTEGER}
   </update>
   
-  <select id="selectAll" parameterType="org.begincode.core.model.CourseLabel">
+  <select id="selectAll" resultMap="BaseResultMap">
   	select 
-  	  *
-  	from from course_label
+  	 <include refid="Base_Column_List" />
+  	from  course_label
   	where delete_flag = #{deleteFlag}
   	order by label_course_count desc	
   </select>

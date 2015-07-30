@@ -52,5 +52,9 @@ public class CourseRuntimeException extends BeginCodeException {
 	 * 数据库操作异常
 	 */
 	public final static String COS0001 = "COS0001";
+	/**
+	 * 参数异常
+	 */
+	public final static String COS0002 = "COS0002";
 
 }
