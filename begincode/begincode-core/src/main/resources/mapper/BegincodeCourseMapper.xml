@@ -17,21 +17,25 @@
     <result column="delete_flag" property="deleteFlag" jdbcType="CHAR" />
     <result column="course_type_name" property="courseTypeName" jdbcType="VARCHAR" />
   </resultMap>
+  
   <sql id="Base_Column_List" >
     begincode_course_id, course_name, course_pic_url, introduction, recommend, course_label_id, 
     attention_count, course_type_id, begincode_user_id, producer_introduction, completion_status, 
     begincode_navigation_id, delete_flag, course_type_name
   </sql>
+  
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 'true' as QUERYID,
     <include refid="Base_Column_List" />
     from begincode_course
     where begincode_course_id = #{begincodeCourseId,jdbcType=INTEGER}
   </select>
+  
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from begincode_course
     where begincode_course_id = #{begincodeCourseId,jdbcType=INTEGER}
   </delete>
+  
   <insert id="insert"  useGeneratedKeys="true" keyProperty="begincodeCourseId" parameterType="org.begincode.core.model.BegincodeCourse" >
     insert into begincode_course (begincode_course_id, course_name, course_pic_url, 
       introduction, recommend, course_label_id, 
@@ -44,6 +48,7 @@
       #{producerIntroduction,jdbcType=VARCHAR}, #{completionStatus,jdbcType=CHAR}, #{begincodeNavigationId,jdbcType=INTEGER}, 
       #{deleteFlag,jdbcType=CHAR}, #{courseTypeName,jdbcType=VARCHAR})
   </insert>
+  
   <insert id="insertSelective"  useGeneratedKeys="true" keyProperty="begincodeCourseId"  parameterType="org.begincode.core.model.BegincodeCourse" >
     insert into begincode_course
     <trim prefix="(" suffix=")" suffixOverrides="," >
@@ -135,9 +140,9 @@
       </if>
     </trim>
   </insert>
+  
   <update id="updateByPrimaryKeySelective" parameterType="org.begincode.core.model.BegincodeCourse" >
     update begincode_course
-    <set >
       <if test="courseName != null" >
         course_name = #{courseName,jdbcType=VARCHAR},
       </if>
@@ -177,9 +182,9 @@
       <if test="courseTypeName != null" >
         course_type_name = #{courseTypeName,jdbcType=VARCHAR},
       </if>
-    </set>
     where begincode_course_id = #{begincodeCourseId,jdbcType=INTEGER}
   </update>
+  
   <update id="updateByPrimaryKey" parameterType="org.begincode.core.model.BegincodeCourse" >
     update begincode_course
     set course_name = #{courseName,jdbcType=VARCHAR},
@@ -197,4 +202,54 @@
       course_type_name = #{courseTypeName,jdbcType=VARCHAR}
     where begincode_course_id = #{begincodeCourseId,jdbcType=INTEGER}
   </update>
+  
+  <select id="selectAllBy"  parameterType="org.begincode.core.model.BegincodeCourse" resultMap="BaseResultMap">
+  	select 
+  	  <include refid="Base_Column_List" />
+    from begincode_course
+    <where>
+    	1=1 
+      <if test="courseName != null" >
+        and course_name like CONCAT('%',#{courseName},'%') ,
+      </if>
+      <if test="coursePicUrl != null" >
+        and course_pic_url = #{coursePicUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="introduction != null" >
+        and introduction like CONCAT('%',#{introduction},'%') ,
+      </if>
+      <if test="recommend != null" >
+        and recommend = #{recommend,jdbcType=CHAR},
+      </if>
+      <if test="courseLabelId != null" >
+        and course_label_id = #{courseLabelId,jdbcType=INTEGER},
+      </if>
+      <if test="attentionCount != null" >
+        and attention_count = #{attentionCount,jdbcType=INTEGER},
+      </if>
+      <if test="courseTypeId != null" >
+        and course_type_id = #{courseTypeId,jdbcType=INTEGER},
+      </if>
+      <if test="begincodeUserId != null" >
+        and begincode_user_id = #{begincodeUserId,jdbcType=INTEGER},
+      </if>
+      <if test="producerIntroduction != null" >
+        and producer_introduction like CONCAT('%',#{producerIntroduction},'%') ,
+      </if>
+      <if test="completionStatus != null" >
+        and completion_status = #{completionStatus,jdbcType=CHAR},
+      </if>
+      <if test="begincodeNavigationId != null" >
+        and begincode_navigation_id = #{begincodeNavigationId,jdbcType=INTEGER},
+      </if>
+      <if test="deleteFlag != null" >
+        and delete_flag = #{deleteFlag,jdbcType=CHAR},
+      </if>
+      <if test="courseTypeName != null" >
+        and course_type_name = #{courseTypeName,jdbcType=VARCHAR},
+      </if>
+    </where>
+  
+  </select>
+  
 </mapper>

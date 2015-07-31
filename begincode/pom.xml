@@ -50,6 +50,7 @@
 		<jackson.mapper.version>1.9.13</jackson.mapper.version>
 		<jackson.databind.version>2.5.4</jackson.databind.version>
 		<jsp.version>2.0</jsp.version>
+		<springtest.version>4.0.5.RELEASE</springtest.version>
 	</properties>
 	<dependencyManagement>
 		<dependencies>
@@ -216,6 +217,11 @@
 				<groupId>com.begincode</groupId>
 				<artifactId>begincode-admin</artifactId>
 				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-test</artifactId>
+				<version>${springtest.version}</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
