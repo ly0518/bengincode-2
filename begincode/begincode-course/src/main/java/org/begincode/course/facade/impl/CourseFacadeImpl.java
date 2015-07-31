@@ -15,8 +15,11 @@ import javax.annotation.Resource;
 import org.apache.log4j.Logger;
 import org.begincode.core.model.BegincodeCourse;
 import org.begincode.core.model.CourseLabel;
+import org.begincode.core.paginator.domain.PageList;
+import org.begincode.core.paginator.domain.Paginator;
 import org.begincode.course.exception.CourseRuntimeException;
 import org.begincode.course.facade.CourseFacade;
+import org.begincode.course.service.BegincodeCourseService;
 import org.begincode.course.service.CourseLabelService;
 import org.springframework.stereotype.Service;
 
@@ -34,6 +37,8 @@ public class CourseFacadeImpl implements CourseFacade {
 
 	@Resource
 	private CourseLabelService courseLabelService;
+	@Resource
+	private BegincodeCourseService begincodeCourseService;
 
 	/*
 	 * (non-Javadoc)
@@ -59,6 +64,8 @@ public class CourseFacadeImpl implements CourseFacade {
 	public int createLabel(CourseLabel courseLabel) throws CourseRuntimeException {
 		try {
 			return courseLabelService.create(courseLabel);
+		} catch (CourseRuntimeException ce) {
+			throw ce;
 		} catch (Exception e) {
 			logger.error(e.getMessage());
 			throw new CourseRuntimeException(CourseRuntimeException.COS0001, e.getMessage());
@@ -74,7 +81,31 @@ public class CourseFacadeImpl implements CourseFacade {
 	 */
 	@Override
 	public int createCourse(BegincodeCourse course) throws CourseRuntimeException {
-		// TODO Auto-generated method stub
-		return 0;
+		try {
+			return begincodeCourseService.create(course);
+		} catch (CourseRuntimeException ce) {
+			throw ce;
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+			throw new CourseRuntimeException(CourseRuntimeException.COS0001, e.getMessage());
+		}
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * org.begincode.course.facade.CourseFacade#findeCourseWithPage(org.begincode
+	 * .core.paginator.domain.Paginator,
+	 * org.begincode.core.model.BegincodeCourse)
+	 */
+	@Override
+	public PageList<BegincodeCourse> findeCourseWithPage(Paginator paginator, BegincodeCourse begincodeCourse) throws CourseRuntimeException {
+		try {
+			return begincodeCourseService.findAllWithPage(paginator, begincodeCourse);
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+			throw new CourseRuntimeException(CourseRuntimeException.COS0001, e.getMessage());
+		}
 	}
 }

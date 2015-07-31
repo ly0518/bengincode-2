@@ -9,6 +9,8 @@
 package org.begincode.course.service;
 
 import org.begincode.core.model.BegincodeCourse;
+import org.begincode.core.paginator.domain.PageList;
+import org.begincode.core.paginator.domain.Paginator;
 import org.begincode.course.exception.CourseRuntimeException;
 
 /**
@@ -20,11 +22,30 @@ import org.begincode.course.exception.CourseRuntimeException;
  */
 public interface BegincodeCourseService {
 	/**
-	 * @Description: 这里用一句话描述这个方法的作用
+	 * @Description: 创建课程
 	 * @param course
 	 * @return 主键id int
 	 * @throws
 	 */
 	public int create(BegincodeCourse course) throws CourseRuntimeException;
+
+	/**
+	 * @Description: 分页查询课程
+	 * @param paginator
+	 *            分页参数
+	 * @param begincodeCourse
+	 *            查询参数
+	 * @return
+	 * @throws
+	 */
+	public PageList<BegincodeCourse> findAllWithPage(Paginator paginator, BegincodeCourse begincodeCourse);
+
+	/**
+	 * @Description: 根据主键id查询详情
+	 * @param begincodeCourseId
+	 * @return
+	 * @throws
+	 */
+	public BegincodeCourse findById(int begincodeCourseId);
 
 }
