@@ -1,6 +1,7 @@
 package org.begincode.core.model;
 
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * @ClassName: BegincodeCourse
@@ -11,7 +12,7 @@ import java.io.Serializable;
  */
 public class BegincodeCourse extends BaseModel implements Serializable {
 
-	private static final long serialVersionUID = -7522123050642927853L;
+	private static final long serialVersionUID = 5877214983114804836L;
 
 	/** 主键Id */
 	private Integer begincodeCourseId;
@@ -41,6 +42,8 @@ public class BegincodeCourse extends BaseModel implements Serializable {
 	private String deleteFlag;
 	/** 课程类型名称 */
 	private String courseTypeName;
+	/** 创建时间 */
+	private Date createTime;
 
 	public BegincodeCourse() {
 		super();
@@ -61,14 +64,11 @@ public class BegincodeCourse extends BaseModel implements Serializable {
 	 * @param begincodeNavigationId
 	 * @param deleteFlag
 	 * @param courseTypeName
+	 * @param createTime
 	 */
-	public BegincodeCourse(Integer begincodeCourseId, String courseName,
-			String coursePicUrl, String introduction, String recommend,
-			Integer courseLabelId, Integer attentionCount,
-			Integer courseTypeId, Integer begincodeUserId,
-			String producerIntroduction, String completionStatus,
-			Integer begincodeNavigationId, String deleteFlag,
-			String courseTypeName) {
+	public BegincodeCourse(Integer begincodeCourseId, String courseName, String coursePicUrl, String introduction, String recommend, Integer courseLabelId,
+			Integer attentionCount, Integer courseTypeId, Integer begincodeUserId, String producerIntroduction, String completionStatus,
+			Integer begincodeNavigationId, String deleteFlag, String courseTypeName, Date createTime) {
 		super();
 		this.begincodeCourseId = begincodeCourseId;
 		this.courseName = courseName;
@@ -84,6 +84,7 @@ public class BegincodeCourse extends BaseModel implements Serializable {
 		this.begincodeNavigationId = begincodeNavigationId;
 		this.deleteFlag = deleteFlag;
 		this.courseTypeName = courseTypeName;
+		this.createTime = createTime;
 	}
 
 	public Integer getBegincodeCourseId() {
@@ -163,8 +164,7 @@ public class BegincodeCourse extends BaseModel implements Serializable {
 	}
 
 	public void setProducerIntroduction(String producerIntroduction) {
-		this.producerIntroduction = producerIntroduction == null ? null
-				: producerIntroduction.trim();
+		this.producerIntroduction = producerIntroduction == null ? null : producerIntroduction.trim();
 	}
 
 	public String getCompletionStatus() {
@@ -172,8 +172,7 @@ public class BegincodeCourse extends BaseModel implements Serializable {
 	}
 
 	public void setCompletionStatus(String completionStatus) {
-		this.completionStatus = completionStatus == null ? null
-				: completionStatus.trim();
+		this.completionStatus = completionStatus == null ? null : completionStatus.trim();
 	}
 
 	public Integer getBegincodeNavigationId() {
@@ -197,8 +196,22 @@ public class BegincodeCourse extends BaseModel implements Serializable {
 	}
 
 	public void setCourseTypeName(String courseTypeName) {
-		this.courseTypeName = courseTypeName == null ? null : courseTypeName
-				.trim();
+		this.courseTypeName = courseTypeName == null ? null : courseTypeName.trim();
+	}
+
+	/**
+	 * @return the createTime
+	 */
+	public Date getCreateTime() {
+		return createTime;
+	}
+
+	/**
+	 * @param createTime
+	 *            the createTime to set
+	 */
+	public void setCreateTime(Date createTime) {
+		this.createTime = createTime;
 	}
 
 	/*
@@ -208,17 +221,11 @@ public class BegincodeCourse extends BaseModel implements Serializable {
 	 */
 	@Override
 	public String toString() {
-		return "BegincodeCourse [begincodeCourseId=" + begincodeCourseId
-				+ ", courseName=" + courseName + ", coursePicUrl="
-				+ coursePicUrl + ", introduction=" + introduction
-				+ ", recommend=" + recommend + ", courseLabelId="
-				+ courseLabelId + ", attentionCount=" + attentionCount
-				+ ", courseTypeId=" + courseTypeId + ", begincodeUserId="
-				+ begincodeUserId + ", producerIntroduction="
-				+ producerIntroduction + ", completionStatus="
-				+ completionStatus + ", begincodeNavigationId="
-				+ begincodeNavigationId + ", deleteFlag=" + deleteFlag
-				+ ", courseTypeName=" + courseTypeName + "]";
+		return "BegincodeCourse [begincodeCourseId=" + begincodeCourseId + ", courseName=" + courseName + ", coursePicUrl=" + coursePicUrl + ", introduction="
+				+ introduction + ", recommend=" + recommend + ", courseLabelId=" + courseLabelId + ", attentionCount=" + attentionCount + ", courseTypeId="
+				+ courseTypeId + ", begincodeUserId=" + begincodeUserId + ", producerIntroduction=" + producerIntroduction + ", completionStatus="
+				+ completionStatus + ", begincodeNavigationId=" + begincodeNavigationId + ", deleteFlag=" + deleteFlag + ", courseTypeName=" + courseTypeName
+				+ ", createTime=" + createTime + "]";
 	}
 
 }

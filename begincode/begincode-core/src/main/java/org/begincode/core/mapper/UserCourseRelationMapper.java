@@ -1,6 +1,9 @@
 package org.begincode.core.mapper;
 
+import java.util.Map;
+
 import org.begincode.core.model.UserCourseRelation;
+import org.begincode.core.paginator.domain.PageList;
 
 /**
  * @ClassName: UserCourseRelationMapper
@@ -57,4 +60,14 @@ public interface UserCourseRelationMapper {
 	 * @throws
 	 */
 	int updateById(UserCourseRelation record);
+
+	/**
+	 * @Description: 根据查询参数查询符合条件的数据
+	 * @param userCourseRelation
+	 *            查询参数
+	 * @return PageList<Map>
+	 * @throws
+	 */
+	PageList<Map> selectAllBy(UserCourseRelation userCourseRelation);
+
 }

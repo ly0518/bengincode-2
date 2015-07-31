@@ -1,6 +1,7 @@
 package org.begincode.core.model;
 
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * @ClassName: UserCourseRelation
@@ -11,7 +12,7 @@ import java.io.Serializable;
  */
 public class UserCourseRelation extends BaseModel implements Serializable {
 
-	private static final long serialVersionUID = -6821271284553147351L;
+	private static final long serialVersionUID = 1799803793886965528L;
 
 	/** 主键Id */
 	private Integer userCourseRelationId;
@@ -21,6 +22,8 @@ public class UserCourseRelation extends BaseModel implements Serializable {
 	private Integer begincodeCourseId;
 	/** 状态标识 */
 	private String deleteFlag;
+	/** 创建时间 */
+	private Date createTime;
 
 	public UserCourseRelation() {
 		super();
@@ -31,15 +34,15 @@ public class UserCourseRelation extends BaseModel implements Serializable {
 	 * @param begincodeUserId
 	 * @param begincodeCourseId
 	 * @param deleteFlag
+	 * @param createTime
 	 */
-	public UserCourseRelation(Integer userCourseRelationId,
-			Integer begincodeUserId, Integer begincodeCourseId,
-			String deleteFlag) {
+	public UserCourseRelation(Integer userCourseRelationId, Integer begincodeUserId, Integer begincodeCourseId, String deleteFlag, Date createTime) {
 		super();
 		this.userCourseRelationId = userCourseRelationId;
 		this.begincodeUserId = begincodeUserId;
 		this.begincodeCourseId = begincodeCourseId;
 		this.deleteFlag = deleteFlag;
+		this.createTime = createTime;
 	}
 
 	public Integer getUserCourseRelationId() {
@@ -74,6 +77,21 @@ public class UserCourseRelation extends BaseModel implements Serializable {
 		this.deleteFlag = deleteFlag == null ? null : deleteFlag.trim();
 	}
 
+	/**
+	 * @return the createTime
+	 */
+	public Date getCreateTime() {
+		return createTime;
+	}
+
+	/**
+	 * @param createTime
+	 *            the createTime to set
+	 */
+	public void setCreateTime(Date createTime) {
+		this.createTime = createTime;
+	}
+
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -81,10 +99,8 @@ public class UserCourseRelation extends BaseModel implements Serializable {
 	 */
 	@Override
 	public String toString() {
-		return "UserCourseRelation [userCourseRelationId="
-				+ userCourseRelationId + ", begincodeUserId=" + begincodeUserId
-				+ ", begincodeCourseId=" + begincodeCourseId + ", deleteFlag="
-				+ deleteFlag + "]";
+		return "UserCourseRelation [userCourseRelationId=" + userCourseRelationId + ", begincodeUserId=" + begincodeUserId + ", begincodeCourseId="
+				+ begincodeCourseId + ", deleteFlag=" + deleteFlag + ", createTime=" + createTime + "]";
 	}
 
 }

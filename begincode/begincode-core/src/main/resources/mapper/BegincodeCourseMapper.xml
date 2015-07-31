@@ -16,12 +16,13 @@
     <result column="begincode_navigation_id" property="begincodeNavigationId" jdbcType="INTEGER" />
     <result column="delete_flag" property="deleteFlag" jdbcType="CHAR" />
     <result column="course_type_name" property="courseTypeName" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime"  />
   </resultMap>
   
   <sql id="Base_Column_List" >
     begincode_course_id, course_name, course_pic_url, introduction, recommend, course_label_id, 
     attention_count, course_type_id, begincode_user_id, producer_introduction, completion_status, 
-    begincode_navigation_id, delete_flag, course_type_name
+    begincode_navigation_id, delete_flag, course_type_name,create_time
   </sql>
   
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
@@ -41,12 +42,12 @@
       introduction, recommend, course_label_id, 
       attention_count, course_type_id, begincode_user_id, 
       producer_introduction, completion_status, begincode_navigation_id, 
-      delete_flag, course_type_name)
+      delete_flag, course_type_name,create_time)
     values (#{begincodeCourseId,jdbcType=INTEGER}, #{courseName,jdbcType=VARCHAR}, #{coursePicUrl,jdbcType=VARCHAR}, 
       #{introduction,jdbcType=VARCHAR}, #{recommend,jdbcType=CHAR}, #{courseLabelId,jdbcType=INTEGER}, 
       #{attentionCount,jdbcType=INTEGER}, #{courseTypeId,jdbcType=INTEGER}, #{begincodeUserId,jdbcType=INTEGER}, 
       #{producerIntroduction,jdbcType=VARCHAR}, #{completionStatus,jdbcType=CHAR}, #{begincodeNavigationId,jdbcType=INTEGER}, 
-      #{deleteFlag,jdbcType=CHAR}, #{courseTypeName,jdbcType=VARCHAR})
+      #{deleteFlag,jdbcType=CHAR}, #{courseTypeName,jdbcType=VARCHAR},#{createTime})
   </insert>
   
   <insert id="insertSelective"  useGeneratedKeys="true" keyProperty="begincodeCourseId"  parameterType="org.begincode.core.model.BegincodeCourse" >

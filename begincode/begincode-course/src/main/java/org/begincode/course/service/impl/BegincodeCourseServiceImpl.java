@@ -10,6 +10,7 @@ package org.begincode.course.service.impl;
 
 import javax.annotation.Resource;
 
+import org.apache.log4j.Logger;
 import org.begincode.core.mapper.BegincodeCourseMapper;
 import org.begincode.core.model.BegincodeCourse;
 import org.begincode.core.paginator.domain.PageList;
@@ -29,6 +30,8 @@ import org.springframework.stereotype.Service;
 @Service
 public class BegincodeCourseServiceImpl implements BegincodeCourseService {
 
+	private static Logger logger = Logger.getLogger(BegincodeCourseServiceImpl.class);
+
 	@Resource
 	private BegincodeCourseMapper begincodeCourseMapper;
 
@@ -41,8 +44,10 @@ public class BegincodeCourseServiceImpl implements BegincodeCourseService {
 	 */
 	@Override
 	public int create(BegincodeCourse course) throws CourseRuntimeException {
-		if (null == course)
+		if (null == course) {
+			logger.error("method:createBegincodeCourse,message:参数为空");
 			throw new CourseRuntimeException(CourseRuntimeException.COS0002, "参数不能为空");
+		}
 		begincodeCourseMapper.insert(course);
 		return course.getBegincodeCourseId();
 	}

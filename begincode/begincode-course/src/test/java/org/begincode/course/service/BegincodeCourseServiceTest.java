@@ -8,6 +8,8 @@
  */
 package org.begincode.course.service;
 
+import java.util.Date;
+
 import javax.annotation.Resource;
 
 import org.apache.log4j.Logger;
@@ -33,7 +35,7 @@ public class BegincodeCourseServiceTest extends BaseTest {
 	@Test
 	public void testCreate() {
 		BegincodeCourse begincodeCourse = new BegincodeCourse(null, "java 课程第一节", "http://img.mukewang.com/558ba3980001db0e06000338-240-135.jpg", "jianjie",
-				"1", 5, 234, 1, 1, "大牛", "1", 1, Constants.DELETE_FLAG_NOMAL, "video");
+				"1", 5, 234, 1, 1, "大牛", "1", 1, Constants.DELETE_FLAG_NOMAL, "video", new Date());
 		begincodeCourseService.create(begincodeCourse);
 		// logger.info(begincodeCourse.getBegincodeCourseId());
 

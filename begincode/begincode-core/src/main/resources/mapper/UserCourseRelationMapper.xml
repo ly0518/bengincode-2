@@ -6,10 +6,32 @@
     <result column="begincode_user_id" property="begincodeUserId" jdbcType="INTEGER" />
     <result column="begincode_course_id" property="begincodeCourseId" jdbcType="INTEGER" />
     <result column="delete_flag" property="deleteFlag" jdbcType="CHAR" />
+    <result column="create_time" property="createTime"  />
+  </resultMap>
+  
+  <resultMap id="UserCourseResultMap" type="map" >
+  	<result column="user_course_relation_id" property="userCourseRelationId" jdbcType="INTEGER" />
+    <result column="begincode_user_id" property="begincodeUserId" jdbcType="INTEGER" />
+    <result column="ucreate_time" property="ucreateTime"  />
+    <result column="begincode_course_id" property="begincodeCourseId" jdbcType="INTEGER" />
+    <result column="course_name" property="courseName" jdbcType="VARCHAR" />
+    <result column="course_pic_url" property="coursePicUrl" jdbcType="VARCHAR" />
+    <result column="introduction" property="introduction" jdbcType="VARCHAR" />
+    <result column="recommend" property="recommend" jdbcType="CHAR" />
+    <result column="course_label_id" property="courseLabelId" jdbcType="INTEGER" />
+    <result column="attention_count" property="attentionCount" jdbcType="INTEGER" />
+    <result column="course_type_id" property="courseTypeId" jdbcType="INTEGER" />
+    <result column="begincode_user_id" property="begincodeUserId" jdbcType="INTEGER" />
+    <result column="producer_introduction" property="producerIntroduction" jdbcType="VARCHAR" />
+    <result column="completion_status" property="completionStatus" jdbcType="CHAR" />
+    <result column="begincode_navigation_id" property="begincodeNavigationId" jdbcType="INTEGER" />
+    <result column="delete_flag" property="deleteFlag" jdbcType="CHAR" />
+    <result column="course_type_name" property="courseTypeName" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime"  />
   </resultMap>
   
   <sql id="Base_Column_List" >
-    user_course_relation_id, begincode_user_id, begincode_course_id, delete_flag
+    user_course_relation_id, begincode_user_id, begincode_course_id, delete_flag,create_time
   </sql>
   
   <select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
@@ -26,9 +48,9 @@
   
   <insert id="insert" parameterType="org.begincode.core.model.UserCourseRelation" >
     insert into user_course_relation (user_course_relation_id, begincode_user_id, 
-      begincode_course_id, delete_flag)
+      begincode_course_id, delete_flag,create_time)
     values (#{userCourseRelationId,jdbcType=INTEGER}, #{begincodeUserId,jdbcType=INTEGER}, 
-      #{begincodeCourseId,jdbcType=INTEGER}, #{deleteFlag,jdbcType=CHAR})
+      #{begincodeCourseId,jdbcType=INTEGER}, #{deleteFlag,jdbcType=CHAR},#{createTime})
   </insert>
   
   <insert id="insertSelective" parameterType="org.begincode.core.model.UserCourseRelation" >
@@ -46,6 +68,9 @@
       <if test="deleteFlag != null" >
         delete_flag,
       </if>
+       <if test="createTime != null" >
+        create_time,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="userCourseRelationId != null" >
@@ -59,6 +84,9 @@
       </if>
       <if test="deleteFlag != null" >
         #{deleteFlag,jdbcType=CHAR},
+      </if>
+       <if test="createTime != null" >
+        #{createTime},
       </if>
     </trim>
   </insert>
@@ -87,4 +115,26 @@
     where user_course_relation_id = #{userCourseRelationId,jdbcType=INTEGER}
   </update>
   
+  <select id="selectAllBy" parameterType="org.begincode.core.model.UserCourseRelation" resultMap="UserCourseResultMap">
+  	SELECT
+		ucr.user_course_relation_id,
+		ucr.begincode_user_id,
+		ucr.create_time ucreate_time,
+		bc.*
+	FROM
+		user_course_relation ucr,
+		begincode_course bc
+	WHERE
+		ucr.begincode_course_id = bc.begincode_course_id
+ 	 <if test="begincodeUserId != null" >
+    and ucr.begincode_user_id = #{begincodeUserId,jdbcType=INTEGER}
+     </if>
+     <if test="begincodeCourseId != null" >
+    and ucr.begincode_course_id = #{begincodeCourseId,jdbcType=INTEGER}
+     </if>
+     <if test="deleteFlag != null" >
+    and  ucr.delete_flag = #{deleteFlag,jdbcType=CHAR}
+    and  bc.delete_flag = #{deleteFlag,jdbcType=CHAR}
+     </if>
+  </select>
 </mapper>
