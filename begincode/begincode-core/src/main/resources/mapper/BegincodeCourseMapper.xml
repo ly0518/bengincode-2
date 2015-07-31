@@ -32,7 +32,7 @@
     delete from begincode_course
     where begincode_course_id = #{begincodeCourseId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="org.begincode.core.model.BegincodeCourse" >
+  <insert id="insert"  useGeneratedKeys="true" keyProperty="begincodeCourseId" parameterType="org.begincode.core.model.BegincodeCourse" >
     insert into begincode_course (begincode_course_id, course_name, course_pic_url, 
       introduction, recommend, course_label_id, 
       attention_count, course_type_id, begincode_user_id, 
@@ -44,7 +44,7 @@
       #{producerIntroduction,jdbcType=VARCHAR}, #{completionStatus,jdbcType=CHAR}, #{begincodeNavigationId,jdbcType=INTEGER}, 
       #{deleteFlag,jdbcType=CHAR}, #{courseTypeName,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="org.begincode.core.model.BegincodeCourse" >
+  <insert id="insertSelective"  useGeneratedKeys="true" keyProperty="begincodeCourseId"  parameterType="org.begincode.core.model.BegincodeCourse" >
     insert into begincode_course
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="begincodeCourseId != null" >
