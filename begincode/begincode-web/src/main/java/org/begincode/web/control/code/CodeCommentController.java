@@ -17,11 +17,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+/** 
+* @ClassName: CodeCommentController 
+* @Description: 代码分享评论控制器
+* @author yangsj 
+* @date 2015年8月1日 下午3:32:06 
+*  
+*/
 @Controller
 @RequestMapping("/codeComment")
 public class CodeCommentController {
 
-	private Logger logger = Logger.getLogger(CodeController.class);
+	private Logger logger = Logger.getLogger(CodeCommentController.class);
 
 	@Autowired
 	CodeCommentService codeCommentService;
@@ -43,7 +50,7 @@ public class CodeCommentController {
 		pageinfo.setLimit(BeginCodeConstant.PAGE_SIZE_COMMENT);
 		pageinfo.setOrderStr(" order by create_datatime desc ");
 		BeginCodeInterceptor.localPage.set(pageinfo);
-		List list = codeCommentService.findCodeComment(codeId);
+		List list = codeCommentService.findCodeCommentByCodeId(codeId);
 		return list;
 	}
 
@@ -55,7 +62,7 @@ public class CodeCommentController {
 		pageinfo.setPage(pageNo);
 		pageinfo.setOrderStr(" order by create_datatime desc ");
 		BeginCodeInterceptor.localPage.set(pageinfo);
-		PageList list = codeCommentService.findCodeComment(codeId);
+		PageList list = codeCommentService.findCodeCommentByCodeId(codeId);
 		return list;
 	}
 

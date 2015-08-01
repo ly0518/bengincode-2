@@ -1,46 +1,56 @@
 package org.begincode.core.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class BegincodeCode extends BaseModel{
+/**
+ * @ClassName BegincodeCode
+ * @Description: 代码分享Bean
+ * @author yangsj
+ * @Data 
+ */
+public class BegincodeCode extends BaseModel implements Serializable{
+	private static final long serialVersionUID = 1L;
+	
+	//主键
     private Integer begincodeCodeId;
-
+    //标题
     private String codeInfo;
-    
+    //摘要
     private String codeAbstract;
-
+    //下载路径
     private String codeDownloadUrl;
-
+    //是否禁止评论，1可以评论，0不可以
     private String prohibitionMessage;
-
+    //关键字
     private String begincodeKeys;
-
+    //浏览次数
     private Integer viewCount;
-
+    //目录标识
     private Integer begincodeNavigationId;
-
+    //创建时间
     private Date createDatetime;
-
+    //删除标识,1可用，0删除
     private String deleteFlag;
-
+    //点赞数
     private Integer goodCount;
-
+    //踩数
     private Integer badCount;
-
+    //代码分类标识
     private Integer codeTypeId;
-
+    //发布状态 ，1发布，0草稿
     private String releaseState;
-
+    //审核标识,1通过，0未审核
     private String checkFlag;
-
+    //代码分类名称
     private String codeTypeName;
-
+    //代码内容
     private String codeContent;
-    
+    //用户标识
     private Integer begincodeUserId; 
-    
+    //用户昵称
     private String nickname;
-    
+    //用户头像url
     private String pic;
 
     public Integer getbegincodeCodeId() {

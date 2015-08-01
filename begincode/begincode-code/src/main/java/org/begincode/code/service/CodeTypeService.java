@@ -11,23 +11,27 @@ import org.begincode.core.paginator.domain.PageList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
-/**
- * @author yangsj
- *
- */
-@Service
-public class CodeTypeService 
+ 
+/** 
+* @ClassName: CodeTypeService 
+* @Description: 
+* @author yangsj 
+* @date 2015年8月1日 下午3:15:03 
+*  
+*/
+public interface CodeTypeService 
 {
-	private Logger logger = Logger.getLogger(CodeTypeService.class);
-	@Autowired
-	CodeTypeMapper codeTypeMapper;
+	 
 	
-	/**
-	 * @param userId
-	 */
-	public List<CodeType> selectCodeTypeByUserId(int userId){
-		return codeTypeMapper.selectAllByUserId(userId);
-	}
+  
+	/** 
+	* @Title: findCodeTypeByUserId 
+	* @Description: 根据用户标识查询代码类型
+	* @param int userId
+	* @param @return   
+	* @return List<CodeType>   
+	* @throws 
+	*/
+	public List<CodeType> findCodeTypeByUserId(int userId);
 	 
 }

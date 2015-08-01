@@ -6,37 +6,47 @@ import org.apache.log4j.Logger;
 import org.begincode.core.mapper.BegincodeCodeMapper;
 import org.begincode.core.model.BegincodeCode;
 import org.begincode.core.paginator.domain.PageList;
+import org.begincode.core.paginator.domain.Paginator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
-/**
- * @author yangsj
- *
- */
-@Service
-public class CodeService 
+/** 
+* @ClassName: CodeService 
+* @Description: 代码分享服务
+* @author yangsj 
+* @date 2015年8月1日 下午3:13:51 
+*  
+*/
+public interface CodeService 
 {
-	private Logger logger = Logger.getLogger(CodeService.class);
-	@Autowired
-	BegincodeCodeMapper begincodeCodeMapper;
 	/**
-	 * @param record
+	 * @Description: 查询代码
+	 * @param BegincodeCode record
+	 * @return PageList
+	 * @throws
 	 */
-	public PageList findCodesByRecord(BegincodeCode record){
-		return  begincodeCodeMapper.selectBySelective(record);
-	}
+	public PageList findCodesByRecord(BegincodeCode record);
 	
-	public BegincodeCode findCodeById(int codeId){
-		return begincodeCodeMapper.selectByPrimaryKey(codeId);
-	}
-	
-	public PageList findCodes(){
-		return  begincodeCodeMapper.selectAll();
-	}
-	
-	public BegincodeCode createCode(BegincodeCode record){
-		begincodeCodeMapper.insertSelective(record);
-		return record;
-	}
+	/**
+	 * @Description 根据ID查询
+	 * @param int codeId
+	 * return BegincodeCode
+	 * */
+	public BegincodeCode findCodeById(int codeId);
+	 
+	/** 
+	* @Title: findCodes 
+	* @Description: 查询代码
+	* @param page
+	* @return PageList   
+	* @throws 
+	*/
+	public PageList findCodes(Paginator page);
+	/**
+	 * @Description: 创建代码
+	 * @param BegincodeCode record
+	 * @return BegincodeCode
+	 * @throws
+	 */
+	public BegincodeCode createCode(BegincodeCode record);
 }

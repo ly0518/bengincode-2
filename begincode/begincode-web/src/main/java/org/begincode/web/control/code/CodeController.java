@@ -21,6 +21,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+/** 
+* @ClassName: CodeController 
+* @Description: 代码分享
+* @author yangsj 
+* @date 2015年8月1日 下午3:32:26 
+*  
+*/
 @Controller
 @RequestMapping("/code")
 public class CodeController {
@@ -35,8 +42,7 @@ public class CodeController {
 	@RequestMapping("")
 	public String selCodeList(Model model) {
 		Paginator page = new Paginator(0, BeginCodeConstant.PAGE_SIZE);
-		BeginCodeInterceptor.localPage.set(page);
-		PageList list = codeService.findCodes();
+		PageList list = codeService.findCodes( page);
 		model.addAttribute("codes", list);
 		model.addAttribute("pageinfo", list.getPaginator());
 		return "/page/code/codes";
@@ -51,7 +57,7 @@ public class CodeController {
 
 	@RequestMapping(value = "/userId", method = RequestMethod.GET)
 	public String addCodeInit(Model model) {
-		model.addAttribute("codeTypes", codeTypeService.selectCodeTypeByUserId(1));
+		model.addAttribute("codeTypes", codeTypeService.findCodeTypeByUserId(1));
 		return "/page/code/code_edit";
 	}
 
@@ -60,8 +66,7 @@ public class CodeController {
 	public List getCodes(Paginator pageinfo) {
 		if (pageinfo != null) {
 			pageinfo.setLimit(BeginCodeConstant.PAGE_SIZE);
-			BeginCodeInterceptor.localPage.set(pageinfo);
-			PageList list = codeService.findCodes();
+			PageList list = codeService.findCodes(pageinfo);
 			return list;
 		} else {
 			return null;
@@ -73,8 +78,7 @@ public class CodeController {
 	public List findTopTen() throws IOException {
 		Paginator pageinfo = new Paginator(0, BeginCodeConstant.PAGE_SIZE);
 		pageinfo.setOrderStr(" order by view_count desc ");
-		BeginCodeInterceptor.localPage.set(pageinfo);
-		PageList list = codeService.findCodes();
+		PageList list = codeService.findCodes(pageinfo);
 		return list;
 	}
 

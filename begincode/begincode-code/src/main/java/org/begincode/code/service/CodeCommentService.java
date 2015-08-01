@@ -11,25 +11,34 @@ import org.begincode.core.paginator.domain.PageList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
-/**
- * @author yangsj
- *
- */
-@Service
-public class CodeCommentService 
+ 
+/** 
+* @ClassName: CodeCommentService 
+* @Description: 代码评论服务
+* @author yangsj 
+* @date 2015年8月1日 下午3:16:36 
+*  
+*/
+public interface CodeCommentService 
 {
-	private Logger logger = Logger.getLogger(CodeCommentService.class);
-	@Autowired	CodeCommentMapper codeCommentMapper;
-	/**
-	 * @param record
-	 */
-	public int createCodeCommentSelective(CodeComment codeComment){
-		return  codeCommentMapper.insertSelective(codeComment);
-	}
-	
-	public PageList findCodeComment(Integer codeId){
-		return codeCommentMapper.selectByCodeId(codeId);
-	}
+	 
+ 
+	/** 
+	* @Title: createCodeCommentSelective 
+	* @Description: 创建评论
+	* @param CodeComment codeComment
+	* @return int   
+	* @throws 
+	*/
+	public int createCodeCommentSelective(CodeComment codeComment);
+	 
+	/** 
+	* @Title: findCodeCommentByCodeId 
+	* @Description: 根据代码标识查询评论
+	* @param codeId
+	* @return PageList<CodeComment>   
+	* @throws 
+	*/
+	public PageList<CodeComment> findCodeCommentByCodeId(Integer codeId);
 	
 }
