@@ -15,6 +15,7 @@ import javax.annotation.Resource;
 import org.apache.log4j.Logger;
 import org.begincode.core.contant.Contants;
 import org.begincode.core.model.BegincodeCourse;
+import org.begincode.core.model.UserCourseRelation;
 import org.begincode.core.paginator.domain.Paginator;
 import org.begincode.course.facade.CourseFacade;
 import org.springframework.stereotype.Controller;
@@ -45,11 +46,23 @@ public class VideoCourseController {
 		return "/page/course/course_list";
 	}
 
-	@RequestMapping("{labelId}/{page}/{limit}/list")
+	@RequestMapping("attention/{userId}/{page}/{limit}/list")
+	@ResponseBody
+	public List queryCourseByUser(@PathVariable("userId") Integer userId, @PathVariable("page") Integer page, @PathVariable("limit") Integer limit) {
+		if (null == userId || null == page || null == limit) {
+			logger.error("method:queryCourseByUser,errorMsg:查询参数为空,userId:" + userId + ",page:" + page + ",limit:" + limit);
+			return null;
+		}
+		Paginator paginator = new Paginator(page, limit);
+		UserCourseRelation userCourseRelation = new UserCourseRelation(null, userId, null, Contants.DELETE_FLAG_NOMAL, null);
+		return courseFacade.findAttentionCourseByUserWithPage(paginator, userCourseRelation);
+	}
+
+	@RequestMapping("course/{labelId}/{page}/{limit}/list")
 	@ResponseBody
 	public List queryCourseByLabel(@PathVariable("labelId") Integer labelId, @PathVariable("page") Integer page, @PathVariable("limit") Integer limit) {
 		if (null == labelId || null == page || null == limit) {
-			logger.error("method:queryCourseByLabel,info:查询课程参数为空,labelId:" + labelId + ",page:" + page + ",limit:" + limit);
+			logger.error("method:queryCourseByLabel,errorMsg:查询参数为空,labelId:" + labelId + ",page:" + page + ",limit:" + limit);
 			return null;
 		}
 		// 分页参数
@@ -58,6 +71,6 @@ public class VideoCourseController {
 		BegincodeCourse begincodeCourse = new BegincodeCourse();
 		begincodeCourse.setCourseLabelId(labelId);
 		begincodeCourse.setDeleteFlag(Contants.DELETE_FLAG_NOMAL);
-		return courseFacade.findeCourseWithPage(paginator, begincodeCourse);
+		return courseFacade.findCourseWithPage(paginator, begincodeCourse);
 	}
 }

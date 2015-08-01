@@ -9,18 +9,21 @@
 package org.begincode.course.facade.impl;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
 import org.apache.log4j.Logger;
 import org.begincode.core.model.BegincodeCourse;
 import org.begincode.core.model.CourseLabel;
+import org.begincode.core.model.UserCourseRelation;
 import org.begincode.core.paginator.domain.PageList;
 import org.begincode.core.paginator.domain.Paginator;
 import org.begincode.course.exception.CourseRuntimeException;
 import org.begincode.course.facade.CourseFacade;
 import org.begincode.course.service.BegincodeCourseService;
 import org.begincode.course.service.CourseLabelService;
+import org.begincode.course.service.UserCourseRelationService;
 import org.springframework.stereotype.Service;
 
 /**
@@ -39,6 +42,8 @@ public class CourseFacadeImpl implements CourseFacade {
 	private CourseLabelService courseLabelService;
 	@Resource
 	private BegincodeCourseService begincodeCourseService;
+	@Resource
+	private UserCourseRelationService userCourseRelationService;
 
 	/*
 	 * (non-Javadoc)
@@ -100,9 +105,47 @@ public class CourseFacadeImpl implements CourseFacade {
 	 * org.begincode.core.model.BegincodeCourse)
 	 */
 	@Override
-	public PageList<BegincodeCourse> findeCourseWithPage(Paginator paginator, BegincodeCourse begincodeCourse) throws CourseRuntimeException {
+	public PageList<BegincodeCourse> findCourseWithPage(Paginator paginator, BegincodeCourse begincodeCourse) throws CourseRuntimeException {
 		try {
 			return begincodeCourseService.findAllWithPage(paginator, begincodeCourse);
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+			throw new CourseRuntimeException(CourseRuntimeException.COS0001, e.getMessage());
+		}
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * org.begincode.course.facade.CourseFacade#findAttentionCourseByUserWithPage
+	 * (org.begincode.core.paginator.domain.Paginator,
+	 * org.begincode.core.model.UserCourseRelation)
+	 */
+	@Override
+	public PageList<Map<String, Object>> findAttentionCourseByUserWithPage(Paginator paginator, UserCourseRelation userCourseRelation)
+			throws CourseRuntimeException {
+		try {
+			return userCourseRelationService.findAllWithPage(paginator, userCourseRelation);
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+			throw new CourseRuntimeException(CourseRuntimeException.COS0001, e.getMessage());
+		}
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * org.begincode.course.facade.CourseFacade#createUserCourseRelation(org
+	 * .begincode.core.model.UserCourseRelation)
+	 */
+	@Override
+	public int createUserCourseRelation(UserCourseRelation userCourseRelation) throws CourseRuntimeException {
+		try {
+			return userCourseRelationService.create(userCourseRelation);
+		} catch (CourseRuntimeException ce) {
+			throw ce;
 		} catch (Exception e) {
 			logger.error(e.getMessage());
 			throw new CourseRuntimeException(CourseRuntimeException.COS0001, e.getMessage());

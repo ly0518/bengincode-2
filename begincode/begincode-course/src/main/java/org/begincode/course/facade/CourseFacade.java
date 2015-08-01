@@ -9,9 +9,11 @@
 package org.begincode.course.facade;
 
 import java.util.List;
+import java.util.Map;
 
 import org.begincode.core.model.BegincodeCourse;
 import org.begincode.core.model.CourseLabel;
+import org.begincode.core.model.UserCourseRelation;
 import org.begincode.core.paginator.domain.PageList;
 import org.begincode.core.paginator.domain.Paginator;
 import org.begincode.course.exception.CourseRuntimeException;
@@ -55,5 +57,26 @@ public interface CourseFacade {
 	 * @return PageList<BegincodeCourse>
 	 * @throws CourseRuntimeException
 	 */
-	public PageList<BegincodeCourse> findeCourseWithPage(Paginator paginator, BegincodeCourse begincodeCourse) throws CourseRuntimeException;
+	public PageList<BegincodeCourse> findCourseWithPage(Paginator paginator, BegincodeCourse begincodeCourse) throws CourseRuntimeException;
+
+	/**
+	 * @Description: 查询用户关注的课程(分页)
+	 * @param paginator
+	 *            分页参数
+	 * @param userCourseRelation
+	 *            查询参数
+	 * @return PageList<Map<String, Object>>
+	 * @throws CourseRuntimeException
+	 */
+	public PageList<Map<String, Object>> findAttentionCourseByUserWithPage(Paginator paginator, UserCourseRelation userCourseRelation)
+			throws CourseRuntimeException;
+
+	/**
+	 * @Description: 创建用户关注的课程关系
+	 * @param userCourseRelation
+	 * @return 新增主键
+	 * @throws CourseRuntimeException
+	 */
+	public int createUserCourseRelation(UserCourseRelation userCourseRelation) throws CourseRuntimeException;
+
 }
