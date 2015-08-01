@@ -1,5 +1,16 @@
 $(document).ready(function(){
-	// 加载已关注的视频教程
+	loadAttentionCourse();
+	loadCourse();
+	//初始化分页
+	$("#pagediv").pagination({
+		items : courseTotalCounts,
+		itemsOnPage : 8,
+		cssStyle : 'light-theme',
+		onPageClick : loadCourse
+	});
+})
+// 加载已关注的视频教程
+function loadAttentionCourse(){
 	$.ajax({
 		type:'get',
 		url:ctx+'/video/attention/1/0/4/list',
@@ -28,18 +39,21 @@ $(document).ready(function(){
 			} else $('#attention_course').css("display","none");
 		},
 		error:function(){
-			alert();
-		}
+ 		}
 	})
-	
-	// 加载视频教程
-	$.ajax({
+}
+var courseTotalCounts = 0;
+// 加载视频教程
+function loadCourse(){
+	var currentPage = 0;
+  	$.ajax({
 		type:"get",
-		url:ctx+"/video/course/5/0/4/list",
+		url:ctx+"/video/course/5/"+currentPage+"/8/list",
 		dataType:"json",
 		success:function(data){
  			if(data && null != data && data.result.length>0){
  				var len = data.result.length;
+ 				courseTotalCounts = data.pageInfo.totalCount;
 				for (var i=0; i<len; i++){
 					var attentionCourse = data.result[i];
 					var comStatus = "连载中";
@@ -58,10 +72,10 @@ $(document).ready(function(){
 						'</div>';
 					$('#recommend_course').append(courseHtml);
 				}
- 			}
+  			}
 		},
 		error:function(){
 			
 		}
 	})
-})
+}

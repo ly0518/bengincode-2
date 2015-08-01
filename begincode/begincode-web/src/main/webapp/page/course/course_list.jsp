@@ -9,6 +9,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="Description" content="begincode www.begincode.net  初学者社区，志在让更多软件开发初学者能够掌握一门开发技术  " />
 <%@ include file="../../commons/meta.jsp"%>
+<link href="${ctx}/css/simplePagination.css" rel="stylesheet">
 <link media="screen" href="${ctx}/css/bootstrap.css" rel="stylesheet">
 <link media="screen" href="${ctx}/css/courseList.css" rel="stylesheet">
 <script src="${ctx}/js/jquery.min.js"></script>
@@ -55,19 +56,7 @@
 		</div>
 		<!-- 课程列表结束 -->
 		<div class="row">
-			<div class="col-md-12">
-				<!-- 分页 -->
-				<nav>
-					<ul class="pagination">
-						<li><a href="#" aria-label="Previous"> <span aria-hidden="true">&laquo;</span></a></li>
-						<li><a href="#">1</a></li>
-						<li><a href="#">2</a></li>
-						<li><a href="#">3</a></li>
-						<li><a href="#">4</a></li>
-						<li><a href="#">5</a></li>
-						<li><a href="#" aria-label="Next"> <span aria-hidden="true">&raquo;</span></a></li>
-					</ul>
-				</nav>
+			<div id="pagediv">
 			</div>
 		</div>
 	</div>
