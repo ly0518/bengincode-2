@@ -8,6 +8,8 @@
  */
 package org.begincode.course.service;
 
+import java.util.Map;
+
 import org.begincode.core.model.UserCourseRelation;
 import org.begincode.core.paginator.domain.PageList;
 import org.begincode.core.paginator.domain.Paginator;
@@ -38,6 +40,6 @@ public interface UserCourseRelationService {
 	 * @return PageList<UserCourseRelation>
 	 * @throws
 	 */
-	public PageList<UserCourseRelation> findAllWithPage(Paginator paginator, UserCourseRelation userCourseRelation);
+	public PageList<Map<String, Object>> findAllWithPage(Paginator paginator, UserCourseRelation userCourseRelation);
 
 }

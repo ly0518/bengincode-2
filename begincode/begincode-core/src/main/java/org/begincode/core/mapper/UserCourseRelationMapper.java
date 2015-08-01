@@ -68,6 +68,6 @@ public interface UserCourseRelationMapper {
 	 * @return PageList<Map>
 	 * @throws
 	 */
-	PageList<Map> selectAllBy(UserCourseRelation userCourseRelation);
+	PageList<Map<String, Object>> selectAllBy(UserCourseRelation userCourseRelation);
 
 }

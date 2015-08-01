@@ -8,6 +8,8 @@
  */
 package org.begincode.course.service.impl;
 
+import java.util.Map;
+
 import javax.annotation.Resource;
 
 import org.apache.log4j.Logger;
@@ -17,6 +19,8 @@ import org.begincode.core.paginator.domain.PageList;
 import org.begincode.core.paginator.domain.Paginator;
 import org.begincode.course.exception.CourseRuntimeException;
 import org.begincode.course.service.UserCourseRelationService;
+import org.begincode.course.utils.CourseUtils;
+import org.springframework.stereotype.Service;
 
 /**
  * @ClassName: UserCourseRelationService
@@ -25,6 +29,7 @@ import org.begincode.course.service.UserCourseRelationService;
  * @date 2015年7月31日 下午9:12:50
  * 
  */
+@Service
 public class UserCourseRelationServiceImpl implements UserCourseRelationService {
 
 	private static Logger logger = Logger.getLogger(UserCourseRelationServiceImpl.class);
@@ -58,9 +63,9 @@ public class UserCourseRelationServiceImpl implements UserCourseRelationService 
 	 * org.begincode.core.model.UserCourseRelation)
 	 */
 	@Override
-	public PageList<UserCourseRelation> findAllWithPage(Paginator paginator, UserCourseRelation userCourseRelation) {
-		// TODO Auto-generated method stub
-		return null;
+	public PageList<Map<String, Object>> findAllWithPage(Paginator paginator, UserCourseRelation userCourseRelation) {
+		CourseUtils.setPaginator(paginator);
+		return userCourseRelationMapper.selectAllBy(userCourseRelation);
 	}
 
 }

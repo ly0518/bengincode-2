@@ -211,43 +211,43 @@
     <where>
     	1=1 
       <if test="courseName != null" >
-        and course_name like CONCAT('%',#{courseName},'%') ,
+        and course_name like CONCAT('%',#{courseName},'%') 
       </if>
       <if test="coursePicUrl != null" >
-        and course_pic_url = #{coursePicUrl,jdbcType=VARCHAR},
+        and course_pic_url = #{coursePicUrl,jdbcType=VARCHAR}
       </if>
       <if test="introduction != null" >
-        and introduction like CONCAT('%',#{introduction},'%') ,
+        and introduction like CONCAT('%',#{introduction},'%') 
       </if>
       <if test="recommend != null" >
-        and recommend = #{recommend,jdbcType=CHAR},
+        and recommend = #{recommend,jdbcType=CHAR}
       </if>
       <if test="courseLabelId != null" >
-        and course_label_id = #{courseLabelId,jdbcType=INTEGER},
+        and course_label_id = #{courseLabelId,jdbcType=INTEGER}
       </if>
       <if test="attentionCount != null" >
-        and attention_count = #{attentionCount,jdbcType=INTEGER},
+        and attention_count = #{attentionCount,jdbcType=INTEGER}
       </if>
       <if test="courseTypeId != null" >
-        and course_type_id = #{courseTypeId,jdbcType=INTEGER},
+        and course_type_id = #{courseTypeId,jdbcType=INTEGER}
       </if>
       <if test="begincodeUserId != null" >
-        and begincode_user_id = #{begincodeUserId,jdbcType=INTEGER},
+        and begincode_user_id = #{begincodeUserId,jdbcType=INTEGER}
       </if>
       <if test="producerIntroduction != null" >
-        and producer_introduction like CONCAT('%',#{producerIntroduction},'%') ,
+        and producer_introduction like CONCAT('%',#{producerIntroduction},'%')
       </if>
       <if test="completionStatus != null" >
-        and completion_status = #{completionStatus,jdbcType=CHAR},
+        and completion_status = #{completionStatus,jdbcType=CHAR}
       </if>
       <if test="begincodeNavigationId != null" >
-        and begincode_navigation_id = #{begincodeNavigationId,jdbcType=INTEGER},
+        and begincode_navigation_id = #{begincodeNavigationId,jdbcType=INTEGER}
       </if>
       <if test="deleteFlag != null" >
-        and delete_flag = #{deleteFlag,jdbcType=CHAR},
+        and delete_flag = #{deleteFlag,jdbcType=CHAR}
       </if>
       <if test="courseTypeName != null" >
-        and course_type_name = #{courseTypeName,jdbcType=VARCHAR},
+        and course_type_name = #{courseTypeName,jdbcType=VARCHAR}
       </if>
     </where>
   

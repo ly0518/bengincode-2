@@ -121,7 +121,7 @@
 		ucr.begincode_user_id,
 		ucr.create_time ucreate_time,
 		bc.*
-	FROM
+	from
 		user_course_relation ucr,
 		begincode_course bc
 	WHERE
