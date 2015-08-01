@@ -109,23 +109,15 @@
 			 </div>
 			<input type="file" name="file1" id="file1" />
 			<input type="button" name="" value="上传" onclick="ajaxFileUpload()" />
-<!-- foot -->
+	<!-- foot -->
 	<jsp:include page="/page/core/foot.jsp" />
-
 	<!-- Include all compiled plugins (below), or include individual files as needed -->
 	<script src="${ctx}/js/bootstrap.min.js"></script>
-<!-- 	 <script src="http://cdn.gbtags.com/jquery/1.11.1/jquery.min.js"></script> -->
-<!-- <script src="http://cdn.gbtags.com/twitter-bootstrap/3.2.0/js/bootstrap.js"></script> -->
-<script src="http://cdn.gbtags.com/summernote/0.5.2/summernote.min.js"></script>
-
-
-<script type="text/javascript" src="${ctx}/js/summernote/lang/summernote-zh-CN.js"></script>
- <style type="text/css">
-@import url('http://cdn.gbtags.com/font-awesome/4.1.0/css/font-awesome.min.css');
-@import url('http://cdn.gbtags.com/summernote/0.5.2/summernote.css');
- </style>
- <script src="${ctx}/js/summernote/lang/summernote-zh-CN.js"></script>
- <script src="${ctx}/js/validate/jquery.validate.js"></script>
+	<script type="text/javascript" src="${ctx}/js/summernote/lang/summernote-zh-CN.js"></script>
+	<script src="${ctx}/js/summernote/summernote.min.js"></script>
+ 	<link href="${ctx}/css/summernote/font-awesome.min.css" rel="stylesheet">
+ 	<link href="${ctx}/css/summernote/summernote.css" rel="stylesheet">
+ 	<script src="${ctx}/js/validate/jquery.validate.js"></script>
 	<script src="${ctx}/js/validate/jquery.metadata.js"></script>
 	<script src="${ctx}/js/validate/messages_zh.js"></script>
  	<script src="${ctx}/js/ajaxfileupload.js"></script>
@@ -177,40 +169,7 @@
 		  });
 	});
 	
-	function sendFile(file, editor, welEditable) {
-		var filename = false;
-		try{
-			filename = file['name'];
-		} catch(e){
-			filename = false;
-		}
-		if(!filename){
-			$(".note-alarm").remove();
-		}
-		//以上防止在图片在编辑器内拖拽引发第二次上传导致的提示错误
-		var ext = filename.substr(filename.lastIndexOf("."));
-		ext = ext.toUpperCase();
-		//name是文件名，自己随意定义，aid是我自己增加的属性用于区分文件用户
-		data = new FormData();
-		data.append("file", file);
-	    url = ctx+"/image";
-	    $.ajax({
-	        data: data,
-	        type: "POST",
-	        url: url,
-	        cache: false,
-	        contentType: false,
-	        processData: false,
-	        success: function (url) {
-	        	if(url != ""){
-	        		editor.insertImage(welEditable,url);
-	        	}else{
-	        		alert("图片上传失败");
-	        	}
-	            
-	        }
-	    });
-	}
+	
 	
 	</script>
 	<script>
