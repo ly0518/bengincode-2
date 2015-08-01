@@ -8,7 +8,8 @@
  */
 package org.begincode.web.control.course;
 
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -16,12 +17,14 @@ import org.apache.log4j.Logger;
 import org.begincode.core.contant.Contants;
 import org.begincode.core.model.BegincodeCourse;
 import org.begincode.core.model.UserCourseRelation;
+import org.begincode.core.paginator.domain.PageList;
 import org.begincode.core.paginator.domain.Paginator;
 import org.begincode.course.facade.CourseFacade;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
@@ -46,21 +49,25 @@ public class VideoCourseController {
 		return "/page/course/course_list";
 	}
 
-	@RequestMapping("attention/{userId}/{page}/{limit}/list")
+	@RequestMapping(value = "attention/{userId}/{page}/{limit}/list", method = RequestMethod.GET)
 	@ResponseBody
-	public List queryCourseByUser(@PathVariable("userId") Integer userId, @PathVariable("page") Integer page, @PathVariable("limit") Integer limit) {
+	public Map queryCourseByUser(@PathVariable("userId") Integer userId, @PathVariable("page") Integer page, @PathVariable("limit") Integer limit) {
 		if (null == userId || null == page || null == limit) {
 			logger.error("method:queryCourseByUser,errorMsg:查询参数为空,userId:" + userId + ",page:" + page + ",limit:" + limit);
 			return null;
 		}
 		Paginator paginator = new Paginator(page, limit);
 		UserCourseRelation userCourseRelation = new UserCourseRelation(null, userId, null, Contants.DELETE_FLAG_NOMAL, null);
-		return courseFacade.findAttentionCourseByUserWithPage(paginator, userCourseRelation);
+		PageList<Map<String, Object>> listMap = courseFacade.findAttentionCourseByUserWithPage(paginator, userCourseRelation);
+		Map<String, Object> resultMap = new HashMap<String, Object>();
+		resultMap.put("pageInfo", listMap.getPaginator());
+		resultMap.put("result", listMap);
+		return resultMap;
 	}
 
-	@RequestMapping("course/{labelId}/{page}/{limit}/list")
+	@RequestMapping(value = "course/{labelId}/{page}/{limit}/list", method = RequestMethod.GET)
 	@ResponseBody
-	public List queryCourseByLabel(@PathVariable("labelId") Integer labelId, @PathVariable("page") Integer page, @PathVariable("limit") Integer limit) {
+	public Map queryCourseByLabel(@PathVariable("labelId") Integer labelId, @PathVariable("page") Integer page, @PathVariable("limit") Integer limit) {
 		if (null == labelId || null == page || null == limit) {
 			logger.error("method:queryCourseByLabel,errorMsg:查询参数为空,labelId:" + labelId + ",page:" + page + ",limit:" + limit);
 			return null;
@@ -71,6 +78,10 @@ public class VideoCourseController {
 		BegincodeCourse begincodeCourse = new BegincodeCourse();
 		begincodeCourse.setCourseLabelId(labelId);
 		begincodeCourse.setDeleteFlag(Contants.DELETE_FLAG_NOMAL);
-		return courseFacade.findCourseWithPage(paginator, begincodeCourse);
+		PageList<BegincodeCourse> courseList = courseFacade.findCourseWithPage(paginator, begincodeCourse);
+		Map<String, Object> resultMap = new HashMap<String, Object>();
+		resultMap.put("pageInfo", courseList.getPaginator());
+		resultMap.put("result", courseList);
+		return resultMap;
 	}
 }

@@ -15,9 +15,9 @@ import org.begincode.core.mapper.BegincodeCourseMapper;
 import org.begincode.core.model.BegincodeCourse;
 import org.begincode.core.paginator.domain.PageList;
 import org.begincode.core.paginator.domain.Paginator;
+import org.begincode.core.util.BeginCodePageParam;
 import org.begincode.course.exception.CourseRuntimeException;
 import org.begincode.course.service.BegincodeCourseService;
-import org.begincode.course.utils.CourseUtils;
 import org.springframework.stereotype.Service;
 
 /**
@@ -60,7 +60,7 @@ public class BegincodeCourseServiceImpl implements BegincodeCourseService {
 	 */
 	@Override
 	public PageList<BegincodeCourse> findAllWithPage(Paginator paginator, BegincodeCourse begincodeCourse) {
-		CourseUtils.setPaginator(paginator);
+		BeginCodePageParam.initPaginator(paginator);
 		return begincodeCourseMapper.selectAllBy(begincodeCourse);
 	}
 

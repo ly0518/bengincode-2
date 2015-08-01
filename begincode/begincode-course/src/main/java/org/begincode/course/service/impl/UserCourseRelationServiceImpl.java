@@ -17,9 +17,9 @@ import org.begincode.core.mapper.UserCourseRelationMapper;
 import org.begincode.core.model.UserCourseRelation;
 import org.begincode.core.paginator.domain.PageList;
 import org.begincode.core.paginator.domain.Paginator;
+import org.begincode.core.util.BeginCodePageParam;
 import org.begincode.course.exception.CourseRuntimeException;
 import org.begincode.course.service.UserCourseRelationService;
-import org.begincode.course.utils.CourseUtils;
 import org.springframework.stereotype.Service;
 
 /**
@@ -64,7 +64,7 @@ public class UserCourseRelationServiceImpl implements UserCourseRelationService 
 	 */
 	@Override
 	public PageList<Map<String, Object>> findAllWithPage(Paginator paginator, UserCourseRelation userCourseRelation) {
-		CourseUtils.setPaginator(paginator);
+		BeginCodePageParam.initPaginator(paginator);
 		return userCourseRelationMapper.selectAllBy(userCourseRelation);
 	}
 

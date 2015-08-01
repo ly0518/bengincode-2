@@ -42,86 +42,15 @@
 			</h5>
 			-->
 			<!-- 已关注 开始 -->
-			<div class="row">
-				<div class="col-md-12">
-				  	<div class="col-sm-6 col-md-3">
-						<a class="thumbnail-bottom" href="www.baidu.com">
-							<img class="img-responsive"
-								src="http://img.mukewang.com/558ba3980001db0e06000338-240-135.jpg"
-								alt="...">
-							<div class="caption">
-								<h4 class="media-heading">观察者模式</h4>
-								<div class="tips">
-									<p class="text-ellipsis">带动画效果的工具条，精彩不容错过！</p>
-									<span class="l">更新完毕</span> <b class="follow-label"> 2476 人学习</b><b class="label-blue"> 已关注</b>
-								</div>
-							</div>
-						</a>
-					</div>
-				</div>
-				<div class="col-md-12">
-				  <h5  id="jumbotron" class="page-header"></h5>
-				</div>
+			<div class="col-md-12" id="attention_course">
 			</div>
-			<!-- 已关注 结束 -->
-			  
+			<div class="col-md-12">
+			  <h5  id="jumbotron" class="page-header"></h5>
+			</div>
+ 			<!-- 已关注 结束 -->
 			  
 			 <!-- 课程列表 开始 -->
- 			<div class="col-sm-6 col-md-3">
-				<a class="thumbnail" href="www.baidu.com">
-					<img class="img-responsive"
-						src="http://img.mukewang.com/558ba3980001db0e06000338-240-135.jpg"
-						alt="...">
-					<div class="caption">
-						<h4 class="media-heading">观察者模式</h4>
-						<div class="tips">
-							<p class="text-ellipsis">带动画效果的工具条，精彩不容错过！</p>
-							<span class="l">更新完毕</span> <b class="follow-label"> 2476 人学习</b>
-						</div>
-					</div>
-				</a>
-			</div>
-			<div class="col-sm-6 col-md-3">
-				<a class="thumbnail" href="www.baidu.com">
-					<img class="img-responsive"
-						src="http://img.mukewang.com/558b55390001df0e06000338-240-135.jpg"
-						alt="...">
-					<div class="caption">
-						<h4 class="media-heading">观察者模式</h4>
-						<div class="tips">
-							<p class="text-ellipsis">带动画效果的工具条，精彩不容错过！</p>
-							<span class="l">更新完毕</span>  <b class="follow-label"> 2476 人学习</b>
-						</div>
-					</div>
-				</a>
-			</div>
-			<div class="col-sm-6 col-md-3">
-				<a class="thumbnail" href="www.baidu.com">
-					<img class="img-responsive"
-						src="http://img.mukewang.com/5567d48300010ba306000338-240-135.jpg"
-						alt="...">
-					<div class="caption">
-						<h4 class="media-heading">观察者模式</h4>
-						<div class="tips">
-							<p class="text-ellipsis">带动画效果的工具条，精彩不容错过！</p>
-							<span class="l">更新完毕</span>  <b class="follow-label"> 2476 人学习</b>
-						</div>
-					</div>
-				</a>
-			</div>
-			<div class="col-sm-6 col-md-3">
-				<a class="thumbnail" href="www.baidu.com">
-					<img class="img-responsive"
-						src="http://img.mukewang.com/557fff240001fbfb06000338-240-135.jpg"
-						alt="...">
-					<div class="caption">
-						<h4 class="media-heading">观察者模式</h4>
-						<div class="tips">
-							<p class="text-ellipsis">带动画效果的工具条，精彩不容错过！</p>
-							<span class="l">更新完毕</span>  <b class="follow-label"> 2476 人学习</b>
-						</div>
-					</div>
-				</a>
+			<div class="col-md-12" id="recommend_course">
 			</div>
 		</div>
 		<!-- 课程列表结束 -->
@@ -145,5 +74,9 @@
 	<hr>
 	<jsp:include page="/page/core/foot.jsp" />
 	<script src="${ctx}/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="${ctx}/js/jquery.min.js"></script>
+	<script type="text/javascript" src="${ctx}/js/jquery.simplePagination.js"></script>
+	<script src="${ctx}/js/course/course.js"></script>
+
 </body>
 </html>
