@@ -52,5 +52,13 @@
 			<groupId>com.begincode</groupId>
 			<artifactId>begincode-core</artifactId>
 		</dependency>
+				<dependency>
+			<groupId>com.begincode</groupId>
+			<artifactId>begincode-exception</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+		</dependency>
 	</dependencies>
 </project>

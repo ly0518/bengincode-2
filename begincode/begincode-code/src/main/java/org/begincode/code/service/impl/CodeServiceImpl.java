@@ -1,15 +1,13 @@
 package org.begincode.code.service.impl;
 
-import java.util.List;
-
 import org.apache.log4j.Logger;
 import org.begincode.code.service.CodeService;
 import org.begincode.core.mapper.BegincodeCodeMapper;
 import org.begincode.core.model.BegincodeCode;
-import org.begincode.core.paginator.BeginCodeInterceptor;
 import org.begincode.core.paginator.domain.PageList;
 import org.begincode.core.paginator.domain.Paginator;
 import org.begincode.core.util.BeginCodePageParam;
+import org.begincode.exception.BeginCodeException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -46,7 +44,13 @@ public class CodeServiceImpl implements CodeService
 	 * @see org.begincode.code.service.CodeService#findCodeById(int) 
 	 */
 	public BegincodeCode findCodeById(int codeId){
-		return begincodeCodeMapper.selectByPrimaryKey(codeId);
+		BegincodeCode record ;
+		try{
+			record = begincodeCodeMapper.selectByPrimaryKey(codeId);
+		}catch(Exception e){
+			throw new BeginCodeException(e,"codeId 不存在" +codeId);
+		}
+		return record;
 	}
 	 
 	/** (非 Javadoc) 
