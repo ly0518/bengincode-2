@@ -29,7 +29,7 @@ public interface UserCourseRelationService {
 	 * @return 添加的条数
 	 * @throws CourseRuntimeException
 	 */
-	public int create(UserCourseRelation userCourseRelation) throws CourseRuntimeException;
+	public int create(UserCourseRelation userCourseRelation);
 
 	/**
 	 * @Description: 根据用户id查询所关注的课程 （分页）

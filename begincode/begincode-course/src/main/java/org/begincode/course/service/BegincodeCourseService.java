@@ -11,7 +11,6 @@ package org.begincode.course.service;
 import org.begincode.core.model.BegincodeCourse;
 import org.begincode.core.paginator.domain.PageList;
 import org.begincode.core.paginator.domain.Paginator;
-import org.begincode.course.exception.CourseRuntimeException;
 
 /**
  * @ClassName: BegincodeCourse
@@ -27,7 +26,7 @@ public interface BegincodeCourseService {
 	 * @return 主键id int
 	 * @throws
 	 */
-	public int create(BegincodeCourse course) throws CourseRuntimeException;
+	public int create(BegincodeCourse course);
 
 	/**
 	 * @Description: 分页查询课程

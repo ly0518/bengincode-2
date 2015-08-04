@@ -31,14 +31,14 @@ public interface CourseFacade {
 	 * @return List<CourseLabel>
 	 * @throws CourseRuntimeException
 	 */
-	public List<CourseLabel> findLabels() throws CourseRuntimeException;
+	public List<CourseLabel> findLabels();
 
 	/**
 	 * @Description: 创建标签
 	 * @return
 	 * @throws CourseRuntimeException
 	 */
-	public int createLabel(CourseLabel courseLabel) throws CourseRuntimeException;
+	public int createLabel(CourseLabel courseLabel);
 
 	/**
 	 * @Description: 发布教程
@@ -46,7 +46,7 @@ public interface CourseFacade {
 	 * @return
 	 * @throws CourseRuntimeException
 	 */
-	public int createCourse(BegincodeCourse course) throws CourseRuntimeException;
+	public int createCourse(BegincodeCourse course);
 
 	/**
 	 * @Description: 分页查询课程
@@ -57,7 +57,7 @@ public interface CourseFacade {
 	 * @return PageList<BegincodeCourse>
 	 * @throws CourseRuntimeException
 	 */
-	public PageList<BegincodeCourse> findCourseWithPage(Paginator paginator, BegincodeCourse begincodeCourse) throws CourseRuntimeException;
+	public PageList<BegincodeCourse> findCourseWithPage(Paginator paginator, BegincodeCourse begincodeCourse);
 
 	/**
 	 * @Description: 查询用户关注的课程(分页)
@@ -77,6 +77,6 @@ public interface CourseFacade {
 	 * @return 新增主键
 	 * @throws CourseRuntimeException
 	 */
-	public int createUserCourseRelation(UserCourseRelation userCourseRelation) throws CourseRuntimeException;
+	public int createUserCourseRelation(UserCourseRelation userCourseRelation);
 
 }
