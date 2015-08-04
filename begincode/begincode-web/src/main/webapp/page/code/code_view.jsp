@@ -39,14 +39,15 @@
 							       
 							       <span class="icon " style="background:#fd9c47;">荐</span>
 							     <span class="icon " style="background:#fd6245;">顶</span> <span class="icon" style="background:#44ac57; "  title="原创博客">原</span> ${code.codeInfo }
-							      
+							      </h3>
 							       <hr style="border:none;border-top:2px solid blue; height:0;" />
     <p>${code.codeContent }
      
 </p>
 <span class="r blogAuthLabel"><b>作者</b>(${code.nickname }) &nbsp; | &nbsp;<b>阅读</b>(${code.viewCount })&nbsp;  
 								</span>
-<form name="codeCommonForm" id="codeCommonForm">
+								<p>
+<form name="codeCommonForm" id="codeCommonForm" style="margin-top:20px;">
 <div class="form-group">
    <input type="hidden" name="begincodeCodeId" id="begincodeCodeId" value="${code.begincodeCodeId }" />
    <input type="text" class="form-control" id="codeCommentContent" name="codeCommentContent" placeholder="一句话评论">	
@@ -54,9 +55,9 @@
    <div class="form-group">
            <button type="button" id="pubCodeCommon" class="btn pub-btn btn-primary  r">发表评论</button>
       </div>
+
 </form>
-
-
+</p>
 </div>
 
 	

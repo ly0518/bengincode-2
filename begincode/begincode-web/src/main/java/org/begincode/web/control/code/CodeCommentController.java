@@ -5,11 +5,11 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 import org.begincode.code.service.CodeCommentService;
+import org.begincode.core.contant.Contants;
 import org.begincode.core.model.CodeComment;
 import org.begincode.core.paginator.BeginCodeInterceptor;
 import org.begincode.core.paginator.domain.PageList;
 import org.begincode.core.paginator.domain.Paginator;
-import org.begincode.core.util.BeginCodeConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,6 +24,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 * @date 2015年8月1日 下午3:32:06 
 *  
 */
+/** 
+* @ClassName: CodeCommentController 
+* @Description: 
+* @author yangsj 
+* @date 2015年8月1日 下午3:47:40 
+*  
+*/
 @Controller
 @RequestMapping("/codeComment")
 public class CodeCommentController {
@@ -33,21 +40,29 @@ public class CodeCommentController {
 	@Autowired
 	CodeCommentService codeCommentService;
 
+	 
+	/** 
+	* @Title: addCodeComment 
+	* @Description: 新增代码评论
+	* @param codeComment
+	* @return CodeComment   
+	* @throws 
+	*/
 	@RequestMapping(value = "", method = RequestMethod.POST)
 	@ResponseBody
-	public CodeComment addCodes(CodeComment codeComment) {
-		System.out.println(codeComment.toString());
+	public CodeComment addCodeComment(CodeComment codeComment) {
+		logger.info(codeComment.toString());
 		codeComment.setCommentStatus("1");
 		codeComment.setCreateDatatime(new Date());
 		codeComment.setOrderNumber(1);
-		codeCommentService.createCodeCommentSelective(codeComment);
+//		codeCommentService.createCodeCommentSelective(codeComment);
 		return codeComment;
 	}
 
 	@RequestMapping(value = "codeId/{codeId}", method = RequestMethod.GET)
 	@ResponseBody
 	public List findTopTen(Paginator pageinfo, @PathVariable("codeId") int codeId) {
-		pageinfo.setLimit(BeginCodeConstant.PAGE_SIZE_COMMENT);
+		pageinfo.setLimit(Contants.PAGE_SIZE_COMMENT);
 		pageinfo.setOrderStr(" order by create_datatime desc ");
 		BeginCodeInterceptor.localPage.set(pageinfo);
 		List list = codeCommentService.findCodeCommentByCodeId(codeId);
@@ -58,7 +73,7 @@ public class CodeCommentController {
 	@ResponseBody
 	public PageList<CodeComment> findTopTen(@PathVariable("codeId") int codeId, @PathVariable("pageNo") int pageNo) {
 		Paginator pageinfo = new Paginator();
-		pageinfo.setLimit(BeginCodeConstant.PAGE_SIZE_COMMENT);
+		pageinfo.setLimit(Contants.PAGE_SIZE_COMMENT);
 		pageinfo.setPage(pageNo);
 		pageinfo.setOrderStr(" order by create_datatime desc ");
 		BeginCodeInterceptor.localPage.set(pageinfo);

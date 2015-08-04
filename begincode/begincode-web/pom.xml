@@ -39,6 +39,10 @@
 		</dependency>
 		<dependency>
 			<groupId>com.begincode</groupId>
+			<artifactId>begincode-user</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.begincode</groupId>
 			<artifactId>begincode-exception</artifactId>
 		</dependency>
 		<dependency>

@@ -138,3 +138,11 @@ function getLabel(keywords){
 	str += "</div>";
 	return str;
 }
+
+function codeShare(){
+	if(QC.Login.check()){
+		location.href =ctx+"/code/userId";
+	}else{
+		alert("请先登录...");
+	}
+}

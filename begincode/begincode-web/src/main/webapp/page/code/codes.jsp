@@ -8,6 +8,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <%@ include file="/commons/meta.jsp"%>
+
 <title>代码分享,初学者论坛,BeginCode,beginCode</title>
 <!-- Bootstrap -->
 <link href="${ctx}/css/bootstrap.css" rel="stylesheet">
@@ -53,19 +54,19 @@
 								<p class="list-group-item-text">
 									<a href="">${code.codeAbstract}</a>
 								</p>
-								<p>
-								<div class="keyword-list l">
+								<span class="keyword-list l">
 									<c:forTokens items="${code.begincodeKeys}" delims=","
 										var="keyword">
 										<a href="#" target="_blank" class="list-tag">${keyword}</a>
 									</c:forTokens>
-								</div>
-								<span class="r blogAuthLabel">创建时间：
+								</span>
+								<span class="r blogAuthLabel ">创建时间：
 								<fmt:formatDate	pattern="yyyy-MM-dd" value="${code.createDatetime }" />
 									浏览次数:${code.viewCount}
 								</span>
-								</p>
 							</div>
+							
+							
 						</div>
 					</c:forEach>
 				</div>
@@ -83,7 +84,11 @@
 					</div>
 				</div>
 				 -->
+				 	<button type="button" class="btn btn-primary" onclick="codeShare()" id="codeShare" data-toggle="button" aria-pressed="false" autocomplete="off" style="border-radius: 0px;width:100%;height:60px;margin-bottom:10px;font-weight:bold;font-size:35px">
+			  分享代码
+			</button>
 				<div class="list-group">
+				
 					<a href="#" class="list-group-item active"> 阅读排行 </a>
 					<div id="codeTopTen"></div>
 				</div>

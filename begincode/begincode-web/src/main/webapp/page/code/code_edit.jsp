@@ -38,12 +38,12 @@
 			<div class="panel-body" >
 						<div class="media" style="margin-bottom:10px">
 						  <a class="media-left" href="#">
-						    <img src="${ctx}/images/girl.jpg" style="width:80px;height:80px;" alt="...">
+						    <img src="${user.pic}" style="width:80px;height:80px;" alt="...">
 						  </a>
 						  <div class="media-body">
 						    <h2 class="media-heading" id="nickName" style="color:#EA0000"></h2>
 						    <!-- 	修改资料 更改头像
-						 -->
+						 -->sdf
 						  </div>
 						</div>
 					   <!--   <ul class="nav nav-pills" role="tablist">
@@ -54,7 +54,7 @@
 			</div>
 		</div>
 		 
-			<button type="button" class="btn btn-primary" id="addBlog" data-toggle="button" aria-pressed="false" autocomplete="off" style="border-radius: 0px;width:100%;height:60px;margin-bottom:10px;font-weight:bold;font-size:35px">
+			<button type="button" class="btn btn-primary" id="addBlog" onclick="codeShare()" data-toggle="button" aria-pressed="false" autocomplete="off" style="border-radius: 0px;width:100%;height:60px;margin-bottom:10px;font-weight:bold;font-size:35px">
 			  发布博文
 			</button>
 			 
@@ -70,9 +70,13 @@
 							  <div class="panel panel-primary" style="margin-top:0;" >
 							  	<div class="panel-body">
 							  	<form role="form" id="codeForm" name="codeForm" action="" method="post">
+							  	
+							  	<input type="hidden" name="nickname" id="nickname" value="${user.nickname }" />
+							  	<input type="hidden" name="pic" id="pic" value="${user.pic }" />
+							  	<input type="hidden" name="begincodeUserId" id="begincodeUserId" value="${user.begincodeUserId }" />
    <div class="form-group">
-    <label for="exampleInputPassword1"><span class="labelinfoblue" ></span>代码分类</label>
-	   <select class="form-control" name="classify" value="">
+    <label for="codeTypeId"><span class="labelinfoblue" ></span>代码分类</label>
+	   <select class="form-control" name="codeTypeId" id="codeTypeId" value="">
 	   	<c:forEach items="${codeTypes }" var="codeType"  >
 	   		<option value="${codeType.codeTypeId }" >${codeType.codeTypeName}</option>
 	   	</c:forEach>
@@ -84,7 +88,7 @@
   </div>
   <div class="form-group">
     <label for="exampleInputPassword1" ><span class="labelinfosuccess" ></span>代码摘要</label>
-    <input type="text" class="form-control required" id="codeAbstract" name="codeAbstract" value="" placeholder="我们提议，为您的博客添加摘要，这也是给阅读者一个引导">
+      <textarea class="form-control required"  id="codeAbstract" name="codeAbstract"  rows="3" placeholder="我们提议，为您的博客添加摘要，这也是给阅读者一个引导"></textarea>
   </div>
   <div class="form-group">
   	<label id="bcContent" for="codeContent" ><span class="labelinfodanger" ></span>代码正文</label>
@@ -107,8 +111,6 @@
 					</div>
 					
 			 </div>
-			<input type="file" name="file1" id="file1" />
-			<input type="button" name="" value="上传" onclick="ajaxFileUpload()" />
 	<!-- foot -->
 	<jsp:include page="/page/core/foot.jsp" />
 	<!-- Include all compiled plugins (below), or include individual files as needed -->
@@ -121,7 +123,6 @@
 	<script src="${ctx}/js/validate/jquery.metadata.js"></script>
 	<script src="${ctx}/js/validate/messages_zh.js"></script>
  	<script src="${ctx}/js/ajaxfileupload.js"></script>
- 
  <script type="text/javascript">
 	$(document).ready(function() {
 		$("#codeForm").validate({

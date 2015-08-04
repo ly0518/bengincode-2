@@ -4993,11 +4993,16 @@ a.thumbnail-bottom.active {
   padding-right: 10px;
 }
 .media-left,
-.media-right,
+.media-right.media-body {
+  display: table-cell;
+  vertical-align: top;
+  padding-left:20px;
+}
 .media-body {
   display: table-cell;
   vertical-align: top;
   padding-left:20px;
+  width:100%;
 }
 .media-middle {
   vertical-align: middle;
@@ -5005,6 +5010,7 @@ a.thumbnail-bottom.active {
 .media-bottom {
   vertical-align: bottom;
 }
+
 .media-heading {
   margin-top: 0;
   margin-bottom: 5px;
@@ -5013,6 +5019,7 @@ a.thumbnail-bottom.active {
   padding-left: 0;
   list-style: none;
 }
+
 .list-group {
   padding-left: 0;
   margin-bottom: 20px;
@@ -5070,6 +5077,7 @@ a.list-group-item:focus {
 .list-group-item.disabled:hover .list-group-item-heading,
 .list-group-item.disabled:focus .list-group-item-heading {
   color: inherit;
+ 
 }
 .list-group-item.disabled .list-group-item-text,
 .list-group-item.disabled:hover .list-group-item-text,
@@ -6806,7 +6814,7 @@ i.hasOpenOn {
 	max-width:70px;
 }
 .blogAuthLabel{
-	padding:4px 10px;margin-top:10px;margin-left:10px;font-size:14px;font-weight:500;color:#999
+	padding:0px 10px 0px 0px;margin-top:10px;margin-right:10px;font-size:14px;font-weight:500;color:#999
 }
 .blogKeyLabel{
 	padding:4px 10px;margin-top:5px;margin-left:10px;font-size:14px;font-weight:500;color:#b70000

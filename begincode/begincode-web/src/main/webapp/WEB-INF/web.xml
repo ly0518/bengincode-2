@@ -12,6 +12,7 @@
 			classpath*:applicationContext-code.xml,
 			classpath*:applicationContext-course.xml
 			classpath*:applicationContext-exception.xml
+			classpath*:applicationContext-user.xml
 		</param-value>
 	</context-param>
 	<context-param>

@@ -142,7 +142,7 @@
 		</div>
       <!-- Example row of columns -->
       <div class="row">
-       <div class="col-md-9">
+       <div class="col-md-12">
       	  <div class="row">
                    <div class="col-md-6">
           			<div class="list-group">
@@ -208,55 +208,55 @@
        </div>
           
        </div>
-       <div class="col-md-3">
-       <div class="list-group">
-		  <a href="#" class="list-group-item ">
-		    <h4 class="list-group-item-heading">王大锤</h4>
-		    <p class="list-group-item-text">今天天气正好</p>
-		  </a>
-		  <a href="#" class="list-group-item ">
-		    <h4 class="list-group-item-heading">王大锤</h4>
-		    <p class="list-group-item-text">今天天气正好</p>
-		  </a>
-		  <a href="#" class="list-group-item  ">
-		    <h4 class="list-group-item-heading">王大锤</h4>
-		    <p class="list-group-item-text">今天天气正好</p>
-		  </a>
-		  <a href="#" class="list-group-item ">
-		    <h4 class="list-group-item-heading">王大锤</h4>
-		    <p class="list-group-item-text">今天天气正好</p>
-		  </a>
-		  <a href="#" class="list-group-item ">
-		    <h4 class="list-group-item-heading">王大锤</h4>
-		    <p class="list-group-item-text">今天天气正好</p>
-		  </a>
-		  <a href="#" class="list-group-item ">
-		    <h4 class="list-group-item-heading">王大锤</h4>
-		    <p class="list-group-item-text">今天天气正好</p>
-		  </a>
-		  <a href="#" class="list-group-item ">
-		    <h4 class="list-group-item-heading">王大锤</h4>
-		    <p class="list-group-item-text">今天天气正好</p>
-		  </a>
-		  <a href="#" class="list-group-item ">
-		    <h4 class="list-group-item-heading">王大锤</h4>
-		    <p class="list-group-item-text">今天天气正好</p>
-		  </a>
-		  <a href="#" class="list-group-item ">
-		    <h4 class="list-group-item-heading">王大锤</h4>
-		    <p class="list-group-item-text">今天天气正好</p>
-		  </a>
-		  <a href="#" class="list-group-item ">
-		    <h4 class="list-group-item-heading">王大锤</h4>
-		    <p class="list-group-item-text">今天天气正好</p>
-		  </a>
-		  <a href="#" class="list-group-item ">
-		    <h4 class="list-group-item-heading">王大锤</h4>
-		    <p class="list-group-item-text">今天天气正好</p>
-		  </a>
+<!--        <div class="col-md-3"> -->
+<!--        <div class="list-group"> -->
+<!-- 		  <a href="#" class="list-group-item "> -->
+<!-- 		    <h4 class="list-group-item-heading">王大锤</h4> -->
+<!-- 		    <p class="list-group-item-text">今天天气正好</p> -->
+<!-- 		  </a> -->
+<!-- 		  <a href="#" class="list-group-item "> -->
+<!-- 		    <h4 class="list-group-item-heading">王大锤</h4> -->
+<!-- 		    <p class="list-group-item-text">今天天气正好</p> -->
+<!-- 		  </a> -->
+<!-- 		  <a href="#" class="list-group-item  "> -->
+<!-- 		    <h4 class="list-group-item-heading">王大锤</h4> -->
+<!-- 		    <p class="list-group-item-text">今天天气正好</p> -->
+<!-- 		  </a> -->
+<!-- 		  <a href="#" class="list-group-item "> -->
+<!-- 		    <h4 class="list-group-item-heading">王大锤</h4> -->
+<!-- 		    <p class="list-group-item-text">今天天气正好</p> -->
+<!-- 		  </a> -->
+<!-- 		  <a href="#" class="list-group-item "> -->
+<!-- 		    <h4 class="list-group-item-heading">王大锤</h4> -->
+<!-- 		    <p class="list-group-item-text">今天天气正好</p> -->
+<!-- 		  </a> -->
+<!-- 		  <a href="#" class="list-group-item "> -->
+<!-- 		    <h4 class="list-group-item-heading">王大锤</h4> -->
+<!-- 		    <p class="list-group-item-text">今天天气正好</p> -->
+<!-- 		  </a> -->
+<!-- 		  <a href="#" class="list-group-item "> -->
+<!-- 		    <h4 class="list-group-item-heading">王大锤</h4> -->
+<!-- 		    <p class="list-group-item-text">今天天气正好</p> -->
+<!-- 		  </a> -->
+<!-- 		  <a href="#" class="list-group-item "> -->
+<!-- 		    <h4 class="list-group-item-heading">王大锤</h4> -->
+<!-- 		    <p class="list-group-item-text">今天天气正好</p> -->
+<!-- 		  </a> -->
+<!-- 		  <a href="#" class="list-group-item "> -->
+<!-- 		    <h4 class="list-group-item-heading">王大锤</h4> -->
+<!-- 		    <p class="list-group-item-text">今天天气正好</p> -->
+<!-- 		  </a> -->
+<!-- 		  <a href="#" class="list-group-item "> -->
+<!-- 		    <h4 class="list-group-item-heading">王大锤</h4> -->
+<!-- 		    <p class="list-group-item-text">今天天气正好</p> -->
+<!-- 		  </a> -->
+<!-- 		  <a href="#" class="list-group-item "> -->
+<!-- 		    <h4 class="list-group-item-heading">王大锤</h4> -->
+<!-- 		    <p class="list-group-item-text">今天天气正好</p> -->
+<!-- 		  </a> -->
 		 
-		</div>
-       </div>
+<!-- 		</div> -->
+<!--        </div> -->
       </div>
      
 				<hr>
