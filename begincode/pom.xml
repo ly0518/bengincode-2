@@ -18,7 +18,8 @@
 		<module>begincode-web</module>
 		<module>begincode-doc</module>
 		<module>begincode-exception</module>
-    <module>begincode-task</module>
+	    <module>begincode-task</module>
+	    <module>begincode-user</module>
   </modules>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -216,6 +217,11 @@
 			<dependency>
 				<groupId>com.begincode</groupId>
 				<artifactId>begincode-admin</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.begincode</groupId>
+				<artifactId>begincode-user</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>
