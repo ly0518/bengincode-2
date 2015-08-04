@@ -2,6 +2,8 @@ package org.begincode.core.model;
 
 import java.util.Date;
 
+import org.apache.commons.lang.StringUtils;
+
 public class BegincodeUser extends BaseModel{
     private Integer begincodeUserId;
 
@@ -181,5 +183,12 @@ public class BegincodeUser extends BaseModel{
 
     public void setUserSourceId(Integer userSourceId) {
         this.userSourceId = userSourceId;
+    }
+    
+    public boolean checkUserNull(){
+    	if(StringUtils.isNotEmpty(this.accessToken)&&StringUtils.isNotEmpty(this.openId)&&StringUtils.isNotEmpty(this.nickname)&&StringUtils.isNotEmpty(this.pic)&&StringUtils.isNotEmpty(this.sex)){
+    		return true;
+    	}
+    	return false;
     }
 }

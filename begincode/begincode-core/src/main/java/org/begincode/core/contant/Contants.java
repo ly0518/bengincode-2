@@ -22,5 +22,19 @@ public final class Contants {
 	 */
 	public final static String DELETE_FLAG_YES = "0";
 	public final static String DELETE_FLAG_NOMAL = "1";
+	
+	/**
+	 * 分页数据
+	 * */
+	public static final int PAGE_SIZE = 10;  //
+	public static final int PAGE_SIZE_COMMENT = 5;
+	
+	
+	/**
+	 * 导航标识
+	 * */
+	public static final int NAV_VIDEO_COURSE = 1;
+	public static final int NAV_CODE_SHARE = 2;
+	
 
 }

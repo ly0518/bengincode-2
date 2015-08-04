@@ -2,6 +2,13 @@ package org.begincode.core.model;
 
 import java.util.Date;
 
+/** 
+* @ClassName: CodeComment 
+* @Description: 代码评论bean
+* @author yangsj 
+* @date 2015年8月1日 下午3:49:21 
+*  
+*/
 public class CodeComment extends BaseModel{
     private Integer codeCommentId;
 

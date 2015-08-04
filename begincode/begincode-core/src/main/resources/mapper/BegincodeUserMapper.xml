@@ -32,6 +32,12 @@
     from begincode_user
     where begincode_user_id = #{begincodeUserId,jdbcType=INTEGER}
   </select>
+  <select id="selectByTokenIdAndOpenId" resultMap="BaseResultMap" parameterType="org.begincode.core.model.BegincodeUser">
+	   select 'true' as QUERYID,
+	    <include refid="Base_Column_List" />
+	    from begincode_user
+	    where access_token = #{accessToken,jdbcType=INTEGER} and open_id =  #{openId,jdbcType=INTEGER} 
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from begincode_user
     where begincode_user_id = #{begincodeUserId,jdbcType=INTEGER}
@@ -146,7 +152,6 @@
       <if test="gag != null" >
         #{gag,jdbcType=CHAR},
       </if>
-   
       <if test="course != null" >
         #{course,jdbcType=VARCHAR},
       </if>
