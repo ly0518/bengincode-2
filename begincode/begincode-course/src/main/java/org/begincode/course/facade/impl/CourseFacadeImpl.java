@@ -51,7 +51,7 @@ public class CourseFacadeImpl implements CourseFacade {
 	 * @see org.begincode.course.facade.CourseFacade#findCourseLabel()
 	 */
 	@Override
-	public List<CourseLabel> findLabels() throws CourseRuntimeException {
+	public List<CourseLabel> findLabels() {
 		try {
 			return courseLabelService.findAll();
 		} catch (Exception e) {
@@ -66,7 +66,7 @@ public class CourseFacadeImpl implements CourseFacade {
 	 * @see org.begincode.course.facade.CourseFacade#createLabel()
 	 */
 	@Override
-	public int createLabel(CourseLabel courseLabel) throws CourseRuntimeException {
+	public int createLabel(CourseLabel courseLabel) {
 		try {
 			return courseLabelService.create(courseLabel);
 		} catch (CourseRuntimeException ce) {
@@ -85,7 +85,7 @@ public class CourseFacadeImpl implements CourseFacade {
 	 * .model.BegincodeCourse)
 	 */
 	@Override
-	public int createCourse(BegincodeCourse course) throws CourseRuntimeException {
+	public int createCourse(BegincodeCourse course) {
 		try {
 			return begincodeCourseService.create(course);
 		} catch (CourseRuntimeException ce) {
@@ -105,7 +105,7 @@ public class CourseFacadeImpl implements CourseFacade {
 	 * org.begincode.core.model.BegincodeCourse)
 	 */
 	@Override
-	public PageList<BegincodeCourse> findCourseWithPage(Paginator paginator, BegincodeCourse begincodeCourse) throws CourseRuntimeException {
+	public PageList<BegincodeCourse> findCourseWithPage(Paginator paginator, BegincodeCourse begincodeCourse) {
 		try {
 			return begincodeCourseService.findAllWithPage(paginator, begincodeCourse);
 		} catch (Exception e) {
@@ -141,7 +141,7 @@ public class CourseFacadeImpl implements CourseFacade {
 	 * .begincode.core.model.UserCourseRelation)
 	 */
 	@Override
-	public int createUserCourseRelation(UserCourseRelation userCourseRelation) throws CourseRuntimeException {
+	public int createUserCourseRelation(UserCourseRelation userCourseRelation) {
 		try {
 			return userCourseRelationService.create(userCourseRelation);
 		} catch (CourseRuntimeException ce) {
