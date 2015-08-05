@@ -26,23 +26,23 @@ public class CourseServiceImpl implements CourseService {
 	@Override
 	public int deleteCourse(BegincodeCourse course) {
 		course.setDeleteFlag("0");
-		return courseMapper.updateByPrimaryKeySelective(course);
+		return courseMapper.updateById(course);
 	}
 
 	@Override
 	public int forzenCourse(BegincodeCourse course) {
 		course.setDeleteFlag("0");
-		return courseMapper.updateByPrimaryKeySelective(course);
+		return courseMapper.updateById(course);
 	}
 
 	@Override
 	public int updateCourse(BegincodeCourse course) {
-		return courseMapper.updateByPrimaryKey(course);
+		return courseMapper.updateById(course);
 	}
 
 	@Override
 	public BegincodeCourse selectCourseById(int courseId) {
-		return courseMapper.selectByPrimaryKey(courseId);
+		return courseMapper.selectById(courseId);
 	}
 
 	@Override
