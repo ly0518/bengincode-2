@@ -1,4 +1,4 @@
-$(document).ready(function() {
+	$(document).ready(function() {
 		$("#codeForm").validate({
 			errorPlacement:function(error,element) {  	
 				error.appendTo(element.parent().children());
@@ -27,10 +27,11 @@ $(document).ready(function() {
 			  if($("#codeForm").valid()){
 				  var sHTML = $('#summernote').code();
 					 $('#codeContent').val(sHTML);
+					$("#codeTypeName").val($("#codeTypeId").find("option:selected").text());
 					 $.ajax({
 					        data: $('#codeForm').serializeArray(),
 					        type: "POST",
-					        url: "${ctx}/code",
+					        url: ctx+"/code",
 					        dataType : "json",
 //		 			        cache: false,
 //		 			        contentType: false,
@@ -43,6 +44,3 @@ $(document).ready(function() {
 			
 		  });
 	});
-$("#").click(function(){
-	alert("代码分享");
-});

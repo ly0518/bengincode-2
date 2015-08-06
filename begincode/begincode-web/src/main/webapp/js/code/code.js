@@ -144,5 +144,6 @@ function codeShare(){
 		location.href =ctx+"/code/userId";
 	}else{
 		alert("请先登录...");
+		location.href =ctx+"/code/userId";
 	}
 }

@@ -17,10 +17,9 @@ import org.begincode.core.model.BegincodeUser;
 import org.begincode.core.paginator.BeginCodeInterceptor;
 import org.begincode.core.paginator.domain.PageList;
 import org.begincode.core.paginator.domain.Paginator;
-import org.begincode.course.contant.Constants;
 import org.begincode.exception.BeginCodeException;
 import org.begincode.user.service.UserService;
-import org.begincode.web.control.user.CookieOperation;
+import org.begincode.web.control.cookie.CookieOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -49,7 +48,7 @@ public class CodeController {
 	@Autowired
 	UserService userService;
 
-	@RequestMapping("")
+	@RequestMapping(value="", method = RequestMethod.GET)
 	public String selCodeList(Model model) {
 		Paginator page = new Paginator(0, Contants.PAGE_SIZE);
 		PageList list = codeService.findCodes( page);

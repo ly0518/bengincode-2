@@ -50,7 +50,9 @@
 <form name="codeCommonForm" id="codeCommonForm" style="margin-top:20px;">
 <div class="form-group">
    <input type="hidden" name="begincodeCodeId" id="begincodeCodeId" value="${code.begincodeCodeId }" />
-   <input type="text" class="form-control" id="codeCommentContent" name="codeCommentContent" placeholder="一句话评论">	
+   <textarea class="form-control required"  id="codeCommentContent" name="codeCommentContent"  rows="3" placeholder="一句话评论"></textarea>
+   <inpu type="hidden" name="nickname" id="nickname" value="" />
+   <inpu type="hidden" name="pic" id="pic" value="" />
    </div>
    <div class="form-group">
            <button type="button" id="pubCodeCommon" class="btn pub-btn btn-primary  r">发表评论</button>
@@ -109,6 +111,9 @@
 	<script src="${ctx}/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="${ctx}/js/code/code.js"></script>
 	<script type="text/javascript" src="${ctx}/js/code/codeComment.js"></script>
+ 	<script src="${ctx}/js/validate/jquery.validate.js"></script>
+	<script src="${ctx}/js/validate/jquery.metadata.js"></script>
+	<script src="${ctx}/js/validate/messages_zh.js"></script>
 	<script type="text/javascript">
 	var codIdId = ${code.begincodeCodeId };
 	var typeId = ${code.codeTypeId};

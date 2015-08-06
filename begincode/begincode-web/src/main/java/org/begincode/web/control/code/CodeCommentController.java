@@ -3,6 +3,8 @@ package org.begincode.web.control.code;
 import java.util.Date;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.apache.log4j.Logger;
 import org.begincode.code.service.CodeCommentService;
 import org.begincode.core.contant.Contants;
@@ -10,6 +12,7 @@ import org.begincode.core.model.CodeComment;
 import org.begincode.core.paginator.BeginCodeInterceptor;
 import org.begincode.core.paginator.domain.PageList;
 import org.begincode.core.paginator.domain.Paginator;
+import org.begincode.web.control.cookie.CookieOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,16 +20,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+ 
 /** 
 * @ClassName: CodeCommentController 
 * @Description: 代码分享评论控制器
-* @author yangsj 
-* @date 2015年8月1日 下午3:32:06 
-*  
-*/
-/** 
-* @ClassName: CodeCommentController 
-* @Description: 
 * @author yangsj 
 * @date 2015年8月1日 下午3:47:40 
 *  
@@ -50,12 +47,13 @@ public class CodeCommentController {
 	*/
 	@RequestMapping(value = "", method = RequestMethod.POST)
 	@ResponseBody
-	public CodeComment addCodeComment(CodeComment codeComment) {
+	public CodeComment addCodeComment(CodeComment codeComment,HttpServletRequest request) {
+		CookieOperation.getCookie(request);
 		logger.info(codeComment.toString());
 		codeComment.setCommentStatus("1");
 		codeComment.setCreateDatatime(new Date());
 		codeComment.setOrderNumber(1);
-//		codeCommentService.createCodeCommentSelective(codeComment);
+		codeCommentService.createCodeCommentSelective(codeComment);
 		return codeComment;
 	}
 

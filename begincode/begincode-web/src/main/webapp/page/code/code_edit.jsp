@@ -81,6 +81,7 @@
 	   		<option value="${codeType.codeTypeId }" >${codeType.codeTypeName}</option>
 	   	</c:forEach>
 		</select>  
+		<input type="hidden" name="codeTypeName" id="codeTypeName" value="" />
 	</div>
   <div class="form-group">
     <label for="codeInfo"><span class="labelinfowarn" ></span>代码标题</label>
@@ -123,58 +124,9 @@
 	<script src="${ctx}/js/validate/jquery.metadata.js"></script>
 	<script src="${ctx}/js/validate/messages_zh.js"></script>
  	<script src="${ctx}/js/ajaxfileupload.js"></script>
- <script type="text/javascript">
-	$(document).ready(function() {
-		$("#codeForm").validate({
-			errorPlacement:function(error,element) {  	
-				error.appendTo(element.parent().children());
-			}, 
-			errorElement: "em"  
-		});
-		
-		
-		  $('#summernote').summernote({
-			  onImageUpload: function (files, editor, $editable) {
-				  	sendFile(files[0], editor, $editable);
-				  },
-// 		lang:'zh-CN',
- 		  height: 300,
-		  toolbar: [
-				['style', ['style','bold', 'italic', 'underline', 'clear']],
-				['font', ['strikethrough']],
-				['fontsize', ['fontsize']],
-				['color', ['color']],
-				['layout', ['ul', 'ol', 'paragraph']],
-				['height', ['height']],
-				['insert', ['link', 'picture']]
-				]
-		  });
-		  $('#send').click(function(){
-			  if($("#codeForm").valid()){
-				  var sHTML = $('#summernote').code();
-					 $('#codeContent').val(sHTML);
-					 $.ajax({
-					        data: $('#codeForm').serializeArray(),
-					        type: "POST",
-					        url: "${ctx}/code",
-					        dataType : "json",
-//		 			        cache: false,
-//		 			        contentType: false,
-//		 			        processData: false,
-					        success: function (data) {
-					            alert(data.msg);
-					        }
-					    });
-			  }
-			
-		  });
-	});
-	
-	
-	
-	</script>
+ 	<script src="${ctx}/js/code/codeEdit.js"></script>
 	<script>
-	var ctx = "${ctx}";  
-</script>  
+		var ctx = "${ctx}";  
+	</script>  
 </body>
 </html>
