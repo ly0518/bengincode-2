@@ -15,6 +15,12 @@ public class ExceptionHandler extends DefaultHandlerExceptionResolver {
 	public ModelAndView resolveException(HttpServletRequest request,
 			HttpServletResponse response, Object handler, Exception ex) {
 		logger.error("执行出错，堆栈信息如下：", ex);
+		
+//		if(ex instanceof CodeRuntimeException){
+////			ex.printStackTrace();
+////			System.out.println(ex.getLocalizedMessage());
+//		}
+		
 		try {
 			String errorMsg = ex.getMessage();
 			//设置repsonse输出编码格式

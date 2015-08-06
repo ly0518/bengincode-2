@@ -18,4 +18,5 @@ public interface UserFacade {
 	* @throws 
 	*/
 	public BegincodeUser createUser(BegincodeUser user);
+	
 }
