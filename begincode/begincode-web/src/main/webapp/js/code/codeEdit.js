@@ -24,6 +24,7 @@
 				]
 		  });
 		  $('#send').click(function(){
+			  if(QC.Login.check()){
 			  if($("#codeForm").valid()){
 				  var sHTML = $('#summernote').code();
 					 $('#codeContent').val(sHTML);
@@ -41,6 +42,6 @@
 					        }
 					    });
 			  }
-			
+		  }
 		  });
 	});

@@ -19,4 +19,14 @@ public interface UserFacade {
 	*/
 	public BegincodeUser createUser(BegincodeUser user);
 	
+	/** 
+	* @Title: findUser 
+	* @Description: 根据token查询用户信息，
+	* 	1、查询cache，
+	* 	2、cache不命中查询数据库
+	* @param accessToken
+	* @return BegincodeUser   
+	* @throws 
+	*/
+	public BegincodeUser findUser(String openId,String accessToken);
 }

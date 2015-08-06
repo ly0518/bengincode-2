@@ -51,8 +51,6 @@
 <div class="form-group">
    <input type="hidden" name="begincodeCodeId" id="begincodeCodeId" value="${code.begincodeCodeId }" />
    <textarea class="form-control required"  id="codeCommentContent" name="codeCommentContent"  rows="3" placeholder="一句话评论"></textarea>
-   <inpu type="hidden" name="nickname" id="nickname" value="" />
-   <inpu type="hidden" name="pic" id="pic" value="" />
    </div>
    <div class="form-group">
            <button type="button" id="pubCodeCommon" class="btn pub-btn btn-primary  r">发表评论</button>

@@ -18,6 +18,7 @@ import org.begincode.core.paginator.BeginCodeInterceptor;
 import org.begincode.core.paginator.domain.PageList;
 import org.begincode.core.paginator.domain.Paginator;
 import org.begincode.exception.BeginCodeException;
+import org.begincode.user.facade.UserFacade;
 import org.begincode.user.service.UserService;
 import org.begincode.web.control.cookie.CookieOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,6 +48,8 @@ public class CodeController {
 	CodeTypeService codeTypeService;
 	@Autowired
 	UserService userService;
+	@Autowired
+	UserFacade userFacade;
 
 	@RequestMapping(value="", method = RequestMethod.GET)
 	public String selCodeList(Model model) {
@@ -71,8 +74,10 @@ public class CodeController {
 	@RequestMapping(value = "/userId", method = RequestMethod.GET)
 	public String addCodeInit(Model model,HttpServletRequest request) {
 		Map<String, String> cookieMap = CookieOperation.getCookie(request);
+		logger.info("登陆用户"+cookieMap);
 		if(cookieMap != null){
-			BegincodeUser logUser = userService.findUserByTokenIdAndOpenId(cookieMap.get("accessToken"), cookieMap.get("openId"));
+			BegincodeUser logUser = userFacade.findUser(cookieMap.get("openId"), cookieMap.get("accessToken"));
+			logger.info("用户信息"+logUser.toString());
 			model.addAttribute("user",logUser);
 			model.addAttribute("codeTypes", codeTypeService.findCodeTypeByUserId(logUser.getBegincodeUserId()));
 			return "/page/code/code_edit";
@@ -124,7 +129,6 @@ public class CodeController {
 		codeRecord.setDeleteFlag(Contants.DELETE_FLAG_NOMAL);
 		codeRecord.setBegincodeNavigationId(Contants.NAV_CODE_SHARE);
 		codeService.createCode(codeRecord);
-		
 		if (codeRecord.getbegincodeCodeId() != null) {
 			message.put("msg", "保存成功");
 		} else {

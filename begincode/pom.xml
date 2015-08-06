@@ -20,6 +20,7 @@
 		<module>begincode-exception</module>
 	    <module>begincode-task</module>
 	    <module>begincode-user</module>
+    	<module>begincode-cache</module>
   </modules>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -52,9 +53,15 @@
 		<jackson.databind.version>2.5.4</jackson.databind.version>
 		<jsp.version>2.0</jsp.version>
 		<springtest.version>4.0.5.RELEASE</springtest.version>
+		<cache:version>2.6.11</cache:version>
 	</properties>
 	<dependencyManagement>
 		<dependencies>
+		<dependency>
+			<groupId>net.sf.ehcache</groupId>
+			<artifactId>ehcache-core</artifactId>
+			<version>${cache:version}</version>
+		</dependency>
 			<dependency>
 				<groupId>javax.servlet</groupId>
 				<artifactId>jsp-api</artifactId>
@@ -222,6 +229,11 @@
 			<dependency>
 				<groupId>com.begincode</groupId>
 				<artifactId>begincode-user</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.begincode</groupId>
+				<artifactId>begincode-cache</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>

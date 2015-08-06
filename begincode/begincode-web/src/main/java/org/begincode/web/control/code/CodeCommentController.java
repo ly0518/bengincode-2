@@ -2,16 +2,20 @@ package org.begincode.web.control.code;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import org.begincode.code.service.CodeCommentService;
 import org.begincode.core.contant.Contants;
+import org.begincode.core.model.BegincodeUser;
 import org.begincode.core.model.CodeComment;
 import org.begincode.core.paginator.BeginCodeInterceptor;
 import org.begincode.core.paginator.domain.PageList;
 import org.begincode.core.paginator.domain.Paginator;
+import org.begincode.user.facade.UserFacade;
 import org.begincode.web.control.cookie.CookieOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -36,7 +40,8 @@ public class CodeCommentController {
 
 	@Autowired
 	CodeCommentService codeCommentService;
-
+	@Autowired
+	UserFacade userFacade;
 	 
 	/** 
 	* @Title: addCodeComment 
@@ -48,11 +53,18 @@ public class CodeCommentController {
 	@RequestMapping(value = "", method = RequestMethod.POST)
 	@ResponseBody
 	public CodeComment addCodeComment(CodeComment codeComment,HttpServletRequest request) {
-		CookieOperation.getCookie(request);
+		BegincodeUser begincodeUser =  new  BegincodeUser();
+		Map<String,String> userMap = CookieOperation.getCookie(request);
+		if(userMap != null && StringUtils.isNotEmpty(userMap.get("accessToken")) && StringUtils.isNotEmpty(userMap.get("openId"))){
+			begincodeUser = userFacade.findUser(userMap.get("openId"), userMap.get("accessToken"));
+		}
+		
 		logger.info(codeComment.toString());
 		codeComment.setCommentStatus("1");
 		codeComment.setCreateDatatime(new Date());
 		codeComment.setOrderNumber(1);
+		codeComment.setNickname(begincodeUser.getNickname());
+		codeComment.setPic(begincodeUser.getPic());
 		codeCommentService.createCodeCommentSelective(codeComment);
 		return codeComment;
 	}

@@ -48,18 +48,7 @@ function getCodeViewLabel(codeComment){
 }
 $('#pubCodeCommon').click(function(){
 	if(QC.Login.check()){
-		QC.Login.getMe(function(openId, accessToken){
-			jQuery.ajax({
-				type : "GET",
-				url : "https://graph.qq.com/user/get_user_info",
-				data :  "oauth_consumer_key=101230380&access_token="+accessToken+"&openid="+openId+"&format=json",
-				dataType : "json",
-				success : function(codeComment) {
-					if(codeComment.codeCommentId != ""){
-						$("#nickname").val(codeComment.nickname);
-						$("#pic").val(codeComment.figureurl);
-						
-						if($("#codeCommonForm").valid()){
+		if($("#codeCommonForm").valid()){
 						jQuery.ajax({
 							type : "POST",
 							url : ctx + "/codeComment",
@@ -72,13 +61,8 @@ $('#pubCodeCommon').click(function(){
 									$("#codeCommentContent").val("");
 								}
 							}
-						});		
-					}
-						
-					}
-				}
-			});	
-		});
+				});		
+		}
 	}else{
 		alert("请先登录....");
 	}

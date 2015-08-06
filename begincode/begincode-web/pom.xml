@@ -39,17 +39,30 @@
 		</dependency>
 		<dependency>
 			<groupId>com.begincode</groupId>
+			<artifactId>begincode-cache</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.begincode</groupId>
 			<artifactId>begincode-user</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>com.begincode</groupId>
 			<artifactId>begincode-exception</artifactId>
 		</dependency>
+<!-- 		<dependency> -->
+<!-- 			<groupId>com.begincode</groupId> -->
+<!-- 			<artifactId>begincode-cache</artifactId> -->
+<!-- 		</dependency> -->
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>javax.servlet-api</artifactId>
 			<scope>provided</scope>
 		</dependency>
+				<dependency>
+			<groupId>net.sf.ehcache</groupId>
+			<artifactId>ehcache-core</artifactId>
+		</dependency>
+		
 <!-- 		<dependency> -->
 <!-- 			<groupId>javax.servlet</groupId> -->
 <!-- 			<artifactId>jsp-api</artifactId> -->

@@ -10,8 +10,9 @@
 			classpath*:applicationContext-core.xml,
 			classpath*:applicationContext-blog.xml,
 			classpath*:applicationContext-code.xml,
-			classpath*:applicationContext-course.xml
-			classpath*:applicationContext-exception.xml
+			classpath*:applicationContext-course.xml,
+			classpath*:applicationContext-exception.xml,
+			classpath*:applicationContext-cache.xml,
 			classpath*:applicationContext-user.xml
 		</param-value>
 	</context-param>

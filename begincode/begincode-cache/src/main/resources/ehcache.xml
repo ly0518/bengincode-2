@@ -1,0 +1,13 @@
+<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+         xsi:noNamespaceSchemaLocation="ehcache.xsd"> 
+   <!--   <diskStore path="P:/cache"/>  -->
+    <cache name="userCache"
+     	   maxEntriesLocalHeap="100" 
+           maxEntriesLocalDisk="10" 
+           eternal="false" 
+           overflowToDisk="true" 
+           timeToIdleSeconds="150" 
+           timeToLiveSeconds="300" 
+           memoryStoreEvictionPolicy="LFU" 
+            /> 
+</ehcache>

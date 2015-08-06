@@ -43,7 +43,7 @@
 						  <div class="media-body">
 						    <h2 class="media-heading" id="nickName" style="color:#EA0000"></h2>
 						    <!-- 	修改资料 更改头像
-						 -->sdf
+						 -->${user.nickname}
 						  </div>
 						</div>
 					   <!--   <ul class="nav nav-pills" role="tablist">
