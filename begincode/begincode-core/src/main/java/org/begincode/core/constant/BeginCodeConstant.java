@@ -45,6 +45,6 @@ public final class BeginCodeConstant {
 	/**
 	 * 队列允许最大值，超过该值 触发更DB操作
 	 * */
-	public static final int MAX_QUEUE = 10;
+	public static final int MAX_QUEUE = 1024;
 
 }
