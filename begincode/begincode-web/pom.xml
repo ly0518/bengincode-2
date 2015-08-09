@@ -89,6 +89,10 @@
 		<dependency>
 			<groupId>com.begincode</groupId>
 			<artifactId>begincode-cache</artifactId>
+		</dependency> 
+		<dependency>
+			<groupId>com.begincode</groupId>
+			<artifactId>begincode-task</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>javax.servlet</groupId>

@@ -18,6 +18,7 @@ import org.begincode.core.paginator.BeginCodeInterceptor;
 import org.begincode.core.paginator.domain.PageList;
 import org.begincode.core.paginator.domain.Paginator;
 import org.begincode.exception.BeginCodeException;
+import org.begincode.task.queue.CountOperator;
 import org.begincode.user.facade.UserFacade;
 import org.begincode.user.service.UserService;
 import org.begincode.web.control.cookie.CookieOperation;
@@ -50,8 +51,8 @@ public class CodeController {
 	UserService userService;
 	@Autowired
 	UserFacade userFacade;
-//	@Autowired
-//	CountOperator countOperator;
+	@Autowired
+	CountOperator countOperator;
 
 	@RequestMapping(value="", method = RequestMethod.GET)
 	public String selCodeList(Model model) {
@@ -71,7 +72,7 @@ public class CodeController {
 			throw  new BeginCodeException("codeId 不存在" +codeId);
 		}
 		//新增浏览次数
-//		countOperator.addCodeViewCount(codeId);
+		countOperator.addCodeViewCount(codeId);
 		model.addAttribute("code", record);
 		return "/page/code/code_view";
 	}
