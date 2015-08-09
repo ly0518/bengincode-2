@@ -1,5 +1,7 @@
 package org.begincode.code.service.impl;
 
+import java.util.List;
+
 import org.apache.log4j.Logger;
 import org.begincode.code.service.CodeService;
 import org.begincode.core.mapper.BegincodeCodeMapper;
@@ -75,5 +77,21 @@ public class CodeServiceImpl implements CodeService
 	public BegincodeCode createCode(BegincodeCode record){
 		begincodeCodeMapper.insertSelective(record);
 		return record;
+	}
+
+	/** (非 Javadoc) 
+	 * <p>Title: updateAddCountById</p> 
+	 * <p>Description: </p> 
+	 * @param record  
+	 * @see org.begincode.code.service.CodeService#updateAddCountById(org.begincode.core.model.BegincodeCode) 
+	 */
+	@Override
+	public void updateAddCountById(BegincodeCode record) {
+		begincodeCodeMapper.updateAddCountById(record);
+	}
+
+	@Override
+	public void batchUpdateAddCountById(List<BegincodeCode> codes) {
+		begincodeCodeMapper.batchUpdateAddCountById(codes);
 	}
 }

@@ -32,4 +32,8 @@ public interface BegincodeCodeMapper {
     int  selectBySelectiveCount(BegincodeCode record);
     
     PageList<BegincodeCode> selectAll();
+    
+    int updateAddCountById(BegincodeCode record);
+    
+    int batchUpdateAddCountById(List<BegincodeCode> codeList);
 }

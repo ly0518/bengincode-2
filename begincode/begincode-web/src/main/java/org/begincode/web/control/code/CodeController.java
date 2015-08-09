@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.apache.log4j.Logger;
 import org.begincode.code.service.CodeService;
 import org.begincode.code.service.CodeTypeService;
-import org.begincode.core.contant.Contants;
+import org.begincode.core.constant.BeginCodeConstant;
 import org.begincode.core.model.BegincodeCode;
 import org.begincode.core.model.BegincodeUser;
 import org.begincode.core.paginator.BeginCodeInterceptor;
@@ -50,10 +50,12 @@ public class CodeController {
 	UserService userService;
 	@Autowired
 	UserFacade userFacade;
+//	@Autowired
+//	CountOperator countOperator;
 
 	@RequestMapping(value="", method = RequestMethod.GET)
 	public String selCodeList(Model model) {
-		Paginator page = new Paginator(0, Contants.PAGE_SIZE);
+		Paginator page = new Paginator(0, BeginCodeConstant.PAGE_SIZE);
 		PageList list = codeService.findCodes( page);
 		model.addAttribute("codes", list);
 		model.addAttribute("pageinfo", list.getPaginator());
@@ -62,11 +64,14 @@ public class CodeController {
 
 	@RequestMapping(value = "/{codeId}", method = RequestMethod.GET)
 	public String selCodes(Model model, @PathVariable("codeId") int codeId) {
+		
 		BegincodeCode record = codeService.findCodeById(codeId);
 		if(record == null){
 			logger.info("codeId 不存在");
 			throw  new BeginCodeException("codeId 不存在" +codeId);
 		}
+		//新增浏览次数
+//		countOperator.addCodeViewCount(codeId);
 		model.addAttribute("code", record);
 		return "/page/code/code_view";
 	}
@@ -78,9 +83,15 @@ public class CodeController {
 		if(cookieMap != null){
 			BegincodeUser logUser = userFacade.findUser(cookieMap.get("openId"), cookieMap.get("accessToken"));
 			logger.info("用户信息"+logUser.toString());
-			model.addAttribute("user",logUser);
-			model.addAttribute("codeTypes", codeTypeService.findCodeTypeByUserId(logUser.getBegincodeUserId()));
-			return "/page/code/code_edit";
+			if(logUser.getCheckFlag().equals(BeginCodeConstant.CHECK_PAAS)){
+				model.addAttribute("user",logUser);
+				model.addAttribute("codeTypes", codeTypeService.findCodeTypeByUserId(logUser.getBegincodeUserId()));
+				return "/page/code/code_edit";				
+			}else{
+				
+				return request.getContextPath();
+			}
+
 		}else{
 //			抛出异常
 			logger.info("未获得登陆信息");
@@ -92,7 +103,7 @@ public class CodeController {
 	@ResponseBody
 	public List getCodes(Paginator pageinfo) {
 		if (pageinfo != null) {
-			pageinfo.setLimit(Contants.PAGE_SIZE);
+			pageinfo.setLimit(BeginCodeConstant.PAGE_SIZE);
 			PageList list = codeService.findCodes(pageinfo);
 			return list;
 		} else {
@@ -103,7 +114,7 @@ public class CodeController {
 	@RequestMapping(value = "/topTen", method = RequestMethod.GET)
 	@ResponseBody
 	public List findTopTen() throws IOException {
-		Paginator pageinfo = new Paginator(0,Contants.PAGE_SIZE);
+		Paginator pageinfo = new Paginator(0,BeginCodeConstant.PAGE_SIZE);
 		pageinfo.setOrderStr(" order by view_count desc ");
 		PageList list = codeService.findCodes(pageinfo);
 		return list;
@@ -126,8 +137,8 @@ public class CodeController {
 	public Map addCode(BegincodeCode codeRecord) {
 		Map message = new HashMap();
 		codeRecord.setCreateDatetime(new Date());
-		codeRecord.setDeleteFlag(Contants.DELETE_FLAG_NOMAL);
-		codeRecord.setBegincodeNavigationId(Contants.NAV_CODE_SHARE);
+		codeRecord.setDeleteFlag(BeginCodeConstant.DELETE_FLAG_NOMAL);
+		codeRecord.setBegincodeNavigationId(BeginCodeConstant.NAV_CODE_SHARE);
 		codeService.createCode(codeRecord);
 		if (codeRecord.getbegincodeCodeId() != null) {
 			message.put("msg", "保存成功");

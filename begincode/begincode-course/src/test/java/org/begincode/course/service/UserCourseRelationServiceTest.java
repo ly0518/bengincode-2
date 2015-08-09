@@ -13,7 +13,7 @@ import java.util.Map;
 import javax.annotation.Resource;
 
 import org.apache.log4j.Logger;
-import org.begincode.core.contant.Contants;
+import org.begincode.core.constant.BeginCodeConstant;
 import org.begincode.core.model.UserCourseRelation;
 import org.begincode.core.paginator.domain.PageList;
 import org.begincode.core.paginator.domain.Paginator;
@@ -38,7 +38,7 @@ public class UserCourseRelationServiceTest extends BaseTest {
 	public void testFindAllWithPage() {
 		Paginator paginator = new org.begincode.core.paginator.domain.Paginator(0, 4);
 		paginator.setOrderStr(" order by create_time");
-		UserCourseRelation userCourseRelation = new UserCourseRelation(null, 1, null, Contants.DELETE_FLAG_NOMAL, null);
+		UserCourseRelation userCourseRelation = new UserCourseRelation(null, 1, null, BeginCodeConstant.DELETE_FLAG_NOMAL, null);
 		PageList<Map<String, Object>> list = userCourseRelationService.findAllWithPage(paginator, userCourseRelation);
 		logger.info("result:" + list.size());
 	}

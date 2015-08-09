@@ -21,7 +21,7 @@
   <sql id="Base_Column_List" >
     video_course_chapter_id, video_course_chapter_memo, chapter_video_url, view_count, 
     video_course_chapter_order, begincode_keys, prohibition_message, begincode_course_id, 
-    good_count, bad_count, delete_flag, chapter_code_down_url, release_state, course_name
+    good_count, bad_count, delete_flag, chapter_code_down_url, release_state, course_name 
   </sql>
   
   <select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
@@ -41,13 +41,13 @@
       chapter_video_url, view_count, video_course_chapter_order, 
       begincode_keys, prohibition_message, begincode_course_id, 
       good_count, bad_count, delete_flag, 
-      chapter_code_down_url, release_state, course_name
+      chapter_code_down_url, release_state, course_name 
       )
     values (#{videoCourseChapterId,jdbcType=INTEGER}, #{videoCourseChapterMemo,jdbcType=VARCHAR}, 
       #{chapterVideoUrl,jdbcType=VARCHAR}, #{viewCount,jdbcType=INTEGER}, #{videoCourseChapterOrder,jdbcType=VARCHAR}, 
       #{begincodeKeys,jdbcType=VARCHAR}, #{prohibitionMessage,jdbcType=CHAR}, #{begincodeCourseId,jdbcType=INTEGER}, 
       #{goodCount,jdbcType=INTEGER}, #{badCount,jdbcType=INTEGER}, #{deleteFlag,jdbcType=CHAR}, 
-      #{chapterCodeDownUrl,jdbcType=VARCHAR}, #{releaseState,jdbcType=CHAR}, #{courseName,jdbcType=VARCHAR}
+      #{chapterCodeDownUrl,jdbcType=VARCHAR}, #{releaseState,jdbcType=CHAR}, #{courseName,jdbcType=VARCHAR} 
       )
   </insert>
   
@@ -140,6 +140,7 @@
       <if test="courseName != null" >
         #{courseName,jdbcType=VARCHAR},
       </if>
+       
     </trim>
   </insert>
   
@@ -188,7 +189,21 @@
     </set>
     where video_course_chapter_id = #{videoCourseChapterId,jdbcType=INTEGER}
   </update>
-  
+    <update id="updateAddCountById" parameterType="org.begincode.core.model.VideoCourseChapter" >
+    update video_course_chapter
+    <set >
+      <if test="viewCount != null" >
+        view_count = view_count + #{viewCount,jdbcType=INTEGER},
+      </if>
+      <if test="goodCount != null" >
+        good_count =  good_count + #{goodCount,jdbcType=INTEGER},
+      </if>
+      <if test="badCount != null" >
+        bad_count = bad_count + #{badCount,jdbcType=INTEGER},
+      </if>
+    </set>
+    where video_course_chapter_id = #{videoCourseChapterId,jdbcType=INTEGER} 
+  </update>
   <update id="updateById" parameterType="org.begincode.core.model.VideoCourseChapter" >
     update video_course_chapter
     set video_course_chapter_memo = #{videoCourseChapterMemo,jdbcType=VARCHAR},

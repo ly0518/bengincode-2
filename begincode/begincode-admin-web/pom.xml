@@ -14,6 +14,14 @@
 	<url>http://maven.apache.org</url>
 	<dependencies>
 		<dependency>
+			<groupId>jstl</groupId>
+			<artifactId>jstl</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>taglibs</groupId>
+			<artifactId>standard</artifactId>
+		</dependency>
+		<dependency>
 			<groupId>com.begincode</groupId>
 			<artifactId>begincode-admin</artifactId>
 		</dependency>

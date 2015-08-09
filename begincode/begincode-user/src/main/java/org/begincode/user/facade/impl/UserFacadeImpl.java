@@ -15,6 +15,7 @@ import javax.annotation.Resource;
 
 import org.apache.log4j.Logger;
 import org.begincode.cache.CacheManagerInterface;
+import org.begincode.core.constant.BeginCodeConstant;
 import org.begincode.core.model.BegincodeUser;
 import org.begincode.user.facade.UserFacade;
 import org.begincode.user.service.UserService;
@@ -57,6 +58,7 @@ public class UserFacadeImpl implements UserFacade {
 			user.setPwd("");
 			user.setCdate(new Date());
 			user.setGag("1");
+			user.setCheckFlag(BeginCodeConstant.CHECK_WAIT);  //设置待审核
 			userService.createUser(user);
 			//添加缓存
 			cacheManagerInterface.addUserToCache(user);

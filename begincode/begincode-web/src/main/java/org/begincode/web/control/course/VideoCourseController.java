@@ -14,7 +14,7 @@ import java.util.Map;
 import javax.annotation.Resource;
 
 import org.apache.log4j.Logger;
-import org.begincode.core.contant.Contants;
+import org.begincode.core.constant.BeginCodeConstant;
 import org.begincode.core.model.BegincodeCourse;
 import org.begincode.core.model.UserCourseRelation;
 import org.begincode.core.paginator.domain.PageList;
@@ -57,7 +57,7 @@ public class VideoCourseController {
 			return null;
 		}
 		Paginator paginator = new Paginator(page, limit);
-		UserCourseRelation userCourseRelation = new UserCourseRelation(null, userId, null, Contants.DELETE_FLAG_NOMAL, null);
+		UserCourseRelation userCourseRelation = new UserCourseRelation(null, userId, null, BeginCodeConstant.DELETE_FLAG_NOMAL, null);
 		PageList<Map<String, Object>> listMap = courseFacade.findAttentionCourseByUserWithPage(paginator, userCourseRelation);
 		Map<String, Object> resultMap = new HashMap<String, Object>();
 		resultMap.put("pageInfo", listMap.getPaginator());
@@ -77,7 +77,7 @@ public class VideoCourseController {
 		// 查询参数
 		BegincodeCourse begincodeCourse = new BegincodeCourse();
 		begincodeCourse.setCourseLabelId(labelId);
-		begincodeCourse.setDeleteFlag(Contants.DELETE_FLAG_NOMAL);
+		begincodeCourse.setDeleteFlag(BeginCodeConstant.DELETE_FLAG_NOMAL);
 		PageList<BegincodeCourse> courseList = courseFacade.findCourseWithPage(paginator, begincodeCourse);
 		Map<String, Object> resultMap = new HashMap<String, Object>();
 		resultMap.put("pageInfo", courseList.getPaginator());

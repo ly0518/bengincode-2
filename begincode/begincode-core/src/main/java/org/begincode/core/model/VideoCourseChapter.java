@@ -203,7 +203,7 @@ public class VideoCourseChapter extends BaseModel implements Serializable {
 	public void setCourseName(String courseName) {
 		this.courseName = courseName == null ? null : courseName.trim();
 	}
-
+	
 	/*
 	 * (non-Javadoc)
 	 * 

@@ -18,9 +18,8 @@
 		<module>begincode-web</module>
 		<module>begincode-doc</module>
 		<module>begincode-exception</module>
-	    <module>begincode-task</module>
-	    <module>begincode-user</module>
-    	<module>begincode-cache</module>
+		<module>begincode-user</module>
+		<module>begincode-cache</module>
   </modules>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -39,6 +38,7 @@
 		<gson.version>2.3.1</gson.version>
 		<servlet.version>3.1.0</servlet.version>
 		<jstl.version>1.2</jstl.version>
+		<taglib.version>1.1.2</taglib.version>
 		<mvnplugin.compiler.version>3.1</mvnplugin.compiler.version>
 		<mvnplugin.source.version>2.4</mvnplugin.source.version>
 		<mvnplugin.javadoc.version>2.10.3</mvnplugin.javadoc.version>
@@ -53,20 +53,20 @@
 		<jackson.databind.version>2.5.4</jackson.databind.version>
 		<jsp.version>2.0</jsp.version>
 		<springtest.version>4.0.5.RELEASE</springtest.version>
-		<cache:version>2.6.11</cache:version>
+		<ehcache.version>2.6.11</ehcache.version>
 	</properties>
 	<dependencyManagement>
 		<dependencies>
-		<dependency>
-			<groupId>net.sf.ehcache</groupId>
-			<artifactId>ehcache-core</artifactId>
-			<version>${cache:version}</version>
-		</dependency>
+			<dependency>
+				<groupId>net.sf.ehcache</groupId>
+				<artifactId>ehcache-core</artifactId>
+				<version>${ehcache.version}</version>
+			</dependency>
 			<dependency>
 				<groupId>javax.servlet</groupId>
 				<artifactId>jsp-api</artifactId>
 				<version>${jsp.version}</version>
-<!-- 				<scope>provided</scope> -->
+				<!-- <scope>provided</scope> -->
 			</dependency>
 			<dependency>
 				<groupId>com.fasterxml.jackson.core</groupId>
@@ -163,13 +163,18 @@
 				<groupId>javax.servlet</groupId>
 				<artifactId>javax.servlet-api</artifactId>
 				<version>${servlet.version}</version>
-<!-- 				使用次以来范围的Maven依赖，对于测试和运行ClassPath有效，在运行时无效 -->
+				<!-- 使用次以来范围的Maven依赖，对于测试和运行ClassPath有效，在运行时无效 -->
 				<scope>provided</scope>
 			</dependency>
 			<dependency>
 				<groupId>jstl</groupId>
 				<artifactId>jstl</artifactId>
 				<version>${jstl.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>taglibs</groupId>
+				<artifactId>standard</artifactId>
+				<version>${taglib.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>commons-fileupload</groupId>

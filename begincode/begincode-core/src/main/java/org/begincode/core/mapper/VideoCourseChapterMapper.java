@@ -58,4 +58,13 @@ public interface VideoCourseChapterMapper {
 	 * @throws
 	 */
 	int updateById(VideoCourseChapter record);
+	
+	/**
+	 * @Description: 更新VideoCourseChapter 浏览次数等
+	 * 		新增最新浏览次数，点赞次数，差评次数 
+	 * @param record
+	 * @return int
+	 * @throws
+	 */
+	int updateAddCountById(VideoCourseChapter record);
 }

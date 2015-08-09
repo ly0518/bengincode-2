@@ -144,6 +144,7 @@
   
   <update id="updateByPrimaryKeySelective" parameterType="org.begincode.core.model.BegincodeCourse" >
     update begincode_course
+     <set >
       <if test="courseName != null" >
         course_name = #{courseName,jdbcType=VARCHAR},
       </if>
@@ -183,9 +184,9 @@
       <if test="courseTypeName != null" >
         course_type_name = #{courseTypeName,jdbcType=VARCHAR},
       </if>
+      </set>
     where begincode_course_id = #{begincodeCourseId,jdbcType=INTEGER}
   </update>
-  
   <update id="updateByPrimaryKey" parameterType="org.begincode.core.model.BegincodeCourse" >
     update begincode_course
     set course_name = #{courseName,jdbcType=VARCHAR},

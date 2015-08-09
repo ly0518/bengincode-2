@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import org.begincode.code.service.CodeCommentService;
-import org.begincode.core.contant.Contants;
+import org.begincode.core.constant.BeginCodeConstant;
 import org.begincode.core.model.BegincodeUser;
 import org.begincode.core.model.CodeComment;
 import org.begincode.core.paginator.BeginCodeInterceptor;
@@ -72,7 +72,7 @@ public class CodeCommentController {
 	@RequestMapping(value = "codeId/{codeId}", method = RequestMethod.GET)
 	@ResponseBody
 	public List findTopTen(Paginator pageinfo, @PathVariable("codeId") int codeId) {
-		pageinfo.setLimit(Contants.PAGE_SIZE_COMMENT);
+		pageinfo.setLimit(BeginCodeConstant.PAGE_SIZE_COMMENT);
 		pageinfo.setOrderStr(" order by create_datatime desc ");
 		BeginCodeInterceptor.localPage.set(pageinfo);
 		List list = codeCommentService.findCodeCommentByCodeId(codeId);
@@ -83,7 +83,7 @@ public class CodeCommentController {
 	@ResponseBody
 	public PageList<CodeComment> findTopTen(@PathVariable("codeId") int codeId, @PathVariable("pageNo") int pageNo) {
 		Paginator pageinfo = new Paginator();
-		pageinfo.setLimit(Contants.PAGE_SIZE_COMMENT);
+		pageinfo.setLimit(BeginCodeConstant.PAGE_SIZE_COMMENT);
 		pageinfo.setPage(pageNo);
 		pageinfo.setOrderStr(" order by create_datatime desc ");
 		BeginCodeInterceptor.localPage.set(pageinfo);

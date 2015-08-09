@@ -360,4 +360,38 @@
      pic = #{pic,jdbcType=VARCHAR}
     where begincode_code_id = #{begincodeCodeId,jdbcType=INTEGER}
   </update>
+  <update id="updateAddCountById" parameterType="org.begincode.core.model.BegincodeCode">
+      update begincode_code
+     <set >
+      <if test="viewCount != null" >
+        view_count = view_count + #{viewCount,jdbcType=INTEGER},
+      </if>
+      <if test="goodCount != null" >
+        good_count = good_count + #{goodCount,jdbcType=INTEGER},
+      </if>
+      <if test="badCount != null" >
+        bad_count = bad_count + #{badCount,jdbcType=INTEGER},
+      </if>
+    </set>
+    where begincode_code_id = #{begincodeCodeId,jdbcType=INTEGER}
+  </update>
+  <update id="batchUpdateAddCountById"  parameterType="java.util.List">
+      
+          <foreach collection="list" item="item" index="index" open="" close="" separator=";">
+                update begincode_code 
+                <set>
+                  <if test="item.viewCount != null" >
+			        view_count = view_count + #{item.viewCount,jdbcType=INTEGER},
+			      </if>
+			      <if test="item.goodCount != null" >
+			        good_count = good_count + #{item.goodCount,jdbcType=INTEGER},
+			      </if>
+			      <if test="item.badCount != null" >
+			        bad_count = bad_count + #{item.badCount,jdbcType=INTEGER},
+			      </if>
+                </set>
+                where  begincode_code_id = #{item.begincodeCodeId,jdbcType=INTEGER}
+         </foreach>
+          
+    </update>
 </mapper>

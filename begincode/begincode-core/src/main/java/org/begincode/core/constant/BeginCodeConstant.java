@@ -42,5 +42,9 @@ public final class BeginCodeConstant {
 	public static final String CHECK_PAAS = "1";
 	public static final String CHECK_WAIT = "0";
 	
+	/**
+	 * 队列允许最大值，超过该值 触发更DB操作
+	 * */
+	public static final int MAX_QUEUE = 10;
 
 }

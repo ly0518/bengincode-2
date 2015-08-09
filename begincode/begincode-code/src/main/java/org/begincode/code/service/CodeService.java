@@ -49,4 +49,21 @@ public interface CodeService
 	 * @throws
 	 */
 	public BegincodeCode createCode(BegincodeCode record);
+	
+	/** 
+	* @Title: updateAddCountById 
+	* @Description: 修改代码分享 浏览，好评，差评次数，原有基础上增加，供定时任务用
+	* @param record void   
+	* @throws 
+	*/
+	public void updateAddCountById(BegincodeCode record);
+	
+	
+	/** 
+	* @Title: batchUpdateAddCountById 
+	* @Description: 批量更新浏览次数
+	* @param codes void   
+	* @throws 
+	*/
+	public void batchUpdateAddCountById(List<BegincodeCode> codes);
 }
