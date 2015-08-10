@@ -6,7 +6,6 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.apache.commons.lang.StringEscapeUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import org.begincode.code.service.CodeCommentService;
@@ -24,6 +23,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.util.HtmlUtils;
 
  
 /** 
@@ -60,7 +60,7 @@ public class CodeCommentController {
 			begincodeUser = userFacade.findUser(userMap.get("openId"), userMap.get("accessToken"));
 		}
 		//评论内容转码
-		codeComment.setCodeCommentContent(StringEscapeUtils.escapeHtml(codeComment.getCodeCommentContent()));
+		codeComment.setCodeCommentContent(HtmlUtils.htmlEscape(codeComment.getCodeCommentContent()));
 		logger.info(codeComment.toString());
 		codeComment.setCommentStatus("1");
 		codeComment.setCreateDatatime(new Date());

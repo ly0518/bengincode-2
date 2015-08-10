@@ -8,7 +8,6 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.apache.commons.lang.StringEscapeUtils;
 import org.apache.log4j.Logger;
 import org.begincode.blog.service.BlogService;
 import org.begincode.blog.service.BlogTypeService;
@@ -30,6 +29,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.util.HtmlUtils;
 
 /** 
 * @ClassName: BlogController 
@@ -140,9 +140,9 @@ public class BlogController {
 		blog.setCreateDatetime(new Date());
 		blog.setDeleteFlag(BeginCodeConstant.DELETE_FLAG_NOMAL);
 		blog.setBegincodeNavigationId(BeginCodeConstant.NAV_CODE_SHARE);
-		blog.setBegincodeKeys(StringEscapeUtils.escapeHtml(blog.getBegincodeKeys()));
-		blog.setBlogAbstract((StringEscapeUtils.escapeHtml(blog.getBlogAbstract())));
-		blog.setBlogInfo(StringEscapeUtils.escapeHtml(blog.getBlogInfo()));
+		blog.setBegincodeKeys(HtmlUtils.htmlEscape(blog.getBegincodeKeys()));
+		blog.setBlogAbstract((HtmlUtils.htmlEscape(blog.getBlogAbstract())));
+		blog.setBlogInfo(HtmlUtils.htmlEscape(blog.getBlogInfo()));
 		blogService.createBlog(blog);
 		if (blog.getBlogId() != null) {
 			message.put("msg", "保存成功");

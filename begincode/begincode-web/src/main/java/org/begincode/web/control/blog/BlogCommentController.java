@@ -6,14 +6,12 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.apache.commons.lang.StringEscapeUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import org.begincode.blog.service.BlogCommentService;
 import org.begincode.core.constant.BeginCodeConstant;
 import org.begincode.core.model.BegincodeUser;
 import org.begincode.core.model.BlogComment;
-import org.begincode.core.model.CodeComment;
 import org.begincode.core.paginator.BeginCodeInterceptor;
 import org.begincode.core.paginator.domain.PageList;
 import org.begincode.core.paginator.domain.Paginator;
@@ -25,6 +23,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.util.HtmlUtils;
 
  
 /** 
@@ -61,7 +60,7 @@ public class BlogCommentController {
 			begincodeUser = userFacade.findUser(userMap.get("openId"), userMap.get("accessToken"));
 		}
 		//评论内容转码
-		blogComment.setBlogCommentContent(StringEscapeUtils.escapeHtml(blogComment.getBlogCommentContent()));
+		blogComment.setBlogCommentContent(HtmlUtils.htmlEscape(blogComment.getBlogCommentContent()));
 		logger.info(blogComment.toString());
 		blogComment.setCommentStatus("1");
 		blogComment.setCreateDatatime(new Date());

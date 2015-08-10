@@ -8,7 +8,6 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.apache.commons.lang.StringEscapeUtils;
 import org.apache.log4j.Logger;
 import org.begincode.code.service.CodeService;
 import org.begincode.code.service.CodeTypeService;
@@ -30,6 +29,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.util.HtmlUtils;
 
 /** 
 * @ClassName: CodeController 
@@ -87,7 +87,7 @@ public class CodeController {
 			logger.info("用户信息"+logUser.toString());
 			if(logUser.getCheckFlag().equals(BeginCodeConstant.CHECK_PAAS)){
 				model.addAttribute("user",logUser);
-				model.addAttribute("codeTypes", codeTypeService.findCodeTypeByUserId(logUser.getBegincodeUserId()));
+//				model.addAttribute("codeTypes", codeTypeService.findCodeTypeByUserId(logUser.getBegincodeUserId()));
 				return "/page/code/code_edit";				
 			}else{
 				
@@ -141,9 +141,9 @@ public class CodeController {
 		codeRecord.setCreateDatetime(new Date());
 		codeRecord.setDeleteFlag(BeginCodeConstant.DELETE_FLAG_NOMAL);
 		codeRecord.setBegincodeNavigationId(BeginCodeConstant.NAV_CODE_SHARE);
-		codeRecord.setBegincodeKeys(StringEscapeUtils.escapeHtml(codeRecord.getBegincodeKeys()));
-		codeRecord.setCodeAbstract(StringEscapeUtils.escapeHtml(codeRecord.getCodeAbstract()) );
-		codeRecord.setCodeInfo(StringEscapeUtils.escapeHtml(codeRecord.getCodeInfo())  );;
+		codeRecord.setBegincodeKeys(HtmlUtils.htmlEscape(codeRecord.getBegincodeKeys()));
+		codeRecord.setCodeAbstract(HtmlUtils.htmlEscape(codeRecord.getCodeAbstract()) );
+		codeRecord.setCodeInfo(HtmlUtils.htmlEscape(codeRecord.getCodeInfo())  );;
 		codeService.createCode(codeRecord);
 		if (codeRecord.getbegincodeCodeId() != null) {
 			message.put("msg", "保存成功");
