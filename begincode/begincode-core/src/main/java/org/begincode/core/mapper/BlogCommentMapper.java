@@ -1,6 +1,7 @@
 package org.begincode.core.mapper;
 
 import org.begincode.core.model.BlogComment;
+import org.begincode.core.paginator.domain.PageList;
 
 public interface BlogCommentMapper {
     int deleteByPrimaryKey(Integer blogCommentId);
@@ -14,4 +15,6 @@ public interface BlogCommentMapper {
     int updateByPrimaryKeySelective(BlogComment record);
 
     int updateByPrimaryKey(BlogComment record);
+    
+    PageList<BlogComment> selectByBlogId(Integer blogId) ;
 }

@@ -29,7 +29,7 @@ public interface BegincodeCodeMapper {
     
     PageList<BegincodeCode> selectBySelective(BegincodeCode record);
     
-    int  selectBySelectiveCount(BegincodeCode record);
+//    int  selectBySelectiveCount(BegincodeCode record);
     
     PageList<BegincodeCode> selectAll();
     

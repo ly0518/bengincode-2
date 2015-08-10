@@ -84,7 +84,8 @@
 <!-- 				</a></li> -->
 				<li class=""><a href="${ctx}/code" class="dropdown-toggle">代码分享</a>
 				</li>
-
+				<li class=""><a href="${ctx}/blog" class="dropdown-toggle">博客文章</a>
+				</li>
 <!-- 				<li class="dropdown"><a href="#" class="dropdown-toggle">BeginCode开源 -->
 <!-- 				</a></li> -->
 				<li class="dropdown">

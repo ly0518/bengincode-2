@@ -1,5 +1,7 @@
 package org.begincode.core.mapper;
 
+import java.util.List;
+
 import org.begincode.core.model.BlogType;
 
 public interface BlogTypeMapper {
@@ -14,4 +16,6 @@ public interface BlogTypeMapper {
     int updateByPrimaryKeySelective(BlogType record);
 
     int updateByPrimaryKey(BlogType record);
+    
+    List<BlogType> selectAllByUserId(Integer userId);
 }

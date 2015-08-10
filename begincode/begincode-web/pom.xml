@@ -65,7 +65,6 @@
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-beans</artifactId>
 		</dependency>
-
 		<dependency>
 			<groupId>com.begincode</groupId>
 			<artifactId>begincode-blog</artifactId>
