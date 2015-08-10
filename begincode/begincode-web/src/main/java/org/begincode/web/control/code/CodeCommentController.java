@@ -6,6 +6,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.commons.lang.StringEscapeUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import org.begincode.code.service.CodeCommentService;
@@ -58,7 +59,8 @@ public class CodeCommentController {
 		if(userMap != null && StringUtils.isNotEmpty(userMap.get("accessToken")) && StringUtils.isNotEmpty(userMap.get("openId"))){
 			begincodeUser = userFacade.findUser(userMap.get("openId"), userMap.get("accessToken"));
 		}
-		
+		//评论内容转码
+		codeComment.setCodeCommentContent(StringEscapeUtils.escapeHtml(codeComment.getCodeCommentContent()));
 		logger.info(codeComment.toString());
 		codeComment.setCommentStatus("1");
 		codeComment.setCreateDatatime(new Date());

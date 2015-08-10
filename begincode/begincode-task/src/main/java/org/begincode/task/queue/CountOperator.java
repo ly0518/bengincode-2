@@ -98,8 +98,9 @@ public class CountOperator {
 				code.setbegincodeCodeId(key);
 				list.add(code);
 		}
-		codeService.batchUpdateAddCountById(list);
-
+		if(list != null && list.size() > 0){
+			codeService.batchUpdateAddCountById(list);
+		}
 	}
 	/** 
 	* @Title: updateChangeVideoCourseViewCount 

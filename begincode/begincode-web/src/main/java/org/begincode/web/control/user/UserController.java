@@ -32,6 +32,9 @@ public class UserController {
 	@RequestMapping(value = "/", method = RequestMethod.POST)
 	@ResponseBody
 	public void findOrCreateUser(HttpServletResponse response,BegincodeUser user) {
+		user.setCheckFlag("0");
+		user.setUserSourceId(1);
+		user.setDeleteFlag("1");
 		userFacade.createUser(user);
 		CookieOperation.addCookie(response, user);
 	}

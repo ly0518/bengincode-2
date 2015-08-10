@@ -3,7 +3,6 @@
  "http://java.sun.com/dtd/web-app_2_3.dtd" >
 <web-app>
 	<display-name>begincode</display-name>
-	 
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>classpath*:applicationContext*.xml
@@ -30,14 +29,14 @@
 		</init-param>
 	</filter>
 	<!-- 浏览器不支持put,delete等method,由该filter将/blog?_method=delete转换为标准的http delete方法 -->
-<!-- 	<filter> -->
-<!-- 		<filter-name>HiddenHttpMethodFilter</filter-name> -->
-<!-- 		<filter-class>org.springframework.web.filter.HiddenHttpMethodFilter</filter-class> -->
-<!-- 	</filter> -->
-<!-- 	<filter-mapping> -->
-<!-- 		<filter-name>HiddenHttpMethodFilter</filter-name> -->
-<!-- 		<servlet-name>spring</servlet-name> -->
-<!-- 	</filter-mapping> -->
+	<!-- <filter> -->
+	<!-- <filter-name>HiddenHttpMethodFilter</filter-name> -->
+	<!-- <filter-class>org.springframework.web.filter.HiddenHttpMethodFilter</filter-class> -->
+	<!-- </filter> -->
+	<!-- <filter-mapping> -->
+	<!-- <filter-name>HiddenHttpMethodFilter</filter-name> -->
+	<!-- <servlet-name>spring</servlet-name> -->
+	<!-- </filter-mapping> -->
 	<filter-mapping>
 		<filter-name>CharacterEncodingFilter</filter-name>
 		<url-pattern>/*</url-pattern>
@@ -64,5 +63,12 @@
 	<welcome-file-list>
 		<welcome-file>page/core/index.jsp</welcome-file>
 	</welcome-file-list>
-	
+	<error-page>
+		<error-code>404</error-code>
+		<location>/error/404.jsp</location>
+	</error-page>
+	<error-page>
+		<error-code>500</error-code>
+		<location>/error/500.jsp</location>
+	</error-page>
 </web-app>

@@ -8,6 +8,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.commons.lang.StringEscapeUtils;
 import org.apache.log4j.Logger;
 import org.begincode.code.service.CodeService;
 import org.begincode.code.service.CodeTypeService;
@@ -140,6 +141,9 @@ public class CodeController {
 		codeRecord.setCreateDatetime(new Date());
 		codeRecord.setDeleteFlag(BeginCodeConstant.DELETE_FLAG_NOMAL);
 		codeRecord.setBegincodeNavigationId(BeginCodeConstant.NAV_CODE_SHARE);
+		codeRecord.setBegincodeKeys(StringEscapeUtils.escapeHtml(codeRecord.getBegincodeKeys()));
+		codeRecord.setCodeAbstract(StringEscapeUtils.escapeHtml(codeRecord.getCodeAbstract()) );
+		codeRecord.setCodeInfo(StringEscapeUtils.escapeHtml(codeRecord.getCodeInfo())  );;
 		codeService.createCode(codeRecord);
 		if (codeRecord.getbegincodeCodeId() != null) {
 			message.put("msg", "保存成功");

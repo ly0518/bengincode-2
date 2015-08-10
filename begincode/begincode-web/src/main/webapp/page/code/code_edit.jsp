@@ -51,11 +51,11 @@
 					</div>
 				</div>
 
-				<button type="button" class="btn btn-primary" id="addBlog"
-					onclick="codeShare()" data-toggle="button" aria-pressed="false"
-					autocomplete="off"
-					style="border-radius: 0px; width: 100%; height: 60px; margin-bottom: 10px; font-weight: bold; font-size: 35px">
-					发布博文</button>
+<!-- 				<button type="button" class="btn btn-primary" id="addBlog" -->
+<!-- 					onclick="codeShare()" data-toggle="button" aria-pressed="false" -->
+<!-- 					autocomplete="off" -->
+<!-- 					style="border-radius: 0px; width: 100%; height: 60px; margin-bottom: 10px; font-weight: bold; font-size: 35px"> -->
+<!-- 					发布博文</button> -->
 
 				<div class="list-group" id="classList">
 					<a href="#" class="list-group-item active"> 博客分类 </a>
@@ -115,9 +115,9 @@
 							<div style="margin-top: 10px; text-align: center;">
 								<button type="button" class="btn btn-primary" id="send"
 									style="width: 100px;">提交</button>
-								&nbsp;&nbsp;&nbsp;&nbsp;
-								<button type="button" style="width: 100px;"
-									class="btn btn-primary">保存草稿</button>
+<!-- 								&nbsp;&nbsp;&nbsp;&nbsp; -->
+<!-- 								<button type="button" style="width: 100px;" -->
+<!-- 									class="btn btn-primary">保存草稿</button> -->
 							</div>
 							<div>
 								<font color="red"><b>${msg }</b></font>

@@ -5,7 +5,7 @@
 <script type="text/javascript"
 	src="http://qzonestyle.gtimg.cn/qzone/openapi/qc_loader.js"
 	data-appid="101230380"
-	data-redirecturi="http://www.begincode.net/begincode/callback.html"
+	data-redirecturi="http://www.begincode.net/page/welcome.jsp"
 	charset="utf-8"></script>
 <script type="text/javascript">
 
@@ -79,16 +79,16 @@
 			id="bs-example-navbar-collapse-1">
 
 			<ul class="nav navbar-nav">
-				<li class=""><a href="http://www.begincode.net">首页</a></li>
-				<li class=""><a href="${ctx}/video" class="dropdown-toggle">视频教程
-				</a></li>
+<!-- 				<li class=""><a href="http://www.begincode.net">首页</a></li> -->
+<%-- 				<li class=""><a href="${ctx}/video" class="dropdown-toggle">视频教程 --%>
+<!-- 				</a></li> -->
 				<li class=""><a href="${ctx}/code" class="dropdown-toggle">代码分享</a>
 				</li>
 
-				<li class="dropdown"><a href="#" class="dropdown-toggle">BeginCode开源
-				</a></li>
+<!-- 				<li class="dropdown"><a href="#" class="dropdown-toggle">BeginCode开源 -->
+<!-- 				</a></li> -->
 				<li class="dropdown">
-				<li class=""><a href="${ctx}/goto/gotoPage?page=contribution"><font
+				<li class=""><a href="${ctx}/page/core/about.jsp"><font
 						color="red">关于我们</font></a></li>
 				<!-- 				</li> -->
 				<!-- 				<li class="dropdown"><a href="#" class="dropdown-toggle"><span id="qqLoginBtn" ></span> </a> -->
@@ -98,8 +98,8 @@
 
 				<form class="navbar-form navbar-right">
 					<div class="form-group">
-						<span id="qqLoginBtn"></span> <input type="text" name=""
-							class="form-control " placeholder="教程，资源">
+						<span id="qqLoginBtn"></span> 
+						<input type="text" name=""	class="form-control " placeholder="教程，资源">
 					</div>
 					
 					<button type="submit"  class="btn btn-primary">站内搜索</button>

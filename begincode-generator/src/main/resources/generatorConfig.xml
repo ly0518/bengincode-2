@@ -4,7 +4,7 @@
 <generatorConfiguration>
 	
 	<!-- 配置mysql 驱动jar包路径.用了绝对路径-->
-    <classPathEntry location="/Applications/develop/mvnres/mysql/mysql-connector-java/5.1.34/mysql-connector-java-5.1.34.jar"/>
+    <classPathEntry location="F:/app/mvnres/mysql/mysql-connector-java/5.1.34/mysql-connector-java-5.1.34.jar"/>
     <context id="begincode" targetRuntime="MyBatis3" defaultModelType="flat">
         <property name="beginningDelimiter" value="`"/>
         <property name="endingDelimiter" value="`"/>
@@ -28,7 +28,7 @@
     </javaTypeResolver>
     
     <!-- 数据表对应的model 层  -->
-    <javaModelGenerator targetPackage="org.core.model" targetProject="src/main/java">
+    <javaModelGenerator targetPackage="org.begincode.core.model" targetProject="src/main/java">
       <property name="enableSubPackages" value="true" />
       <property name="trimStrings" value="true" />
     </javaModelGenerator>
@@ -39,18 +39,31 @@
     </sqlMapGenerator>
     
     <!-- 在ibatis2 中是dao层，但在mybatis3中，其实就是mapper接口 -->
-    <javaClientGenerator type="XMLMAPPER" targetPackage="org.core.mapper"  targetProject="src/main/java">
+    <javaClientGenerator type="XMLMAPPER" targetPackage="org.begincode.core.mapper"  targetProject="src/main/java">
       <property name="enableSubPackages" value="true" />
     </javaClientGenerator>
     
     <!-- 要对那些数据表进行生成操作，必须要有一个. 可以指定表名，本项目用%通配符，生成全部表的信息
     <table schema="mybatis" tableName="user" domainObjectName="User" -->
-    <table schema="mybatis" tableName="%"  
+    
+     <table schema="mybatis" tableName="blog_type"  
         enableCountByExample="false" enableUpdateByExample="false"
         enableDeleteByExample="false" enableSelectByExample="false"
         selectByExampleQueryId="false" selectByPrimaryKeyQueryId="true"
         enableSelectByPrimaryKey="true" enableUpdateByPrimaryKey="true"
-        enableDeleteByPrimaryKey="true" >  
+        enableDeleteByPrimaryKey="true" >  </table>
+     <table schema="mybatis" tableName="blog"  
+        enableCountByExample="false" enableUpdateByExample="false"
+        enableDeleteByExample="false" enableSelectByExample="false"
+        selectByExampleQueryId="false" selectByPrimaryKeyQueryId="true"
+        enableSelectByPrimaryKey="true" enableUpdateByPrimaryKey="true"
+        enableDeleteByPrimaryKey="true" > </table> 
+    <table schema="mybatis" tableName="blog_comment"  
+        enableCountByExample="false" enableUpdateByExample="false"
+        enableDeleteByExample="false" enableSelectByExample="false"
+        selectByExampleQueryId="false" selectByPrimaryKeyQueryId="true"
+        enableSelectByPrimaryKey="true" enableUpdateByPrimaryKey="true"
+        enableDeleteByPrimaryKey="true">  
 <!--          <generatedKey column="id" sqlStatement="Mysql"/>    -->
     </table>
   </context>

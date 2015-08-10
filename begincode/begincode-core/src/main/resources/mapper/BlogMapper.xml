@@ -1,0 +1,570 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.begincode.core.mapper.BlogMapper">
+  <resultMap id="BaseResultMap" type="org.begincode.core.model.Blog">
+    <id column="blog_id" jdbcType="INTEGER" property="blogId" />
+    <result column="blog_info" jdbcType="VARCHAR" property="blogInfo" />
+    <result column="prohibition_message" jdbcType="CHAR" property="prohibitionMessage" />
+    <result column="begincode_keys" jdbcType="VARCHAR" property="begincodeKeys" />
+    <result column="view_count" jdbcType="INTEGER" property="viewCount" />
+    <result column="create_datetime" jdbcType="TIMESTAMP" property="createDatetime" />
+    <result column="delete_flag" jdbcType="CHAR" property="deleteFlag" />
+    <result column="good_count" jdbcType="INTEGER" property="goodCount" />
+    <result column="bad_count" jdbcType="INTEGER" property="badCount" />
+    <result column="release_state" jdbcType="CHAR" property="releaseState" />
+    <result column="check_flag" jdbcType="CHAR" property="checkFlag" />
+    <result column="blog_type_name" jdbcType="VARCHAR" property="blogTypeName" />
+    <result column="blog_abstract" jdbcType="VARCHAR" property="blogAbstract" />
+    <result column="nickname" jdbcType="VARCHAR" property="nickname" />
+    <result column="pic" jdbcType="VARCHAR" property="pic" />
+    <result column="blog_type_id" jdbcType="INTEGER" property="blogTypeId" />
+    <result column="begincode_navigation_id" jdbcType="INTEGER" property="begincodeNavigationId" />
+    <result column="begincode_user_id" jdbcType="INTEGER" property="begincodeUserId" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="org.begincode.core.model.Blog">
+    <result column="blog_content" jdbcType="LONGVARCHAR" property="blogContent" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    blog_id, blog_info, prohibition_message, begincode_keys, view_count, create_datetime, 
+    delete_flag, good_count, bad_count, release_state, check_flag, blog_type_name, blog_abstract, 
+    nickname, pic, blog_type_id, begincode_navigation_id, begincode_user_id
+  </sql>
+  <sql id="Blob_Column_List">
+    blog_content
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from blog
+    where blog_id = #{blogId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from blog
+    where blog_id = #{blogId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="org.begincode.core.model.Blog">
+    insert into blog (blog_id, blog_info, prohibition_message, 
+      begincode_keys, view_count, create_datetime, 
+      delete_flag, good_count, bad_count, 
+      release_state, check_flag, blog_type_name, 
+      blog_abstract, nickname, pic, 
+      blog_type_id, begincode_navigation_id, begincode_user_id, 
+      blog_content)
+    values (#{blogId,jdbcType=INTEGER}, #{blogInfo,jdbcType=VARCHAR}, #{prohibitionMessage,jdbcType=CHAR}, 
+      #{begincodeKeys,jdbcType=VARCHAR}, #{viewCount,jdbcType=INTEGER}, #{createDatetime,jdbcType=TIMESTAMP}, 
+      #{deleteFlag,jdbcType=CHAR}, #{goodCount,jdbcType=INTEGER}, #{badCount,jdbcType=INTEGER}, 
+      #{releaseState,jdbcType=CHAR}, #{checkFlag,jdbcType=CHAR}, #{blogTypeName,jdbcType=VARCHAR}, 
+      #{blogAbstract,jdbcType=VARCHAR}, #{nickname,jdbcType=VARCHAR}, #{pic,jdbcType=VARCHAR}, 
+      #{blogTypeId,jdbcType=INTEGER}, #{begincodeNavigationId,jdbcType=INTEGER}, #{begincodeUserId,jdbcType=INTEGER}, 
+      #{blogContent,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="org.begincode.core.model.Blog">
+    insert into blog
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="blogId != null">
+        blog_id,
+      </if>
+      <if test="blogInfo != null">
+        blog_info,
+      </if>
+      <if test="prohibitionMessage != null">
+        prohibition_message,
+      </if>
+      <if test="begincodeKeys != null">
+        begincode_keys,
+      </if>
+      <if test="viewCount != null">
+        view_count,
+      </if>
+      <if test="createDatetime != null">
+        create_datetime,
+      </if>
+      <if test="deleteFlag != null">
+        delete_flag,
+      </if>
+      <if test="goodCount != null">
+        good_count,
+      </if>
+      <if test="badCount != null">
+        bad_count,
+      </if>
+      <if test="releaseState != null">
+        release_state,
+      </if>
+      <if test="checkFlag != null">
+        check_flag,
+      </if>
+      <if test="blogTypeName != null">
+        blog_type_name,
+      </if>
+      <if test="blogAbstract != null">
+        blog_abstract,
+      </if>
+      <if test="nickname != null">
+        nickname,
+      </if>
+      <if test="pic != null">
+        pic,
+      </if>
+      <if test="blogTypeId != null">
+        blog_type_id,
+      </if>
+      <if test="begincodeNavigationId != null">
+        begincode_navigation_id,
+      </if>
+      <if test="begincodeUserId != null">
+        begincode_user_id,
+      </if>
+      <if test="blogContent != null">
+        blog_content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="blogId != null">
+        #{blogId,jdbcType=INTEGER},
+      </if>
+      <if test="blogInfo != null">
+        #{blogInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="prohibitionMessage != null">
+        #{prohibitionMessage,jdbcType=CHAR},
+      </if>
+      <if test="begincodeKeys != null">
+        #{begincodeKeys,jdbcType=VARCHAR},
+      </if>
+      <if test="viewCount != null">
+        #{viewCount,jdbcType=INTEGER},
+      </if>
+      <if test="createDatetime != null">
+        #{createDatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleteFlag != null">
+        #{deleteFlag,jdbcType=CHAR},
+      </if>
+      <if test="goodCount != null">
+        #{goodCount,jdbcType=INTEGER},
+      </if>
+      <if test="badCount != null">
+        #{badCount,jdbcType=INTEGER},
+      </if>
+      <if test="releaseState != null">
+        #{releaseState,jdbcType=CHAR},
+      </if>
+      <if test="checkFlag != null">
+        #{checkFlag,jdbcType=CHAR},
+      </if>
+      <if test="blogTypeName != null">
+        #{blogTypeName,jdbcType=VARCHAR},
+      </if>
+      <if test="blogAbstract != null">
+        #{blogAbstract,jdbcType=VARCHAR},
+      </if>
+      <if test="nickname != null">
+        #{nickname,jdbcType=VARCHAR},
+      </if>
+      <if test="pic != null">
+        #{pic,jdbcType=VARCHAR},
+      </if>
+      <if test="blogTypeId != null">
+        #{blogTypeId,jdbcType=INTEGER},
+      </if>
+      <if test="begincodeNavigationId != null">
+        #{begincodeNavigationId,jdbcType=INTEGER},
+      </if>
+      <if test="begincodeUserId != null">
+        #{begincodeUserId,jdbcType=INTEGER},
+      </if>
+      <if test="blogContent != null">
+        #{blogContent,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.begincode.core.model.Blog">
+    update blog
+    <set>
+      <if test="blogInfo != null">
+        blog_info = #{blogInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="prohibitionMessage != null">
+        prohibition_message = #{prohibitionMessage,jdbcType=CHAR},
+      </if>
+      <if test="begincodeKeys != null">
+        begincode_keys = #{begincodeKeys,jdbcType=VARCHAR},
+      </if>
+      <if test="viewCount != null">
+        view_count = #{viewCount,jdbcType=INTEGER},
+      </if>
+      <if test="createDatetime != null">
+        create_datetime = #{createDatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleteFlag != null">
+        delete_flag = #{deleteFlag,jdbcType=CHAR},
+      </if>
+      <if test="goodCount != null">
+        good_count = #{goodCount,jdbcType=INTEGER},
+      </if>
+      <if test="badCount != null">
+        bad_count = #{badCount,jdbcType=INTEGER},
+      </if>
+      <if test="releaseState != null">
+        release_state = #{releaseState,jdbcType=CHAR},
+      </if>
+      <if test="checkFlag != null">
+        check_flag = #{checkFlag,jdbcType=CHAR},
+      </if>
+      <if test="blogTypeName != null">
+        blog_type_name = #{blogTypeName,jdbcType=VARCHAR},
+      </if>
+      <if test="blogAbstract != null">
+        blog_abstract = #{blogAbstract,jdbcType=VARCHAR},
+      </if>
+      <if test="nickname != null">
+        nickname = #{nickname,jdbcType=VARCHAR},
+      </if>
+      <if test="pic != null">
+        pic = #{pic,jdbcType=VARCHAR},
+      </if>
+      <if test="blogTypeId != null">
+        blog_type_id = #{blogTypeId,jdbcType=INTEGER},
+      </if>
+      <if test="begincodeNavigationId != null">
+        begincode_navigation_id = #{begincodeNavigationId,jdbcType=INTEGER},
+      </if>
+      <if test="begincodeUserId != null">
+        begincode_user_id = #{begincodeUserId,jdbcType=INTEGER},
+      </if>
+      <if test="blogContent != null">
+        blog_content = #{blogContent,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where blog_id = #{blogId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="org.begincode.core.model.Blog">
+    update blog
+    set blog_info = #{blogInfo,jdbcType=VARCHAR},
+      prohibition_message = #{prohibitionMessage,jdbcType=CHAR},
+      begincode_keys = #{begincodeKeys,jdbcType=VARCHAR},
+      view_count = #{viewCount,jdbcType=INTEGER},
+      create_datetime = #{createDatetime,jdbcType=TIMESTAMP},
+      delete_flag = #{deleteFlag,jdbcType=CHAR},
+      good_count = #{goodCount,jdbcType=INTEGER},
+      bad_count = #{badCount,jdbcType=INTEGER},
+      release_state = #{releaseState,jdbcType=CHAR},
+      check_flag = #{checkFlag,jdbcType=CHAR},
+      blog_type_name = #{blogTypeName,jdbcType=VARCHAR},
+      blog_abstract = #{blogAbstract,jdbcType=VARCHAR},
+      nickname = #{nickname,jdbcType=VARCHAR},
+      pic = #{pic,jdbcType=VARCHAR},
+      blog_type_id = #{blogTypeId,jdbcType=INTEGER},
+      begincode_navigation_id = #{begincodeNavigationId,jdbcType=INTEGER},
+      begincode_user_id = #{begincodeUserId,jdbcType=INTEGER},
+      blog_content = #{blogContent,jdbcType=LONGVARCHAR}
+    where blog_id = #{blogId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.begincode.core.model.Blog">
+    update blog
+    set blog_info = #{blogInfo,jdbcType=VARCHAR},
+      prohibition_message = #{prohibitionMessage,jdbcType=CHAR},
+      begincode_keys = #{begincodeKeys,jdbcType=VARCHAR},
+      view_count = #{viewCount,jdbcType=INTEGER},
+      create_datetime = #{createDatetime,jdbcType=TIMESTAMP},
+      delete_flag = #{deleteFlag,jdbcType=CHAR},
+      good_count = #{goodCount,jdbcType=INTEGER},
+      bad_count = #{badCount,jdbcType=INTEGER},
+      release_state = #{releaseState,jdbcType=CHAR},
+      check_flag = #{checkFlag,jdbcType=CHAR},
+      blog_type_name = #{blogTypeName,jdbcType=VARCHAR},
+      blog_abstract = #{blogAbstract,jdbcType=VARCHAR},
+      nickname = #{nickname,jdbcType=VARCHAR},
+      pic = #{pic,jdbcType=VARCHAR},
+      blog_type_id = #{blogTypeId,jdbcType=INTEGER},
+      begincode_navigation_id = #{begincodeNavigationId,jdbcType=INTEGER},
+      begincode_user_id = #{begincodeUserId,jdbcType=INTEGER}
+    where blog_id = #{blogId,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="org.core.model.Blog">
+    <id column="blog_id" jdbcType="INTEGER" property="blogId" />
+    <result column="blog_info" jdbcType="VARCHAR" property="blogInfo" />
+    <result column="prohibition_message" jdbcType="CHAR" property="prohibitionMessage" />
+    <result column="begincode_keys" jdbcType="VARCHAR" property="begincodeKeys" />
+    <result column="view_count" jdbcType="INTEGER" property="viewCount" />
+    <result column="create_datetime" jdbcType="TIMESTAMP" property="createDatetime" />
+    <result column="delete_flag" jdbcType="CHAR" property="deleteFlag" />
+    <result column="good_count" jdbcType="INTEGER" property="goodCount" />
+    <result column="bad_count" jdbcType="INTEGER" property="badCount" />
+    <result column="release_state" jdbcType="CHAR" property="releaseState" />
+    <result column="check_flag" jdbcType="CHAR" property="checkFlag" />
+    <result column="blog_type_name" jdbcType="VARCHAR" property="blogTypeName" />
+    <result column="blog_abstract" jdbcType="VARCHAR" property="blogAbstract" />
+    <result column="nickname" jdbcType="VARCHAR" property="nickname" />
+    <result column="pic" jdbcType="VARCHAR" property="pic" />
+    <result column="blog_type_id" jdbcType="INTEGER" property="blogTypeId" />
+    <result column="begincode_navigation_id" jdbcType="INTEGER" property="begincodeNavigationId" />
+    <result column="begincode_user_id" jdbcType="INTEGER" property="begincodeUserId" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="org.core.model.Blog">
+    <result column="blog_content" jdbcType="LONGVARCHAR" property="blogContent" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    blog_id, blog_info, prohibition_message, begincode_keys, view_count, create_datetime, 
+    delete_flag, good_count, bad_count, release_state, check_flag, blog_type_name, blog_abstract, 
+    nickname, pic, blog_type_id, begincode_navigation_id, begincode_user_id
+  </sql>
+  <sql id="Blob_Column_List">
+    blog_content
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from blog
+    where blog_id = #{blogId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from blog
+    where blog_id = #{blogId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="org.core.model.Blog">
+    insert into blog (blog_id, blog_info, prohibition_message, 
+      begincode_keys, view_count, create_datetime, 
+      delete_flag, good_count, bad_count, 
+      release_state, check_flag, blog_type_name, 
+      blog_abstract, nickname, pic, 
+      blog_type_id, begincode_navigation_id, begincode_user_id, 
+      blog_content)
+    values (#{blogId,jdbcType=INTEGER}, #{blogInfo,jdbcType=VARCHAR}, #{prohibitionMessage,jdbcType=CHAR}, 
+      #{begincodeKeys,jdbcType=VARCHAR}, #{viewCount,jdbcType=INTEGER}, #{createDatetime,jdbcType=TIMESTAMP}, 
+      #{deleteFlag,jdbcType=CHAR}, #{goodCount,jdbcType=INTEGER}, #{badCount,jdbcType=INTEGER}, 
+      #{releaseState,jdbcType=CHAR}, #{checkFlag,jdbcType=CHAR}, #{blogTypeName,jdbcType=VARCHAR}, 
+      #{blogAbstract,jdbcType=VARCHAR}, #{nickname,jdbcType=VARCHAR}, #{pic,jdbcType=VARCHAR}, 
+      #{blogTypeId,jdbcType=INTEGER}, #{begincodeNavigationId,jdbcType=INTEGER}, #{begincodeUserId,jdbcType=INTEGER}, 
+      #{blogContent,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="org.core.model.Blog">
+    insert into blog
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="blogId != null">
+        blog_id,
+      </if>
+      <if test="blogInfo != null">
+        blog_info,
+      </if>
+      <if test="prohibitionMessage != null">
+        prohibition_message,
+      </if>
+      <if test="begincodeKeys != null">
+        begincode_keys,
+      </if>
+      <if test="viewCount != null">
+        view_count,
+      </if>
+      <if test="createDatetime != null">
+        create_datetime,
+      </if>
+      <if test="deleteFlag != null">
+        delete_flag,
+      </if>
+      <if test="goodCount != null">
+        good_count,
+      </if>
+      <if test="badCount != null">
+        bad_count,
+      </if>
+      <if test="releaseState != null">
+        release_state,
+      </if>
+      <if test="checkFlag != null">
+        check_flag,
+      </if>
+      <if test="blogTypeName != null">
+        blog_type_name,
+      </if>
+      <if test="blogAbstract != null">
+        blog_abstract,
+      </if>
+      <if test="nickname != null">
+        nickname,
+      </if>
+      <if test="pic != null">
+        pic,
+      </if>
+      <if test="blogTypeId != null">
+        blog_type_id,
+      </if>
+      <if test="begincodeNavigationId != null">
+        begincode_navigation_id,
+      </if>
+      <if test="begincodeUserId != null">
+        begincode_user_id,
+      </if>
+      <if test="blogContent != null">
+        blog_content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="blogId != null">
+        #{blogId,jdbcType=INTEGER},
+      </if>
+      <if test="blogInfo != null">
+        #{blogInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="prohibitionMessage != null">
+        #{prohibitionMessage,jdbcType=CHAR},
+      </if>
+      <if test="begincodeKeys != null">
+        #{begincodeKeys,jdbcType=VARCHAR},
+      </if>
+      <if test="viewCount != null">
+        #{viewCount,jdbcType=INTEGER},
+      </if>
+      <if test="createDatetime != null">
+        #{createDatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleteFlag != null">
+        #{deleteFlag,jdbcType=CHAR},
+      </if>
+      <if test="goodCount != null">
+        #{goodCount,jdbcType=INTEGER},
+      </if>
+      <if test="badCount != null">
+        #{badCount,jdbcType=INTEGER},
+      </if>
+      <if test="releaseState != null">
+        #{releaseState,jdbcType=CHAR},
+      </if>
+      <if test="checkFlag != null">
+        #{checkFlag,jdbcType=CHAR},
+      </if>
+      <if test="blogTypeName != null">
+        #{blogTypeName,jdbcType=VARCHAR},
+      </if>
+      <if test="blogAbstract != null">
+        #{blogAbstract,jdbcType=VARCHAR},
+      </if>
+      <if test="nickname != null">
+        #{nickname,jdbcType=VARCHAR},
+      </if>
+      <if test="pic != null">
+        #{pic,jdbcType=VARCHAR},
+      </if>
+      <if test="blogTypeId != null">
+        #{blogTypeId,jdbcType=INTEGER},
+      </if>
+      <if test="begincodeNavigationId != null">
+        #{begincodeNavigationId,jdbcType=INTEGER},
+      </if>
+      <if test="begincodeUserId != null">
+        #{begincodeUserId,jdbcType=INTEGER},
+      </if>
+      <if test="blogContent != null">
+        #{blogContent,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.core.model.Blog">
+    update blog
+    <set>
+      <if test="blogInfo != null">
+        blog_info = #{blogInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="prohibitionMessage != null">
+        prohibition_message = #{prohibitionMessage,jdbcType=CHAR},
+      </if>
+      <if test="begincodeKeys != null">
+        begincode_keys = #{begincodeKeys,jdbcType=VARCHAR},
+      </if>
+      <if test="viewCount != null">
+        view_count = #{viewCount,jdbcType=INTEGER},
+      </if>
+      <if test="createDatetime != null">
+        create_datetime = #{createDatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleteFlag != null">
+        delete_flag = #{deleteFlag,jdbcType=CHAR},
+      </if>
+      <if test="goodCount != null">
+        good_count = #{goodCount,jdbcType=INTEGER},
+      </if>
+      <if test="badCount != null">
+        bad_count = #{badCount,jdbcType=INTEGER},
+      </if>
+      <if test="releaseState != null">
+        release_state = #{releaseState,jdbcType=CHAR},
+      </if>
+      <if test="checkFlag != null">
+        check_flag = #{checkFlag,jdbcType=CHAR},
+      </if>
+      <if test="blogTypeName != null">
+        blog_type_name = #{blogTypeName,jdbcType=VARCHAR},
+      </if>
+      <if test="blogAbstract != null">
+        blog_abstract = #{blogAbstract,jdbcType=VARCHAR},
+      </if>
+      <if test="nickname != null">
+        nickname = #{nickname,jdbcType=VARCHAR},
+      </if>
+      <if test="pic != null">
+        pic = #{pic,jdbcType=VARCHAR},
+      </if>
+      <if test="blogTypeId != null">
+        blog_type_id = #{blogTypeId,jdbcType=INTEGER},
+      </if>
+      <if test="begincodeNavigationId != null">
+        begincode_navigation_id = #{begincodeNavigationId,jdbcType=INTEGER},
+      </if>
+      <if test="begincodeUserId != null">
+        begincode_user_id = #{begincodeUserId,jdbcType=INTEGER},
+      </if>
+      <if test="blogContent != null">
+        blog_content = #{blogContent,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where blog_id = #{blogId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="org.core.model.Blog">
+    update blog
+    set blog_info = #{blogInfo,jdbcType=VARCHAR},
+      prohibition_message = #{prohibitionMessage,jdbcType=CHAR},
+      begincode_keys = #{begincodeKeys,jdbcType=VARCHAR},
+      view_count = #{viewCount,jdbcType=INTEGER},
+      create_datetime = #{createDatetime,jdbcType=TIMESTAMP},
+      delete_flag = #{deleteFlag,jdbcType=CHAR},
+      good_count = #{goodCount,jdbcType=INTEGER},
+      bad_count = #{badCount,jdbcType=INTEGER},
+      release_state = #{releaseState,jdbcType=CHAR},
+      check_flag = #{checkFlag,jdbcType=CHAR},
+      blog_type_name = #{blogTypeName,jdbcType=VARCHAR},
+      blog_abstract = #{blogAbstract,jdbcType=VARCHAR},
+      nickname = #{nickname,jdbcType=VARCHAR},
+      pic = #{pic,jdbcType=VARCHAR},
+      blog_type_id = #{blogTypeId,jdbcType=INTEGER},
+      begincode_navigation_id = #{begincodeNavigationId,jdbcType=INTEGER},
+      begincode_user_id = #{begincodeUserId,jdbcType=INTEGER},
+      blog_content = #{blogContent,jdbcType=LONGVARCHAR}
+    where blog_id = #{blogId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.core.model.Blog">
+    update blog
+    set blog_info = #{blogInfo,jdbcType=VARCHAR},
+      prohibition_message = #{prohibitionMessage,jdbcType=CHAR},
+      begincode_keys = #{begincodeKeys,jdbcType=VARCHAR},
+      view_count = #{viewCount,jdbcType=INTEGER},
+      create_datetime = #{createDatetime,jdbcType=TIMESTAMP},
+      delete_flag = #{deleteFlag,jdbcType=CHAR},
+      good_count = #{goodCount,jdbcType=INTEGER},
+      bad_count = #{badCount,jdbcType=INTEGER},
+      release_state = #{releaseState,jdbcType=CHAR},
+      check_flag = #{checkFlag,jdbcType=CHAR},
+      blog_type_name = #{blogTypeName,jdbcType=VARCHAR},
+      blog_abstract = #{blogAbstract,jdbcType=VARCHAR},
+      nickname = #{nickname,jdbcType=VARCHAR},
+      pic = #{pic,jdbcType=VARCHAR},
+      blog_type_id = #{blogTypeId,jdbcType=INTEGER},
+      begincode_navigation_id = #{begincodeNavigationId,jdbcType=INTEGER},
+      begincode_user_id = #{begincodeUserId,jdbcType=INTEGER}
+    where blog_id = #{blogId,jdbcType=INTEGER}
+  </update>
+</mapper>

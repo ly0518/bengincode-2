@@ -17,6 +17,9 @@
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 </head>
+<script type="text/javascript">
+	location.href="${ctx}/code";
+</script>
 <body>
 	<jsp:include  page="/page/core/top.jsp"/> 
 
