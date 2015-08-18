@@ -30,7 +30,7 @@ public interface CourseLabelMapper {
 	int insert(CourseLabel record);
 
 	/**
-	 * @Description: 新增参数中不为空的属�?
+	 * @Description: 新增参数中不为空的属性
 	 * @param record
 	 * @return int
 	 * @throws
@@ -46,7 +46,7 @@ public interface CourseLabelMapper {
 	CourseLabel selectById(Integer courseLabelId);
 
 	/**
-	 * @Description: 更新参数中不为空的属�?
+	 * @Description: 更新参数中不为空的属性
 	 * @param record
 	 * @return int
 	 * @throws

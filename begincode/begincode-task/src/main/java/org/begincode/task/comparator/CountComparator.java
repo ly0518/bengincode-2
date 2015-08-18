@@ -2,7 +2,7 @@ package org.begincode.task.comparator;
 
 import java.util.Comparator;
 
-public class CountComparator<Integer> implements Comparator<Integer> {
+public class CountComparator<T> implements Comparator<T> {
 
 	/** (非 Javadoc) 
 	 * <p>Title: compare</p> 
@@ -13,13 +13,13 @@ public class CountComparator<Integer> implements Comparator<Integer> {
 	 * @see java.util.Comparator#compare(java.lang.Object, java.lang.Object) 
 	 */
 	@Override
-	public int compare(Integer o1, Integer o2) {
+	public int compare(Object o1, Object o2) {
 		if(o1 == null || o2 == null){
-			throw new NullPointerException();
+			throw new RuntimeException("比较器参数不能为空！");
 		}else{
-			int a = (int) o1;
-			int b = (int) o2;
-			return a-b;
+			int a = ((Integer) o1).intValue();
+			int b = ((Integer) o2).intValue();
+			return a - b;
 		}
 	}
 

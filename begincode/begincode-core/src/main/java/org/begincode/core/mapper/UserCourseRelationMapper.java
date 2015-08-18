@@ -30,7 +30,7 @@ public interface UserCourseRelationMapper {
 	int insert(UserCourseRelation record);
 
 	/**
-	 * @Description: 新增参数中不为空的属�?
+	 * @Description: 新增参数中不为空的属性
 	 * @param record
 	 * @return int
 	 * @throws
@@ -46,7 +46,7 @@ public interface UserCourseRelationMapper {
 	UserCourseRelation selectById(Integer userCourseRelationId);
 
 	/**
-	 * @Description: 更新参数中不为空的属�?
+	 * @Description: 更新参数中不为空的属性
 	 * @param record
 	 * @return int
 	 * @throws
