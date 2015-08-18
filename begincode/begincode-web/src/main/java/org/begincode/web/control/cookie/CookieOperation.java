@@ -61,32 +61,32 @@ public class CookieOperation {
 		
 		int exist = 0;
 		Map<String,String> cookieMap = new HashMap();
-		//测试使用
-		cookieMap.put("accessToken",  "234234");
-		cookieMap.put("openId",  "123123213");
-		return cookieMap;
+//		//测试使用
+//		cookieMap.put("accessToken",  "234234");
+//		cookieMap.put("openId",  "123123213");
+//		return cookieMap;
 		
 		//临时注释
-//		Cookie[] cookies = request.getCookies();//获取cookie
-//		if(cookies != null){
-//			for(Cookie cookie : cookies){
-//				if(cookie.getName().equals("accessToken")){
-//					cookieMap.put("accessToken",  cookie.getValue());
-//					exist++;
-//				}
-//				if(cookie.getName().equals("openId")){
-//					cookieMap.put("openId", cookie.getValue());
-//					exist++;
-//				}
-//			}
-//		}else{
-//			return null;
-//		}
-//		if(exist == 2){
-//			return cookieMap;
-//		}else{
-//			return null;
-//		}
+		Cookie[] cookies = request.getCookies();//获取cookie
+		if(cookies != null){
+			for(Cookie cookie : cookies){
+				if(cookie.getName().equals("accessToken")){
+					cookieMap.put("accessToken",  cookie.getValue());
+					exist++;
+				}
+				if(cookie.getName().equals("openId")){
+					cookieMap.put("openId", cookie.getValue());
+					exist++;
+				}
+			}
+		}else{
+			return null;
+		}
+		if(exist == 2){
+			return cookieMap;
+		}else{
+			return null;
+		}
 		
 	}
 }

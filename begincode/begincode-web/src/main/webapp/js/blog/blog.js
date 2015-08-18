@@ -126,8 +126,7 @@ function addBlog(){
 		location.href =ctx+"/blog/userId";
 	}else{
 		alert("请先登录...");
-//		return false;
-		location.href =ctx+"/blog/userId";
+		return false;
 		
 	}
 }

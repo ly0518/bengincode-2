@@ -48,7 +48,7 @@
 								<a href="#" target="_blank" title="${code.nickname}" class="nickname">${code.nickname}</a>
 							</div>
 							<div class="media-body">
-								<h4 class="list-group-item-heading">
+								<h4 class="list-group-item-heading ">
 									<a href="${ctx}/code/${code.begincodeCodeId}">${code.codeInfo}</a>
 								</h4>
 								<p class="list-group-item-text">

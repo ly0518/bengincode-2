@@ -76,16 +76,16 @@
 								id="pic" value="${user.pic }" /> <input type="hidden"
 								name="begincodeUserId" id="begincodeUserId"
 								value="${user.begincodeUserId }" />
-							<div class="form-group">
-								<label for="codeTypeId"><span class="labelinfoblue"></span>代码分类</label>
-								<select class="form-control" name="codeTypeId" id="codeTypeId"
-									value="">
-									<c:forEach items="${codeTypes }" var="codeType">
-										<option value="${codeType.codeTypeId }">${codeType.codeTypeName}</option>
-									</c:forEach>
-								</select> <input type="hidden" name="codeTypeName" id="codeTypeName"
-									value="" />
-							</div>
+<!-- 							<div class="form-group"> -->
+<!-- 								<label for="codeTypeId"><span class="labelinfoblue"></span>代码分类</label> -->
+<!-- 								<select class="form-control" name="codeTypeId" id="codeTypeId" -->
+<!-- 									value=""> -->
+<%-- 									<c:forEach items="${codeTypes }" var="codeType"> --%>
+<%-- 										<option value="${codeType.codeTypeId }">${codeType.codeTypeName}</option> --%>
+<%-- 									</c:forEach> --%>
+<!-- 								</select> <input type="hidden" name="codeTypeName" id="codeTypeName" -->
+<!-- 									value="" /> -->
+<!-- 							</div> -->
 							<div class="form-group">
 								<label for="codeInfo"><span class="labelinfowarn"></span>代码标题</label>
 								<input type="text" class="form-control required" id="codeInfo"

@@ -5,9 +5,11 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.log4j.Logger;
+import org.begincode.blog.service.BlogService;
 import org.begincode.code.service.CodeService;
 import org.begincode.core.constant.BeginCodeConstant;
 import org.begincode.core.model.BegincodeCode;
+import org.begincode.core.model.Blog;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
@@ -18,6 +20,8 @@ public class CountOperator {
 	Logger logger = Logger.getLogger(CountOperator.class);
 	@Autowired
 	CodeService codeService;
+	@Autowired
+	BlogService blogService;
 	 
 	/** 
 	* @Title: changeViewCount 
@@ -27,6 +31,7 @@ public class CountOperator {
 	*/
 	public void changeViewCount(){
 		updateChangeCodeViewCount();
+		updateChangeBlogViewCount();
 //		updateChangeVideoCourseViewCount();
 	}
 	/** 
@@ -37,6 +42,7 @@ public class CountOperator {
 	*/
 	public void changeBatViewCount(){
 		updateBatchChangeCodeViewCount();
+		updateBatchChangeBlogViewCount();
 	}
 	/** 
 	* @Title: addCodeViewCount 
@@ -65,8 +71,22 @@ public class CountOperator {
 			changeViewCount();
 		}
 	}
+	public void addBlogViewCount(int blogId){
+		int queueCount = CountQueue.addBlogViewQueue(blogId);
+		if(queueCount >= BeginCodeConstant.MAX_QUEUE){
+			changeViewCount();
+		}
+	}
 	
-	
+	private void updateChangeBlogViewCount(){
+		Map<Integer, Integer> blogMap = CountQueue.getBlogViewQueue();
+		for(Integer key : blogMap.keySet()){
+				Blog blog = new Blog();
+				blog.setViewCount(blogMap.get(key));
+				blog.setBlogId(key);
+				blogService.updateAddCountById(blog);
+		}
+	}
 	/** 
 	* @Title: updateChangeCodeViewCount 
 	* @Description:   获取代码浏览次数，并循环修改数据库,
@@ -100,6 +120,19 @@ public class CountOperator {
 		}
 		if(list != null && list.size() > 0){
 			codeService.batchUpdateAddCountById(list);
+		}
+	}
+	private void updateBatchChangeBlogViewCount(){
+		List<Blog> list = new ArrayList<Blog>();
+		Map<Integer, Integer> codeMap = CountQueue.getBlogViewQueue();
+		for(Integer key : codeMap.keySet()){
+				Blog blog = new Blog();
+				blog.setViewCount(codeMap.get(key));
+				blog.setBlogId(key);
+				list.add(blog);
+		}
+		if(list != null && list.size() > 0){
+			blogService.batchUpdateAddCountById(list);
 		}
 	}
 	/** 
