@@ -82,10 +82,10 @@
  </div>
 					</div>
 					<div class="col-md-3">
-					   <div class="list-group">
-							<a href="#" class="list-group-item active"> 相关代码</a> 
-							<div id="relationCodeTopFive"></div>
-						</div>
+<!-- 					   <div class="list-group"> -->
+<!-- 							<a href="#" class="list-group-item active"> 相关代码</a>  -->
+<!-- 							<div id="relationCodeTopFive"></div> -->
+<!-- 						</div> -->
 						<div class="list-group">
 							<a href="#" class="list-group-item active"> 阅读排行 </a> 
 							<div id="codeTopTen"></div>
@@ -114,10 +114,8 @@
 	<script src="${ctx}/js/validate/messages_zh.js"></script>
 	<script type="text/javascript">
 	var codIdId = ${code.begincodeCodeId };
-	var typeId = ${code.codeTypeId};
 	$(document).ready(function(e) {
 		topTen();
-		relationTopFive(typeId);
 		codeViewInit(codIdId);
 	});
 

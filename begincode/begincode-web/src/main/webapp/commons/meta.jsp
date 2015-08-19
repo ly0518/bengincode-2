@@ -5,6 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="Keywords" content="begincode,BeginCode,"/>  
 <meta name="baidu-site-verification" content="3Ie0fZDFqp" />
+<meta property="qc:admins" content="3674276520625716374566547" />
 <script>
 var _hmt = _hmt || [];
 (function() {

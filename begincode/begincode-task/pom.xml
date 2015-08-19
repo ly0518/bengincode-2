@@ -67,5 +67,9 @@
 			<groupId>com.begincode</groupId>
 			<artifactId>begincode-course</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>com.begincode</groupId>
+			<artifactId>begincode-blog</artifactId>
+		</dependency>
 	</dependencies>
 </project>

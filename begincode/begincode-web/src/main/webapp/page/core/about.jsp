@@ -58,8 +58,8 @@
 									  <dd>登录用户具有浏览，提问，回复功能。待开发</dd>
 									</dl>
 							  		 <dl class="dl-horizontal">
-									  <dt>5、个人博客</dt>
-									  <dd>审核通过的登录用户具有文章管理等功能。待开发</dd>
+									  <dt>5、博客文章</dt>
+									  <dd>审核通过的登录用户具有文章管理等功能。已上线</dd>
 									</dl>
 							  </li>
 						</ul>
@@ -70,6 +70,7 @@
 							<a href="#"	class="list-group-item">芝麻谷</a>  
 							<a href="#"	class="list-group-item">涛</a> 
 							<a href="#"	class="list-group-item">杨</a>
+							<a href="#"	class="list-group-item">小明</a>
 							<a href="#"	class="list-group-item">等你加入...</a>  
 					</div>
 					</div>

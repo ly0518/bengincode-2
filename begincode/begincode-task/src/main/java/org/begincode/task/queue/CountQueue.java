@@ -24,7 +24,47 @@ public class CountQueue {
 	*/ 
 	public static  PriorityBlockingQueue<Integer> videoCourseViewQueue = new PriorityBlockingQueue<Integer>(10,new CountComparator());
 
+	/** 
+	* @Fields courseViewQueue : 教程浏览队列，初始化10长度
+	*/ 
+	public static  PriorityBlockingQueue<Integer> blogViewQueue = new PriorityBlockingQueue<Integer>(10,new CountComparator());
 
+
+	/** 
+	* @Title: addBlogViewQueue 
+	* @Description: 新增博客浏览访问，
+	* @param blogId
+	* @return int   
+	* @throws 
+	*/
+	public static int addBlogViewQueue(Integer blogId){
+		if(blogId != null){
+			blogViewQueue.add(blogId);
+		}
+		return blogViewQueue.size();
+	}
+	/** 
+	* @Title: getBlogViewQueue 
+	* @Description: 获取blog访问列表
+	* @return Map<Integer,Integer>   
+	* @throws 
+	*/
+	public static Map<Integer,Integer> getBlogViewQueue(){
+		Map<Integer,Integer> map = new HashMap<Integer,Integer>();
+		while(true){
+			Integer blogId = blogViewQueue.poll();
+			if(blogId != null){
+				if(map.containsKey(blogId)){
+					map.put(blogId, map.get(blogId)+1);
+				}else{
+					map.put(blogId,1);
+				}				
+			}else{
+				break;
+			}
+		}
+		return map;
+	}
 	
 	/** 
 	* @Title: addCodeViewQueue 

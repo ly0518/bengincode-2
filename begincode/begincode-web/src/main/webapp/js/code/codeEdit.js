@@ -28,7 +28,7 @@
 			  if($("#codeForm").valid()){
 				  var sHTML = $('#summernote').code();
 					 $('#codeContent').val(sHTML);
-					$("#codeTypeName").val($("#codeTypeId").find("option:selected").text());
+//					$("#codeTypeName").val($("#codeTypeId").find("option:selected").text());
 					 $.ajax({
 					        data: $('#codeForm').serializeArray(),
 					        type: "POST",

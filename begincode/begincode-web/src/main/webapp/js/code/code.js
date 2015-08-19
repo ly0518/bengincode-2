@@ -17,8 +17,6 @@ function changePage() {
 												+ "<div class=\"media-left media-middle\">"
 												+ "<a href=\"#\"> "
 												+ "<img class=\"media-object img-responsive maxwidth\" src=\""
-												+ ctx
-												+ "/images/"
 												+ codes[i].pic
 												+ "\" alt=\""
 												+ codes[i].nickname
@@ -92,21 +90,6 @@ function topTen() {
 					$("#codeTopTen").append(codeStr);
 			});
 		}
-//		statusCode: {
-//	        404: function() {
-//	            alert( "找不到页面" );
-//	        },
-//	        302: function(data){
-//	        	alert(JSON.stringify(data));
-//	            alert("请求跳转"+data.status+data.responseJSON.url);
-//	            window.location.href=data.responseJSON.url;
-//	            $("#codeTopTen").empty();
-//				$.each(codes,function(i) {
-//						var codeStr = "<a href=\""+ctx+"/code/"+codes[i].begincodeCodeId+" \" class=\"list-group-item\">"+codes[i].codeInfo+"<span class=\"view-count\">"+codes[i].viewCount+"</span></a>";
-//						$("#codeTopTen").append(codeStr);
-//				});
-//	        }
-//	    }
 	});
 }
 function relationTopFive(typeId) {
@@ -145,6 +128,5 @@ function codeShare(){
 	}else{
 		alert("请先登录...");
 		return false;
-//		location.href =ctx+"/code/userId";
 	}
 }

@@ -24,7 +24,7 @@
 				]
 		  });
 		  $('#send').click(function(){
-//			  if(QC.Login.check()){
+			  if(QC.Login.check()){
 			  if($("#blogForm").valid()){
 				  var sHTML = $('#summernote').code();
 					 $('#blogContent').val(sHTML);
@@ -42,8 +42,8 @@
 					        }
 					    });
 			  }
-//		  }else{
-//			  alert("请先登录...");
-//		  }
+		  }else{
+			  alert("请先登录...");
+		  }
 		  });
 	});

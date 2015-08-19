@@ -14,8 +14,6 @@ function changePage() {
 												+ "<div class=\"media-left media-middle\">"
 												+ "<a href=\"#\"> "
 												+ "<img class=\"media-object img-responsive maxwidth\" src=\""
-												+ ctx
-												+ "/images/"
 												+ blogs[i].pic
 												+ "\" alt=\""
 												+ blogs[i].nickname
@@ -126,8 +124,7 @@ function addBlog(){
 		location.href =ctx+"/blog/userId";
 	}else{
 		alert("请先登录...");
-//		return false;
-		location.href =ctx+"/blog/userId";
+		return false;
 		
 	}
 }

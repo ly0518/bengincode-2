@@ -43,12 +43,12 @@
 						<div class="media mediaborder">
 							<div class="media-left media-middle">
 								<a href="#">
-								<img class="media-object img-responsive maxwidth" src="${ctx}/images/${code.pic}" alt="${code.nickname}">
+								<img class="media-object img-responsive maxwidth" src="${code.pic}" alt="${code.nickname}">
 								</a> 
 								<a href="#" target="_blank" title="${code.nickname}" class="nickname">${code.nickname}</a>
 							</div>
 							<div class="media-body">
-								<h4 class="list-group-item-heading">
+								<h4 class="list-group-item-heading ">
 									<a href="${ctx}/code/${code.begincodeCodeId}">${code.codeInfo}</a>
 								</h4>
 								<p class="list-group-item-text">

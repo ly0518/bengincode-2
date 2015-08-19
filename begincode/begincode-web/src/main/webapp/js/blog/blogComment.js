@@ -47,7 +47,7 @@ function getBlogViewLabel(blogComment){
 	return str;
 }
 $('#pubBlogCommon').click(function(){
-//	if(QC.Login.check()){
+	if(QC.Login.check()){
 		if($("#blogCommonForm").valid()){
 						jQuery.ajax({
 							type : "POST",
@@ -63,9 +63,9 @@ $('#pubBlogCommon').click(function(){
 							}
 				});		
 		}
-//	}else{
-//		alert("请先登录....");
-//	}
+	}else{
+		alert("请先登录....");
+	}
 	
 
 });

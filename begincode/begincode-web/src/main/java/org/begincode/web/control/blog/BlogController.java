@@ -72,7 +72,7 @@ public class BlogController {
 			throw  new BeginCodeException("blogId 不存在" +blogId);
 		}
 		//新增浏览次数
-		countOperator.addCodeViewCount(blogId);
+		countOperator.addBlogViewCount(blogId);
 		model.addAttribute("blog", record);
 		return "/page/blog/blog_view";
 	}

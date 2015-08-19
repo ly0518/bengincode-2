@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 public class ViewCountOnTimeUpdate {
 	@Autowired
 	CountOperator countOperator;
-	 @Scheduled(cron="0 0/10 * * * ? ") //间隔10分钟刷新浏览次数执行  
+	 @Scheduled(cron="0 0/2 * * * ? ") //间隔10分钟刷新浏览次数执行  
 	  public void updateViewCountOnTime(){  
 		 countOperator.changeBatViewCount();  
 	  }  
