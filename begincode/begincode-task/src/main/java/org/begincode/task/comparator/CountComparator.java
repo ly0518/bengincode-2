@@ -17,9 +17,7 @@ public class CountComparator<T> implements Comparator<T> {
 		if(o1 == null || o2 == null){
 			throw new RuntimeException("比较器参数不能为空！");
 		}else{
-			int a = ((Integer) o1).intValue();
-			int b = ((Integer) o2).intValue();
-			return a - b;
+			return (Integer) o1 - (Integer) o2;
 		}
 	}
 
