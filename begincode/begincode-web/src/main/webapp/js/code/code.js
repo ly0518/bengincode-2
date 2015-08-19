@@ -17,8 +17,6 @@ function changePage() {
 												+ "<div class=\"media-left media-middle\">"
 												+ "<a href=\"#\"> "
 												+ "<img class=\"media-object img-responsive maxwidth\" src=\""
-												+ ctx
-												+ "/images/"
 												+ codes[i].pic
 												+ "\" alt=\""
 												+ codes[i].nickname

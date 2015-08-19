@@ -43,7 +43,7 @@
 						<div class="media mediaborder">
 							<div class="media-left media-middle">
 								<a href="#">
-								<img class="media-object img-responsive maxwidth" src="${ctx}/images/${blog.pic}" alt="${blog.nickname}">
+								<img class="media-object img-responsive maxwidth" src="${blog.pic}" alt="${blog.nickname}">
 								</a> 
 								<a href="#" target="_blank" title="${blog.nickname}" class="nickname">${blog.nickname}</a>
 							</div>

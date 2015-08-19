@@ -1,13 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="/commons/taglibs.jsp"%>
-<head>
-<meta property="qc:admins" content="3674276520625716374566547" />
-</head>
 <script type="text/javascript"
 	src="http://qzonestyle.gtimg.cn/qzone/openapi/qc_loader.js"
 	data-appid="101230380"
-	data-redirecturi="http://www.begincode.net/page/welcome.jsp"
+	data-redirecturi="http://www.begincode.net/login.html"
 	charset="utf-8"></script>
 <script type="text/javascript">
 
