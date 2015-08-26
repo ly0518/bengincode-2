@@ -89,10 +89,9 @@ public class BlogController {
 				model.addAttribute("blogTypes", blogTypeService.findBlogTypeByUserId(logUser.getBegincodeUserId()));
 				return "/page/blog/blog_edit";				
 			}else{
-				
-				return request.getContextPath();
+				logger.info("用户未通过审核");
+				return "redirect:/blog";
 			}
-
 		}else{
 //			抛出异常
 			logger.info("未获得登陆信息");
@@ -132,7 +131,22 @@ public class BlogController {
 		PageList list = blogService.findBlogsByRecord(blog);
 		return list;
 	}
-
+	@RequestMapping(value = "/recommend", method = RequestMethod.GET)
+	@ResponseBody
+	public Blog findRecommend() {
+		return blogService.findRecommendBlog();
+	}
+	@RequestMapping(value = "/blogType/{typeId}/size/{size}", method = RequestMethod.GET)
+	@ResponseBody
+	public List findBlogByTypeAndSize(@PathVariable("typeId") int typeId,@PathVariable("size") int size) {
+		Paginator pageinfo = new Paginator(0, size);
+		pageinfo.setOrderStr(" order by blog_id desc ");
+		BeginCodeInterceptor.localPage.set(pageinfo);
+		Blog blog = new Blog();
+		blog.setBlogTypeId(typeId);
+		PageList list = blogService.findBlogsByRecord(blog);
+		return list;
+	}
 	@RequestMapping(value = "", method = RequestMethod.POST)
 	@ResponseBody
 	public Map addBlog(Blog blog) {

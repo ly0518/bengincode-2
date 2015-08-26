@@ -123,10 +123,20 @@ function getLabel(keywords){
 }
 
 function codeShare(){
+	var checkFlag= $.cookie('check');
 	if(QC.Login.check()){
-		location.href =ctx+"/code/userId";
+		if(checkFlag == "1"){
+			location.href =ctx+"/code/userId";
+		}else{
+			$("#msg").empty();
+			$("#msg").append("<p>您的账户未通过审核，不能分享代码</p>");
+			$("#msgModal").modal('show');
+			return false;
+		}
 	}else{
-		alert("请先登录...");
+		$("#msg").empty();
+		$("#msg").append("<p>请先登录...</p>");
+		$("#msgModal").modal('show');
 		return false;
 	}
 }

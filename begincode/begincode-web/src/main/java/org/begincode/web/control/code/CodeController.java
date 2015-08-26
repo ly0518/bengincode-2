@@ -90,14 +90,13 @@ public class CodeController {
 //				model.addAttribute("codeTypes", codeTypeService.findCodeTypeByUserId(logUser.getBegincodeUserId()));
 				return "/page/code/code_edit";				
 			}else{
-				
-				return request.getContextPath();
+				logger.info("用户未通过审核");
+				return "redirect:/code";
 			}
-
 		}else{
 //			抛出异常
 			logger.info("未获得登陆信息");
-			return null;
+			return "redirect:/code";
 		}
 	}
 
@@ -121,7 +120,14 @@ public class CodeController {
 		PageList list = codeService.findCodes(pageinfo);
 		return list;
 	}
-
+	@RequestMapping(value = "/top/{size}", method = RequestMethod.GET)
+	@ResponseBody
+	public List findTopSize(@PathVariable("size") int size) throws IOException {
+		Paginator pageinfo = new Paginator(0,size);
+		pageinfo.setOrderStr(" order by begincode_code_id desc ");
+		PageList list = codeService.findCodes(pageinfo);
+		return list;
+	}
 	@RequestMapping(value = "/codeType/{typeId}", method = RequestMethod.GET)
 	@ResponseBody
 	public List findRelationTopFive(@PathVariable("typeId") int typeId) {

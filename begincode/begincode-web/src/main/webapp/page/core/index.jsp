@@ -17,9 +17,6 @@
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 </head>
-<script type="text/javascript">
-	location.href="${ctx}/code";
-</script>
 <body>
 	<jsp:include  page="/page/core/top.jsp"/> 
 
@@ -78,41 +75,6 @@
     </div>
     
 </div>
-<!--      <div class="item active"> -->
-<!--   <div class="jumbotron"> -->
-<!--       <div class="container"> -->
-<!--         <h1>可能我们没有多么优秀</h1> -->
-<!--         <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;但我们喜欢技术，喜欢分享，喜欢与你成为朋友----BeginCode</p> -->
-<!--       </div> -->
-<!--     </div> -->
-<!-- </div> -->
-<!--     <div class="item "> -->
-<!--    <div class="jumbotron"> -->
-<!--       <div class="container"> -->
-<!--         <h1>可能这里没有神一样的架构师</h1> -->
-<!--         <p >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;但这里只有一群奋斗在一线，热爱分享“技术，博文，代码”的----攻城狮</p> -->
-<!--       </div> -->
-<!--     </div> -->
-<!-- </div> -->
-    
-<!--    <div class="item"> -->
-<!--   <div class="jumbotron"> -->
-<!--       <div class="container"> -->
-<!--         <h1>可能我们懂得不多</h1> -->
-<!--         <p >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;但我们愿意竭尽所能，只是希望你对我们的了解更加彻底----开放源码</p> -->
-<!--       </div> -->
-<!--     </div> -->
-    
-<!-- </div> -->
-<!--    <div class="item"> -->
-<!--   <div class="jumbotron"> -->
-<!--       <div class="container"> -->
-<!--         <h1>我们要做的只是</h1> -->
-<!--         <p >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;一个有内容，有干货，有分享精神的技术网站</p> -->
-<!--       </div> -->
-<!--     </div> -->
-    
-<!-- </div> -->
 
   </div>
   
@@ -132,12 +94,12 @@
 			<div class="col-md-12">
 				<div class="media" style=" border-color: #f3485a; border-bottom:2px solid red;margin-bottom:10px;">
 				  <a class="media-left" href="#">
-				    <img src="http://123.57.17.244:81/image/iconsavepath/show.jpg" alt="${blogShow.bc_user_name}" style="width:70px; ">
+				    <img src="" id="recommendImg" alt="" style="width:70px; ">
 				  </a>
 				  <div class="media-body">
-				    <h3 class="media-heading" style="color:red">今日推荐：${blogShow.blog_title}博文标题</h3>
-				    <p>
-				   	 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="${ctx}/blog/selBlogView/${blogShow.bc_blog_id}.html"	 target="_blank" >博文简介${blogShow.blog_abstract}</a>
+				    <h3 class="media-heading" style="color:red" id="recommendTitle">今日推荐：</h3>
+				    <p id="recommendAbstract">
+				   	 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				  	</p>
 				  </div>
 				</div>
@@ -149,30 +111,15 @@
       	  <div class="row">
                    <div class="col-md-6">
           			<div class="list-group">
-							<a href="#" class="list-group-item active">最新章节 </a>
-							<a href="${ctx}/chapter/viewChapter/${jwebchapter.course_chapter_id}.html" target="_blank"	class="list-group-item">第一章，jdk安装规范<span class="view-count">12</span></a>
-							<a href="${ctx}/chapter/viewChapter/${jwebchapter.course_chapter_id}.html" target="_blank"	class="list-group-item">第一章，jdk安装规范<span class="view-count">1202</span></a>
-							<a href="${ctx}/chapter/viewChapter/${jwebchapter.course_chapter_id}.html" target="_blank"	class="list-group-item">第一章，jdk安装规范<span class="view-count">12</span></a>
-							<a href="${ctx}/chapter/viewChapter/${jwebchapter.course_chapter_id}.html" target="_blank"	class="list-group-item">第一章，jdk安装规范<span class="view-count">12</span></a>
-							<a href="${ctx}/chapter/viewChapter/${jwebchapter.course_chapter_id}.html" target="_blank"	class="list-group-item">第一章，jdk安装规范<span class="view-count">1202</span></a>
-							<a href="${ctx}/chapter/viewChapter/${jwebchapter.course_chapter_id}.html" target="_blank"	class="list-group-item">第一章，jdk安装规范<span class="view-count">12</span></a>
-							 <c:forEach items="${jwebchapters }" var="jwebchapter">
-									<a href="${ctx}/chapter/viewChapter/${jwebchapter.course_chapter_id}.html" target="_blank"	class="list-group-item">${jwebchapter.chapter_title }</a>
-								</c:forEach>
+							<a href="#" class="list-group-item active">最新代码 </a>
+							<div id="codeShare"></div>
 					</div>
         </div>
         <div class="col-md-6">
           	<div class="list-group">
-							<a href="#" class="list-group-item active">最新博文 </a>
-							<a href="${ctx}/chapter/viewChapter/${jwebchapter.course_chapter_id}.html" target="_blank"	class="list-group-item">最新界面上线<span class="view-count">12</span></a>
-							<a href="${ctx}/chapter/viewChapter/${jwebchapter.course_chapter_id}.html" target="_blank"	class="list-group-item">最新界面上线<span class="view-count">12</span></a>
-							<a href="${ctx}/chapter/viewChapter/${jwebchapter.course_chapter_id}.html" target="_blank"	class="list-group-item">最新界面上线<span class="view-count">12</span></a>
-							<a href="${ctx}/chapter/viewChapter/${jwebchapter.course_chapter_id}.html" target="_blank"	class="list-group-item">最新界面上线<span class="view-count">12</span></a>
-							<a href="${ctx}/chapter/viewChapter/${jwebchapter.course_chapter_id}.html" target="_blank"	class="list-group-item">最新界面上线<span class="view-count">12</span></a>
-							<a href="${ctx}/chapter/viewChapter/${jwebchapter.course_chapter_id}.html" target="_blank"	class="list-group-item">最新界面上线<span class="view-count">12</span></a>
-							 <c:forEach items="${jwebchapters }" var="jwebchapter">
-									<a href="${ctx}/chapter/viewChapter/${jwebchapter.course_chapter_id}.html" target="_blank"	class="list-group-item">${jwebchapter.chapter_title }</a>
-								</c:forEach>
+							<a href="#" class="list-group-item active">JAVA集合框架 </a>
+							<div id="jdkCollection">
+							</div>
 					</div>
        </div>
        </div>
@@ -182,30 +129,14 @@
           	  <div class="row">
                    <div class="col-md-6">
           			<div class="list-group">
-							<a href="#" class="list-group-item active">最新代码 </a>
-							<a href="${ctx}/chapter/viewChapter/${jwebchapter.course_chapter_id}.html" target="_blank"	class="list-group-item">第一章，jdk安装规范<span class="view-count">12</span></a>
-							<a href="${ctx}/chapter/viewChapter/${jwebchapter.course_chapter_id}.html" target="_blank"	class="list-group-item">第一章，jdk安装规范<span class="view-count">1202</span></a>
-							<a href="${ctx}/chapter/viewChapter/${jwebchapter.course_chapter_id}.html" target="_blank"	class="list-group-item">第一章，jdk安装规范<span class="view-count">12</span></a>
-							<a href="${ctx}/chapter/viewChapter/${jwebchapter.course_chapter_id}.html" target="_blank"	class="list-group-item">最新界面上线<span class="view-count">12</span></a>
-							<a href="${ctx}/chapter/viewChapter/${jwebchapter.course_chapter_id}.html" target="_blank"	class="list-group-item">最新界面上线<span class="view-count">12</span></a>
-							<a href="${ctx}/chapter/viewChapter/${jwebchapter.course_chapter_id}.html" target="_blank"	class="list-group-item">最新界面上线<span class="view-count">12</span></a>
-							 <c:forEach items="${jwebchapters }" var="jwebchapter">
-									<a href="${ctx}/chapter/viewChapter/${jwebchapter.course_chapter_id}.html" target="_blank"	class="list-group-item">${jwebchapter.chapter_title }</a>
-								</c:forEach>
+							<a href="#" class="list-group-item active">开发工具 </a>
+							<div id="javaIDE"></div>
 					</div>
         </div>
         <div class="col-md-6">
           	<div class="list-group">
-							<a href="#" class="list-group-item active">组件，框架</a>
-							<a href="${ctx}/chapter/viewChapter/${jwebchapter.course_chapter_id}.html" target="_blank"	class="list-group-item">最新界面上线<span class="view-count">12</span></a>
-							<a href="${ctx}/chapter/viewChapter/${jwebchapter.course_chapter_id}.html" target="_blank"	class="list-group-item">最新界面上线<span class="view-count">12</span></a>
-							<a href="${ctx}/chapter/viewChapter/${jwebchapter.course_chapter_id}.html" target="_blank"	class="list-group-item">最新界面上线<span class="view-count">12</span></a>
-							<a href="${ctx}/chapter/viewChapter/${jwebchapter.course_chapter_id}.html" target="_blank"	class="list-group-item">最新界面上线<span class="view-count">12</span></a>
-							<a href="${ctx}/chapter/viewChapter/${jwebchapter.course_chapter_id}.html" target="_blank"	class="list-group-item">最新界面上线<span class="view-count">12</span></a>
-							<a href="${ctx}/chapter/viewChapter/${jwebchapter.course_chapter_id}.html" target="_blank"	class="list-group-item">最新界面上线<span class="view-count">12</span></a>
-							 <c:forEach items="${jwebchapters }" var="jwebchapter">
-									<a href="${ctx}/chapter/viewChapter/${jwebchapter.course_chapter_id}.html" target="_blank"	class="list-group-item">${jwebchapter.chapter_title }</a>
-								</c:forEach>
+							<a href="#" class="list-group-item active">开源框架</a>
+							<div id="openSource"></div>
 					</div>
        </div>
        </div>
@@ -267,19 +198,8 @@
 					<div class="col-md-12">
 						<div class="list-group">
 							<a href="#" class="list-group-item active"> 项目专区：分享我们做的"小玩意"</a>
-												<a href="${ctx}/project/viewProStage/${proStage.project_stage_id}.html" target="_blank"		class="list-group-item">界面原型<span class="view-count">12/122</span></a>
-												<a href="${ctx}/project/viewProStage/${proStage.project_stage_id}.html" target="_blank"		class="list-group-item">界面原型<span class="view-count">12/122</span></a>
-												<a href="${ctx}/project/viewProStage/${proStage.project_stage_id}.html" target="_blank"		class="list-group-item">界面原型<span class="view-count">12/122</span></a>
-												<a href="${ctx}/project/viewProStage/${proStage.project_stage_id}.html" target="_blank"		class="list-group-item">界面原型<span class="view-count">12/122</span></a>
-												<a href="${ctx}/project/viewProStage/${proStage.project_stage_id}.html" target="_blank"		class="list-group-item">界面原型<span class="view-count">12/122</span></a>
-												<a href="${ctx}/project/viewProStage/${proStage.project_stage_id}.html" target="_blank"		class="list-group-item">界面原型<span class="view-count">12/122</span></a>
-												<a href="${ctx}/project/viewProStage/${proStage.project_stage_id}.html" target="_blank"		class="list-group-item">界面原型<span class="view-count">12/122</span></a>
-												<a href="${ctx}/project/viewProStage/${proStage.project_stage_id}.html" target="_blank"		class="list-group-item">界面原型<span class="view-count">12/122</span></a>
-				
-									<c:forEach items="${proStages }" var="proStage">
-									<a href="${ctx}/project/viewProStage/${proStage.project_stage_id}.html" target="_blank"		class="list-group-item">${proStage.stage_name }</a>
-									</c:forEach>
-									
+							<div id="begincode">
+							</div>
 						</div>
 					</div>
 				</div>
@@ -289,5 +209,16 @@
  <jsp:include page="/page/core/foot.jsp"/> 
 	<!-- Include all compiled plugins (below), or include individual files as needed -->
 	<script src="${ctx}/js/bootstrap.min.js"></script>
+	<script src="${ctx}/js/core/index.js"></script>
+	<script type="text/javascript">
+	$(document).ready(function(e) {
+		topBegincode();
+		topJavaCollection();
+		topIDE();
+		topOpenSource();
+		topCodeShare();
+		recommend();
+	});
+	</script>
 </body>
 </html>

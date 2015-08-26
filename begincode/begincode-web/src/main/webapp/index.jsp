@@ -31,7 +31,20 @@ $(document).ready(function(e) {
 </script>
 <body>
 	<jsp:include  page="/page/core/top.jsp"/> 
-	
+ 	<!-- msg -->
+	<div   class="modal fade bs-example-modal-sm" id="msgModal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        <p>错误信息提示</p>
+      </div>
+    </div>
+  </div>
+</div>
  
  <div class="container">
  <div class="row">
@@ -70,5 +83,10 @@ $(document).ready(function(e) {
  <jsp:include page="/page/core/foot.jsp"/> 
 	<!-- Include all compiled plugins (below), or include individual files as needed -->
 	<script src="${ctx}/js/bootstrap.min.js"></script>
+	<script type="text/javascript">
+	$(document).ready(function(e) {
+		$("#msgModal").modal('show');
+	});
+</script>
 </body>
 </html>

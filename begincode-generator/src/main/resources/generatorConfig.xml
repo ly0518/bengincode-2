@@ -46,19 +46,8 @@
     <!-- 要对那些数据表进行生成操作，必须要有一个. 可以指定表名，本项目用%通配符，生成全部表的信息
     <table schema="mybatis" tableName="user" domainObjectName="User" -->
     
-     <table schema="mybatis" tableName="blog_type"  
-        enableCountByExample="false" enableUpdateByExample="false"
-        enableDeleteByExample="false" enableSelectByExample="false"
-        selectByExampleQueryId="false" selectByPrimaryKeyQueryId="true"
-        enableSelectByPrimaryKey="true" enableUpdateByPrimaryKey="true"
-        enableDeleteByPrimaryKey="true" >  </table>
-     <table schema="mybatis" tableName="blog"  
-        enableCountByExample="false" enableUpdateByExample="false"
-        enableDeleteByExample="false" enableSelectByExample="false"
-        selectByExampleQueryId="false" selectByPrimaryKeyQueryId="true"
-        enableSelectByPrimaryKey="true" enableUpdateByPrimaryKey="true"
-        enableDeleteByPrimaryKey="true" > </table> 
-    <table schema="mybatis" tableName="blog_comment"  
+ 
+    <table schema="mybatis" tableName="recommend"  
         enableCountByExample="false" enableUpdateByExample="false"
         enableDeleteByExample="false" enableSelectByExample="false"
         selectByExampleQueryId="false" selectByPrimaryKeyQueryId="true"

@@ -106,6 +106,20 @@
 		<hr>
 <!-- foot -->
 	<jsp:include page="/page/core/foot.jsp" />
+		<!-- msg -->
+	<div   class="modal fade bs-example-modal-sm" id="msgModal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h4 class="modal-title">系统消息</h4>
+	      </div>
+	      <div class="modal-body" id="msg">
+	      </div>
+	    </div>
+	  </div>
+	</div>
+	<!-- msg end -->
 	<script src="${ctx}/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="${ctx}/js/blog/blog.js"></script>
 	<script type="text/javascript" src="${ctx}/js/blog/blogComment.js"></script>

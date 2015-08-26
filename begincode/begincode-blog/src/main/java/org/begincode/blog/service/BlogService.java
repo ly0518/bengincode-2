@@ -62,4 +62,13 @@ public interface BlogService
 	* @throws 
 	*/
 	public void batchUpdateAddCountById(List<Blog> blogs);
+	
+	/** 
+	* @Title: findRecommendBlog 
+	* @Description: 查看推荐博文
+	* @param recommendId
+	* @return Blog   
+	* @throws 
+	*/
+	public Blog findRecommendBlog();
 }

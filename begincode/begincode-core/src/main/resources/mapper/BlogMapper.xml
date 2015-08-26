@@ -91,6 +91,11 @@
   		 from blog
   </select>
   
+  <select id="selectRecommendBlog"  resultMap="ResultMapWithBLOBs">
+  	select blog.* from recommend rec 
+		left join blog on rec.content_id = blog.blog_id 
+			 where recommend_type = 1 order by recommend_id desc  limit 1
+  </select>
   
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
     select 'true' as QUERYID,

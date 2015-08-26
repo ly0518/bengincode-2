@@ -84,7 +84,7 @@
 				</div>
 				 -->
 				 	<button type="button" class="btn btn-primary" onclick="addBlog()" id="codeShare" data-toggle="button" aria-pressed="false" autocomplete="off" style="border-radius: 0px;width:100%;height:60px;margin-bottom:10px;font-weight:bold;font-size:35px">
-			  创建博文
+			  创建博文 
 			</button>
 				<div class="list-group">
 				
@@ -99,8 +99,23 @@
 	<hr>
 	<!-- foot -->
 	<jsp:include page="/page/core/foot.jsp" />
-	<script src="${ctx}/css/js/bootstrap.min.js"></script>
+	<!-- msg -->
+	<div   class="modal fade bs-example-modal-sm" id="msgModal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h4 class="modal-title">系统消息</h4>
+	      </div>
+	      <div class="modal-body" id="msg">
+	      </div>
+	    </div>
+	  </div>
+	</div>
+	<!-- msg end -->
+	<script src="${ctx}/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="${ctx}/js/blog/blog.js"></script>
+	<script type="text/javascript" src="${ctx}/js/jquery.cookie.js"></script>
 	<script type="text/javascript">
 	$(document).ready(function(e) {
 		$("#pagediv").pagination({

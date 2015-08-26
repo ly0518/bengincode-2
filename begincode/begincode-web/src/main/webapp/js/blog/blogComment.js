@@ -64,7 +64,9 @@ $('#pubBlogCommon').click(function(){
 				});		
 		}
 	}else{
-		alert("请先登录....");
+		$("#msg").empty();
+		$("#msg").append("<p>请先登录...</p>");
+		$("#msgModal").modal('show');
 	}
 	
 

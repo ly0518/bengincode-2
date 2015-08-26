@@ -28,10 +28,13 @@ public class CookieOperation {
 	public static void addCookie(HttpServletResponse response,BegincodeUser user){
 		Cookie accessToken = new Cookie("accessToken",user.getAccessToken());
 		Cookie openId = new Cookie("openId",user.getOpenId());
+		Cookie check = new Cookie("check",user.getCheckFlag());
 		accessToken.setPath("/");
 		openId.setPath("/");
+		check.setPath("/");
 		response.addCookie(accessToken);
 		response.addCookie(openId);
+		response.addCookie(check);
 	}
 	/** 
 	* @Title: delCookie 
@@ -42,12 +45,16 @@ public class CookieOperation {
 	public static void delCookie(HttpServletResponse response){
 		Cookie accessToken = new Cookie("accessToken", null);
 		Cookie openId = new Cookie("openId",null);
+		Cookie check = new Cookie("check",null);
 		accessToken.setMaxAge(0);
 		openId.setMaxAge(0);
+		check.setMaxAge(0);
 		accessToken.setPath("/");
 		openId.setPath("/");
+		check.setPath("/");
 		response.addCookie(accessToken);
 		response.addCookie(openId);
+		response.addCookie(check);
 	}
 	
 	/** 

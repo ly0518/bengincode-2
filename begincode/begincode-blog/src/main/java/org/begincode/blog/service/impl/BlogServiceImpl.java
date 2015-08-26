@@ -65,4 +65,9 @@ public class BlogServiceImpl implements BlogService
 	public void batchUpdateAddCountById(List<Blog> blogs) {
 		blogMapper.batchUpdateAddCountById(blogs);
 	}
+
+	@Override
+	public Blog findRecommendBlog(){
+		return blogMapper.selectRecommendBlog();
+	}
 }

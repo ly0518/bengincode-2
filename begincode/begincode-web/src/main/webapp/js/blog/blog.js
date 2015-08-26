@@ -120,10 +120,21 @@ function getLabel(keywords){
 }
 
 function addBlog(){
+	var checkFlag= $.cookie('check');
 	if(QC.Login.check()){
-		location.href =ctx+"/blog/userId";
+		if(checkFlag == "1"){
+			location.href =ctx+"/blog/userId";
+		}else{
+			$("#msg").empty();
+			$("#msg").append("<p>您的账户未通过审核，不能创建博文</p>");
+			$("#msgModal").modal('show');
+			return false;
+		}
 	}else{
-		alert("请先登录...");
+		$("#msg").empty();
+		$("#msg").append("<p>请先登录...</p>");
+		$("#msgModal").modal('show');
+//		location.href =ctx+"/blog/userId";
 		return false;
 		
 	}

@@ -31,5 +31,7 @@ public interface BlogMapper {
     int updateAddCountById(Blog record);
     
     int batchUpdateAddCountById(List<Blog> blogList);
+    
+    Blog selectRecommendBlog();
 
 }
