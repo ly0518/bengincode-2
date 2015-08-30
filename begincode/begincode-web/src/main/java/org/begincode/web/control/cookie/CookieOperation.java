@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.begincode.core.model.BegincodeUser;
+import org.begincode.user.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 
 /** 
 * @ClassName: CookieOperation 
@@ -29,12 +31,15 @@ public class CookieOperation {
 		Cookie accessToken = new Cookie("accessToken",user.getAccessToken());
 		Cookie openId = new Cookie("openId",user.getOpenId());
 		Cookie check = new Cookie("check",user.getCheckFlag());
+		Cookie userId = new Cookie("userId",user.getBegincodeUserId()+"");
 		accessToken.setPath("/");
 		openId.setPath("/");
 		check.setPath("/");
+		userId.setPath("/");
 		response.addCookie(accessToken);
 		response.addCookie(openId);
 		response.addCookie(check);
+		response.addCookie(userId);
 	}
 	/** 
 	* @Title: delCookie 
@@ -46,17 +51,38 @@ public class CookieOperation {
 		Cookie accessToken = new Cookie("accessToken", null);
 		Cookie openId = new Cookie("openId",null);
 		Cookie check = new Cookie("check",null);
+		Cookie userId = new Cookie("userId",null);
 		accessToken.setMaxAge(0);
 		openId.setMaxAge(0);
 		check.setMaxAge(0);
+		userId.setMaxAge(0);
 		accessToken.setPath("/");
 		openId.setPath("/");
 		check.setPath("/");
+		userId.setPath("/");
 		response.addCookie(accessToken);
 		response.addCookie(openId);
 		response.addCookie(check);
+		response.addCookie(userId);
 	}
 	
+	/** 
+	* @Title: getUser 
+	* @Description: 获取登录人的信息
+	* @param request
+	* @return BegincodeUser   
+	* @throws 
+	*/
+	public static BegincodeUser getUser(HttpServletRequest request){
+		Map<String,String> map = getCookie(request);
+		if(map != null && !map.get("userId").equals("")){
+			BegincodeUser user = new BegincodeUser();
+			user.setBegincodeUserId(Integer.valueOf(map.get("userId")));
+			return user;
+		}else{
+			return null;
+		}
+	}
 	/** 
 	* @Title: getCookie 
 	* @Description: 获取cookie并返回map
@@ -71,6 +97,8 @@ public class CookieOperation {
 //		//测试使用
 //		cookieMap.put("accessToken",  "234234");
 //		cookieMap.put("openId",  "123123213");
+//		cookieMap.put("check",  "1");
+//		cookieMap.put("userId",  "3");
 //		return cookieMap;
 		
 		//临时注释
@@ -84,6 +112,12 @@ public class CookieOperation {
 				if(cookie.getName().equals("openId")){
 					cookieMap.put("openId", cookie.getValue());
 					exist++;
+				}
+				if(cookie.getName().equals("userId")){
+					cookieMap.put("userId", cookie.getValue());
+				}
+				if(cookie.getName().equals("check")){
+					cookieMap.put("check", cookie.getValue());
 				}
 			}
 		}else{

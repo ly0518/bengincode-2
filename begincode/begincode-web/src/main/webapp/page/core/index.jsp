@@ -109,16 +109,22 @@
       <div class="row">
        <div class="col-md-12">
       	  <div class="row">
-                   <div class="col-md-6">
+                   <div class="col-md-4">
           			<div class="list-group">
 							<a href="#" class="list-group-item active">最新代码 </a>
 							<div id="codeShare"></div>
 					</div>
         </div>
-        <div class="col-md-6">
+         <div class="col-md-4">
+          			<div class="list-group">
+							<a href="#" class="list-group-item active">最新博文 </a>
+							<div id="blogs"></div>
+					</div>
+        </div>
+        <div class="col-md-4">
           	<div class="list-group">
-							<a href="#" class="list-group-item active">JAVA集合框架 </a>
-							<div id="jdkCollection">
+							<a href="#" class="list-group-item active">数据库 </a>
+							<div id="db">
 							</div>
 					</div>
        </div>
@@ -127,13 +133,19 @@
             <p>	分享:分享我们的知识;专注:专注个人技术的提升;</p>
           </div>
           	  <div class="row">
-                   <div class="col-md-6">
+                   <div class="col-md-4">
           			<div class="list-group">
 							<a href="#" class="list-group-item active">开发工具 </a>
 							<div id="javaIDE"></div>
 					</div>
         </div>
-        <div class="col-md-6">
+            <div class="col-md-4">
+          			<div class="list-group">
+							<a href="#" class="list-group-item active">JAVA-Collection </a>
+							<div id="jdkCollection"></div>
+					</div>
+        </div>
+        <div class="col-md-4">
           	<div class="list-group">
 							<a href="#" class="list-group-item active">开源框架</a>
 							<div id="openSource"></div>
@@ -145,50 +157,9 @@
 <!--        <div class="col-md-3"> -->
 <!--        <div class="list-group"> -->
 <!-- 		  <a href="#" class="list-group-item "> -->
-<!-- 		    <h4 class="list-group-item-heading">王大锤</h4> -->
-<!-- 		    <p class="list-group-item-text">今天天气正好</p> -->
+<!-- 		    <h4 class="list-group-item-heading">name</h4> -->
+<!-- 		    <p class="list-group-item-text">words</p> -->
 <!-- 		  </a> -->
-<!-- 		  <a href="#" class="list-group-item "> -->
-<!-- 		    <h4 class="list-group-item-heading">王大锤</h4> -->
-<!-- 		    <p class="list-group-item-text">今天天气正好</p> -->
-<!-- 		  </a> -->
-<!-- 		  <a href="#" class="list-group-item  "> -->
-<!-- 		    <h4 class="list-group-item-heading">王大锤</h4> -->
-<!-- 		    <p class="list-group-item-text">今天天气正好</p> -->
-<!-- 		  </a> -->
-<!-- 		  <a href="#" class="list-group-item "> -->
-<!-- 		    <h4 class="list-group-item-heading">王大锤</h4> -->
-<!-- 		    <p class="list-group-item-text">今天天气正好</p> -->
-<!-- 		  </a> -->
-<!-- 		  <a href="#" class="list-group-item "> -->
-<!-- 		    <h4 class="list-group-item-heading">王大锤</h4> -->
-<!-- 		    <p class="list-group-item-text">今天天气正好</p> -->
-<!-- 		  </a> -->
-<!-- 		  <a href="#" class="list-group-item "> -->
-<!-- 		    <h4 class="list-group-item-heading">王大锤</h4> -->
-<!-- 		    <p class="list-group-item-text">今天天气正好</p> -->
-<!-- 		  </a> -->
-<!-- 		  <a href="#" class="list-group-item "> -->
-<!-- 		    <h4 class="list-group-item-heading">王大锤</h4> -->
-<!-- 		    <p class="list-group-item-text">今天天气正好</p> -->
-<!-- 		  </a> -->
-<!-- 		  <a href="#" class="list-group-item "> -->
-<!-- 		    <h4 class="list-group-item-heading">王大锤</h4> -->
-<!-- 		    <p class="list-group-item-text">今天天气正好</p> -->
-<!-- 		  </a> -->
-<!-- 		  <a href="#" class="list-group-item "> -->
-<!-- 		    <h4 class="list-group-item-heading">王大锤</h4> -->
-<!-- 		    <p class="list-group-item-text">今天天气正好</p> -->
-<!-- 		  </a> -->
-<!-- 		  <a href="#" class="list-group-item "> -->
-<!-- 		    <h4 class="list-group-item-heading">王大锤</h4> -->
-<!-- 		    <p class="list-group-item-text">今天天气正好</p> -->
-<!-- 		  </a> -->
-<!-- 		  <a href="#" class="list-group-item "> -->
-<!-- 		    <h4 class="list-group-item-heading">王大锤</h4> -->
-<!-- 		    <p class="list-group-item-text">今天天气正好</p> -->
-<!-- 		  </a> -->
-		 
 <!-- 		</div> -->
 <!--        </div> -->
       </div>
@@ -218,6 +189,9 @@
 		topOpenSource();
 		topCodeShare();
 		recommend();
+		topDb();
+		topBlog();
+		
 	});
 	</script>
 </body>

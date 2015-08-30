@@ -17,6 +17,13 @@ public interface BlogService
 {
 	/**
 	 * @Description: 查询blog
+	 * @param Blog record,Paginator page
+	 * @return PageList
+	 * @throws
+	 */
+	public PageList findBlogsByRecords(Blog record,Paginator page);
+	/**
+	 * @Description: 查询blog
 	 * @param Blog record
 	 * @return PageList
 	 * @throws
@@ -46,6 +53,14 @@ public interface BlogService
 	 */
 	public Blog createBlog(Blog record);
 	
+	/** 
+	* @Title: updateBlog 
+	* @Description: 修改blog
+	* @param record
+	* @return Blog   
+	* @throws 
+	*/
+	public int updateBlog(Blog record);
 	/** 
 	* @Title: updateAddCountById 
 	* @Description: 修改博客浏览，好评，差评次数，原有基础上增加，供定时任务用

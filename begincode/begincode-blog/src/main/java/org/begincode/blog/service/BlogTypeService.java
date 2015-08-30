@@ -26,5 +26,14 @@ public interface BlogTypeService
 	* @throws 
 	*/
 	public List<BlogType> findBlogTypeByUserId(int userId);
+	
 	 
+	/** 
+	* @Title: createBlogType 
+	* @Description: 创建博客分类
+	* @param blogType 
+	* @return BlogType   
+	* @throws 
+	*/
+	public BlogType createBlogType(BlogType blogType); 
 }

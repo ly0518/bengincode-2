@@ -47,3 +47,19 @@
 		  }
 		  });
 	});
+	
+	
+	function userTopTen() {
+		jQuery.ajax({
+			type : "GET",
+			url : ctx + "/code/topTen/userId",
+			data : "",
+			dataType : "json",
+			success : function(codes) {
+				$.each(codes,function(i) {
+					var codeStr = "<a href=\""+ctx+"/code/"+codes[i].begincodeCodeId+" \" class=\"list-group-item\">"+codes[i].codeInfo+"<span class=\"view-count\">"+codes[i].viewCount+"</span></a>";
+					$("#codeList").append(codeStr);
+				});
+			}
+		});
+	}

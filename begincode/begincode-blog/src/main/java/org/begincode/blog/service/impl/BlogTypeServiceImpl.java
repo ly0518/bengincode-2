@@ -34,5 +34,12 @@ public class BlogTypeServiceImpl implements BlogTypeService
 	public List<BlogType> findBlogTypeByUserId(int userId){
 		return blogTypeMapper.selectAllByUserId(userId);
 	}
+
+
+	@Override
+	public BlogType createBlogType(BlogType blogType) {
+		 blogTypeMapper.insertSelective(blogType);
+		 return blogType;
+	}
 	 
 }

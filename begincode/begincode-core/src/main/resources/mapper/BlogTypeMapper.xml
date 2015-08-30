@@ -26,13 +26,13 @@
     delete from blog_type
     where blog_type_id = #{blogTypeId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="org.begincode.core.model.BlogType">
+  <insert id="insert"  useGeneratedKeys="true" keyProperty="blogTypeId"  parameterType="org.begincode.core.model.BlogType">
     insert into blog_type (blog_type_id, blog_type_name, delete_flag, 
       begincode_user_id)
     values (#{blogTypeId,jdbcType=INTEGER}, #{blogTypeName,jdbcType=VARCHAR}, #{deleteFlag,jdbcType=CHAR}, 
       #{begincodeUserId,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="org.begincode.core.model.BlogType">
+  <insert id="insertSelective" useGeneratedKeys="true" keyProperty="blogTypeId" parameterType="org.begincode.core.model.BlogType">
     insert into blog_type
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="blogTypeId != null">

@@ -23,9 +23,9 @@
 	<jsp:include page="/page/core/top.jsp" />
 
 	<ol class="breadcrumb">
-		<li><a href="#">首页</a></li>
-		<li><a href="#">空间管理</a></li>
-		<li class="active">发布博文</li>
+		<li class="active">首页</li>
+		<li class="active">空间管理</li>
+		<li class="active">发布代码</li>
 	</ol>
 
 	<div class="container .col-xs-" style="margin-top: 20px">
@@ -57,10 +57,10 @@
 <!-- 					style="border-radius: 0px; width: 100%; height: 60px; margin-bottom: 10px; font-weight: bold; font-size: 35px"> -->
 <!-- 					发布博文</button> -->
 
-				<div class="list-group" id="classList">
-					<a href="#" class="list-group-item active"> 博客分类 </a>
-				</div>
-				<div class="list-group" id="readList">
+<!-- 				<div class="list-group" id="classList"> -->
+<!-- 					<a href="#" class="list-group-item active"> 博客分类 </a> -->
+<!-- 				</div> -->
+				<div class="list-group" id="codeList">
 					<a href="#" class="list-group-item active"> 阅读排行 </a>
 				</div>
 			</div>
@@ -89,14 +89,14 @@
 							<div class="form-group">
 								<label for="codeInfo"><span class="labelinfowarn"></span>代码标题</label>
 								<input type="text" class="form-control required" id="codeInfo"
-									name="codeInfo" value="" placeholder="博客标题">
+									name="codeInfo" value="" placeholder="代码标题">
 							</div>
 							<div class="form-group">
 								<label for="exampleInputPassword1"><span
 									class="labelinfosuccess"></span>代码摘要</label>
 								<textarea class="form-control required" id="codeAbstract"
 									name="codeAbstract" rows="3"
-									placeholder="我们提议，为您的博客添加摘要，这也是给阅读者一个引导"></textarea>
+									placeholder="我们提议，为您的代码添加摘要，这也是给阅读者一个引导"></textarea>
 							</div>
 							<div class="form-group">
 								<label id="bcContent" for="codeContent"><span
@@ -109,7 +109,7 @@
 									class="labelinfoblue"></span>关键字</label> <input type="text"
 									class="form-control required" id="begincodeKeys"
 									name="begincodeKeys" value=""
-									placeholder="为你的博客定义关键字，逗号隔开，不要超过6个哦">
+									placeholder="为你的代码定义关键字，逗号隔开，不要超过3个哦">
 							</div>
 
 							<div style="margin-top: 10px; text-align: center;">
@@ -144,6 +144,7 @@
 		<script src="${ctx}/js/code/codeEdit.js"></script>
 		<script>
 			var ctx = "${ctx}";  
+			userTopTen();
 		</script>
 </body>
 </html>

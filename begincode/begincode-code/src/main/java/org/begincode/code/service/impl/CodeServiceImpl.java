@@ -94,4 +94,10 @@ public class CodeServiceImpl implements CodeService
 	public void batchUpdateAddCountById(List<BegincodeCode> codes) {
 		begincodeCodeMapper.batchUpdateAddCountById(codes);
 	}
+
+	@Override
+	public PageList findCodesByRecords(BegincodeCode record, Paginator page) {
+		BeginCodePageParam.initPaginator(page);
+		return begincodeCodeMapper.selectBySelective(record);
+	}
 }

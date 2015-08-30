@@ -70,4 +70,15 @@ public class BlogServiceImpl implements BlogService
 	public Blog findRecommendBlog(){
 		return blogMapper.selectRecommendBlog();
 	}
+
+	@Override
+	public PageList findBlogsByRecords(Blog record, Paginator page) {
+		BeginCodePageParam.initPaginator(page);
+		return  blogMapper.selectBySelective(record);
+	}
+
+	@Override
+	public int updateBlog(Blog record) {
+		return blogMapper.updateByPrimaryKeySelective(record);
+	}
 }

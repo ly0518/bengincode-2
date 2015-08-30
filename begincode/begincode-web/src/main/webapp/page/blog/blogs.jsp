@@ -114,6 +114,7 @@
 	</div>
 	<!-- msg end -->
 	<script src="${ctx}/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="${ctx}/js/blog/blogUtil.js"></script>
 	<script type="text/javascript" src="${ctx}/js/blog/blog.js"></script>
 	<script type="text/javascript" src="${ctx}/js/jquery.cookie.js"></script>
 	<script type="text/javascript">

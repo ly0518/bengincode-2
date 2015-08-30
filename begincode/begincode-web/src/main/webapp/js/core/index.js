@@ -31,6 +31,21 @@ function topBegincode() {
 		}
 	});
 }
+//db
+function topDb() {
+	jQuery.ajax({
+		type : "GET",
+		url : ctx + "/blog/blogType/11/size/6",
+		data : "",
+		dataType : "json",
+		success : function(blogs) {
+			$.each(blogs,function(i) {
+					var blogStr = "<a href=\""+ctx+"/blog/"+blogs[i].blogId+" \" class=\"list-group-item\"  target=\"_blank\"	 >"+blogs[i].blogInfo+"<span class=\"view-count\">"+blogs[i].viewCount+"</span></a>";
+					$("#db").append(blogStr);
+			});
+		}
+	});
+}
 //java集合框架
 function topJavaCollection() {
 	jQuery.ajax({
@@ -87,6 +102,21 @@ function topCodeShare() {
 			$.each(codes,function(i) {
 					var blogStr = "<a href=\""+ctx+"/code/"+codes[i].begincodeCodeId+" \"   class=\"list-group-item\" target=\"_blank\" >"+codes[i].codeInfo+"<span class=\"view-count\">"+codes[i].viewCount+"</span></a>";
 					$("#codeShare").append(blogStr);
+			});
+		}
+	});
+}
+//top blog
+function topBlog() {
+	jQuery.ajax({
+		type : "GET",
+		url : ctx + "/blog/top/6",
+		data : "",
+		dataType : "json",
+		success : function(blogdata) {
+			$.each(blogdata,function(i) {
+				var blogStr = "<a href=\""+ctx+"/blog/"+blogdata[i].blogId+" \" class=\"list-group-item\"  target=\"_blank\"	 >"+blogdata[i].blogInfo+"<span class=\"view-count\">"+blogdata[i].viewCount+"</span></a>";
+				$("#blogs").append(blogStr);
 			});
 		}
 	});

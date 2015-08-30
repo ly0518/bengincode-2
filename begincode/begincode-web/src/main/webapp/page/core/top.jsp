@@ -24,10 +24,12 @@
      //根据返回数据，更换按钮显示状态方法
             var dom = document.getElementById(opts['btnId']),
            _logoutTemplate=[
-                 //昵称
-                '<span>{nickname}</span>',
-                 //退出
-                 '<span><a href="javascript:QC.Login.signOut();">退出</a></span>'
+		          '<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">欢迎:{nickname}<span class="caret"></span></a>',
+		          '<ul class="dropdown-menu">',
+		           ' <li><a href="${ctx}/blog/blogManage">博文管理</a></li>',
+		           ' <li role="separator" class="divider"></li>',
+		           ' <li><a href="javascript:QC.Login.signOut();">退出</a></li>',
+		         ' </ul>'
                    ].join("");
                 dom && (dom.innerHTML = QC.String.format(_logoutTemplate, {
                          nickname : QC.String.escHTML(reqData.nickname),
@@ -87,6 +89,7 @@
 				</li>
 <!-- 				<li class="dropdown"><a href="#" class="dropdown-toggle">BeginCode开源 -->
 <!-- 				</a></li> -->
+		
 				<li class="dropdown">
 				<li class=""><a href="${ctx}/page/core/about.jsp"><font
 						color="red">关于我们</font></a></li>
@@ -95,10 +98,10 @@
 				<!-- 				 </li> -->
 			</ul>
 			<div id="navbar" class="navbar-collapse collapse">
-
+			
 				<form class="navbar-form navbar-right">
+					<span id="qqLoginBtn" class="dropdown"></span> 
 					<div class="form-group">
-						<span id="qqLoginBtn"></span> 
 						<input type="text" name=""	class="form-control " placeholder="教程，资源">
 					</div>
 					

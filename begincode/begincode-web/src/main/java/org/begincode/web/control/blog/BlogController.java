@@ -14,6 +14,7 @@ import org.begincode.blog.service.BlogTypeService;
 import org.begincode.core.constant.BeginCodeConstant;
 import org.begincode.core.model.BegincodeUser;
 import org.begincode.core.model.Blog;
+import org.begincode.core.model.BlogType;
 import org.begincode.core.paginator.BeginCodeInterceptor;
 import org.begincode.core.paginator.domain.PageList;
 import org.begincode.core.paginator.domain.Paginator;
@@ -55,6 +56,7 @@ public class BlogController {
 	@Autowired
 	CountOperator countOperator;
 
+	
 	@RequestMapping(value="", method = RequestMethod.GET)
 	public String selBlogList(Model model) {
 		Paginator page = new Paginator(0, BeginCodeConstant.PAGE_SIZE);
@@ -64,6 +66,15 @@ public class BlogController {
 		return "/page/blog/blogs";
 	}
 
+	@RequestMapping(value="/blogId/{blogId}", method = RequestMethod.GET)
+	public String selBlogById(Model model,@PathVariable("blogId") int blogId) {
+		Blog blog = blogService.findBlogById(blogId);
+		model.addAttribute("blog", blog);
+		model.addAttribute("user", userService.findUserById(blog.getBegincodeUserId()));
+		model.addAttribute("blogTypes", blogTypeService.findBlogTypeByUserId(blog.getBegincodeUserId()));
+		return "/page/blog/blog_edit";
+	}
+	
 	@RequestMapping(value = "/{blogId}", method = RequestMethod.GET)
 	public String selBlogs(Model model, @PathVariable("blogId") int blogId) {
 		Blog record = blogService.findBlogById(blogId);
@@ -76,12 +87,60 @@ public class BlogController {
 		model.addAttribute("blog", record);
 		return "/page/blog/blog_view";
 	}
-
+	
+	@RequestMapping(value = "/blogManage/typeId/{typeId}", method = RequestMethod.GET)
+	public String blogManageByTypeId(Model model,@PathVariable("typeId") int typeId,HttpServletRequest request) {
+		Blog blog = new Blog();
+		blog.setBlogTypeId(typeId);
+		Paginator page = new Paginator(0, BeginCodeConstant.PAGE_SIZE);
+		PageList list = blogService.findBlogsByRecords(blog, page);
+		model.addAttribute("blogs", list);
+		model.addAttribute("pageinfo", list.getPaginator());
+		model.addAttribute("blogTypeId", typeId);
+		model.addAttribute("user",userService.findUserById(CookieOperation.getUser(request).getBegincodeUserId()));
+		return "/page/blog/blog_manager";	
+	}
+	
+	/** 
+	* @Title: blogManage 
+	* @Description: 博客管理
+	* @param model
+	* @param request
+	* @return String   
+	* @throws 
+	*/
+	@RequestMapping(value = "/blogManage", method = RequestMethod.GET)
+	public String blogManage(Model model,HttpServletRequest request) {
+		Map<String, String> cookieMap = CookieOperation.getCookie(request);
+		logger.info("登陆用户"+cookieMap);
+		if(cookieMap != null && cookieMap.get("openId") != null){
+			BegincodeUser logUser = userFacade.findUser(cookieMap.get("openId"), cookieMap.get("accessToken"));
+			logger.info("用户信息"+logUser.toString());
+			if(logUser.getCheckFlag().equals(BeginCodeConstant.CHECK_PAAS)){
+				model.addAttribute("user",logUser);
+				Blog record = new Blog();
+				record.setBegincodeUserId(logUser.getBegincodeUserId());
+				Paginator page = new Paginator(0, BeginCodeConstant.PAGE_SIZE);
+				PageList list = blogService.findBlogsByRecords(record, page);
+				model.addAttribute("blogs",list);
+				model.addAttribute("pageinfo", list.getPaginator());
+				return "/page/blog/blog_manager";				
+			}else{
+				logger.info("用户未通过审核");
+				return "redirect:/blog";
+			}
+		}else{
+//			抛出异常
+			logger.info("未获得登陆信息");
+			return "redirect:/blog";
+		}
+	}
+	
 	@RequestMapping(value = "/userId", method = RequestMethod.GET)
 	public String addBlogInit(Model model,HttpServletRequest request) {
 		Map<String, String> cookieMap = CookieOperation.getCookie(request);
 		logger.info("登陆用户"+cookieMap);
-		if(cookieMap != null){
+		if(cookieMap != null && cookieMap.get("openId") != null){
 			BegincodeUser logUser = userFacade.findUser(cookieMap.get("openId"), cookieMap.get("accessToken"));
 			logger.info("用户信息"+logUser.toString());
 			if(logUser.getCheckFlag().equals(BeginCodeConstant.CHECK_PAAS)){
@@ -95,10 +154,11 @@ public class BlogController {
 		}else{
 //			抛出异常
 			logger.info("未获得登陆信息");
-			return null;
+			return "redirect:/blog";
 		}
 	}
-
+	
+	
 	@RequestMapping(value = "/blogs", method = RequestMethod.GET)
 	@ResponseBody
 	public List getBlogs(Paginator pageinfo) {
@@ -110,16 +170,71 @@ public class BlogController {
 			return null;
 		}
 	}
-
+	
+	
+	
+	@RequestMapping(value = "/blogs/user", method = RequestMethod.GET)
+	@ResponseBody
+	public List getBlogsUser(HttpServletRequest request,Paginator pageinfo,String blogType) {
+		BegincodeUser loginUser = CookieOperation.getUser(request);
+		if (loginUser != null && pageinfo != null) {
+			pageinfo.setLimit(BeginCodeConstant.PAGE_SIZE);
+			Blog blog = new Blog();
+			blog.setBegincodeUserId(loginUser.getBegincodeUserId());
+			if(!blogType.equals("")){
+				blog.setBlogTypeId(Integer.valueOf(blogType));
+			}
+			PageList list = blogService.findBlogsByRecords(blog, pageinfo);
+			return list;
+		} else {
+			return null;
+		}
+	}
+	
+	@RequestMapping(value = "/topTen/userId", method = RequestMethod.GET)
+	@ResponseBody
+	public List findTopTenByUserId(HttpServletRequest request) {
+		Map<String, String> cookieMap = CookieOperation.getCookie(request);
+		if(cookieMap != null && cookieMap.get("userId") != null){
+			Blog record = new Blog();
+			record.setBegincodeUserId(Integer.valueOf(cookieMap.get("userId")));
+			Paginator pageinfo = new Paginator(0,BeginCodeConstant.PAGE_SIZE);
+			pageinfo.setOrderStr(" order by view_count desc ");
+			return blogService.findBlogsByRecords(record, pageinfo);
+		}else{
+			return null;
+		}
+		  
+	}
 	@RequestMapping(value = "/topTen", method = RequestMethod.GET)
 	@ResponseBody
-	public List findTopTen() throws IOException {
-		Paginator pageinfo = new Paginator(0,BeginCodeConstant.PAGE_SIZE);
-		pageinfo.setOrderStr(" order by view_count desc ");
+	public List findTopTen() {
+		return findTop(BeginCodeConstant.PAGE_SIZE);
+	}
+
+	@RequestMapping(value = "/top/{size}", method = RequestMethod.GET)
+	@ResponseBody
+	public List findTopSize(@PathVariable("size") int size){
+		return findTop(size);
+	}
+	
+	/** 
+	* @Title: findTop 
+	* @Description:  默认参数为null时查询10条记录
+	* @param n
+	* @return List   
+	* @throws 
+	*/
+	private List findTop(int n){
+		if(n <= 0){
+			n = BeginCodeConstant.PAGE_SIZE;
+		}
+		Paginator pageinfo = new Paginator(0,n);
+		pageinfo.setOrderStr(" order by create_datetime desc ");
 		PageList list = blogService.findBlogs(pageinfo);
 		return list;
 	}
-
+	
 	@RequestMapping(value = "/blogType/{typeId}", method = RequestMethod.GET)
 	@ResponseBody
 	public List findRelationTopFive(@PathVariable("typeId") int typeId) {
@@ -130,6 +245,35 @@ public class BlogController {
 		blog.setBlogTypeId(typeId);
 		PageList list = blogService.findBlogsByRecord(blog);
 		return list;
+	}
+	@RequestMapping(value = "/blogType/user", method = RequestMethod.POST)
+	@ResponseBody
+	public BlogType findBlogTypeByUser(HttpServletRequest request,String blogType) {
+		Map<String, String> cookieMap = CookieOperation.getCookie(request);
+		if(cookieMap != null && cookieMap.get("userId") != null){
+			BlogType blogTypeEntity = new BlogType();
+			blogTypeEntity.setBegincodeUserId(Integer.valueOf(cookieMap.get("userId")));
+			blogTypeEntity.setBlogTypeName(blogType);
+			blogTypeEntity.setDeleteFlag("1");
+			blogTypeService.createBlogType(blogTypeEntity);
+			if(blogTypeEntity.getBlogTypeId() != null){
+				return blogTypeEntity;
+			}else{
+				return null;
+			}
+		}else{
+			return null;
+		}
+	}
+	@RequestMapping(value = "/blogType/user", method = RequestMethod.GET)
+	@ResponseBody
+	public List findBlogTypeByUser(HttpServletRequest request) {
+		Map<String, String> cookieMap = CookieOperation.getCookie(request);
+		if(cookieMap != null && cookieMap.get("userId") != null){
+			return blogTypeService.findBlogTypeByUserId(Integer.valueOf(cookieMap.get("userId")));
+		}else{
+			return null;
+		}
 	}
 	@RequestMapping(value = "/recommend", method = RequestMethod.GET)
 	@ResponseBody
@@ -151,17 +295,23 @@ public class BlogController {
 	@ResponseBody
 	public Map addBlog(Blog blog) {
 		Map message = new HashMap();
+		message.put("msg", "保存成功");
 		blog.setCreateDatetime(new Date());
 		blog.setDeleteFlag(BeginCodeConstant.DELETE_FLAG_NOMAL);
 		blog.setBegincodeNavigationId(BeginCodeConstant.NAV_CODE_SHARE);
 		blog.setBegincodeKeys(HtmlUtils.htmlEscape(blog.getBegincodeKeys()));
 		blog.setBlogAbstract((HtmlUtils.htmlEscape(blog.getBlogAbstract())));
 		blog.setBlogInfo(HtmlUtils.htmlEscape(blog.getBlogInfo()));
-		blogService.createBlog(blog);
-		if (blog.getBlogId() != null) {
-			message.put("msg", "保存成功");
-		} else {
-			message.put("msg", "保存失败");
+		if(blog.getBlogId() != null && blog.getBlogId() != 0){
+			int returnValue = blogService.updateBlog(blog);
+			if(returnValue <= 0){
+				message.put("msg", "保存失败");
+			}
+		}else{
+			blogService.createBlog(blog);
+			if (blog.getBlogId() == null || blog.getBlogId() == 0) {
+				message.put("msg", "保存失败");
+			}  
 		}
 		return message;
 	}

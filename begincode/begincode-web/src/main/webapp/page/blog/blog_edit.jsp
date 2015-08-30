@@ -23,8 +23,8 @@
 	<jsp:include page="/page/core/top.jsp" />
 
 	<ol class="breadcrumb">
-		<li><a href="#">首页</a></li>
-		<li><a href="#">空间管理</a></li>
+		<li class="active"> 首页 </li>
+		<li class="active"> 空间管理 </li>
 		<li class="active">发布博文</li>
 	</ol>
 
@@ -58,7 +58,7 @@
 <!-- 					发布博文</button> -->
 
 				<div class="list-group" id="classList">
-					<a href="#" class="list-group-item active"> 博客分类 </a>
+					<a href="#" class="list-group-item active"> 博客分类 <span class="opeFont" onclick="addBlogType()" >新增</span></a>
 				</div>
 				<div class="list-group" id="readList">
 					<a href="#" class="list-group-item active"> 阅读排行 </a>
@@ -73,34 +73,35 @@
 								value="${user.nickname }" /> 
 								<input type="hidden" name="pic"	id="pic" value="${user.pic }" /> 
 								<input type="hidden" name="begincodeUserId" id="begincodeUserId" value="${user.begincodeUserId }" />
+								<input type="hidden" name="blogId" id="blogId" value="${blog.blogId}" />
 							<div class="form-group">
 								<label for="codeTypeId"><span class="labelinfoblue"></span>博客分类</label>
 								<select class="form-control" name="blogTypeId" id="blogTypeId"	value="">
 									<c:forEach items="${blogTypes }" var="blogType">
-										<option value="${blogType.blogTypeId }">${blogType.blogTypeName}</option>
+										<option value="${blogType.blogTypeId }" ${blogType.blogTypeId eq blog.blogTypeId? 'selected':''  }  >${blogType.blogTypeName}</option>
 									</c:forEach>
 								</select> <input type="hidden" name="blogTypeName" id="blogTypeName" value="" />
 							</div>
 							<div class="form-group">
 								<label for="codeInfo"><span class="labelinfowarn"></span>博客标题</label>
-								<input type="text" class="form-control required" id="blogInfo"	name="blogInfo" value="" placeholder="博客标题">
+								<input type="text" class="form-control required" id="blogInfo"	name="blogInfo" value="${blog.blogInfo}" placeholder="博客标题">
 							</div>
 							<div class="form-group">
 								<label for="exampleInputPassword1"><span
 									class="labelinfosuccess"></span>博客摘要</label>
 								<textarea class="form-control required" id="blogAbstract" name="blogAbstract" rows="3"
-									placeholder="我们提议，为您的博客添加摘要，这也是给阅读者一个引导"></textarea>
+									placeholder="我们提议，为您的博客添加摘要，这也是给阅读者一个引导">${blog.blogAbstract}</textarea>
 							</div>
 							<div class="form-group">
 								<label id="bcContent" for="codeContent"><span
 									class="labelinfodanger"></span>博客正文</label> 
 									<input type="hidden" name="blogContent" class="required" id="blogContent" value="" />
-								<div id="summernote"></div>
+								<div id="summernote">${blog.blogContent}</div>
 							</div>
 							<div class="form-group">
 								<label for="exampleInputPassword1"><span
 									class="labelinfoblue"></span>关键字</label> 
-									<input type="text"	class="form-control required" id="begincodeKeys" name="begincodeKeys" value=""
+									<input type="text"	class="form-control required" id="begincodeKeys" name="begincodeKeys" value="${blog.begincodeKeys}"
 									placeholder="为你的博客定义关键字，逗号隔开，不要超过6个哦">
 							</div>
 
@@ -121,6 +122,30 @@
 			</div>
 
 		</div>
+		<!-- blogType -->
+	<div   class="modal fade bs-example-modal-sm" id="blogTypeForm" tabindex="-1" role="dialog" aria-labelledby="blogTypeForm">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h4 class="modal-title">新增博客分类</h4>
+	      </div>
+	      <div class="modal-body" >
+				 <div class="form-group">
+				 		<form id="typeForm">
+					 	 <label for="codeInfo"><span class="labelinfowarn"></span>博客分类</label>
+						 <input type="text" class="form-control required" id="blogType"	name="blogType" value="" placeholder="博客分类">
+						</form>
+				 </div>
+	      </div>
+	       <div class="modal-footer">
+		        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+		        <button type="button" class="btn btn-primary" id="blogTypeButton">保存</button>
+		      </div>
+	    </div>
+	  </div>
+	</div>
+	<!-- blogType end -->
 		<!-- foot -->
 		<jsp:include page="/page/core/foot.jsp" />
 		<!-- Include all compiled plugins (below), or include individual files as needed -->
@@ -134,8 +159,11 @@
 		<script src="${ctx}/js/validate/messages_zh.js"></script>
 		<script src="${ctx}/js/ajaxfileupload.js"></script>
 		<script src="${ctx}/js/blog/blogEdit.js"></script>
+		<script src="${ctx}/js/blog/blogUser.js"></script>
 		<script>
 			var ctx = "${ctx}";  
+			userTopTen();
+			blogTypes();
 		</script>
 </body>
 </html>

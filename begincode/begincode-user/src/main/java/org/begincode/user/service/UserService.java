@@ -26,4 +26,13 @@ public interface UserService {
 	* @throws 
 	*/
 	public BegincodeUser findUserByTokenIdAndOpenId(String accessToken,String openId);
+	
+	/** 
+	* @Title: findUserById 
+	* @Description: 查询用户By Id
+	* @param userId
+	* @return BegincodeUser   
+	* @throws 
+	*/
+	public BegincodeUser findUserById(Integer userId);
 }

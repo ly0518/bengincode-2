@@ -89,4 +89,9 @@ public class UserServiceImpl implements UserService {
 
 	}
 
+	@Override
+	public BegincodeUser findUserById(Integer userId) {
+		return begincodeUserMapper.selectByPrimaryKey(userId);
+	}
+
 }

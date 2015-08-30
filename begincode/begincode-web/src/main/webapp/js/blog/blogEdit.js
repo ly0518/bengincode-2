@@ -46,4 +46,31 @@
 			  alert("请先登录...");
 		  }
 		  });
+		  
+		  $("#blogTypeButton").click(function(){
+			  var blogType = $("#blogType").val();
+			  if(blogType.length>10 || blogType.length == 0){
+				  alert("分类名称不能为空，且必须在10个汉字内");
+			  }else{
+					jQuery.ajax({
+						type : "POST",
+						url : ctx + "/blog/blogType/user",
+						data : $('#typeForm').serializeArray(),
+						dataType : "json",
+						success : function(blogTypes) {
+							if(blogTypes != 'null'){
+ 								var blogTypeStr = "<option value="+blogTypes.blogTypeId+" selected >"+blogTypes.blogTypeName+"</option>";
+								var blogStr = "<a href=\"#\" class=\"list-group-item\"  target=\"_blank\"	 >"+blogTypes.blogTypeName+"</a>";
+								$("#classList").append(blogStr);
+								$("#blogTypeId").append(blogTypeStr);
+							}
+							$("#blogType").val("");
+							$("#blogTypeForm").modal('hide');
+						}
+					});
+				  
+			  }
+			  
+		  });
 	});
+	

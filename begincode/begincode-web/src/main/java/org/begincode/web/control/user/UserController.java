@@ -34,7 +34,7 @@ public class UserController {
 	public void findOrCreateUser(HttpServletResponse response,BegincodeUser user) {
 		user.setUserSourceId(1);
 		user.setDeleteFlag("1");
-		userFacade.createUser(user);
+		user = userFacade.createUser(user);
 		CookieOperation.addCookie(response, user);
 	}
 	

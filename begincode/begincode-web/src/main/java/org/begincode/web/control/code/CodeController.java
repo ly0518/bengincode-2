@@ -14,6 +14,7 @@ import org.begincode.code.service.CodeTypeService;
 import org.begincode.core.constant.BeginCodeConstant;
 import org.begincode.core.model.BegincodeCode;
 import org.begincode.core.model.BegincodeUser;
+import org.begincode.core.model.Blog;
 import org.begincode.core.paginator.BeginCodeInterceptor;
 import org.begincode.core.paginator.domain.PageList;
 import org.begincode.core.paginator.domain.Paginator;
@@ -99,7 +100,21 @@ public class CodeController {
 			return "redirect:/code";
 		}
 	}
-
+	@RequestMapping(value = "/topTen/userId", method = RequestMethod.GET)
+	@ResponseBody
+	public List findTopTenByUserId(HttpServletRequest request) {
+		Map<String, String> cookieMap = CookieOperation.getCookie(request);
+		if(cookieMap != null && cookieMap.get("userId") != null){
+			BegincodeCode record = new BegincodeCode();
+			record.setBegincodeUserId(Integer.valueOf(cookieMap.get("userId")));
+			Paginator pageinfo = new Paginator(0,BeginCodeConstant.PAGE_SIZE);
+			pageinfo.setOrderStr(" order by view_count desc ");
+			return codeService.findCodesByRecords(record, pageinfo);
+		}else{
+			return null;
+		}
+		  
+	}
 	@RequestMapping(value = "/codes", method = RequestMethod.GET)
 	@ResponseBody
 	public List getCodes(Paginator pageinfo) {
