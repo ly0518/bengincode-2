@@ -27,21 +27,7 @@ function getFormatDate(data) {
 	return CurrentDate;
 }
 
-function topTen() {
-	jQuery.ajax({
-		type : "GET",
-		url : ctx + "/blog/topTen",
-		data : "",
-		dataType : "json",
-		success : function(blogs) {
-			$("#blogTopTen").empty();
-			$.each(blogs,function(i) {
-					var blogStr = "<a href=\""+ctx+"/blog/"+blogs[i].blogId+" \" class=\"list-group-item\">"+blogs[i].blogInfo+"<span class=\"view-count\">"+blogs[i].viewCount+"</span></a>";
-					$("#blogTopTen").append(blogStr);
-			});
-		}
-	});
-}
+
  
 function getLabel(keywords){
 	var str = "<div class=\"keyword-list l\">";

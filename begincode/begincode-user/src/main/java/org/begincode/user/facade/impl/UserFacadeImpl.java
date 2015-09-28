@@ -67,12 +67,20 @@ public class UserFacadeImpl implements UserFacade {
 	}
 	@Override
 	public BegincodeUser findUser(String openId,String accessToken) {
-		BegincodeUser begincodeUser =  cacheManagerInterface.findUserByCache(accessToken);
+		BegincodeUser begincodeUser =  cacheManagerInterface.findUserByCache(openId);
 		if(begincodeUser != null){
 			return begincodeUser;
 		}else{
 			return userService.findUserByTokenIdAndOpenId(accessToken, openId);
 		}
 	}
-
+	@Override
+	public BegincodeUser findUser(String openId) {
+		BegincodeUser begincodeUser =  cacheManagerInterface.findUserByCache(openId);
+		if(begincodeUser != null){
+			return begincodeUser;
+		}else{
+			return userService.findUserByOpenId( openId);
+		}
+	}
 }

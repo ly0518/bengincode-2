@@ -29,4 +29,13 @@ public interface UserFacade {
 	* @throws 
 	*/
 	public BegincodeUser findUser(String openId,String accessToken);
+	
+	/** 
+	* @Title: findUser 
+	* @Description: 根据openId查询
+	* @param openId
+	* @return BegincodeUser   
+	* @throws 
+	*/
+	public BegincodeUser findUser(String openId); 
 }

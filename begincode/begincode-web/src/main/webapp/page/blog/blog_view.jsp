@@ -7,8 +7,10 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="Keywords" content="begincode,BeginCode,初学者,初学者社区,java教程,web教程,demo,项目案例,代码分享"/>  
+    <meta name="Description" content="${blog.blogInfo } ,begincode www.begincode.net  初学者社区，志在让更多软件开发初学者能够掌握一门开发技术  "/> 
     <%@ include file="/commons/meta.jsp"%>
-<title>${code.codeInfo },初学者论坛，beginCode,BeginCode</title>
+<title>${blog.blogInfo },初学者论坛，beginCode,BeginCode</title>
 <!-- Bootstrap -->
 <link href="${ctx}/css/bootstrap.css" rel="stylesheet">
 <link media="screen" href="${ctx}/css/pinglun.css" rel="stylesheet">
@@ -122,6 +124,7 @@
 	<!-- msg end -->
 	<script src="${ctx}/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="${ctx}/js/blog/blog.js"></script>
+	<script type="text/javascript" src="${ctx}/js/blog/blogUtil.js"></script>
 	<script type="text/javascript" src="${ctx}/js/blog/blogComment.js"></script>
  	<script src="${ctx}/js/validate/jquery.validate.js"></script>
 	<script src="${ctx}/js/validate/jquery.metadata.js"></script>

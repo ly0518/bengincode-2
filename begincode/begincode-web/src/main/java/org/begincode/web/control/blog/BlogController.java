@@ -127,12 +127,12 @@ public class BlogController {
 				return "/page/blog/blog_manager";				
 			}else{
 				logger.info("用户未通过审核");
-				return "redirect:/blog";
+				return "forward:/blog";
 			}
 		}else{
 //			抛出异常
 			logger.info("未获得登陆信息");
-			return "redirect:/blog";
+			return "forward:/blog";
 		}
 	}
 	
@@ -149,12 +149,12 @@ public class BlogController {
 				return "/page/blog/blog_edit";				
 			}else{
 				logger.info("用户未通过审核");
-				return "redirect:/blog";
+				return "forward:/blog";
 			}
 		}else{
 //			抛出异常
 			logger.info("未获得登陆信息");
-			return "redirect:/blog";
+			return "forward:/blog";
 		}
 	}
 	
@@ -181,7 +181,7 @@ public class BlogController {
 			pageinfo.setLimit(BeginCodeConstant.PAGE_SIZE);
 			Blog blog = new Blog();
 			blog.setBegincodeUserId(loginUser.getBegincodeUserId());
-			if(!blogType.equals("")){
+			if(blogType != null && !blogType.equals("")){
 				blog.setBlogTypeId(Integer.valueOf(blogType));
 			}
 			PageList list = blogService.findBlogsByRecords(blog, pageinfo);

@@ -88,7 +88,24 @@ public class UserServiceImpl implements UserService {
 		}
 
 	}
+	@Override
+	public BegincodeUser findUserByOpenId(String openId) {
+		if(StringUtils.isNotEmpty(openId)){
+			BegincodeUser begincodeUser = new BegincodeUser();
+			begincodeUser.setOpenId(openId);
+			begincodeUser = begincodeUserMapper.selectByTokenIdAndOpenId(begincodeUser);
+			if(begincodeUser != null){
+				return begincodeUser;
+			}else{
+				return null;
+			}
+		}else{
+			logger.error(" accessToken ,openId  不能为空 ");
+			throw new IllegalArgumentException("accessToken,openId 不能为空 ");
 
+		}
+
+	}
 	@Override
 	public BegincodeUser findUserById(Integer userId) {
 		return begincodeUserMapper.selectByPrimaryKey(userId);

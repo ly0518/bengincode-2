@@ -19,9 +19,9 @@ import org.apache.commons.lang.builder.ToStringBuilder;
  *  
  */
 public enum ErrorMessage {
-	InvalidArgument(400,"InvalidArgument"),		//参数错误
+	InvalidArgument(400,"InvalidArgument"),				//参数错误
 	FileNotExist(405,"您要找的页面不存在，或已删除"),			//文件不存在，内容不存在，已删除
-	InternalError(500,"系统内部异常，请重试");			//内部错误异常，
+	InternalError(500,"系统内部异常，请重试");					//内部错误异常，
 	
 	private  int errorCode;
 	private String errorMessage;

@@ -1,4 +1,3 @@
-
 function blogViewInit(blogId){
 	jQuery.ajax({
 		type : "GET",
@@ -46,7 +45,8 @@ function getBlogViewLabel(blogComment){
       +"</div></div>"
 	return str;
 }
-$('#pubBlogCommon').click(function(){
+
+$("#pubBlogCommon").click(function(){
 	if(QC.Login.check()){
 		if($("#blogCommonForm").valid()){
 						jQuery.ajax({
@@ -62,7 +62,7 @@ $('#pubBlogCommon').click(function(){
 								}
 							}
 				});		
-		}
+		} 
 	}else{
 		$("#msg").empty();
 		$("#msg").append("<p>请先登录...</p>");

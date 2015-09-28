@@ -92,12 +92,12 @@ public class CodeController {
 				return "/page/code/code_edit";				
 			}else{
 				logger.info("用户未通过审核");
-				return "redirect:/code";
+				return "forward:/code";
 			}
 		}else{
 //			抛出异常
 			logger.info("未获得登陆信息");
-			return "redirect:/code";
+			return "forward:/code";
 		}
 	}
 	@RequestMapping(value = "/topTen/userId", method = RequestMethod.GET)

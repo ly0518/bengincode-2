@@ -36,8 +36,8 @@ public class CacheManagerImpl implements CacheManagerInterface {
 	 * @see org.begincode.cache.CacheManagerInterface#findUserByCache(java.lang.String) 
 	 */
 	@Override
-	public BegincodeUser findUserByCache(String accessToken) {
-		Element element = userCache.get(accessToken);
+	public BegincodeUser findUserByCache(String openId) {
+		Element element = userCache.get(openId);
 		if(element != null){
 			return (BegincodeUser)element.getObjectValue();
 		}else{
@@ -53,7 +53,7 @@ public class CacheManagerImpl implements CacheManagerInterface {
 	 */
 	@Override
 	public void addUserToCache(BegincodeUser user) {
-		Element element = new Element(user.getAccessToken(), user);
+		Element element = new Element(user.getOpenId(), user);
 		userCache.put(element);
 	}
 
