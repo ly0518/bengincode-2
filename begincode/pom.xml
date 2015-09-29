@@ -21,7 +21,8 @@
 		<module>begincode-user</module>
 		<module>begincode-cache</module>
 		<module>begincode-task</module>
-	</modules>
+    <module>begincode-resource</module>
+  </modules>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<junit.version>4.8</junit.version>
@@ -164,7 +165,7 @@
 				<groupId>javax.servlet</groupId>
 				<artifactId>javax.servlet-api</artifactId>
 				<version>${servlet.version}</version>
-				<!-- 使用次以来范围的Maven依赖，对于测试和运行ClassPath有效，在运行时无效 -->
+				<!-- 使用次以来范围的Maven依赖，对于测试和运行ClassPath有效，在运行时无�?-->
 				<scope>provided</scope>
 			</dependency>
 			<dependency>

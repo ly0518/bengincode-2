@@ -36,7 +36,10 @@
 	   select 'true' as QUERYID,
 	    <include refid="Base_Column_List" />
 	    from begincode_user
-	    where access_token = #{accessToken,jdbcType=INTEGER} and open_id =  #{openId,jdbcType=INTEGER} 
+	    where  open_id =  #{openId,jdbcType=INTEGER} 
+	  <if test="accessToken != null" >
+	 	and  access_token = #{accessToken,jdbcType=INTEGER}  
+      </if>
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from begincode_user
