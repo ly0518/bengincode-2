@@ -48,7 +48,7 @@ public class UserFacadeImpl implements UserFacade {
 			logger.error("注册用户，参数不能为 null");
 			throw new IllegalArgumentException("注册用户，参数不能为 null");
 		}
-		BegincodeUser tempUser = userService.findUserByTokenIdAndOpenId(user.getAccessToken(), user.getOpenId());
+		BegincodeUser tempUser = userService.findUserByOpenId(user.getOpenId());
 		if(tempUser != null){
 			//添加缓存
 			cacheManagerInterface.addUserToCache(tempUser);
